@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FE00C837-CFC4-496D-B5EF-82C279447185}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Acred_bco_cbaD.cs" />
+    <Compile Include="Acred_bco_macroD.cs" />
+    <Compile Include="Acred_bco_provD.cs" />
+    <Compile Include="AuditoriaD.cs" />
+    <Compile Include="AUX_DETALLE_SUELDO.cs" />
+    <Compile Include="AUX_MAESTRO_SUELDO.cs" />
+    <Compile Include="CategoriasD.cs" />
+    <Compile Include="Concepto_Liq_x_Emp_Mov.cs" />
+    <Compile Include="Conceptos_liqD - Copia.cs" />
+    <Compile Include="Concepto_Liq_x_EmpD - Copia.cs" />
+    <Compile Include="Concepto_Liq_x_EmpD.cs" />
+    <Compile Include="ConsultaEmpleadoD.cs" />
+    <Compile Include="Ctas_x_concepto_liqD.cs" />
+    <Compile Include="DALBase.cs" />
+    <Compile Include="Conceptos_liqD.cs" />
+    <Compile Include="DBHelpers.cs" />
+    <Compile Include="Det_liq_x_empleadoD.cs" />
+    <Compile Include="EmpleadoD.cs" />
+    <Compile Include="EmpxFamiliar.cs" />
+    <Compile Include="Familiares.cs" />
+    <Compile Include="LiquidacionD - Copia.cs" />
+    <Compile Include="LiquidacionD.cs" />
+    <Compile Include="LiquidacionesD.cs" />
+    <Compile Include="LIQ_X_EMPLEADO.cs" />
+    <Compile Include="Liq_x_EmpleadoD.cs" />
+    <Compile Include="MD5Encryption.cs" />
+    <Compile Include="ParxDetLiqxEmpD.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteD.cs" />
+    <Compile Include="F931D.cs" />
+    <Compile Include="SecurityDAL.cs" />
+    <Compile Include="SeguridadD.cs" />
+    <Compile Include="SijcorDCopia.cs" />
+    <Compile Include="SijcorD.cs" />
+    <Compile Include="Tipos_Conceptos_LiqD.cs" />
+    <Compile Include="UsuariosDAL.cs" />
+    <Compile Include="Valores_x_concepto_liqD.cs" />
+    <Compile Include="XMLHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{163467b9-2a9c-46ee-995b-690a1b5d0993}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

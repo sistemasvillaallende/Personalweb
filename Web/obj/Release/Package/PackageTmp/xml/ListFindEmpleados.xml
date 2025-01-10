@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<NewDataSet>
+  <Record>
+    <IDName>e.legajo</IDName>
+    <Name>Legajo</Name>
+  </Record>
+  <Record>
+    <IDName>e.nombre</IDName>
+    <Name>Nombre</Name>
+  </Record>
+  <Record>
+    <IDName>e.nro_documento</IDName>
+    <Name>Nro Documento</Name>
+  </Record>
+</NewDataSet>
