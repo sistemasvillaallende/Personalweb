@@ -94,6 +94,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="App_Themes\Bootstrap\Autocomplete.css" />
     <Content Include="App_Themes\Bootstrap\css\apprise.min.css" />
     <Content Include="App_Themes\Bootstrap\css\bootstrap-theme.css" />
