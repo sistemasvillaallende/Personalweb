@@ -1,0 +1,290 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="~/MP/MP.Master" Inherits="web.MP.MP_Desempenio" %>
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>Personal Web</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="author" content="Municipalidad de Villa Allende" />
+    <link rel="icon" href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/favicon.ico" type="image/x-icon" />
+
+    <!-- MAIN CSS -->
+    <link href="../App_Themes/NewTheme/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+        crossorigin="anonymous" />
+    <style>
+        @media (min-width: 1200px) {
+            #left-sidebar {
+                display: block;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            #left-sidebar {
+                display: none;
+            }
+        }
+
+        .btn-success {
+            color: #fff !important;
+            background-color: #0d9488 !important;
+            border-color: #0d9488 !important;
+        }
+    </style>
+    <style>
+        .a-menu {
+            font-weight: 400;
+            display: block;
+            padding-left: 15px;
+            padding-top: 13px;
+            padding-bottom: 13px;
+            border-radius: 5px;
+            -webkit-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+            color: var(--bs-gray-600);
+            font-size: 15px;
+            position: relative;
+            outline-width: 0;
+            text-decoration: none !important;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        }
+
+            .a-menu:hover {
+                text-decoration: none;
+                outline: none;
+                box-shadow: none;
+                background-color: var(--primary-color);
+                padding-top: 13px;
+                padding-bottom: 13px;
+                color: white !important;
+                border-radius: 5px;
+            }
+
+            .a-menu i {
+                color: var(--primary-color) !important;
+                margin-right: 10px;
+            }
+
+            .a-menu:hover i {
+                color: white !important;
+                margin-right: 10px;
+            }
+
+        .mnuactive {
+            font-weight: 400;
+            display: block;
+            padding-left: 15px;
+            padding-top: 13px;
+            padding-bottom: 13px;
+            border-radius: 5px;
+            -webkit-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+            font-size: 15px;
+            position: relative;
+            outline-width: 0;
+            text-decoration: none !important;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+            outline: none;
+            box-shadow: none;
+            background-color: var(--primary-color);
+            color: white !important;
+        }
+
+            .mnuactive i {
+                color: white !important;
+                margin-right: 10px;
+            }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+            crossorigin="anonymous"></script>
+        <link href="../App_Themes/GestionPablo/css/style.css" rel="stylesheet" />
+        <link href="../App_Themes/GestionPablo/css/colores.css" rel="stylesheet" />
+
+        <asp:HiddenField ID="hIdSec" runat="server" />
+
+        <%--<asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" EnablePartialRendering="true" runat="server"></asp:ScriptManager>--%>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <div id="layout" class="theme-cyan">
+
+            <div id="wrapper">
+                <header class="clearfix no-mobile print header" id="headerPC" runat="server"
+                    style="text-align: left; position: fixed; width: 100%; z-index: 5000; background-color: white;">
+                    <div class="row" style="padding-top: 0px; padding-bottom: 0px; height: 80px;">
+                        <div class="col-md-4" style="padding-left: 5%;">
+                            <a href="../Back/Inicio.aspx">
+                                <img src="../img/LogoPablo.png" style="height: 60px;" />
+                            </a>
+                        </div>
+                        <div class="col-md-4" style="height: 90px !important; align-items: center; vertical-align: middle; display: inline-flex;">
+                            <a href="../Back/Inicio.aspx" style="width: 100%;">
+                                <h2 class="section-title__title"
+                                    style="text-align: center; margin-top: 0; color: #6f6f6e; font-size: 24px; line-height: 10px; text-decoration-line: overline;">
+                                    <img id="imgSeccion" runat="server"
+                                        src="../App_Themes/images/vecino.png" style="height: 60px;" />
+                                    <label id="lblTituloHeader" runat="server" style="text-decoration: overline;">&nbsp;Recursos Humanos&nbsp;</label>
+
+                                </h2>
+                            </a>
+                        </div>
+                        <div class="col-md-4" style="padding-right: 5%; align-items: center; display: inline-grid; text-align: right; vertical-align: middle; height: 90px;">
+                            <div class="dropdown">
+                                <button class="btn-usuario" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img id="imgUsuario" runat="server" src="../img/usuario.png" class="img-thumbnail" alt="..." style="height: 55px; border: none;" />
+                                    <ul style="color: gray; list-style: none; text-align: left; padding-left: 0; margin-bottom: 0px;">
+                                        <li id="liNombre" runat="server" style="font-size: 14px; font-weight: 600"></li>
+                                        <li id="liApellido" runat="server" style="font-size: 14px; font-weight: 600"></li>
+                                    </ul>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li style="display: grid; padding: 15px 25px 0px 25px" class="li-usuario">
+                                        <strong id="mnuPcApellido" runat="server">Velez Spitale</strong>
+                                        <span id="mnuPcNombre" runat="server">Ignacio Martin</span></li>
+                                    <li style="display: flex; padding: 15px 25px 0px 25px" class="li-usuario">
+                                        <span style="display: ruby;">CUIT: </span>
+                                        <span style="display: block; margin-left: 10px;" id="mnuPcCuit" runat="server">23-27.173.499-9</span></li>
+                                    <li style="display: flex; padding: 15px 25px 0px 25px" class="li-usuario">
+                                        <span style="display: block;">CIDI: </span>
+                                        <span style="display: block; margin-left: 10px;" id="mnuPcNivelCidi" runat="server">Nivel 2</span></li>
+                                    <li style="padding: 15px; border-top: solid 1px lightgray; margin-top: 15px;">
+                                        <a class="dropdown-item" href="#" runat="server" id="btnCerraSession"
+                                            style="text-align: center; border: solid 3px lightgray; border-radius: 10px; padding: 8px;">Cerrar Sesion</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid"
+                        style="background: linear-gradient(87deg, rgb(148 23 23) 0%, rgba(255,35,0,1) 41%, rgb(255 233 0) 79%);">
+                        <div class="row">
+                            <div class="col-md-12" style="padding-top: 15px;">
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+
+                <!-- Sidbar menu -->
+                <div id="left-sidebar" class="sidebar metismenu"
+                    style="margin-top: -10px; left: 5px; padding-top: 20px; box-shadow: 12px 13px 11px -13px rgba(0, 0, 0, 0.5); background-color: white !important;">
+                    <div class="tab-content px-0">
+                        <div class="tab-pane fade show active" id="hr_menu1" role="tabpanel" 
+                            aria-labelledby="hr_menu_nav_link">
+                            <div class="accordion" id="accordionExample"
+                                style="margin-top: 0px; background-color: white;">
+                                <div class="card" style="border: none; padding-top:20px;">
+                                    <div class="card-header" id="headingOne" 
+                                        style="padding: 0; background-color: white;">
+                                        <a id="mnuDashboard" runat="server" class="a-menu"
+                                            href="~/back/Dashboard.aspx">
+                                            <i class="fa fa-tachometer"></i>
+                                            <span>Panel de control</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <%--                                <div class="card" style="border: none;">
+                                    <div class="card-header" style="padding: 0; background-color: #f9fbfd;">
+                                        <a id="mnuLstEmpleados"
+                                            runat="server" class="a-menu"
+                                            href="~/Back/empleado.aspx">
+                                            <i class="fa fa-users"></i>
+                                            <span>Empleados</span>
+                                        </a>
+                                    </div>
+                                </div>--%>
+                                <div class="card" style="border: none;">
+                                    <div class="card-header" style="padding: 0; background-color: white;">
+                                        <h2 class="mb-0">
+                                            <a class="a-menu collapsed"
+                                                href="#" data-toggle="collapse"
+                                                data-target="#collapseTree" aria-expanded="false" aria-controls="collapseTwo">
+                                                <i class="fa fa-graduation-cap"></i>
+                                                Desempeño
+                                                <i class="fa fa-chevron-down" style="float: right;"></i>
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseTree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <a href="../Back/Fichas.aspx"
+                                                        class="a-menu">
+                                                        <i class="fa fa-cog"></i>
+                                                        <span>Configuracion</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="../back/RevisionSecretarias.aspx"
+                                                        class="a-menu">
+                                                        <i class="fa fa-university"></i>
+                                                        <span>Secretarias</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="../back/Resultado_evaluacion.aspx"
+                                                        class="a-menu">
+                                                        <i class="fa fa-line-chart"></i>
+                                                        <span>Resultados</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card" style="border: none;">
+                                    <div class="card-header" style="padding: 0; background-color: white;">
+                                        <a href="~/Back/Ausentismo.aspx" id="mnuAusentismo"
+                                            runat="server"
+                                            class="a-menu">
+                                            <i class="fa fa-thermometer-1"></i>
+                                            <span>Ausentismo</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card" style="border: none;">
+                                    <a href="~/Back/Licencias.aspx"
+                                        id="mnuLicencias" runat="server"
+                                        class="a-menu">
+                                        <i class="fa fa-coffee"></i>
+                                        <span>Licencias</span>
+                                    </a>
+                                </div>
+                                <div class="card" style="border: none;">
+                                    <a href=""
+                                        id="mnuNotificaciones" runat="server"
+                                        class="a-menu">
+                                        <i class="fa fa-envelope"></i>
+                                        <span>Notificaciones</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show active" id="hr_menu" role="tabpanel" aria-labelledby="hr_menu_nav_link">
+                    </div>
+                </div>
+            </div>
+
+            <div id="main-content" style="padding-left: 10px; padding-right: 10px; margin-top: 25px;">
+                <div class="container-fluid" style="padding-top: 5px !important; margin-top: 15px;">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</body>
+</html>

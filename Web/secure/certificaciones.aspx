@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/Bootstrap.Master" AutoEventWireup="true" CodeBehind="certificaciones.aspx.cs" Inherits="web.secure.certificaciones"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master" AutoEventWireup="true" CodeBehind="certificaciones.aspx.cs" Inherits="web.secure.certificaciones"
     UICulture="es" Culture="es-MX" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">

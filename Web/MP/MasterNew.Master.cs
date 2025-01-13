@@ -14,7 +14,7 @@ namespace web.MP
         {
             if (Request.Cookies["UserSistema"] != null)
             {
-                lblNombreUsuario.InnerHtml =
+               /*lblNombreUsuario.InnerHtml =
                     Request.Cookies["UserSistema"]["nombreUsuario"];
                 btnEvaluar.Visible = false;
                 if (Request.Cookies["UserSistema"]["id_secretaria"] != null)
@@ -38,8 +38,13 @@ namespace web.MP
                         btnEvaluar.HRef =
                             "~/Autoridades/Direcciones/Dashboard.aspx";
                     }
-                }
+                }*/
             }
+        }
+
+        protected void btnCerraSession_ServerClick(object sender, EventArgs e)
+        {
+
         }
     }
 }
