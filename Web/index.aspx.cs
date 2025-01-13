@@ -14,7 +14,7 @@ namespace Web
     {
 
 
-        BLL.SeguridadB objSeguridad;
+        BLL.SecurityBLL objSeguridad;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -58,9 +58,18 @@ namespace Web
 
         protected void btnIngresar_ServerClick(object sender, EventArgs e)
         {
+            if (Request.Cookies["UserSistema"] != null)
+            {
+                // Eliminar la cookie configurándola con una fecha de expiración en el pasado
+                HttpCookie miCookie = new HttpCookie("UserSistema");
+                miCookie.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(miCookie);
+            }
+            Entities.Usuarios objUsu = new Entities.Usuarios();
             bool ok = false;
             int id_oficina = 0;
-            objSeguridad = new BLL.SeguridadB();
+            objSeguridad = new BLL.SecurityBLL();
+
             ok = objSeguridad.ValidUser(txtUsuario.Value, txtPass.Value);
 
             if (ok == true)
@@ -68,44 +77,134 @@ namespace Web
                 Session["usuario"] = txtUsuario.Value.ToLower();
                 ok = false;
                 ok = objSeguridad.ValidaPermiso(Session["usuario"].ToString(), "SUELDOS", out id_oficina);
+                //"ME_GESTION_EXPEDIENTE", 
                 if (ok == true)
                 {
+                    objUsu = DAL.UsuariosDAL.getUserByNombre(
+                        txtUsuario.Value.ToLower());
                     Session["id_oficina_usuario"] = id_oficina;
-                    //
+                    ok = false;
+                    ok = objSeguridad.ValidaPermiso(Session["usuario"].ToString(), "SUELDOS", out id_oficina);
+
+                    objUsu = DAL.UsuariosDAL.getPermisoEvaluacion(
+                        txtUsuario.Value.ToLower());
+                    if (objUsu.id_secretaria != 0)
+                    {
+                        HttpCookie cookie1 = new HttpCookie("UserSistema");
+                        cookie1["id_oficina_usuario"] = id_oficina.ToString();
+                        cookie1["id_direccion"] = "";
+                        cookie1["id_secretaria"] = objUsu.id_secretaria.ToString();
+                        cookie1["direccion"] = "";
+                        cookie1["secretaria"] = objUsu.secretaria.ToString();
+                        cookie1["usuario"] = txtUsuario.Value;
+                        cookie1["nombreUsuario"] = objUsu.nombre_completo;
+                        cookie1["rrhh"] = "SI";
+                        cookie1.Expires = DateTime.Now.AddDays(1);
+                        Response.Cookies.Add(cookie1);
+                        FormsAuthentication.RedirectFromLoginPage(Session["usuario"].ToString().Replace("%", ""), false);
+
+                        Response.Redirect("~\\secure\\Dashboard.aspx");
+                    }
+                    if (objUsu.id_direccion != 0)
+                    {
+                        HttpCookie cookie2 = new HttpCookie("UserSistema");
+                        cookie2["id_oficina_usuario"] = id_oficina.ToString();
+                        cookie2["id_direccion"] = objUsu.id_direccion.ToString();
+                        cookie2["id_secretaria"] = "";
+                        cookie2["direccion"] = objUsu.direccion;
+                        cookie2["secretaria"] = "";
+                        cookie2["usuario"] = txtUsuario.Value;
+                        cookie2["nombreUsuario"] = objUsu.nombre_completo;
+                        cookie2["rrhh"] = "SI";
+                        cookie2.Expires = DateTime.Now.AddDays(1);
+                        Response.Cookies.Add(cookie2);
+                        FormsAuthentication.RedirectFromLoginPage(Session["usuario"].ToString().Replace("%", ""), false);
+
+                        Response.Redirect("~\\secure\\Dashboard.aspx");
+                    }
                     HttpCookie cookie = new HttpCookie("UserSistema");
                     cookie["id_oficina_usuario"] = id_oficina.ToString();
+                    cookie["id_direccion"] = "";
+                    cookie["id_secretaria"] = "";
+                    cookie["direccion"] = "";
+                    cookie["secretaria"] = "";
+                    cookie["rrhh"] = "SI";
                     cookie["usuario"] = txtUsuario.Value;
-                    cookie.Expires = DateTime.Now.AddHours(1);
+                    cookie["nombreUsuario"] = objUsu.nombre_completo;
+                    cookie.Expires = DateTime.Now.AddDays(1);
                     Response.Cookies.Add(cookie);
-                    //
                     FormsAuthentication.RedirectFromLoginPage(Session["usuario"].ToString().Replace("%", ""), false);
-                    Response.Redirect("~\\secure\\home.aspx");
+
+                    Response.Redirect("~\\secure\\Dashboard.aspx");
                 }
+
                 else
                 {
-                    //Response.Redirect("~\\secure\\accesodenegado.html");
-                    divError.Visible = true;
-                    lblError.InnerHtml = "Ud. no está autorizado a Visualizar esta Página,<br/>Por favor Solicite Permiso a la Oficina de RRHH.<br/>";
-                    //+ "Oficina de Sistemas al Interno 255/256.";
-                    divLogIn.Visible = false;
-                    txtUsuario.Focus();
+                    ok = false;
+                    ok = objSeguridad.ValidaPermiso(txtUsuario.Value, "EVALUACION_SECRETARIOS", out id_oficina);
+                    if (ok == true)
+                    {
+                        Session["usuario"] = txtUsuario.Value.ToLower();
+                        objUsu = DAL.UsuariosDAL.getPermisoEvaluacion(
+                            txtUsuario.Value.ToLower());
+                        if (objUsu.id_secretaria != 0)
+                        {
+                            Session["id_oficina_usuario"] = id_oficina;
+                            //
+                            HttpCookie cookie = new HttpCookie("UserSistema");
+                            cookie["id_oficina_usuario"] = id_oficina.ToString();
+                            cookie["id_direccion"] = "";
+                            cookie["id_secretaria"] = objUsu.id_secretaria.ToString();
+                            cookie["direccion"] = "";
+                            cookie["secretaria"] = objUsu.secretaria.ToString();
+                            cookie["usuario"] = txtUsuario.Value;
+                            cookie["rrhh"] = "NO";
+                            cookie["nombreUsuario"] = objUsu.nombre_completo;
+                            cookie.Expires = DateTime.Now.AddDays(1);
+                            Response.Cookies.Add(cookie);
 
+                            FormsAuthentication.RedirectFromLoginPage(Session["usuario"].ToString().Replace("%", ""), false);
+                            Response.Redirect("~\\Autoridades\\Secretarias\\DashboardSecretaria.aspx");
+                        }
+                    }
+                    ok = false;
+                    ok = objSeguridad.ValidaPermiso(txtUsuario.Value, "EVALUACION_DIRECTORES", out id_oficina);
+                    if (ok == true)
+                    {
+                        objUsu = DAL.UsuariosDAL.getPermisoEvaluacion(
+                            txtUsuario.Value.ToLower());
+                        if (objUsu.id_direccion != 0)
+                        {
+                            Session["id_oficina_usuario"] = id_oficina;
+                            //
+                            HttpCookie cookie = new HttpCookie("UserSistema");
+                            cookie["id_oficina_usuario"] = id_oficina.ToString();
+                            cookie["id_direccion"] = objUsu.id_direccion.ToString();
+                            cookie["id_secretaria"] = "0";
+                            cookie["direccion"] = objUsu.direccion.ToString();
+                            cookie["secretaria"] = "";
+                            cookie["rrhh"] = "NO";
+                            cookie["usuario"] = txtUsuario.Value;
+                            cookie["nombreUsuario"] = objUsu.nombre_completo;
+                            cookie.Expires = DateTime.Now.AddDays(1);
+                            Response.Cookies.Add(cookie);
+
+                            FormsAuthentication.RedirectFromLoginPage(Session["usuario"].ToString().Replace("%", ""), false);
+                            Response.Redirect("~\\Autoridades\\Direcciones\\Dashboard.aspx");
+                        }
+                    }
+                    else
+                    {
+                        //Response.Redirect("~\\secure\\accesodenegado.html");
+                        divError.Visible = true;
+                        lblError.InnerHtml = "Ud. no está autorizado a Visualizar esta Página,<br/>Por favor comuníquese con nuestra<br/>" +
+                                              "Oficina de Sistemas al Interno 255/256.";
+                        divLogIn.Visible = false;
+                        txtUsuario.Focus();
+
+                    }
                 }
             }
-            else
-            {
-                //ImageOutput.Visible = true;
-                //lblOutput.Text = "Usuario o Password Incorrecta...";
-
-                if (ok == false)
-                {
-                    divError.Visible = true;
-                    lblError.InnerHtml = "No se puede iniciar la Sesión. <br/>Por favor verifique los datos ingresados.";
-                    divLogIn.Visible = false;
-                }
-                txtUsuario.Focus();
-            }
-
             objSeguridad = null;
         }
 

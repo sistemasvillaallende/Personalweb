@@ -14,7 +14,7 @@ namespace Web
     {
 
 
-        BLL.SeguridadB objSeguridad;
+        BLL.SecurityBLL objSeguridad;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -62,7 +62,7 @@ namespace Web
         {
             bool ok = false;
             int id_oficina = 0;
-            objSeguridad = new BLL.SeguridadB();
+            objSeguridad = new BLL.SecurityBLL();
 
 
             ok = objSeguridad.ValidUser(txtUsuario.Value, txtPass.Value);
@@ -75,25 +75,26 @@ namespace Web
                 //"ME_GESTION_EXPEDIENTE", 
                 if (ok == true)
                 {
-                    //Entities.Usuarios objUsu = DAL.UsuariosDAL.getUserByNombre(txtUsuario.Value.ToLower());
+                    Entities.Usuarios objUsu = DAL.UsuariosDAL.getUserByNombre(
+                        txtUsuario.Value.ToLower());
                     Session["id_oficina_usuario"] = id_oficina;
                     //
                     HttpCookie cookie = new HttpCookie("UserSistema");
                     cookie["id_oficina_usuario"] = id_oficina.ToString();
                     cookie["usuario"] = txtUsuario.Value;
-                    //cookie["nombreUsuario"] = objUsu.nombre_completo;
-                    cookie.Expires = DateTime.Now.AddHours(1);
+                    cookie["nombreUsuario"] = objUsu.nombre_completo;
+                    cookie.Expires = DateTime.Now.AddDays(1);
                     Response.Cookies.Add(cookie);
                     //
                     FormsAuthentication.RedirectFromLoginPage(Session["usuario"].ToString().Replace("%", ""), false);
-                    Response.Redirect("~\\secure\\home.aspx");
+                    Response.Redirect("~\\secure\\listempleados.aspx");
                 }
                 else
                 {
                     //Response.Redirect("~\\secure\\accesodenegado.html");
                     divError.Visible = true;
-                    lblError.InnerHtml = "Ud. no está autorizado a Visualizar esta Página,<br/>Por favor Solicite Permiso a la Oficina de RRHH.<br/>";
-                                          //+ "Oficina de Sistemas al Interno 255/256.";
+                    lblError.InnerHtml = "Ud. no está autorizado a Visualizar esta Página,<br/>Por favor comuníquese con nuestra<br/>" +
+                                          "Oficina de Sistemas al Interno 255/256.";
                     divLogIn.Visible = false;
                     txtUsuario.Focus();
 

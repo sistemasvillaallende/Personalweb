@@ -1,0 +1,279 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MPSec.master.cs" Inherits="web.Autoridades.Secretarias.MPSec" %>
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>Personal Web</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="author" content="Municipalidad de Villa Allende" />
+    <link rel="icon" href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/favicon.ico" type="image/x-icon" />
+
+    <!-- MAIN CSS -->
+    <link href="../../App_Themes/NewTheme/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+        crossorigin="anonymous" />
+    <style>
+        @media (min-width: 1200px) {
+            #left-sidebar {
+                display: block;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            #left-sidebar {
+                display: none;
+            }
+        }
+
+        .btn-success {
+            color: #fff !important;
+            background-color: #0d9488 !important;
+            border-color: #0d9488 !important;
+        }
+    </style>
+    <style>
+        .a-menu {
+            font-weight: 400;
+            display: block;
+            padding-left: 15px;
+            padding-top: 13px;
+            padding-bottom: 13px;
+            border-radius: 5px;
+            -webkit-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+            color: var(--bs-gray-600);
+            font-size: 15px;
+            position: relative;
+            outline-width: 0;
+            text-decoration: none !important;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        }
+
+            .a-menu:hover {
+                text-decoration: none;
+                outline: none;
+                box-shadow: none;
+                background-color: var(--primary-color);
+                padding-top: 13px;
+                padding-bottom: 13px;
+                color: white !important;
+                border-radius: 5px;
+            }
+
+            .a-menu i {
+                color: var(--primary-color) !important;
+                margin-right: 10px;
+            }
+
+            .a-menu:hover i {
+                color: white !important;
+                margin-right: 10px;
+            }
+
+        .mnuactive {
+            font-weight: 400;
+            display: block;
+            padding-left: 15px;
+            padding-top: 13px;
+            padding-bottom: 13px;
+            border-radius: 5px;
+            -webkit-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+            font-size: 15px;
+            position: relative;
+            outline-width: 0;
+            text-decoration: none !important;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+            outline: none;
+            box-shadow: none;
+            background-color: var(--primary-color);
+            color: white !important;
+        }
+
+            .mnuactive i {
+                color: white !important;
+                margin-right: 10px;
+            }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+            crossorigin="anonymous"></script>
+
+
+
+
+        <%--<asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" EnablePartialRendering="true" runat="server"></asp:ScriptManager>--%>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <div id="layout" class="theme-cyan">
+
+            <div id="wrapper">
+                <!-- top navbar -->
+                <nav class="navbar navbar-fixed-top" style="padding: 3px; top: 0; position: fixed; display: block;">
+                    <div class="container-fluid">
+                        <div class="navbar-btn">
+                            <button type="button" class="btn-toggle-offcanvas" id="btnMenuMobile" onclick="manejamenu()">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </div>
+                        <div class="d-flex flex-grow-1 align-items-center">
+                            <div class="d-flex">
+                                <img style="height: 45px"
+                                    src="https://vecino.villaallende.gov.ar/BackEtramites/img/logo.3dc8f11b.png" />
+                            </div>
+                            <div class="flex-grow-1" style="right: 25px; position: absolute; padding-left: 20px;">
+                                <a class="btn btn-outline-success">
+                                    <span class="fa fa-sign-out"></span>
+                                    Volver
+                                </a>
+                                <a class="btn btn-outline-primary" id="btnSalir" runat="server"
+                                    href="~/secure/Dashboard.aspx">
+                                    <span class="fa fa-sign-out"></span>
+                                    Regresar a RRHH
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Sidbar menu -->
+                <div id="left-sidebar" class="sidebar metismenu" style="margin-top: 65px; left: 5px; padding-top: 10px;">
+                    <div class="user-account p-1 pt-2 pb-1">
+                        <div class="d-flex pb-1 border-bottom align-items-center">
+                            <img src="../../App_Themes/dist/img/Usuario.png" class="avatar lg rounded me-3"
+                                alt="User Profile Picture" />
+                            <div class="dropdown flex-grow-1">
+                                <span style="display: block;">Buenos dias,</span>
+                                <span>
+                                    <strong id="lblNombreUsuario" runat="server">Jessica Doe
+                                    </strong>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content px-0">
+                        <div class="tab-pane fade show active" id="hr_menu1" role="tabpanel" aria-labelledby="hr_menu_nav_link">
+                            <div class="accordion" id="accordionExample" style="margin-top: 15px; background-color: #f9fbfd;">
+                                <div class="card" style="border: none;">
+                                    <div class="card-header" id="headingOne" style="padding: 0; background-color: #f9fbfd;">
+                                        <a id="mnuDashboard" runat="server" class="a-menu"
+                                            href="DashboardSecretaria.aspx">
+                                            <i class="fa fa-tachometer"></i>
+                                            <span>Panel de control</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card" style="border: none;">
+                                    <div class="card-header" style="padding: 0; background-color: #f9fbfd;">
+                                        <a id="mnuLstEmpleados"
+                                            runat="server" class="a-menu"
+                                            href="ListaEmpleados.aspx">
+                                            <i class="fa fa-users"></i>
+                                            <span>Empleados</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card" style="border: none;">
+                                    <div class="card-header" style="padding: 0; background-color: #f9fbfd;">
+                                        <h2 class="mb-0">
+                                            <a class="a-menu collapsed"
+                                                href="#" data-toggle="collapse"
+                                                data-target="#collapseTree" aria-expanded="false" aria-controls="collapseTwo">
+                                                <i class="fa fa-graduation-cap"></i>
+                                                Desempeño
+                                                <i class="fa fa-chevron-down" style="float: right;"></i>
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseTree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <a href="DesempenioSec.aspx"
+                                                        class="a-menu">
+                                                        <i class="fa fa-graduation-cap"></i>
+                                                        <span>Evaluar</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"
+                                                        id="btnDirecciones"
+                                                        runat="server"
+                                                        onserverclick="btnDirecciones_ServerClick"
+                                                        class="a-menu">
+                                                        <i class="fa fa-university"></i>
+                                                        <span>Direcciones</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"
+                                                        class="a-menu">
+                                                        <i class="fa fa-university"></i>
+                                                        <span>Resultados</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card" style="border: none;">
+                                    <div class="card-header" style="padding: 0; background-color: #f9fbfd;">
+                                        <a href="Ausentismo.aspx" id="mnuAusentismo"
+                                            runat="server"
+                                            class="a-menu">
+                                            <i class="fa fa-thermometer-1"></i>
+                                            <span>Ausentismo</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card" style="border: none;">
+                                    <a href="Licencias.aspx"
+                                        id="mnuLicencias" runat="server"
+                                        class="a-menu">
+                                        <i class="fa fa-coffee"></i>
+                                        <span>Licencias</span>
+                                    </a>
+                                </div>
+                                <div class="card" style="border: none;">
+                                    <a href="Notificaciones.aspx"
+                                        id="mnuNotificaciones" runat="server"
+                                        class="a-menu">
+                                        <i class="fa fa-envelope"></i>
+                                        <span>Notificaciones</span>
+                                    </a>
+                                </div>
+                                <div class="card" style="border: none;">
+                                    <a href="#" class="a-menu">
+                                        <i class="fa fa-sign-out"></i>
+                                        <span>Salir</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show active" id="hr_menu" role="tabpanel" aria-labelledby="hr_menu_nav_link">
+                    </div>
+                </div>
+            </div>
+
+            <div id="main-content" style="padding-left: 10px; padding-right: 10px; margin-top: 60px;">
+                <div class="container-fluid" style="padding-top: 5px !important; margin-top: 15px;">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</body>
+</html>
