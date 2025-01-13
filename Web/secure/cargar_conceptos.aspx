@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/Bootstrap.Master" AutoEventWireup="true" CodeBehind="cargar_conceptos.aspx.cs" Inherits="web.secure.cargar_conceptos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master" AutoEventWireup="true" CodeBehind="cargar_conceptos.aspx.cs" Inherits="web.secure.cargar_conceptos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../styles/AdminLTE.min.css" rel="stylesheet" />

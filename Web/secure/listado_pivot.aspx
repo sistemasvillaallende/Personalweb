@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/Bootstrap.Master" AutoEventWireup="true" CodeBehind="listado_pivot.aspx.cs" Inherits="web.secure.listado_pivot" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master" AutoEventWireup="true" CodeBehind="listado_pivot.aspx.cs" Inherits="web.secure.listado_pivot" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">

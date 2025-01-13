@@ -1,0 +1,482 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MPDirecciones.master.cs"
+    Inherits="web.Autoridades.MPDirecciones" %>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>Personal Web</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="author" content="Municipalidad de Villa Allende" />
+    <link rel="icon" href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/favicon.ico" type="image/x-icon" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="../../App_Themes/NewTheme/css/main.css" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+        crossorigin="anonymous" />
+    <style>
+        @media (min-width: 1200px) {
+            #left-sidebar {
+                display: block;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            #left-sidebar {
+                display: none;
+            }
+        }
+
+        .btn-success {
+            color: #fff !important;
+            background-color: #0d9488 !important;
+            border-color: #0d9488 !important;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <form id="form1" runat="server">
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+            crossorigin="anonymous"></script>
+        <script src="../../App_Themes/NewTheme/js/twk-main.js"></script>
+        <script src="../../App_Themes/NewTheme/js/twk-vendor.js"></script>
+        <script src="../../App_Themes/NewTheme/js/jquery-knob.js"></script>
+        <script src="../../App_Themes/NewTheme/js/knobchart.bundle.js"></script>
+
+        <%--<asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" EnablePartialRendering="true" runat="server"></asp:ScriptManager>--%>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+        <div id="layout" class="theme-cyan">
+
+            <div id="wrapper">
+
+                <!-- top navbar -->
+                <nav class="navbar navbar-fixed-top" style="height: 65px; padding: 3px; top: 0; position: fixed; display: block;">
+                    <div class="container-fluid">
+                        <div class="navbar-btn">
+                            <button type="button" class="btn-toggle-offcanvas" id="btnMenuMobile" onclick="manejamenu()">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </div>
+                        <div class="d-flex flex-grow-1 align-items-center">
+                            <div class="d-flex">
+                                <img style="height: 45px; margin-top: 8px;"
+                                    src="https://vecino.villaallende.gov.ar/BackEtramites/img/logo.3dc8f11b.png" />
+                            </div>
+                            <div class="flex-grow-1" style="right: 25px; position: absolute; padding-left: 20px;">
+                                <a class="btn btn-outline-success"
+                                    href="Dashboard.aspx">
+                                    <span class="fa fa-sign-out"></span>
+                                    Volver
+                                </a>                                
+                                <a class="btn btn-outline-primary" id="btnSalir"
+                                    runat="server" visible="false"
+                                    href="~/secure/Dashboard.aspx">
+                                    <span class="fa fa-sign-out"></span>
+                                    Regresar a RRHH
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Sidbar menu -->
+                <div id="left-sidebar" class="sidebar metismenu" style="margin-top: 65px; left: 5px; padding-top: 10px;">
+                    <div class="user-account p-1 pt-2 pb-1">
+                        <div class="d-flex pb-1 border-bottom align-items-center">
+                            <img src="../../App_Themes/dist/img/Usuario.png" class="avatar lg rounded me-3"
+                                alt="User Profile Picture" />
+                            <div class="dropdown flex-grow-1">
+                                <span style="display: block;">Buenos dias,</span>
+                                <span>
+                                    <strong id="lblNombreUsuario" runat="server">Jessica Doe
+                                    </strong>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content px-0">
+                        <div class="tab-pane fade show active" id="hr_menu" role="tabpanel" aria-labelledby="hr_menu_nav_link">
+                            <nav class="sidebar-nav">
+                                <ul class="metismenu list-unstyled">
+                                    <li id="liDashboard" runat="server">
+                                        <a href="Dashboard.aspx" runat="server" id="btnDashboard">
+                                            <i class="fa fa-tachometer"></i>
+                                            <span>Panel de control</span>
+                                        </a>
+                                    </li>
+                                    <li id="liLstEmpleados" runat="server">
+                                        <a href="ListaEmpleados.aspx">
+                                            <i class="fa fa-users"></i>
+                                            <span>ListaEmpleados</span>
+                                        </a>
+                                    </li>
+                                    <li id="liDesempeño" runat="server">
+                                        <a href="Desempeño.aspx">
+                                            <i class="fa fa-smile-o"></i>
+                                            <span>Evaluar desempeño</span>
+                                        </a>
+                                    </li>
+                                    <li id="liLicencias" runat="server">
+                                        <a href="Licencias.aspx">
+                                            <i class="fa fa-coffee"></i>
+                                            <span>Licencias</span>
+                                        </a>
+                                    </li>
+                                    <li id="liAusentismo" runat="server">
+                                        <a href="Ausentismo.aspx">
+                                            <i class="fa fa-thermometer-1"></i>
+                                            <span>Ausentismo</span>
+                                        </a>
+                                    </li>
+                                    <li id="liNotificaciones" runat="server">
+                                        <a href="Notificaciones.aspx">
+                                            <i class="fa fa-envelope"></i>
+                                            <span>Notificaciones</span>
+                                        </a>
+                                    </li>
+                                    <li id="liSalir" runat="server">
+                                        <a href="#">
+                                            <i class="fa fa-sign-out"></i>
+                                            <span>Salir</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="tab-pane fade" id="project_menu" role="tabpanel">
+                            <nav class="sidebar-nav">
+                                <ul class="metismenu list-unstyled">
+                                    <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/index2.html"><i
+                                        class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
+                                    <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/app-inbox.html"><i
+                                        class="fa fa-envelope-o"></i><span>Inbox App</span></a></li>
+                                    <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/app-chat.html"><i
+                                        class="fa fa-comments"></i><span>Chat App</span></a></li>
+                                    <li>
+                                        <a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/index.html#Projects" class="has-arrow"><i
+                                            class="fa fa-list-ul"></i><span>Projects</span></a>
+                                        <ul class="list-unstyled mm-collapse">
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/project-add.html">Add Projects</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/project-list.html">Projects List</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/project-grid.html">Projects Grid</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/project-detail.html">Projects
+                        Detail</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/index.html#Clients" class="has-arrow"><i
+                                            class="fa fa-user"></i><span>Clients</span></a>
+                                        <ul class="list-unstyled mm-collapse">
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/client-add.html">Add Clients</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/client-list.html">Clients List</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/client-detail.html">Clients
+                        Detail</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/project-team.html"><i
+                                        class="fa fa-users"></i><span>Team</span></a></li>
+                                    <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/app-taskboard.html"><i
+                                        class="fa fa-tag"></i><span>Taskboard</span></a></li>
+                                    <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/app-tickets.html"><i
+                                        class="fa fa-ticket"></i><span>Tickets</span></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="tab-pane fade" id="sub_menu" role="tabpanel">
+                            <nav class="sidebar-nav">
+                                <ul class="metismenu list-unstyled">
+                                    <li>
+                                        <a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/index.html#Blog" class="has-arrow"><i
+                                            class="fa fa-globe"></i><span>Blog</span></a>
+                                        <ul class="list-unstyled mm-collapse">
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/blog-dashboard.html">Dashboard</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/blog-post.html">New Post</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/blog-list.html">Blog List</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/blog-details.html">Blog Detail</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/index.html#FileManager"
+                                            class="has-arrow"><i class="fa fa-folder"></i><span>File Manager</span></a>
+                                        <ul class="list-unstyled mm-collapse">
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/file-dashboard.html">Dashboard</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/file-documents.html">Documents</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/file-media.html">Media</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/file-images.html">Images</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/index.html#Widgets" class="has-arrow"><i
+                                            class="fa fa-puzzle-piece"></i><span>Widgets</span></a>
+                                        <ul class="list-unstyled mm-collapse">
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/widgets-statistics.html">Statistics
+                        Widgets</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/widgets-data.html">Data Widgets</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/widgets-chart.html">Chart
+                        Widgets</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/widgets-weather.html">Weather
+                        Widgets</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/widgets-social.html">Social
+                        Widgets</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/index.html#Pages" class="has-arrow"><i
+                                            class="fa fa-files-o"></i><span>Extra Pages</span></a>
+                                        <ul class="list-unstyled mm-collapse">
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/page-blank.html">Blank Page</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/page-profile2.html">Profile</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/page-gallery.html">Image Gallery
+                        <span class="badge bg-secondary float-end">v1</span></a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/page-timeline.html">Timeline</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/page-timeline-h.html">Horizontal
+                        Timeline</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/page-pricing.html">Pricing</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/page-invoices.html">Invoices</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/page-invoices2.html">Invoices <span
+                                                class="badge bg-warning float-end">v2</span></a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/page-search-results.html">Search
+                        Results</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/page-helper-class.html">Helper
+                        Classes</a></li>
+                                            <li><a
+                                                href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/page-maintenance.html">Maintenance</a>
+                                            </li>
+                                            <li><a
+                                                href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/page-testimonials.html">Testimonials</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/page-faq.html">FAQs</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/index.html#uiElements"
+                                            class="has-arrow"><i class="fa fa-diamond"></i><span>UI Elements</span></a>
+                                        <ul class="list-unstyled mm-collapse">
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/ui-typography.html">Typography</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/ui-tabs.html">Tabs</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/ui-buttons.html">Buttons</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/ui-bootstrap.html">Bootstrap UI</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/ui-icons.html">Icons</a></li>
+                                            <li><a
+                                                href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/ui-notifications.html">Notifications</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/ui-colors.html">Colors</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/ui-dialogs.html">Dialogs</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/ui-list-group.html">List Group</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/ui-media-object.html">Media
+                        Object</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/ui-modals.html">Modals</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/ui-nestable.html">Nestable</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/ui-progressbars.html">Progress
+                        Bars</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/ui-range-sliders.html">Range
+                        Sliders</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/ui-treeview.html">Treeview</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/index.html#forms" class="has-arrow"><i
+                                            class="fa fa-pencil"></i><span>Forms</span></a>
+                                        <ul class="list-unstyled mm-collapse">
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/forms-validation.html">Form
+                        Validation</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/forms-advanced.html">Advanced
+                        Elements</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/forms-basic.html">Basic Elements</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/forms-wizard.html">Form Wizard</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/forms-dragdropupload.html">Drag
+                        &amp; Drop Upload</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/forms-cropping.html">Image
+                        Cropping</a></li>
+                                            <li><a
+                                                href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/forms-summernote.html">Summernote</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/index.html#Tables" class="has-arrow"><i
+                                            class="fa fa-tag"></i><span>Tables</span></a>
+                                        <ul class="list-unstyled mm-collapse">
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/table-basic.html">Tables
+                        Example<span class="badge bg-info float-end">New</span></a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/table-normal.html">Normal Tables</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/table-jquery-datatable.html">Jquery
+                        Datatables</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/table-editable.html">Editable
+                        Tables</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/table-color.html">Tables Color</a>
+                                            </li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/table-filter.html">Table Filter
+                        <span class="badge bg-info float-end">New</span></a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/table-dragger.html">Table dragger
+                        <span class="badge bg-info float-end">New</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/index.html#charts" class="has-arrow"><i
+                                            class="fa fa-bar-chart"></i><span>Charts</span></a>
+                                        <ul class="list-unstyled mm-collapse">
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/chart-morris.html">Morris</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/chart-flot.html">Flot</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/chart-jquery-knob.html">Jquery
+                        Knob</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/chart-sparkline.html">Sparkline
+                        Chart</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/chart-peity.html">Peity</a></li>
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/chart-apex.html">Apex Charts</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/index.html#Maps" class="has-arrow"><i
+                                            class="fa fa-map-o"></i><span>Maps</span></a>
+                                        <ul class="list-unstyled mm-collapse">
+                                            <li><a href="https://wrraptheme.com/templates/lucid/hr/bs5/dist/map-yandex.html">Yandex Map</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="tab-pane fade" id="setting_menu" role="tabpanel">
+                            <div class="px-3">
+                                <h6>Choose Skin</h6>
+                                <ul class="choose-skin list-unstyled">
+                                    <li data-theme="purple" class="mb-2">
+                                        <div class="purple"></div>
+                                        <span>Purple</span>
+                                    </li>
+                                    <li data-theme="blue" class="mb-2">
+                                        <div class="blue"></div>
+                                        <span>Blue</span>
+                                    </li>
+                                    <li data-theme="cyan" class="active mb-2">
+                                        <div class="cyan"></div>
+                                        <span>Cyan</span>
+                                    </li>
+                                    <li data-theme="green" class="mb-2">
+                                        <div class="green"></div>
+                                        <span>Green</span>
+                                    </li>
+                                    <li data-theme="orange" class="mb-2">
+                                        <div class="orange"></div>
+                                        <span>Orange</span>
+                                    </li>
+                                    <li data-theme="blush" class="mb-2">
+                                        <div class="blush"></div>
+                                        <span>Blush</span>
+                                    </li>
+                                </ul>
+                                <hr>
+                                <h6>Theme Option</h6>
+                                <ul class="list-unstyled">
+                                    <li class="d-flex align-items-center mb-1">
+                                        <div class="form-check form-switch theme-switch">
+                                            <input class="form-check-input" type="checkbox" id="theme-switch">
+                                            <label class="form-check-label" for="theme-switch">Enable Dark Mode!</label>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-1">
+                                        <div class="form-check form-switch theme-high-contrast">
+                                            <input class="form-check-input" type="checkbox" id="theme-high-contrast">
+                                            <label class="form-check-label" for="theme-high-contrast">Enable High Contrast</label>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-1">
+                                        <div class="form-check form-switch theme-rtl">
+                                            <input class="form-check-input" type="checkbox" id="theme-rtl">
+                                            <label class="form-check-label" for="theme-rtl">Enable RTL Mode!</label>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-1">
+                                        <div class="form-check form-switch minisidebar-active">
+                                            <input class="form-check-input" type="checkbox" id="mini-active">
+                                            <label class="form-check-label" for="mini-active">Mini Sidebar</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <hr>
+                                <h6>General Settings</h6>
+                                <ul class="setting-list list-unstyled">
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+                                            <label class="form-check-label" for="flexCheckDefault1">Email Redirect</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2" checked="">
+                                            <label class="form-check-label" for="flexCheckDefault2">Notifications</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+                                            <label class="form-check-label" for="flexCheckDefault3">Auto Updates</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
+                                            <label class="form-check-label" for="flexCheckDefault4">Offline</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault5">
+                                            <label class="form-check-label" for="flexCheckDefault5">Location Permission</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="main-content" style="padding-left: 10px; padding-right: 10px; margin-top: 60px;">
+                    <div class="container-fluid" style="padding-top: 5px !important; margin-top: 15px;">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+

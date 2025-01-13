@@ -10,7 +10,780 @@ namespace DAL
 {
     public class ConsultaEmpleadoD
     {
+        //REVISAR DIRECTORES POR SECRETARIA
+        public static List<Entities.LstEmpleados> GetDirectoresBySecretarias
+            (int idSecretaria, int ejercicio, int idFicha)
+        {
+            using (SqlConnection conn = DALBase.GetConnection("Siimva"))
+            {
+                try
+                {
+                    SqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText =
+                        @"SELECT DISTINCT e.legajo, rtrim(ltrim(e.nombre)) as nombre, 
+                        convert(varchar(10), e.fecha_ingreso, 103) as fecha_ingreso,
+                        convert(varchar(10), e.fecha_nacimiento, 103) as fecha_nacimiento,
+                        e.cod_categoria, F.des_categoria, e.tarea, tl.des_tipo_liq,
+                        ba.nom_banco, e.nro_caja_ahorro, e.nro_cbu,
+                        e.nro_documento, e.nro_cta_sb, e.nro_cta_gastos,
+                        rtrim(ltrim(B.descripcion)) as Secretaria, rtrim(ltrim(C.descripcion)) as Direccion,
+                        ltrim(rtrim(o.nombre_oficina)) as Oficina,
+                        e.celular, e.telefonos, e.email, passTemp, 
+                        ISNULL(z.NOMBRE, 'Sin Evaluar') AS NOMBRE_ESTADO, z.ID 
+                        AS IdEstadoEvaluacion, A.Id_direccion
+                        FROM DIRECCION_X_SECRETARIA A
+                        INNER JOIN SECRETARIA B ON A.Id_secretaria=B.Id_secretaria 
+                        AND B.activa=1 AND B.ejercicio=@ejercicio
+                        INNER JOIN DIRECCION C ON A.Id_direccion=C.Id_direccion AND 
+                        C.activa=1 AND C.ejercicio=@ejercicio 
+                        INNER JOIN EMPLEADOS E ON E.id_direccion=A.Id_direccion AND E.activo=1
+                        AND A.Id_secretaria=B.Id_secretaria 
+                        LEFT join oficinas o on
+                        o.codigo_oficina = e.id_oficina
+                        INNER JOIN CATEGORIAS F ON F.cod_categoria=E.cod_categoria
+                        LEFT join TIPOS_LIQUIDACION tl on
+                        tl.cod_tipo_liq = e.cod_tipo_liq
+                        LEFT join BANCOS ba on
+                        ba.cod_banco = e.cod_banco
+                        FULL JOIN FICHAS_RELEVAMIENTOS X ON
+                        X.CUIT = e.legajo AND X.ID_FICHA=@idFicha
+                        FULL JOIN FICHAS_ESTADOS_EVALUACION z ON
+                        X.ID_ESTADO = Z.ID
+                        WHERE A.Id_secretaria=@Id_secretaria AND 
+                        A.ejercicio=@ejercicio AND A.activo=1
+                        ORDER BY e.legajo";
 
+                    cmd.Parameters.AddWithValue("@Id_secretaria", idSecretaria);
+                    cmd.Parameters.AddWithValue("@ejercicio", ejercicio);
+                    cmd.Parameters.AddWithValue("@idFicha", idFicha);
+
+                    cmd.Connection.Open();
+
+                    List<Entities.LstEmpleados> lst = new List<Entities.LstEmpleados>();
+                    Entities.LstEmpleados oEmp;
+
+                    try
+                    {
+                        SqlDataReader dr = cmd.ExecuteReader();
+
+
+                        if (dr.HasRows)
+                        {
+                            int legajo = dr.GetOrdinal("legajo");
+                            int nombre = dr.GetOrdinal("nombre");
+                            int fecha_ingreso = dr.GetOrdinal("fecha_ingreso");
+                            int fecha_nac = dr.GetOrdinal("fecha_nacimiento");
+                            int cod_categoria = dr.GetOrdinal("cod_categoria");
+                            int des_categoria = dr.GetOrdinal("des_categoria");
+                            int tarea = dr.GetOrdinal("tarea");
+                            int des_tipo_liq = dr.GetOrdinal("des_tipo_liq");
+                            int nom_banco = dr.GetOrdinal("nom_banco");
+                            int nro_caja_ahorro = dr.GetOrdinal("nro_caja_ahorro");
+                            int nro_cbu = dr.GetOrdinal("nro_cbu");
+                            int nro_documento = dr.GetOrdinal("nro_documento");
+                            int nro_cta_sb = dr.GetOrdinal("nro_cta_sb");
+
+                            int nro_cta_gastos = dr.GetOrdinal("nro_cta_gastos");
+                            int secretaria = dr.GetOrdinal("secretaria");
+                            int direccion = dr.GetOrdinal("direccion");
+                            int oficina = dr.GetOrdinal("oficina");
+
+                            int celular = dr.GetOrdinal("celular");
+                            int telefonos = dr.GetOrdinal("telefonos");
+                            int email = dr.GetOrdinal("email");
+                            int passTemp = dr.GetOrdinal("passTemp");
+                            int estadoEvaluacion = dr.GetOrdinal("NOMBRE_ESTADO");
+                            int IdEstadoEvaluacion = dr.GetOrdinal("IdEstadoEvaluacion");
+                            int id_direccion = dr.GetOrdinal("id_direccion");
+
+                            while (dr.Read())
+                            {
+                                oEmp = new Entities.LstEmpleados();
+
+                                if (!dr.IsDBNull(legajo)) oEmp.legajo = dr.GetInt32(legajo);
+                                if (!dr.IsDBNull(nombre)) oEmp.nombre = dr.GetString(nombre);
+                                if (!dr.IsDBNull(fecha_ingreso)) oEmp.fecha_ingreso = dr.GetString(fecha_ingreso);
+                                if (!dr.IsDBNull(nro_documento)) oEmp.nro_documento = dr.GetString(nro_documento);
+                                if (!dr.IsDBNull(fecha_nac)) oEmp.fecha_nacimiento = dr.GetString(fecha_nac);
+                                if (!dr.IsDBNull(cod_categoria)) oEmp.cod_categoria = dr.GetInt32(cod_categoria);
+                                if (!dr.IsDBNull(des_categoria)) oEmp.des_categoria = dr.GetString(des_categoria);
+                                if (!dr.IsDBNull(tarea)) oEmp.tarea = dr.GetString(tarea);
+                                if (!dr.IsDBNull(des_tipo_liq)) oEmp.des_tipo_liq = dr.GetString(des_tipo_liq);
+                                if (!dr.IsDBNull(nom_banco)) oEmp.nom_banco = dr.GetString(nom_banco);
+                                if (!dr.IsDBNull(nro_caja_ahorro)) oEmp.nro_caja_ahorro = dr.GetString(nro_caja_ahorro);
+                                if (!dr.IsDBNull(nro_cbu)) oEmp.nro_cbu = dr.GetString(nro_cbu);
+                                if (!dr.IsDBNull(nro_documento)) oEmp.nro_documento = dr.GetString(nro_documento);
+                                if (!dr.IsDBNull(nro_cta_sb)) oEmp.nro_cta_sb = dr.GetString(nro_cta_sb);
+                                if (!dr.IsDBNull(nro_cta_gastos)) oEmp.nro_cta_gastos = dr.GetString(nro_cta_gastos);
+                                if (!dr.IsDBNull(secretaria)) oEmp.secrectaria = dr.GetString(secretaria);
+                                if (!dr.IsDBNull(direccion)) oEmp.direccion = dr.GetString(direccion);
+                                if (!dr.IsDBNull(oficina)) oEmp.oficina = dr.GetString(oficina);
+                                if (!dr.IsDBNull(celular)) oEmp.celular = dr.GetString(celular);
+                                if (!dr.IsDBNull(telefonos)) oEmp.telefonos = dr.GetString(telefonos);
+                                if (!dr.IsDBNull(email)) oEmp.email = dr.GetString(email);
+                                if (!dr.IsDBNull(passTemp)) oEmp.passTemp = dr.GetString(passTemp);
+                                if (!dr.IsDBNull(estadoEvaluacion)) oEmp.estadoEvaluacion = dr.GetString(estadoEvaluacion);
+                                if (!dr.IsDBNull(IdEstadoEvaluacion)) oEmp.idEstadoEvaluacion = dr.GetInt32(IdEstadoEvaluacion);
+                                if (!dr.IsDBNull(id_direccion)) oEmp.id_direccion = dr.GetInt32(id_direccion);
+
+                                lst.Add(oEmp);
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Error in query!" + e.ToString());
+                        throw e;
+                    }
+                    return lst;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+
+        }
+        //REVISAR DIRECTORES POR SECRETARIA
+        public static List<Entities.LstEmpleados> GetEmpleadosDirectosBySecretarias
+            (int idSecretaria, int ejercicio)
+        {
+            using (SqlConnection conn = DALBase.GetConnection("Siimva"))
+            {
+                try
+                {
+                    SqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText =
+                        @"SELECT DISTINCT e.legajo, rtrim(ltrim(e.nombre)) as nombre, 
+                        convert(varchar(10), e.fecha_ingreso, 103) as fecha_ingreso,
+                        convert(varchar(10), e.fecha_nacimiento, 103) as fecha_nacimiento,
+                        e.cod_categoria, F.des_categoria, e.tarea, tl.des_tipo_liq,
+                        ba.nom_banco, e.nro_caja_ahorro, e.nro_cbu,
+                        e.nro_documento, e.nro_cta_sb, e.nro_cta_gastos,
+                        rtrim(ltrim(SEC.descripcion)) as Secretaria, rtrim(ltrim(dir.descripcion)) as Direccion,
+                        ltrim(rtrim(o.nombre_oficina)) as Oficina,
+                        e.celular, e.telefonos, e.email, passTemp, 
+                        ISNULL(z.NOMBRE, 'Sin Evaluar') AS NOMBRE_ESTADO, z.ID 
+                        AS IdEstadoEvaluacion
+                        FROM EMPLEADOS E 
+                        INNER JOIN PROGRAMAS_PUBLICOS A ON A.Id_programa=E.id_programa
+                        INNER JOIN SECRETARIA SEC ON E.id_secretaria=SEC.Id_secretaria
+                        AND SEC.ejercicio=@ejercicio AND SEC.activa=1
+                        INNER JOIN DIRECCION dir ON dir.Id_direccion=E.id_direccion
+                        LEFT join oficinas o on
+                        o.codigo_oficina = e.id_oficina
+                        INNER JOIN CATEGORIAS F ON F.cod_categoria=E.cod_categoria
+                        LEFT join TIPOS_LIQUIDACION tl on
+                        tl.cod_tipo_liq = e.cod_tipo_liq
+                        LEFT join BANCOS ba on
+                        ba.cod_banco = e.cod_banco
+                        FULL JOIN FICHAS_RELEVAMIENTOS X ON
+                        X.CUIT = e.legajo
+                        FULL JOIN FICHAS_ESTADOS_EVALUACION z ON
+                        X.ID_ESTADO = Z.ID
+                        WHERE E.id_direccion IN(
+	                        SELECT DISTINCT C.Id_direccion
+	                        FROM DIRECCION_X_SECRETARIA A
+	                        INNER JOIN SECRETARIA B ON A.Id_secretaria=B.Id_secretaria 
+	                        AND B.activa=1 AND B.ejercicio=@ejercicio
+	                        INNER JOIN DIRECCION C ON A.Id_direccion=C.Id_direccion AND 
+	                        C.activa=1 AND C.ejercicio=@ejercicio AND B.cod_ceco=C.cod_subceco
+	                        WHERE A.Id_secretaria=@Id_secretaria AND A.ejercicio=@ejercicio AND A.activo=1)
+                        AND CONVERT(int, SEC.cod_ceco) <> E.legajo AND e.activo=1
+                        ORDER BY nombre";
+
+                    cmd.Parameters.AddWithValue("@ejercicio", ejercicio);
+                    cmd.Parameters.AddWithValue("@Id_secretaria", idSecretaria);
+                    cmd.Connection.Open();
+
+                    List<Entities.LstEmpleados> lst = new List<Entities.LstEmpleados>();
+                    Entities.LstEmpleados oEmp;
+
+                    try
+                    {
+                        SqlDataReader dr = cmd.ExecuteReader();
+
+
+                        if (dr.HasRows)
+                        {
+                            int legajo = dr.GetOrdinal("legajo");
+                            int nombre = dr.GetOrdinal("nombre");
+                            int fecha_ingreso = dr.GetOrdinal("fecha_ingreso");
+                            int fecha_nac = dr.GetOrdinal("fecha_nacimiento");
+                            int cod_categoria = dr.GetOrdinal("cod_categoria");
+                            int des_categoria = dr.GetOrdinal("des_categoria");
+                            int tarea = dr.GetOrdinal("tarea");
+                            int des_tipo_liq = dr.GetOrdinal("des_tipo_liq");
+                            int nom_banco = dr.GetOrdinal("nom_banco");
+                            int nro_caja_ahorro = dr.GetOrdinal("nro_caja_ahorro");
+                            int nro_cbu = dr.GetOrdinal("nro_cbu");
+                            int nro_documento = dr.GetOrdinal("nro_documento");
+                            int nro_cta_sb = dr.GetOrdinal("nro_cta_sb");
+
+                            int nro_cta_gastos = dr.GetOrdinal("nro_cta_gastos");
+                            int secretaria = dr.GetOrdinal("secretaria");
+                            int direccion = dr.GetOrdinal("direccion");
+                            int oficina = dr.GetOrdinal("oficina");
+
+                            int celular = dr.GetOrdinal("celular");
+                            int telefonos = dr.GetOrdinal("telefonos");
+                            int email = dr.GetOrdinal("email");
+                            int passTemp = dr.GetOrdinal("passTemp");
+                            int estadoEvaluacion = dr.GetOrdinal("NOMBRE_ESTADO");
+                            int IdEstadoEvaluacion = dr.GetOrdinal("IdEstadoEvaluacion");
+                            while (dr.Read())
+                            {
+                                oEmp = new Entities.LstEmpleados();
+
+                                if (!dr.IsDBNull(legajo)) oEmp.legajo = dr.GetInt32(legajo);
+                                if (!dr.IsDBNull(nombre)) oEmp.nombre = dr.GetString(nombre);
+                                if (!dr.IsDBNull(fecha_ingreso)) oEmp.fecha_ingreso = dr.GetString(fecha_ingreso);
+                                if (!dr.IsDBNull(nro_documento)) oEmp.nro_documento = dr.GetString(nro_documento);
+                                if (!dr.IsDBNull(fecha_nac)) oEmp.fecha_nacimiento = dr.GetString(fecha_nac);
+                                if (!dr.IsDBNull(cod_categoria)) oEmp.cod_categoria = dr.GetInt32(cod_categoria);
+                                if (!dr.IsDBNull(des_categoria)) oEmp.des_categoria = dr.GetString(des_categoria);
+                                if (!dr.IsDBNull(tarea)) oEmp.tarea = dr.GetString(tarea);
+                                if (!dr.IsDBNull(des_tipo_liq)) oEmp.des_tipo_liq = dr.GetString(des_tipo_liq);
+                                if (!dr.IsDBNull(nom_banco)) oEmp.nom_banco = dr.GetString(nom_banco);
+                                if (!dr.IsDBNull(nro_caja_ahorro)) oEmp.nro_caja_ahorro = dr.GetString(nro_caja_ahorro);
+                                if (!dr.IsDBNull(nro_cbu)) oEmp.nro_cbu = dr.GetString(nro_cbu);
+                                if (!dr.IsDBNull(nro_documento)) oEmp.nro_documento = dr.GetString(nro_documento);
+                                if (!dr.IsDBNull(nro_cta_sb)) oEmp.nro_cta_sb = dr.GetString(nro_cta_sb);
+                                if (!dr.IsDBNull(nro_cta_gastos)) oEmp.nro_cta_gastos = dr.GetString(nro_cta_gastos);
+                                if (!dr.IsDBNull(secretaria)) oEmp.secrectaria = dr.GetString(secretaria);
+                                if (!dr.IsDBNull(direccion)) oEmp.direccion = dr.GetString(direccion);
+                                if (!dr.IsDBNull(oficina)) oEmp.oficina = dr.GetString(oficina);
+                                if (!dr.IsDBNull(celular)) oEmp.celular = dr.GetString(celular);
+                                if (!dr.IsDBNull(telefonos)) oEmp.telefonos = dr.GetString(telefonos);
+                                if (!dr.IsDBNull(email)) oEmp.email = dr.GetString(email);
+                                if (!dr.IsDBNull(passTemp)) oEmp.passTemp = dr.GetString(passTemp);
+                                if (!dr.IsDBNull(estadoEvaluacion)) oEmp.estadoEvaluacion = dr.GetString(estadoEvaluacion);
+                                if (!dr.IsDBNull(IdEstadoEvaluacion)) oEmp.idEstadoEvaluacion = dr.GetInt32(IdEstadoEvaluacion);
+
+                                lst.Add(oEmp);
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Error in query!" + e.ToString());
+                        throw e;
+                    }
+                    return lst;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+
+        }
+
+        public static List<Entities.LstEmpleados> GetEmpleadosByEvaluadorDirectos
+    (int leg, int ejercicio)
+        {
+            using (SqlConnection conn = DALBase.GetConnection("Siimva"))
+            {
+                try
+                {
+                    SqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText =
+                    @"SELECT DISTINCT e.legajo, evaluadores, rtrim(ltrim(e.nombre)) as nombre, 
+                        convert(varchar(10), e.fecha_ingreso, 103) as fecha_ingreso,
+                        convert(varchar(10), e.fecha_nacimiento, 103) as fecha_nacimiento,
+                        e.cod_categoria, F.des_categoria, e.tarea, tl.des_tipo_liq,
+                        ba.nom_banco, e.nro_caja_ahorro, e.nro_cbu,
+                        e.nro_documento, e.nro_cta_sb, e.nro_cta_gastos,
+                        rtrim(ltrim(SEC.descripcion)) as Secretaria, rtrim(ltrim(dir.descripcion)) as Direccion,
+                        ltrim(rtrim(o.nombre_oficina)) as Oficina,
+                        e.celular, e.telefonos, e.email, passTemp, 
+                        ISNULL(z.NOMBRE, 'Sin Evaluar') AS NOMBRE_ESTADO, z.ID 
+                        AS IdEstadoEvaluacion
+                    FROM EMPLEADOS E 
+                        FULL JOIN PROGRAMAS_PUBLICOS A ON A.Id_programa=E.id_programa
+                        FULL JOIN SECRETARIA SEC ON E.id_secretaria=SEC.Id_secretaria
+                        AND SEC.ejercicio=@ejercicio AND SEC.activa=1
+                        FULL JOIN DIRECCION dir ON dir.Id_direccion=E.id_direccion
+                        FULL join oficinas o on
+                        o.codigo_oficina = e.id_oficina
+                        FULL JOIN CATEGORIAS F ON F.cod_categoria=E.cod_categoria
+                        LEFT join TIPOS_LIQUIDACION tl on
+                        tl.cod_tipo_liq = e.cod_tipo_liq
+                        LEFT join BANCOS ba on
+                        ba.cod_banco = e.cod_banco
+                        FULL JOIN FICHAS_RELEVAMIENTOS X ON
+                        X.CUIT = e.legajo
+                        FULL JOIN FICHAS_ESTADOS_EVALUACION z ON
+                        X.ID_ESTADO = Z.ID
+                    WHERE E.id_direccion IN(
+                        SELECT DISTINCT C.Id_direccion
+                        FROM DIRECCION_X_SECRETARIA A
+                        INNER JOIN SECRETARIA B ON A.Id_secretaria=B.Id_secretaria 
+                        AND B.activa=1 AND B.ejercicio=@ejercicio
+                        INNER JOIN DIRECCION C ON A.Id_direccion=C.Id_direccion AND 
+                        C.activa=1 AND C.ejercicio=@ejercicio 
+                        WHERE A.ejercicio=@ejercicio AND A.activo=1)
+                        AND e.activo=1 AND EXISTS (
+                        SELECT 1
+                        FROM OPENJSON(Evaluadores, '$.evaluadores') AS jsonData
+                        WHERE jsonData.value = CAST(@leg AS NVARCHAR(10)))
+                        AND legajo NOT IN(SELECT DISTINCT Evaluadores.value AS Evaluador
+                        FROM empleados
+                        CROSS APPLY OPENJSON(Evaluadores, '$.evaluadores') AS Evaluadores)
+                        ORDER BY nombre";
+
+                    cmd.Parameters.AddWithValue("@ejercicio", ejercicio);
+                    cmd.Parameters.AddWithValue("@leg", leg);
+                    cmd.Connection.Open();
+
+                    List<Entities.LstEmpleados> lst = new List<Entities.LstEmpleados>();
+                    Entities.LstEmpleados oEmp;
+
+                    try
+                    {
+                        SqlDataReader dr = cmd.ExecuteReader();
+
+
+                        if (dr.HasRows)
+                        {
+                            int legajo = dr.GetOrdinal("legajo");
+                            int nombre = dr.GetOrdinal("nombre");
+                            int fecha_ingreso = dr.GetOrdinal("fecha_ingreso");
+                            int fecha_nac = dr.GetOrdinal("fecha_nacimiento");
+                            int cod_categoria = dr.GetOrdinal("cod_categoria");
+                            int des_categoria = dr.GetOrdinal("des_categoria");
+                            int tarea = dr.GetOrdinal("tarea");
+                            int des_tipo_liq = dr.GetOrdinal("des_tipo_liq");
+                            int nom_banco = dr.GetOrdinal("nom_banco");
+                            int nro_caja_ahorro = dr.GetOrdinal("nro_caja_ahorro");
+                            int nro_cbu = dr.GetOrdinal("nro_cbu");
+                            int nro_documento = dr.GetOrdinal("nro_documento");
+                            int nro_cta_sb = dr.GetOrdinal("nro_cta_sb");
+
+                            int nro_cta_gastos = dr.GetOrdinal("nro_cta_gastos");
+                            int secretaria = dr.GetOrdinal("secretaria");
+                            int direccion = dr.GetOrdinal("direccion");
+                            int oficina = dr.GetOrdinal("oficina");
+
+                            int celular = dr.GetOrdinal("celular");
+                            int telefonos = dr.GetOrdinal("telefonos");
+                            int email = dr.GetOrdinal("email");
+                            int passTemp = dr.GetOrdinal("passTemp");
+                            int estadoEvaluacion = dr.GetOrdinal("NOMBRE_ESTADO");
+                            int IdEstadoEvaluacion = dr.GetOrdinal("IdEstadoEvaluacion");
+                            while (dr.Read())
+                            {
+                                oEmp = new Entities.LstEmpleados();
+
+                                if (!dr.IsDBNull(legajo)) oEmp.legajo = dr.GetInt32(legajo);
+                                if (!dr.IsDBNull(nombre)) oEmp.nombre = dr.GetString(nombre);
+                                if (!dr.IsDBNull(fecha_ingreso)) oEmp.fecha_ingreso = dr.GetString(fecha_ingreso);
+                                if (!dr.IsDBNull(nro_documento)) oEmp.nro_documento = dr.GetString(nro_documento);
+                                if (!dr.IsDBNull(fecha_nac)) oEmp.fecha_nacimiento = dr.GetString(fecha_nac);
+                                if (!dr.IsDBNull(cod_categoria)) oEmp.cod_categoria = dr.GetInt32(cod_categoria);
+                                if (!dr.IsDBNull(des_categoria)) oEmp.des_categoria = dr.GetString(des_categoria);
+                                if (!dr.IsDBNull(tarea)) oEmp.tarea = dr.GetString(tarea);
+                                if (!dr.IsDBNull(des_tipo_liq)) oEmp.des_tipo_liq = dr.GetString(des_tipo_liq);
+                                if (!dr.IsDBNull(nom_banco)) oEmp.nom_banco = dr.GetString(nom_banco);
+                                if (!dr.IsDBNull(nro_caja_ahorro)) oEmp.nro_caja_ahorro = dr.GetString(nro_caja_ahorro);
+                                if (!dr.IsDBNull(nro_cbu)) oEmp.nro_cbu = dr.GetString(nro_cbu);
+                                if (!dr.IsDBNull(nro_documento)) oEmp.nro_documento = dr.GetString(nro_documento);
+                                if (!dr.IsDBNull(nro_cta_sb)) oEmp.nro_cta_sb = dr.GetString(nro_cta_sb);
+                                if (!dr.IsDBNull(nro_cta_gastos)) oEmp.nro_cta_gastos = dr.GetString(nro_cta_gastos);
+                                if (!dr.IsDBNull(secretaria)) oEmp.secrectaria = dr.GetString(secretaria);
+                                if (!dr.IsDBNull(direccion)) oEmp.direccion = dr.GetString(direccion);
+                                if (!dr.IsDBNull(oficina)) oEmp.oficina = dr.GetString(oficina);
+                                if (!dr.IsDBNull(celular)) oEmp.celular = dr.GetString(celular);
+                                if (!dr.IsDBNull(telefonos)) oEmp.telefonos = dr.GetString(telefonos);
+                                if (!dr.IsDBNull(email)) oEmp.email = dr.GetString(email);
+                                if (!dr.IsDBNull(passTemp)) oEmp.passTemp = dr.GetString(passTemp);
+                                if (!dr.IsDBNull(estadoEvaluacion)) oEmp.estadoEvaluacion = dr.GetString(estadoEvaluacion);
+                                if (!dr.IsDBNull(IdEstadoEvaluacion)) oEmp.idEstadoEvaluacion = dr.GetInt32(IdEstadoEvaluacion);
+
+                                lst.Add(oEmp);
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Error in query!" + e.ToString());
+                        throw e;
+                    }
+                    return lst;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+        public static List<Entities.LstEmpleados> GetEmpleadosByEvaluadorEvaluadores
+   (int leg, int ejercicio)
+        {
+            using (SqlConnection conn = DALBase.GetConnection("Siimva"))
+            {
+                try
+                {
+                    SqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText =
+                        @"SELECT DISTINCT e.legajo, evaluadores, rtrim(ltrim(e.nombre)) as nombre, 
+	                        convert(varchar(10), e.fecha_ingreso, 103) as fecha_ingreso,
+	                        convert(varchar(10), e.fecha_nacimiento, 103) as fecha_nacimiento,
+	                        e.cod_categoria, F.des_categoria, e.tarea, tl.des_tipo_liq,
+	                        ba.nom_banco, e.nro_caja_ahorro, e.nro_cbu,
+	                        e.nro_documento, e.nro_cta_sb, e.nro_cta_gastos,
+	                        rtrim(ltrim(SEC.descripcion)) as Secretaria, rtrim(ltrim(dir.descripcion)) as Direccion,
+	                        ltrim(rtrim(o.nombre_oficina)) as Oficina,
+	                        e.celular, e.telefonos, e.email, passTemp, 
+	                        ISNULL(z.NOMBRE, 'Sin Evaluar') AS NOMBRE_ESTADO, z.ID 
+	                        AS IdEstadoEvaluacion
+                        FROM EMPLEADOS E 
+	                        INNER JOIN PROGRAMAS_PUBLICOS A ON A.Id_programa=E.id_programa
+	                        INNER JOIN SECRETARIA SEC ON E.id_secretaria=SEC.Id_secretaria
+	                        AND SEC.ejercicio=@ejercicio AND SEC.activa=1
+	                        INNER JOIN DIRECCION dir ON dir.Id_direccion=E.id_direccion
+	                        LEFT join oficinas o on
+	                        o.codigo_oficina = e.id_oficina
+	                        INNER JOIN CATEGORIAS F ON F.cod_categoria=E.cod_categoria
+	                        LEFT join TIPOS_LIQUIDACION tl on
+	                        tl.cod_tipo_liq = e.cod_tipo_liq
+	                        LEFT join BANCOS ba on
+	                        ba.cod_banco = e.cod_banco
+	                        FULL JOIN FICHAS_RELEVAMIENTOS X ON
+	                        X.CUIT = e.legajo
+	                        FULL JOIN FICHAS_ESTADOS_EVALUACION z ON
+	                        X.ID_ESTADO = Z.ID
+                        WHERE E.id_direccion IN(
+	                        SELECT DISTINCT C.Id_direccion
+	                        FROM DIRECCION_X_SECRETARIA A
+	                        INNER JOIN SECRETARIA B ON A.Id_secretaria=B.Id_secretaria 
+	                        AND B.activa=1 AND B.ejercicio=@ejercicio
+	                        INNER JOIN DIRECCION C ON A.Id_direccion=C.Id_direccion AND 
+	                        C.activa=1 AND C.ejercicio=@ejercicio 
+	                        WHERE A.ejercicio=@ejercicio AND A.activo=1)
+	                        AND e.activo=1 AND EXISTS (
+                            SELECT 1
+                            FROM OPENJSON(Evaluadores, '$.evaluadores') AS jsonData
+                            WHERE jsonData.value = CAST(@leg AS NVARCHAR(10)))
+	                        AND legajo IN (SELECT DISTINCT Evaluadores.value AS Evaluador
+                        FROM empleados
+                        CROSS APPLY OPENJSON(Evaluadores, '$.evaluadores') AS Evaluadores)
+                        ORDER BY nombre";
+
+                    cmd.Parameters.AddWithValue("@ejercicio", ejercicio);
+                    cmd.Parameters.AddWithValue("@leg", leg);
+                    cmd.Connection.Open();
+
+                    List<Entities.LstEmpleados> lst = new List<Entities.LstEmpleados>();
+                    Entities.LstEmpleados oEmp;
+
+                    try
+                    {
+                        SqlDataReader dr = cmd.ExecuteReader();
+
+
+                        if (dr.HasRows)
+                        {
+                            int legajo = dr.GetOrdinal("legajo");
+                            int nombre = dr.GetOrdinal("nombre");
+                            int fecha_ingreso = dr.GetOrdinal("fecha_ingreso");
+                            int fecha_nac = dr.GetOrdinal("fecha_nacimiento");
+                            int cod_categoria = dr.GetOrdinal("cod_categoria");
+                            int des_categoria = dr.GetOrdinal("des_categoria");
+                            int tarea = dr.GetOrdinal("tarea");
+                            int des_tipo_liq = dr.GetOrdinal("des_tipo_liq");
+                            int nom_banco = dr.GetOrdinal("nom_banco");
+                            int nro_caja_ahorro = dr.GetOrdinal("nro_caja_ahorro");
+                            int nro_cbu = dr.GetOrdinal("nro_cbu");
+                            int nro_documento = dr.GetOrdinal("nro_documento");
+                            int nro_cta_sb = dr.GetOrdinal("nro_cta_sb");
+
+                            int nro_cta_gastos = dr.GetOrdinal("nro_cta_gastos");
+                            int secretaria = dr.GetOrdinal("secretaria");
+                            int direccion = dr.GetOrdinal("direccion");
+                            int oficina = dr.GetOrdinal("oficina");
+
+                            int celular = dr.GetOrdinal("celular");
+                            int telefonos = dr.GetOrdinal("telefonos");
+                            int email = dr.GetOrdinal("email");
+                            int passTemp = dr.GetOrdinal("passTemp");
+                            int estadoEvaluacion = dr.GetOrdinal("NOMBRE_ESTADO");
+                            int IdEstadoEvaluacion = dr.GetOrdinal("IdEstadoEvaluacion");
+                            while (dr.Read())
+                            {
+                                oEmp = new Entities.LstEmpleados();
+
+                                if (!dr.IsDBNull(legajo)) oEmp.legajo = dr.GetInt32(legajo);
+                                if (!dr.IsDBNull(nombre)) oEmp.nombre = dr.GetString(nombre);
+                                if (!dr.IsDBNull(fecha_ingreso)) oEmp.fecha_ingreso = dr.GetString(fecha_ingreso);
+                                if (!dr.IsDBNull(nro_documento)) oEmp.nro_documento = dr.GetString(nro_documento);
+                                if (!dr.IsDBNull(fecha_nac)) oEmp.fecha_nacimiento = dr.GetString(fecha_nac);
+                                if (!dr.IsDBNull(cod_categoria)) oEmp.cod_categoria = dr.GetInt32(cod_categoria);
+                                if (!dr.IsDBNull(des_categoria)) oEmp.des_categoria = dr.GetString(des_categoria);
+                                if (!dr.IsDBNull(tarea)) oEmp.tarea = dr.GetString(tarea);
+                                if (!dr.IsDBNull(des_tipo_liq)) oEmp.des_tipo_liq = dr.GetString(des_tipo_liq);
+                                if (!dr.IsDBNull(nom_banco)) oEmp.nom_banco = dr.GetString(nom_banco);
+                                if (!dr.IsDBNull(nro_caja_ahorro)) oEmp.nro_caja_ahorro = dr.GetString(nro_caja_ahorro);
+                                if (!dr.IsDBNull(nro_cbu)) oEmp.nro_cbu = dr.GetString(nro_cbu);
+                                if (!dr.IsDBNull(nro_documento)) oEmp.nro_documento = dr.GetString(nro_documento);
+                                if (!dr.IsDBNull(nro_cta_sb)) oEmp.nro_cta_sb = dr.GetString(nro_cta_sb);
+                                if (!dr.IsDBNull(nro_cta_gastos)) oEmp.nro_cta_gastos = dr.GetString(nro_cta_gastos);
+                                if (!dr.IsDBNull(secretaria)) oEmp.secrectaria = dr.GetString(secretaria);
+                                if (!dr.IsDBNull(direccion)) oEmp.direccion = dr.GetString(direccion);
+                                if (!dr.IsDBNull(oficina)) oEmp.oficina = dr.GetString(oficina);
+                                if (!dr.IsDBNull(celular)) oEmp.celular = dr.GetString(celular);
+                                if (!dr.IsDBNull(telefonos)) oEmp.telefonos = dr.GetString(telefonos);
+                                if (!dr.IsDBNull(email)) oEmp.email = dr.GetString(email);
+                                if (!dr.IsDBNull(passTemp)) oEmp.passTemp = dr.GetString(passTemp);
+                                if (!dr.IsDBNull(estadoEvaluacion)) oEmp.estadoEvaluacion = dr.GetString(estadoEvaluacion);
+                                if (!dr.IsDBNull(IdEstadoEvaluacion)) oEmp.idEstadoEvaluacion = dr.GetInt32(IdEstadoEvaluacion);
+
+                                lst.Add(oEmp);
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Error in query!" + e.ToString());
+                        throw e;
+                    }
+                    return lst;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+        public static List<Entities.LstEmpleados> GetEmpleadosByDireccion(
+            int idDireccion, int idFicha)
+        {
+            using (SqlConnection conn = DALBase.GetConnection("Siimva"))
+            {
+                try
+                {
+                    SqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = @"SELECT
+                        e.legajo, rtrim(ltrim(e.nombre)) as nombre, 
+                        convert(varchar(10), e.fecha_ingreso, 103) as fecha_ingreso,
+                        convert(varchar(10), e.fecha_nacimiento, 103) as fecha_nacimiento,
+                        e.cod_categoria, c.des_categoria, e.tarea, tl.des_tipo_liq,
+                        b.nom_banco, e.nro_caja_ahorro, e.nro_cbu,
+                        e.nro_documento, e.nro_cta_sb, e.nro_cta_gastos,
+                        rtrim(ltrim(s.descripcion)) as Secretaria, rtrim(ltrim(d1.descripcion)) as Direccion,
+                        ltrim(rtrim(o.nombre_oficina)) as Oficina,
+                        e.celular, e.telefonos, e.email, passTemp, 
+                        ISNULL(z.NOMBRE, 'Sin Evaluar') AS NOMBRE_ESTADO, z.ID 
+                        AS IdEstadoEvaluacion
+                        FROM EMPLEADOS e
+                        LEFT join TIPOS_LIQUIDACION tl on
+                        tl.cod_tipo_liq = e.cod_tipo_liq
+                        LEFT join BANCOS b on
+                        b.cod_banco = e.cod_banco
+                        LEFT join CATEGORIAS c on
+                        e.cod_categoria = c.cod_categoria
+                        LEFT join secretaria s on
+                        s.id_secretaria = e.id_secretaria
+                        LEFT join direccion d1 on
+                        d1.id_direccion = e.id_direccion
+                        LEFT join oficinas o on
+                        o.codigo_oficina = e.id_oficina
+                        FULL JOIN FICHAS_RELEVAMIENTOS X ON
+                        X.CUIT = e.legajo AND X.ID_FICHA=@ID_FICHA
+                        FULL JOIN FICHAS_ESTADOS_EVALUACION z ON
+                        X.ID_ESTADO = Z.ID
+                        WHERE e.fecha_baja is null AND
+                        e.id_direccion=@id_direccion AND legajo <> 615 AND e.activo=1
+                        ORDER BY e.legajo";
+
+                    cmd.Parameters.AddWithValue("@id_direccion", idDireccion);
+                    cmd.Parameters.AddWithValue("@ID_FICHA", idFicha);
+                    cmd.Connection.Open();
+
+                    List<Entities.LstEmpleados> lst = new List<Entities.LstEmpleados>();
+                    Entities.LstEmpleados oEmp;
+
+                    try
+                    {
+                        SqlDataReader dr = cmd.ExecuteReader();
+
+
+                        if (dr.HasRows)
+                        {
+                            int legajo = dr.GetOrdinal("legajo");
+                            int nombre = dr.GetOrdinal("nombre");
+                            int fecha_ingreso = dr.GetOrdinal("fecha_ingreso");
+                            int fecha_nac = dr.GetOrdinal("fecha_nacimiento");
+                            int cod_categoria = dr.GetOrdinal("cod_categoria");
+                            int des_categoria = dr.GetOrdinal("des_categoria");
+                            int tarea = dr.GetOrdinal("tarea");
+                            int des_tipo_liq = dr.GetOrdinal("des_tipo_liq");
+                            int nom_banco = dr.GetOrdinal("nom_banco");
+                            int nro_caja_ahorro = dr.GetOrdinal("nro_caja_ahorro");
+                            int nro_cbu = dr.GetOrdinal("nro_cbu");
+                            int nro_documento = dr.GetOrdinal("nro_documento");
+                            int nro_cta_sb = dr.GetOrdinal("nro_cta_sb");
+
+                            int nro_cta_gastos = dr.GetOrdinal("nro_cta_gastos");
+                            int secretaria = dr.GetOrdinal("secretaria");
+                            int direccion = dr.GetOrdinal("direccion");
+                            int oficina = dr.GetOrdinal("oficina");
+
+                            int celular = dr.GetOrdinal("celular");
+                            int telefonos = dr.GetOrdinal("telefonos");
+                            int email = dr.GetOrdinal("email");
+                            int passTemp = dr.GetOrdinal("passTemp");
+                            int estadoEvaluacion = dr.GetOrdinal("NOMBRE_ESTADO");
+                            int IdEstadoEvaluacion = dr.GetOrdinal("IdEstadoEvaluacion");
+                            while (dr.Read())
+                            {
+                                oEmp = new Entities.LstEmpleados();
+
+                                if (!dr.IsDBNull(legajo)) oEmp.legajo = dr.GetInt32(legajo);
+                                if (!dr.IsDBNull(nombre)) oEmp.nombre = dr.GetString(nombre);
+                                if (!dr.IsDBNull(fecha_ingreso)) oEmp.fecha_ingreso = dr.GetString(fecha_ingreso);
+                                if (!dr.IsDBNull(nro_documento)) oEmp.nro_documento = dr.GetString(nro_documento);
+                                if (!dr.IsDBNull(fecha_nac)) oEmp.fecha_nacimiento = dr.GetString(fecha_nac);
+                                if (!dr.IsDBNull(cod_categoria)) oEmp.cod_categoria = dr.GetInt32(cod_categoria);
+                                if (!dr.IsDBNull(des_categoria)) oEmp.des_categoria = dr.GetString(des_categoria);
+                                if (!dr.IsDBNull(tarea)) oEmp.tarea = dr.GetString(tarea);
+                                if (!dr.IsDBNull(des_tipo_liq)) oEmp.des_tipo_liq = dr.GetString(des_tipo_liq);
+                                if (!dr.IsDBNull(nom_banco)) oEmp.nom_banco = dr.GetString(nom_banco);
+                                if (!dr.IsDBNull(nro_caja_ahorro)) oEmp.nro_caja_ahorro = dr.GetString(nro_caja_ahorro);
+                                if (!dr.IsDBNull(nro_cbu)) oEmp.nro_cbu = dr.GetString(nro_cbu);
+                                if (!dr.IsDBNull(nro_documento)) oEmp.nro_documento = dr.GetString(nro_documento);
+                                if (!dr.IsDBNull(nro_cta_sb)) oEmp.nro_cta_sb = dr.GetString(nro_cta_sb);
+                                if (!dr.IsDBNull(nro_cta_gastos)) oEmp.nro_cta_gastos = dr.GetString(nro_cta_gastos);
+                                if (!dr.IsDBNull(secretaria)) oEmp.secrectaria = dr.GetString(secretaria);
+                                if (!dr.IsDBNull(direccion)) oEmp.direccion = dr.GetString(direccion);
+                                if (!dr.IsDBNull(oficina)) oEmp.oficina = dr.GetString(oficina);
+                                if (!dr.IsDBNull(celular)) oEmp.celular = dr.GetString(celular);
+                                if (!dr.IsDBNull(telefonos)) oEmp.telefonos = dr.GetString(telefonos);
+                                if (!dr.IsDBNull(email)) oEmp.email = dr.GetString(email);
+                                if (!dr.IsDBNull(passTemp)) oEmp.passTemp = dr.GetString(passTemp);
+                                if (!dr.IsDBNull(estadoEvaluacion)) oEmp.estadoEvaluacion = dr.GetString(estadoEvaluacion);
+                                if (!dr.IsDBNull(IdEstadoEvaluacion)) oEmp.idEstadoEvaluacion = dr.GetInt32(IdEstadoEvaluacion);
+
+                                lst.Add(oEmp);
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Error in query!" + e.ToString());
+                        throw e;
+                    }
+                    return lst;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+
+        }
+        public static List<Entities.LstEmpleados> GetEmpleadosEvaluados()
+        {
+            using (SqlConnection conn = DALBase.GetConnection("Siimva"))
+            {
+                try
+                {
+                    SqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"getEmpleadosEvaluar";
+                    cmd.Connection.Open();
+
+                    List<Entities.LstEmpleados> lst = new List<Entities.LstEmpleados>();
+                    Entities.LstEmpleados oEmp;
+
+                    try
+                    {
+                        SqlDataReader dr = cmd.ExecuteReader();
+
+
+                        if (dr.HasRows)
+                        {
+                            int legajo = dr.GetOrdinal("legajo");
+                            int nombre = dr.GetOrdinal("nombre");
+                            int fecha_ingreso = dr.GetOrdinal("fecha_ingreso");
+                            int fecha_nac = dr.GetOrdinal("fecha_nacimiento");
+                            int cod_categoria = dr.GetOrdinal("cod_categoria");
+                            int des_categoria = dr.GetOrdinal("des_categoria");
+                            int tarea = dr.GetOrdinal("tarea");
+                            int des_tipo_liq = dr.GetOrdinal("des_tipo_liq");
+                            int nom_banco = dr.GetOrdinal("nom_banco");
+                            int nro_caja_ahorro = dr.GetOrdinal("nro_caja_ahorro");
+                            int nro_cbu = dr.GetOrdinal("nro_cbu");
+                            int nro_documento = dr.GetOrdinal("nro_documento");
+                            int nro_cta_sb = dr.GetOrdinal("nro_cta_sb");
+
+                            int nro_cta_gastos = dr.GetOrdinal("nro_cta_gastos");
+                            int secretaria = dr.GetOrdinal("secretaria");
+                            int direccion = dr.GetOrdinal("direccion");
+                            int oficina = dr.GetOrdinal("oficina");
+
+                            int celular = dr.GetOrdinal("celular");
+                            int telefonos = dr.GetOrdinal("telefonos");
+                            int email = dr.GetOrdinal("email");
+                            int passTemp = dr.GetOrdinal("passTemp");
+                            int estadoEvaluacion = dr.GetOrdinal("NOMBRE_ESTADO");
+                            int IdEstadoEvaluacion = dr.GetOrdinal("IdEstadoEvaluacion");
+                            while (dr.Read())
+                            {
+                                oEmp = new Entities.LstEmpleados();
+
+                                if (!dr.IsDBNull(legajo)) oEmp.legajo = dr.GetInt32(legajo);
+                                if (!dr.IsDBNull(nombre)) oEmp.nombre = dr.GetString(nombre);
+                                if (!dr.IsDBNull(fecha_ingreso)) oEmp.fecha_ingreso = dr.GetString(fecha_ingreso);
+                                if (!dr.IsDBNull(nro_documento)) oEmp.nro_documento = dr.GetString(nro_documento);
+                                if (!dr.IsDBNull(fecha_nac)) oEmp.fecha_nacimiento = dr.GetString(fecha_nac);
+                                if (!dr.IsDBNull(cod_categoria)) oEmp.cod_categoria = dr.GetInt32(cod_categoria);
+                                if (!dr.IsDBNull(des_categoria)) oEmp.des_categoria = dr.GetString(des_categoria);
+                                if (!dr.IsDBNull(tarea)) oEmp.tarea = dr.GetString(tarea);
+                                if (!dr.IsDBNull(des_tipo_liq)) oEmp.des_tipo_liq = dr.GetString(des_tipo_liq);
+                                if (!dr.IsDBNull(nom_banco)) oEmp.nom_banco = dr.GetString(nom_banco);
+                                if (!dr.IsDBNull(nro_caja_ahorro)) oEmp.nro_caja_ahorro = dr.GetString(nro_caja_ahorro);
+                                if (!dr.IsDBNull(nro_cbu)) oEmp.nro_cbu = dr.GetString(nro_cbu);
+                                if (!dr.IsDBNull(nro_documento)) oEmp.nro_documento = dr.GetString(nro_documento);
+                                if (!dr.IsDBNull(nro_cta_sb)) oEmp.nro_cta_sb = dr.GetString(nro_cta_sb);
+                                if (!dr.IsDBNull(nro_cta_gastos)) oEmp.nro_cta_gastos = dr.GetString(nro_cta_gastos);
+                                if (!dr.IsDBNull(secretaria)) oEmp.secrectaria = dr.GetString(secretaria);
+                                if (!dr.IsDBNull(direccion)) oEmp.direccion = dr.GetString(direccion);
+                                if (!dr.IsDBNull(oficina)) oEmp.oficina = dr.GetString(oficina);
+                                if (!dr.IsDBNull(celular)) oEmp.celular = dr.GetString(celular);
+                                if (!dr.IsDBNull(telefonos)) oEmp.telefonos = dr.GetString(telefonos);
+                                if (!dr.IsDBNull(email)) oEmp.email = dr.GetString(email);
+                                if (!dr.IsDBNull(passTemp)) oEmp.passTemp = dr.GetString(passTemp);
+                                if (!dr.IsDBNull(estadoEvaluacion)) oEmp.estadoEvaluacion = dr.GetString(estadoEvaluacion);
+                                if (!dr.IsDBNull(IdEstadoEvaluacion)) oEmp.idEstadoEvaluacion = dr.GetInt32(IdEstadoEvaluacion);
+
+                                lst.Add(oEmp);
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Error in query!" + e.ToString());
+                        throw e;
+                    }
+                    return lst;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+
+        }
         public static List<Entities.LstEmpleados> GetEmpleados()
         {
             StringBuilder strSQL = new StringBuilder();
@@ -25,8 +798,9 @@ namespace DAL
                 strSQL.AppendLine("b.nom_banco, e.nro_caja_ahorro, e.nro_cbu,");
                 strSQL.AppendLine("e.nro_documento, e.nro_cta_sb, e.nro_cta_gastos,");
                 strSQL.AppendLine("rtrim(ltrim(s.descripcion)) as Secretaria, rtrim(ltrim(d1.descripcion)) as Direccion,");
-                strSQL.AppendLine("ltrim(rtrim(o.nombre_oficina)) as Oficina");
-
+                strSQL.AppendLine("ltrim(rtrim(o.nombre_oficina)) as Oficina,");
+                strSQL.AppendLine("e.celular, e.telefonos, e.email, passTemp, ISNULL(z.NOMBRE, 'SIN EVALUAR') AS NOMBRE_ESTADO");
+                /**/
                 strSQL.AppendLine("FROM EMPLEADOS e");
                 strSQL.AppendLine("LEFT join TIPOS_LIQUIDACION tl on");
                 strSQL.AppendLine("tl.cod_tipo_liq = e.cod_tipo_liq");
@@ -40,6 +814,10 @@ namespace DAL
                 strSQL.AppendLine("d1.id_direccion = e.id_direccion");
                 strSQL.AppendLine("LEFT join oficinas o on");
                 strSQL.AppendLine("o.codigo_oficina = e.id_oficina");
+                strSQL.AppendLine("FULL JOIN FICHAS_RELEVAMIENTOS X ON");
+                strSQL.AppendLine("X.CUIT = e.legajo");
+                strSQL.AppendLine("FULL JOIN FICHAS_ESTADOS_EVALUACION z");
+                strSQL.AppendLine("ON X.ID_ESTADO = Z.ID");
                 strSQL.AppendLine("WHERE e.fecha_baja is null");
                 strSQL.AppendLine("ORDER BY e.legajo");
 
@@ -76,7 +854,8 @@ namespace DAL
                 strSQL.AppendLine("b.nom_banco, e.nro_caja_ahorro, e.nro_cbu,");
                 strSQL.AppendLine("e.nro_documento, e.nro_cta_sb, e.nro_cta_gastos,");
                 strSQL.AppendLine("rtrim(ltrim(s.descripcion)) as Secretaria, rtrim(ltrim(d1.descripcion)) as Direccion,");
-                strSQL.AppendLine("ltrim(rtrim(o.nombre_oficina)) as Oficina");
+                strSQL.AppendLine("ltrim(rtrim(o.nombre_oficina)) as Oficina,");
+                strSQL.AppendLine("e.celular, e.telefonos, e.email, passTemp, ISNULL(z.NOMBRE, 'SIN EVALUAR') AS NOMBRE_ESTADO");
 
                 strSQL.AppendLine("FROM EMPLEADOS e");
                 strSQL.AppendLine("LEFT join TIPOS_LIQUIDACION tl on");
@@ -91,7 +870,10 @@ namespace DAL
                 strSQL.AppendLine("d1.id_direccion = e.id_direccion");
                 strSQL.AppendLine("LEFT join oficinas o on");
                 strSQL.AppendLine("o.codigo_oficina = e.id_oficina");
-
+                strSQL.AppendLine("FULL JOIN FICHAS_RELEVAMIENTOS X ON");
+                strSQL.AppendLine("X.CUIT = e.legajo");
+                strSQL.AppendLine("FULL JOIN FICHAS_ESTADOS_EVALUACION z");
+                strSQL.AppendLine("ON X.ID_ESTADO = Z.ID");
                 if (!string.IsNullOrEmpty(legajo.ToString()))
                 {
                     strCondicion.AppendLine(strCondicion.ToString());
@@ -142,7 +924,8 @@ namespace DAL
                 strSQL.AppendLine("b.nom_banco, e.nro_caja_ahorro, e.nro_cbu,");
                 strSQL.AppendLine("e.nro_documento, e.nro_cta_sb, e.nro_cta_gastos,");
                 strSQL.AppendLine("rtrim(ltrim(s.descripcion)) as Secretaria, rtrim(ltrim(d1.descripcion)) as Direccion,");
-                strSQL.AppendLine("ltrim(rtrim(o.nombre_oficina)) as Oficina");
+                strSQL.AppendLine("ltrim(rtrim(o.nombre_oficina)) as Oficina,");
+                strSQL.AppendLine("e.celular, e.telefonos, e.email, passTemp, ISNULL(z.NOMBRE, 'SIN EVALUAR') AS NOMBRE_ESTADO");
 
                 strSQL.AppendLine("FROM EMPLEADOS e");
                 strSQL.AppendLine("LEFT join TIPOS_LIQUIDACION tl on");
@@ -157,6 +940,10 @@ namespace DAL
                 strSQL.AppendLine("d1.id_direccion = e.id_direccion");
                 strSQL.AppendLine("LEFT join oficinas o on");
                 strSQL.AppendLine("o.codigo_oficina = e.id_oficina");
+                strSQL.AppendLine("FULL JOIN FICHAS_RELEVAMIENTOS X ON");
+                strSQL.AppendLine("X.CUIT = e.legajo");
+                strSQL.AppendLine("FULL JOIN FICHAS_ESTADOS_EVALUACION z");
+                strSQL.AppendLine("ON X.ID_ESTADO = Z.ID");
                 if (!string.IsNullOrEmpty(nombre.ToString()))
                 {
                     strCondicion.AppendLine(strCondicion.ToString());
@@ -225,7 +1012,11 @@ namespace DAL
                     int direccion = dr.GetOrdinal("direccion");
                     int oficina = dr.GetOrdinal("oficina");
 
-
+                    int celular = dr.GetOrdinal("celular");
+                    int telefonos = dr.GetOrdinal("telefonos");
+                    int email = dr.GetOrdinal("email");
+                    int passTemp = dr.GetOrdinal("passTemp");
+                    int estadoEvaluacion = dr.GetOrdinal("NOMBRE_ESTADO");
                     while (dr.Read())
                     {
                         oEmp = new Entities.LstEmpleados();
@@ -248,6 +1039,11 @@ namespace DAL
                         if (!dr.IsDBNull(secretaria)) oEmp.secrectaria = dr.GetString(secretaria);
                         if (!dr.IsDBNull(direccion)) oEmp.direccion = dr.GetString(direccion);
                         if (!dr.IsDBNull(oficina)) oEmp.oficina = dr.GetString(oficina);
+                        if (!dr.IsDBNull(celular)) oEmp.celular = dr.GetString(celular);
+                        if (!dr.IsDBNull(telefonos)) oEmp.telefonos = dr.GetString(telefonos);
+                        if (!dr.IsDBNull(email)) oEmp.email = dr.GetString(email);
+                        if (!dr.IsDBNull(passTemp)) oEmp.passTemp = dr.GetString(passTemp);
+                        if (!dr.IsDBNull(estadoEvaluacion)) oEmp.estadoEvaluacion = dr.GetString(estadoEvaluacion);
 
                         lst.Add(oEmp);
                     }

@@ -15,187 +15,154 @@ namespace BLL
     {
         public static int Insert(Empleado oEmp)
         {
-            int legajo = 0;
-            using (TransactionScope scope = new TransactionScope())
+            int num = 0;
+            using (TransactionScope transactionScope = new TransactionScope())
             {
                 try
                 {
-                    //legajo = EmpleadoD.insert(op);
-                    scope.Complete();
+                    transactionScope.Complete();
                 }
-                catch (Exception ex) { throw ex; }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-            return legajo;
+            return num;
         }
 
-        public static int InsertDatosEmpleado(Entities.Empleado oEmp)
+        public static int InsertDatosEmpleado(Empleado oEmp)
         {
-            int legajo = 0;
-            //using (TransactionScope scope = new TransactionScope())
-            //{
-            //  try
-            //  {
-            //    legajo = EmpleadoD.InsertDatosEmpleado(oEmp);
-            //    scope.Complete();
-            //  }
-            //  catch (Exception ex) { throw ex; }
-            //}
-            //return legajo;
-            SqlConnection cn = DALBase.GetConnection("SIIMVA");
-            SqlTransaction trx = null;
+            SqlConnection connection = DALBase.GetConnection("SIIMVA");
+            SqlTransaction trx = (SqlTransaction)null;
+            int num;
             try
             {
-                cn.Open();
-                trx = cn.BeginTransaction();
-                legajo = EmpleadoD.InsertDatosEmpleado(oEmp, cn, trx);
+                connection.Open();
+                trx = connection.BeginTransaction();
+                num = EmpleadoD.InsertDatosEmpleado(oEmp, connection, trx);
                 trx.Commit();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 trx.Rollback();
                 throw;
             }
-            return legajo;
+            return num;
         }
 
-        public static int UpdateDatosEmpleado(Entities.Empleado oEmp, string usuario, int id_tipo_auditoria, string des_tipo_auditoria, string obsauditoria)
+        public static int UpdateDatosEmpleado(Empleado oEmp, string usuario)
         {
-            int legajo = 0;
-            SqlConnection cn = DALBase.GetConnection("SIIMVA");
-            SqlTransaction trx = null;
+            SqlConnection connection = DALBase.GetConnection("SIIMVA");
+            SqlTransaction trx = (SqlTransaction)null;
+            int num;
             try
             {
-                cn.Open();
-                trx = cn.BeginTransaction();
-                legajo = EmpleadoD.UpdateDatosEmpleado(oEmp, usuario, id_tipo_auditoria, des_tipo_auditoria, obsauditoria, cn, trx);
+                connection.Open();
+                trx = connection.BeginTransaction();
+                num = EmpleadoD.UpdateDatosEmpleado(oEmp, usuario, connection, trx);
                 trx.Commit();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 trx.Rollback();
                 throw;
             }
-            return legajo;
+            return num;
         }
 
-        public static int UpdateTab_Datos_Contrato(Entities.Empleado oEmp, string usuario, int id_tipo_auditoria, string des_tipo_auditoria, string obsauditoria)
+        public static int UpdateTab_Datos_Contrato(Empleado oEmp, string usuario)
         {
-            int legajo = 0;
-            SqlConnection cn = DALBase.GetConnection("SIIMVA");
-            SqlTransaction trx = null;
+            SqlConnection connection = DALBase.GetConnection("SIIMVA");
+            SqlTransaction trx = (SqlTransaction)null;
+            int num;
             try
             {
-                cn.Open();
-                trx = cn.BeginTransaction();
-                legajo = EmpleadoD.UpdateTab_Datos_Contrato(oEmp, usuario, id_tipo_auditoria, des_tipo_auditoria, obsauditoria, cn, trx);
+                connection.Open();
+                trx = connection.BeginTransaction();
+                num = EmpleadoD.UpdateTab_Datos_Contrato(oEmp, usuario, connection, trx);
                 trx.Commit();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 trx.Rollback();
                 throw;
             }
-            return legajo;
+            return num;
         }
 
-        public static int UpdateTab_Datos_Banco(Entities.Empleado oEmp, string usuario, int id_tipo_auditoria, string des_tipo_auditoria, string obsauditoria)
+        public static int UpdateTab_Datos_Banco(Empleado oEmp, string usuario)
         {
-            int legajo = 0;
-            SqlConnection cn = DALBase.GetConnection("SIIMVA");
-            SqlTransaction trx = null;
+            SqlConnection connection = DALBase.GetConnection("SIIMVA");
+            SqlTransaction trx = (SqlTransaction)null;
+            int num;
             try
             {
-                cn.Open();
-                trx = cn.BeginTransaction();
-                legajo = EmpleadoD.UpdateTab_Datos_Banco(oEmp, usuario, id_tipo_auditoria, des_tipo_auditoria, obsauditoria, cn, trx);
-
+                connection.Open();
+                trx = connection.BeginTransaction();
+                num = EmpleadoD.UpdateTab_Datos_Banco(oEmp, usuario, connection, trx);
                 trx.Commit();
-
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 trx.Rollback();
                 throw;
             }
-            return legajo;
+            return num;
         }
 
-        public static int UpdateTab_Datos_Particulares(Entities.Empleado oEmp, string usuario, int id_tipo_auditoria, string des_tipo_auditoria, string obsauditoria)
+        public static int UpdateTab_Datos_Particulares(Empleado oEmp, string usuario)
         {
-            int legajo = 0;
-            SqlConnection cn = DALBase.GetConnection("SIIMVA");
-            SqlTransaction trx = null;
+            SqlConnection connection = DALBase.GetConnection("SIIMVA");
+            SqlTransaction trx = (SqlTransaction)null;
+            int num;
             try
             {
-                cn.Open();
-                trx = cn.BeginTransaction();
-                legajo = EmpleadoD.UpdateTab_Datos_Particulares(oEmp, usuario, id_tipo_auditoria, des_tipo_auditoria, obsauditoria, cn, trx);
+                connection.Open();
+                trx = connection.BeginTransaction();
+                num = EmpleadoD.UpdateTab_Datos_Particulares(oEmp, usuario, connection, trx);
                 trx.Commit();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 trx.Rollback();
                 throw;
             }
-            return legajo;
+            return num;
         }
 
-        public static Entities.Empleado GetByPk(int legajo, SqlConnection cn, SqlTransaction trx)
+        public static Empleado GetByPk(int legajo, SqlConnection cn, SqlTransaction trx)
         {
-            return DAL.EmpleadoD.GetByPk(legajo, cn, trx);
+            return EmpleadoD.GetByPk(legajo, cn, trx);
         }
 
-        public static Entities.Empleado GetByPkTodos(int legajo)
+        public static Empleado GetByPkTodos(int legajo) => EmpleadoD.GetByPkTodos(legajo);
+
+        public static Empleado GetByPk(int legajo) => EmpleadoD.GetByPk(legajo);
+
+        public static List<LstEmpleados> GetEmpleadosAll() => EmpleadoD.GetEmpleadosAll();
+
+        public static List<Certificaciones> GetCertificaciones(int legajo)
         {
-            return DAL.EmpleadoD.GetByPkTodos(legajo);
+            return EmpleadoD.GetCertificaciones(legajo);
         }
-
-        public static Entities.Empleado GetByPk(int legajo)
-        {
-            return DAL.EmpleadoD.GetByPk(legajo);
-        }
-
-        public static List<Entities.LstEmpleados> GetEmpleadosAll()
-        {
-
-            return DAL.EmpleadoD.GetEmpleadosAll();
-        }
-
-        public static List<Entities.Certificaciones> GetCertificaciones(int legajo)
-        {
-            return DAL.EmpleadoD.GetCertificaciones(legajo);
-        }
-
-
-        public static List<Entities.Tipo_auditoria> GetTipo_auditoria()
-        {
-            return DAL.EmpleadoD.GetTipo_auditoria();
-        }
-
 
         public static string Certficaciones_Empleado(int legajo)
         {
-            string strXML = "";
-            strXML = DAL.EmpleadoD.Certficaciones_Empleado(legajo);
-            return strXML;
+            return EmpleadoD.Certficaciones_Empleado(legajo);
         }
 
-        public static List<Entities.HistorialEmpleado> GetHistCambiosPersonal(int legajo)
+        public static List<HistorialEmpleado> GetHistCambiosPersonal(int legajo)
         {
-            SqlConnection cn = DALBase.GetConnection("SIIMVA");
+            SqlConnection connection = DALBase.GetConnection("SIIMVA");
             try
             {
-                cn.Open();
-                return DAL.EmpleadoD.GetHistCambiosPersonal(legajo, cn);
+                connection.Open();
+                return EmpleadoD.GetHistCambiosPersonal(legajo, connection);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw e;
+                throw ex;
             }
-
         }
-
-
-
     }
 }

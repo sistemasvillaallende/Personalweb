@@ -1,0 +1,20 @@
+﻿:root {
+    --color-obras-publicas: #EC1E79;
+    --color-desarrollo-social: #D37530;
+    --color-hacienda: #00C474;
+    --color-planificacion: #0000FF;
+    --color-salud: #00A1FF;
+    --color-gobierno: #8500A9;
+    --color-servicios-publicos: #B2E702;
+    --color-desarrollo-humano: #FF0000;
+    --color-primary: #c09e76;
+    --color-secondary: RGB(226 232 240);
+    --color-success: RGB(13 148 136);
+    --color-info: RGB(6 182 212);
+    --color-warning: RGB(245 158 11);
+    --color-pending: RGB(217 119 6);
+    --color-danger: RGB(185 28 28);
+    --color-light: RGB(241 245 249);
+    --color-dark: #555555;
+    --color-amarillo-pro: #FFCD00;
+}

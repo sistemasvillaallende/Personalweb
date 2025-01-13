@@ -1,0 +1,789 @@
+﻿@import url('colores.css');
+
+@font-face {
+    font-family: 'Vastago Grotesk';
+    src: url('../fonts/VastagoGrotesk-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vastago Grotesk';
+    src: url('../fonts/VastagoGrotesk-Medium.otf') format('opentype');
+    font-weight: 500; /* Puedes ajustar el peso según la fuente específica */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vastago Grotesk';
+    src: url('../fonts/VastagoGrotesk-SemiBold.otf') format('opentype');
+    font-weight: 600; /* Puedes ajustar el peso según la fuente específica */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vastago Grotesk';
+    src: url('../fonts/VastagoGrotesk-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vastago Grotesk';
+    src: url('../fonts/VastagoGrotesk-Black.otf') format('opentype');
+    font-weight: 900; /* Puedes ajustar el peso según la fuente específica */
+    font-style: normal;
+}
+
+body {
+    font-family: 'Vastago Grotesk', sans-serif;
+}
+
+h1 {
+    font-family: 'Vastago Grotesk', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 28px !important;
+    color: var(--color-dark) !important;
+}
+
+h2 {
+    font-family: 'Vastago Grotesk', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 22px !important;
+    color: var(--color-dark) !important;
+}
+
+h3 {
+    font-family: 'Vastago Grotesk', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 18px !important;
+    color: var(--color-dark) !important;
+}
+
+.menu-lateral {
+    min-height: 100vh;
+    padding: 0;
+}
+
+    .menu-lateral section {
+        min-height: 100vh;
+    }
+
+        .menu-lateral section ul {
+            list-style: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,.16);
+            min-height: 100vh;
+            padding-right: 15px;
+        }
+
+            .menu-lateral section ul li {
+                font-family: 'Vastago Grotesk';
+                font-size: 18px;
+                font-weight: 600;
+                line-height: 1.5;
+                padding: 10px;
+                padding-left: 5px;
+                border-bottom: solid 1px lightgray;
+            }
+
+                .menu-lateral section ul li hr {
+                    padding: 0;
+                    margin: 0;
+                    margin-top: 5px;
+                    border-top: solid;
+                }
+
+                .menu-lateral section ul li a {
+                    font-family: 'Vastago Grotesk';
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: var(--color-dark);
+                    width: 100%;
+                    display: block;
+                }
+
+.btn-success {
+    background-color: var(--color-success) !important;
+    border-color: var(--color-success) !important;
+    color: white !important;
+    border-radius: 10px !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+}
+
+.btn-success-small {
+    background-color: var(--color-success) !important;
+    border-color: var(--color-success) !important;
+    color: white !important;
+    border-radius: 5px !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+}
+.btn-danger {
+    background-color: var(--color-danger) !important;
+    border-color: var(--color-success) !important;
+    color: white !important;
+    border-radius: 10px !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+}
+.btn-info {
+    background-color: var(--color-info) !important;
+    color: white !important;
+    border-radius: 10px !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+}
+
+.site-footer__social a {
+    position: relative !important;
+    height: 40px !important;
+    width: 40px !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-dark);
+    background-color: var(--color-amarillo-pro);
+    font-size: 15px;
+    border-radius: 50%;
+    overflow: hidden;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    z-index: 1;
+}
+
+.btn-group .btn {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+}
+
+.btn-hacienda-outline {
+    padding: 12px;
+    background-color: transparent;
+    border: solid 3px var(--color-hacienda);
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 15px !important;
+}
+
+    .btn-hacienda-outline span {
+        font-size: 18px;
+        color: var(--color-hacienda);
+        margin-right: 5px;
+    }
+
+.btn-desarrollo-humano-outline {
+    padding: 12px;
+    background-color: transparent;
+    border: solid 3px var(--color-desarrollo-humano);
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 15px !important;
+}
+
+    .btn-desarrollo-humano-outline span {
+        font-size: 18px;
+        color: var(--color-desarrollo-humano);
+        margin-right: 5px;
+    }
+.btn-success-outline-small {
+    background-color: transparent !important;
+    border: solid 3px var(--color-success) !important;
+    color: var(--color-success) !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    border-radius: 15px !important;
+}
+.btn-default-outline-small {
+    background-color: transparent !important;
+    border: solid 3px #777 !important;
+    color: #777 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    border-radius: 15px !important;
+}
+.btn-danger-outline-small {
+    background-color: transparent !important;
+    border: solid 3px var(--color-danger) !important;
+    color: var(--color-danger) !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    border-radius: 15px !important;
+}
+.btn-desarrollo-outline-small {
+    background-color: transparent;
+    border: solid 3px var(--color-desarrollo-humano);
+    color: var(--color-success);
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 15px !important;
+}
+.btn-prim-outline {
+    background-color: transparent !important;
+    border: solid 3px var(--color-primary) !important;
+    color: var(--color-primary) !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    border-radius: 15px !important;
+}
+.btn-success-outline {
+    padding: 12px;
+    background-color: transparent;
+    border: solid 3px var(--color-success);
+    color: var(--color-success);
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 15px !important;
+}
+
+    .btn-success-outline span {
+        font-size: 18px;
+        color: var(--color-success);
+        margin-right: 5px;
+    }
+
+.tarjeta {
+    padding-top: 25px;
+    visibility: visible;
+    animation-delay: 100ms;
+    animation-name: fadeInUp;
+    border: solid 1px lightgrey;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.16);
+    min-height: 190px;
+    max-height: 190px;
+    height: 190px;
+}
+
+.hacienda {
+    padding-top: 25px;
+    border-top: solid 5px var(--color-hacienda);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+@media (max-width: 992px) {
+    .menu-lateral-mobile {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) {
+    .menu-lateral-mobile {
+        display: block;
+    }
+}
+
+.cell-multas {
+    padding: 0 !important;
+    line-height: 1.1 !important;
+    height: 45px !important;
+    text-align: left !important;
+    border-top: solid 1px lightgray !important;
+}
+
+.table-multas thead th {
+    vertical-align: bottom;
+    border-bottom: none !important;
+}
+
+.radio label {
+    margin-left: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 35px;
+}
+
+label {
+    padding-left: 5px;
+    font-weight: 500;
+}
+/* custom checkbox */
+.checkbox {
+    display: block;
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+    /* hide the browser's default checkbox */
+    .checkbox input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+/* create custom checkbox */
+.check {
+    position: absolute;
+    top: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    margin-top: -10px;
+    margin-left: -25px;
+}
+
+/* on mouse-over, add border color */
+.checkbox:hover input ~ .check {
+    border: 2px solid #a98700;
+}
+
+/* add background color when the checkbox is checked */
+.checkbox input:checked ~ .check {
+    background-color: #a98700;
+    border: none;
+}
+
+/* create the checkmark and hide when not checked */
+.check:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* show the checkmark when checked */
+.checkbox input:checked ~ .check:after {
+    display: block;
+}
+
+/* checkmark style */
+.checkbox .check:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+.headerDerecha {
+    text-align: right;
+}
+
+input[type=checkbox] {
+    /* Doble-tamaño Checkboxes */
+    -ms-transform: scale(2.5); /* IE */
+    -moz-transform: scale(2.5); /* FF */
+    -webkit-transform: scale(2.5); /* Safari y Chrome */
+    -o-transform: scale(2.5); /* Opera */
+    padding: 10px;
+}
+
+/* Tal vez desee envolver un espacio alrededor de su texto de casilla de verificación */
+.checkboxtexto {
+    /* Checkbox texto */
+    font-size: 110%;
+    display: inline;
+}
+
+td {
+    border-top: 1px solid #bdbdbd !important;
+    display: table-cell;
+    vertical-align: middle !important;
+}
+
+.icono {
+    border-right: solid #6f6f6e;
+    border-bottom: none;
+}
+
+@media (max-width: 992px) {
+    .icono {
+        border-right: none;
+    }
+
+    .ocultar {
+        display: none;
+    }
+
+    .ocultarHeader {
+        display: none;
+    }
+
+    .margenHeader {
+        margin-left: 0px !important;
+    }
+}
+
+.btn-outline-warning {
+    color: #0d9488 !important;
+    border-color: #0d9488 !important;
+    border-width: 2px !important;
+    text-decoration: none !important;
+    padding: 10px !important;
+    font-weight: 500 !important;
+    background-color: transparent !important;
+    font-size: 16px !important;
+    box-shadow: 0 1px 4px rgb(7 129 107);
+    border-radius: 10px;
+}
+
+    .btn-outline-warning:hover {
+        background-color: #0d9488 !important;
+        color: white !important;
+        border-color: #6f6f6e !important;
+    }
+
+.st-key {
+    width: 30%;
+    text-align: left;
+    padding-right: 1%;
+    background-color: dimgrey !important;
+    color: white;
+}
+
+.icono {
+    border-right: solid #6f6f6e;
+    border-bottom: none;
+}
+
+@media (max-width: 992px) {
+    .icono {
+        border-right: none;
+    }
+
+    .ocultar {
+        display: none;
+    }
+
+    .ocultarHeader {
+        display: none;
+    }
+
+    .margenHeader {
+        margin-left: 0px !important;
+    }
+}
+
+
+@media (min-width: 992px) {
+    .div7-mobile {
+        padding-top: 15px;
+        margin-bottom: 15px;
+        padding-left: 15px;
+    }
+
+    .div5-mobile {
+        padding: 15px;
+        text-align: right;
+        margin-bottom: 15px;
+        padding-right: 15px;
+        padding-left: 0
+    }
+
+    .row-mobile {
+        padding-left: 15px;
+    }
+
+    .h1-mobile {
+        font-size: 28px !important;
+        margin-bottom: 5px;
+        margin-top: 0;
+    }
+
+    .h3-mobile {
+        margin-bottom: 5px;
+        margin-top: 0;
+        font-size: 17px !important;
+        font-weight: 400 !important;
+        color: black !important;
+    }
+
+    .denominacion-mobile {
+        font-size: 16px !important;
+        padding-right: 15px;
+        margin-bottom: 2px !important;
+        margin-right: 25px;
+        color: #424344;
+        margin-top: -10px;
+        display: inline-block;
+    }
+
+    .fa-tasa-mobile {
+        font-size: 24px;
+        margin-right: 0px;
+        width: 100%;
+    }
+
+    .medio-pago-mobile {
+        margin: 25px;
+        margin-top: -15px;
+        border: solid 1px lightgray;
+        border-radius: 15px;
+        padding: 25px;
+        margin-right: 0;
+    }
+
+    .TablaPlan {
+        margin-top: 20px;
+        width: 100%;
+        display: inline-table;
+    }
+
+    .radio input[type=radio] {
+        margin-right: 25px;
+        margin-left: 25px;
+        margin-top: 13px;
+    }
+
+    .modal-pago-mobile {
+        font-size: 18px;
+        color: var(--color-gobierno);
+        font-weight: 600;
+    }
+
+    .print-mobile {
+        margin-left: 10px;
+        font-size: 28px;
+        border-bottom: solid 1px lightgray;
+        height: 35px;
+        width: 100%;
+        padding-bottom: 5px;
+    }
+
+    .print-text-mobile {
+        color: var(--roofsie-gray);
+        font-size: 16px;
+        position: absolute;
+        font-weight: 500;
+        font-family: 'Vastago Grotesk';
+        margin-top: 5px;
+        padding-left: 22px;
+    }
+}
+
+@media (max-width: 992px) {
+    .div7-mobile {
+        padding-top: 0px;
+        margin-bottom: 15px;
+        padding-left: 10px;
+    }
+
+    .div5-mobile {
+        text-align: center !important;
+        padding: 15px;
+        text-align: right;
+        margin-bottom: 15px;
+        padding-right: 0;
+        padding-left: 0
+    }
+
+    .row-mobile {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .h1-mobile {
+        font-size: 18px !important;
+        margin-bottom: 5px;
+        margin-top: 0;
+    }
+
+    .h3-mobile {
+        margin-bottom: 5px;
+        margin-top: 0;
+        font-size: 15px !important;
+        font-weight: 400 !important;
+        line-height: 1.4;
+        color: #424344 !important;
+    }
+
+    .btn-hacienda-outline {
+        padding: 8px !important;
+        font-size: 14px !important;
+    }
+
+        .btn-hacienda-outline span {
+            font-size: 14px !important;
+        }
+
+    .btn-desarrollo-humano-outline {
+        padding: 8px !important;
+        font-size: 14px !important;
+    }
+
+        .btn-desarrollo-humano-outline span {
+            font-size: 14px !important;
+        }
+
+    .col6-mobile {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .denominacion-mobile {
+        font-size: 14px !important;
+        padding-right: 0px;
+        margin-bottom: 2px !important;
+        margin-right: 0px;
+        color: #424344;
+        margin-top: -10px;
+        display: inline-block;
+    }
+
+    .fa-tasa-mobile {
+        font-size: 28px;
+        margin-right: 5px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .medio-pago-mobile {
+        margin-top: 0px;
+        border: solid 1px lightgray;
+        border-radius: 15px;
+        padding: 25px;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-top: 15px;
+        padding-top: 15px;
+    }
+
+    .TablaPlan {
+        margin-top: 0px;
+        width: 100%;
+        display: inline-table;
+    }
+
+    .radio input[type=radio] {
+        margin-right: 25px;
+        margin-left: 15px;
+        margin-top: 13px;
+    }
+
+    .modal-pago-mobile {
+        font-size: 14px;
+        color: var(--color-gobierno);
+        font-weight: 600;
+    }
+
+    .print-mobile {
+        margin-left: 0px;
+        font-size: 28px;
+        border-bottom: solid 1px lightgray;
+        height: 35px;
+        width: 100%;
+        padding-bottom: 5px;
+    }
+
+    .print-text-mobile {
+        color: var(--roofsie-gray);
+        font-size: 16px;
+        position: absolute;
+        font-weight: 500;
+        font-family: 'Vastago Grotesk';
+        margin-top: 5px;
+        padding-left: 18px;
+    }
+}
+
+.modal-pago {
+    border: solid 2px lightgray;
+    height: 45px;
+    border-radius: 10px;
+}
+
+.btn-primary {
+    color: white !important;
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    font-weight: 600 !important;
+    width: 120px;
+    text-decoration: none !important;
+    padding: 10px !important;
+    border-radius: 10px !important;
+}
+
+    .btn-primary:hover {
+        background-color: var(--color-primary) !important;
+        border-color: var(--color-primary) !important;
+        text-decoration: none !important;
+    }
+
+#MainContent_gvProcuraciones {
+    margin-bottom: 0;
+}
+
+    #MainContent_gvProcuraciones td {
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+
+.dropdown-menu {
+    background-color: beige
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white; /* Color de fondo */
+    /* color: white;  Color del texto */
+    text-align: center; /* Centra el contenido */
+    z-index: 1000; /* Asegura que el header esté por encima del contenido */
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; /* Ajusta según el tamaño del footer */
+    background-color: #333; /* Color de fondo */
+    color: white; /* Color del texto */
+    text-align: center; /* Centra el contenido */
+    line-height: 50px; /* Centra verticalmente */
+    z-index: 1000; /* Asegura que el footer esté por encima del contenido */
+}
+
+/* Ajusta el contenido principal para que no quede oculto detrás del header y footer */
+body {
+    padding-top: 90px; /* Margen superior igual a la altura del header */
+    padding-bottom: 50px; /* Margen inferior igual a la altura del footer */
+    margin: 0; /* Elimina márgenes */
+}
+
+.btn-usuario {
+    background: transparent;
+    display: inline-flex !important;
+    padding: 0;
+    align-items: center;
+    border: none;
+    padding-right: 10px;
+}
+
+.btn-user :hover {
+    border: solid 3px lightgrey;
+    border-color: lightgrey !important;
+    text-decoration: none !important;
+}
+
+.btn-user :active {
+    border: solid 3px lightgrey;
+}
+

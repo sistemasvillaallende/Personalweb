@@ -39,7 +39,10 @@ namespace BLL
         {
             return DAL.ConsultaEmpleadoD.GetEmpleados();
         }
-
+        public static List<Entities.LstEmpleados> GetEmpleadosByDireccion(int idDireccion)
+        {
+            return DAL.ConsultaEmpleadoD.GetEmpleadosByDireccion(idDireccion, 6);
+        }
         public static List<Entities.LstEmpleados> GetByLegajo(string legajo)
         {
             return DAL.ConsultaEmpleadoD.GetByLegajo(legajo);

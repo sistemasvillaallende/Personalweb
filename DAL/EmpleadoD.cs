@@ -1201,7 +1201,8 @@ namespace DAL
             }
         }
 
-        public static Int32 UpdateDatosEmpleado(Entities.Empleado oEmp, string usuario, int id_tipo_auditoria, string des_tipo_auditoria, string obsauditoria, SqlConnection cn, SqlTransaction trx)
+        public static Int32 UpdateDatosEmpleado(Entities.Empleado oEmp, string usuario,
+            int id_tipo_auditoria, string des_tipo_auditoria, string obsauditoria, SqlConnection cn, SqlTransaction trx)
         {
             SqlCommand objCommand = null;
             SqlCommand objCategoria = null;
@@ -2184,6 +2185,403 @@ namespace DAL
             }
             return lst;
         }
+        public static int UpdateTab_Datos_Contrato(
+  Empleado oEmp,
+  string usuario,
+  SqlConnection cn,
+  SqlTransaction trx)
+        {
+            SqlCommand sqlCommand1 = (SqlCommand)null;
+            string nroCtaSb = oEmp.nro_cta_sb;
+            try
+            {
+                StringBuilder stringBuilder1 = new StringBuilder();
+                StringBuilder stringBuilder2 = new StringBuilder();
+                SqlCommand sqlCommand2 = new SqlCommand();
+                sqlCommand2.Connection = cn;
+                sqlCommand2.Transaction = trx;
+                stringBuilder1.AppendLine("UPDATE EMPLEADOS set ");
+                stringBuilder1.AppendLine("nro_ipam=@nro_ipam,");
+                stringBuilder1.AppendLine("nro_jubilacion=@nro_jubilacion,");
+                stringBuilder1.AppendLine("antiguedad_ant=@antiguedad_ant,");
+                stringBuilder1.AppendLine("antiguedad_actual=@antiguedad_actual,");
+                stringBuilder1.AppendLine("nro_contrato=@nro_contrato,");
+                if (oEmp.fecha_inicio_contrato.Length > 0)
+                    stringBuilder1.AppendLine("fecha_inicio_contrato=@fecha_inicio_contrato,");
+                else
+                    stringBuilder1.AppendLine("fecha_inicio_contrato=null,");
+                if (oEmp.fecha_fin_contrato.Length > 0)
+                    stringBuilder1.AppendLine("fecha_fin_contrato=@fecha_fin_contrato,");
+                else
+                    stringBuilder1.AppendLine("fecha_fin_contrato=null,");
+                if (oEmp.nro_nombramiento.Length > 0)
+                    stringBuilder1.AppendLine("nro_nombramiento=@nro_nombramiento,");
+                else
+                    stringBuilder1.AppendLine("nro_nombramiento=null,");
+                if (oEmp.fecha_nombramiento.Length > 0)
+                    stringBuilder1.AppendLine("fecha_nombramiento=@fecha_nombramiento,");
+                else
+                    stringBuilder1.AppendLine("fecha_nombramiento=null,");
+
+                //new char[1][0] = ',';
+                string str = stringBuilder1.ToString();
+                stringBuilder2.AppendLine(str.Remove(str.Trim().Length - 1, 1));
+                sqlCommand2.Parameters.Add(new SqlParameter("@nro_ipam", oEmp.nro_ipam.Length > 0 ? (object)oEmp.nro_ipam : (object)"0"));
+                sqlCommand2.Parameters.Add(new SqlParameter("@nro_jubilacion", oEmp.nro_jubilacion.Length > 0 ? (object)oEmp.nro_jubilacion : (object)"0"));
+                sqlCommand2.Parameters.Add(new SqlParameter("@antiguedad_ant", (object)(oEmp.antiguedad_ant > 0 ? oEmp.antiguedad_ant : 0)));
+                sqlCommand2.Parameters.Add(new SqlParameter("@antiguedad_actual", (object)(oEmp.antiguedad_actual > 0 ? oEmp.antiguedad_actual : 0)));
+                sqlCommand2.Parameters.Add(new SqlParameter("@nro_contrato", (object)(oEmp.nro_contrato > 0 ? oEmp.nro_contrato : 0)));
+                if (oEmp.fecha_inicio_contrato.Length > 0)
+                    sqlCommand2.Parameters.Add(new SqlParameter("@fecha_inicio_contrato", (object)oEmp.fecha_inicio_contrato));
+                if (oEmp.fecha_fin_contrato.Length > 0)
+                    sqlCommand2.Parameters.Add(new SqlParameter("@fecha_fin_contrato", (object)oEmp.fecha_fin_contrato));
+                if (oEmp.nro_nombramiento.Length > 0)
+                    sqlCommand2.Parameters.Add(new SqlParameter("@nro_nombramiento", (object)oEmp.nro_nombramiento));
+                if (oEmp.fecha_nombramiento.Length > 0)
+                    sqlCommand2.Parameters.Add(new SqlParameter("@fecha_nombramiento", (object)oEmp.fecha_nombramiento));
+                stringBuilder2.AppendLine("WHERE legajo=@legajo");
+                sqlCommand2.Parameters.Add(new SqlParameter("@legajo", (object)oEmp.legajo));
+                sqlCommand2.CommandType = CommandType.Text;
+                sqlCommand2.CommandText = stringBuilder2.ToString();
+                sqlCommand2.Transaction = trx;
+                EmpleadoD.Insert_cambios_empleados(oEmp.legajo, usuario, nameof(UpdateTab_Datos_Contrato), "", cn, trx);
+                sqlCommand2.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                sqlCommand1 = (SqlCommand)null;
+            }
+            return oEmp.legajo;
+        }
+        public static int Insert_cambios_empleados(
+          int legajo,
+          string usuario,
+          string operacion,
+          string observacion,
+          SqlConnection cn,
+          SqlTransaction trx)
+        {
+            Empleado empleado = new Empleado();
+            try
+            {
+                StringBuilder stringBuilder = new StringBuilder();
+                int num;
+                if (legajo > 0)
+                {
+                    string str = "SELECT isnull(max(nro_item),0)  As item\r\n                                   FROM HIST_CAMBIO_EMPLEADOS (nolock)\r\n                                   WHERE legajo = @legajo";
+                    SqlCommand sqlCommand = new SqlCommand();
+                    sqlCommand.Connection = cn;
+                    sqlCommand.CommandType = CommandType.Text;
+                    sqlCommand.CommandText = str;
+                    sqlCommand.Transaction = trx;
+                    sqlCommand.Parameters.AddWithValue("@legajo", (object)legajo);
+                    num = Convert.ToInt32(sqlCommand.ExecuteScalar()) + 1;
+                }
+                else
+                    num = 1;
+                Empleado byPk = EmpleadoD.GetByPk(legajo, cn, trx);
+                SqlCommand sqlCommand1 = new SqlCommand();
+                sqlCommand1.Connection = cn;
+                stringBuilder.AppendLine("INSERT INTO HIST_CAMBIO_EMPLEADOS ");
+                stringBuilder.AppendLine("(legajo, nro_item, nombre, fecha_movimiento, fecha_ingreso, cod_tipo_documento, nro_documento,");
+                stringBuilder.AppendLine("cuil, tarea, cod_categoria, cod_cargo, cod_seccion, cod_clasif_per, cod_tipo_liq, id_secretaria, id_direccion,");
+                stringBuilder.AppendLine("id_oficina, id_regimen, cod_escala_aumento, fecha_nacimiento, sexo, cod_estado_civil, pais_domicilio,");
+                stringBuilder.AppendLine("provincia_domicilio, ciudad_domicilio, barrio_domicilio, calle_domicilio, nro_domicilio, piso_domicilio,");
+                stringBuilder.AppendLine("dpto_domicilio, monoblock_domicilio, cod_postal, telefonos, celular, email, nro_cta_sb, nro_cta_gastos,");
+                stringBuilder.AppendLine("nro_ipam, nro_jubilacion, antiguedad_ant, antiguedad_actual, nro_contrato, fecha_inicio_contrato,");
+                stringBuilder.AppendLine("fecha_fin_contrato, nro_nombramiento, fecha_nombramiento, cod_banco, tipo_cuenta, nro_sucursal, nro_caja_ahorro,");
+                stringBuilder.AppendLine("nro_cbu, cod_regimen_empleado, imprime_recibo, usuario, id_programa, id_revista)");
+                stringBuilder.AppendLine(" values ");
+                stringBuilder.AppendLine("(@legajo, @nro_item, @nombre, @fecha_movimiento, @fecha_ingreso, @cod_tipo_documento, @nro_documento, @cuil,");
+                stringBuilder.AppendLine("@tarea, @cod_categoria, @cod_cargo,@cod_seccion, @cod_clasif_per, @cod_tipo_liq, @id_secretaria, @id_direccion, @id_oficina,");
+                stringBuilder.AppendLine("@id_regimen, @cod_escala_aumento, @fecha_nacimiento, @sexo, @cod_estado_civil, @pais_domicilio, @provincia_domicilio,");
+                stringBuilder.AppendLine("@ciudad_domicilio, @barrio_domicilio, @calle_domicilio, @nro_domicilio, @piso_domicilio, @dpto_domicilio, @monoblock_domicilio,");
+                stringBuilder.AppendLine("@cod_postal, @telefonos, @celular, @email, @nro_cta_sb, @nro_cta_gastos, @nro_ipam, @nro_jubilacion, @antiguedad_ant,");
+                stringBuilder.AppendLine("@antiguedad_actual, @nro_contrato, @fecha_inicio_contrato, @fecha_fin_contrato, @nro_nombramiento, @fecha_nombramiento,");
+                stringBuilder.AppendLine("@cod_banco, @tipo_cuenta, @nro_sucursal, @nro_caja_ahorro, @nro_cbu, @cod_regimen_empleado, @imprime_recibo, @usuario, @id_programa, @id_revista) ");
+                sqlCommand1.Parameters.Add(new SqlParameter("@legajo", (object)byPk.legajo));
+                sqlCommand1.Parameters.Add(new SqlParameter("@nro_item", (object)num));
+                sqlCommand1.Parameters.Add(new SqlParameter("@nombre", (object)byPk.nombre));
+                sqlCommand1.Parameters.Add(new SqlParameter("@fecha_movimiento", (object)DateTime.Today.ToShortDateString()));
+                sqlCommand1.Parameters.Add(new SqlParameter("@fecha_ingreso", byPk.fecha_ingreso != null ? (object)byPk.fecha_ingreso : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@cod_tipo_documento", (object)(byPk.cod_tipo_documento > 0 ? byPk.cod_tipo_documento : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@nro_documento", byPk.nro_documento != null ? (object)byPk.nro_documento : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@cuil", byPk.cuil != null ? (object)byPk.cuil : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@tarea", byPk.tarea != null ? (object)byPk.tarea : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@cod_categoria", (object)(byPk.cod_categoria > 0 ? byPk.cod_categoria : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@cod_cargo", (object)(byPk.cod_cargo > 0 ? byPk.cod_cargo : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@cod_seccion", (object)(byPk.cod_seccion > 0 ? byPk.cod_seccion : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@cod_clasif_per", (object)(byPk.cod_clasif_per > 0 ? byPk.cod_clasif_per : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@cod_tipo_liq", (object)(byPk.cod_tipo_liq > 0 ? byPk.cod_tipo_liq : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@id_secretaria", (object)(byPk.id_secretaria > 0 ? byPk.id_secretaria : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@id_direccion", (object)(byPk.id_direccion > 0 ? byPk.id_direccion : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@id_oficina", (object)(byPk.id_oficina > 0 ? byPk.id_oficina : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@id_regimen", (object)(byPk.id_regimen > 0 ? byPk.id_regimen : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@cod_escala_aumento", (object)(byPk.cod_escala_aumento > 0 ? byPk.cod_escala_aumento : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@fecha_nacimiento", byPk.fecha_nacimiento != null ? (object)byPk.fecha_nacimiento : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@sexo", byPk.sexo != null ? (object)byPk.sexo : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@cod_estado_civil", (object)(byPk.cod_estado_civil > 0 ? byPk.cod_estado_civil : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@pais_domicilio", byPk.pais_domicilio != null ? (object)byPk.pais_domicilio : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@provincia_domicilio", byPk.provincia_domicilio != null ? (object)byPk.provincia_domicilio : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@ciudad_domicilio", byPk.ciudad_domicilio != null ? (object)byPk.ciudad_domicilio : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@barrio_domicilio", byPk.barrio_domicilio != null ? (object)byPk.barrio_domicilio : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@calle_domicilio", byPk.calle_domicilio != null ? (object)byPk.calle_domicilio : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@nro_domicilio", byPk.nro_domicilio != null ? (object)byPk.nro_domicilio : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@piso_domicilio", byPk.piso_domicilio != null ? (object)byPk.piso_domicilio : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@dpto_domicilio", byPk.dpto_domicilio != null ? (object)byPk.dpto_domicilio : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@monoblock_domicilio", byPk.monoblock_domicilio != null ? (object)byPk.monoblock_domicilio : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@cod_postal", byPk.cod_postal != null ? (object)byPk.cod_postal : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@telefonos", byPk.telefonos != null ? (object)byPk.telefonos : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@celular", byPk.celular != null ? (object)byPk.celular : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@email", byPk.email != null ? (object)byPk.email : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@nro_cta_sb", byPk.nro_cta_sb != null ? (object)byPk.nro_cta_sb : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@nro_cta_gastos", byPk.nro_cta_gastos != null ? (object)byPk.nro_cta_gastos : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@nro_ipam", byPk.nro_ipam != null ? (object)byPk.nro_ipam : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@nro_jubilacion", byPk.nro_jubilacion != null ? (object)byPk.nro_jubilacion : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@antiguedad_ant", (object)(byPk.antiguedad_ant > 0 ? byPk.antiguedad_ant : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@antiguedad_actual", (object)(byPk.antiguedad_actual > 0 ? byPk.antiguedad_actual : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@nro_contrato", (object)(byPk.nro_contrato > 0 ? byPk.nro_contrato : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@fecha_inicio_contrato", byPk.fecha_inicio_contrato != null ? (object)byPk.fecha_inicio_contrato : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@fecha_fin_contrato", byPk.fecha_fin_contrato != null ? (object)byPk.fecha_fin_contrato : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@nro_nombramiento", byPk.nro_nombramiento != null ? (object)byPk.nro_nombramiento : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@fecha_nombramiento", byPk.fecha_nombramiento != null ? (object)byPk.fecha_nombramiento : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@cod_banco", (object)(byPk.cod_banco > 0 ? byPk.cod_banco : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@tipo_cuenta", byPk.tipo_cuenta != null ? (object)byPk.tipo_cuenta : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@nro_sucursal", byPk.nro_sucursal != null ? (object)byPk.nro_sucursal : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@nro_caja_ahorro", byPk.nro_caja_ahorro != null ? (object)byPk.nro_caja_ahorro : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@nro_cbu", byPk.nro_cbu != null ? (object)byPk.nro_cbu : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@cod_regimen_empleado", (object)(byPk.cod_regimen_empleado > 0 ? byPk.cod_regimen_empleado : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@imprime_recibo", (object)byPk.imprime_recibo));
+                sqlCommand1.Parameters.Add(new SqlParameter("@usuario", (object)usuario));
+                sqlCommand1.Parameters.Add(new SqlParameter("@id_programa", (object)byPk.id_programa));
+                sqlCommand1.Parameters.Add(new SqlParameter("@id_revista", (object)byPk.id_revista));
+                sqlCommand1.CommandType = CommandType.Text;
+                sqlCommand1.CommandText = stringBuilder.ToString();
+                sqlCommand1.Transaction = trx;
+                sqlCommand1.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+            }
+            return legajo;
+        }
+        public static int UpdateDatosEmpleado(
+  Empleado oEmp,
+  string usuario,
+  SqlConnection cn,
+  SqlTransaction trx)
+        {
+            SqlCommand sqlCommand1 = (SqlCommand)null;
+            try
+            {
+                StringBuilder stringBuilder1 = new StringBuilder();
+                StringBuilder stringBuilder2 = new StringBuilder();
+                string str = "SELECT max(cod_categoria)\r\n                        FROM Empleados where legajo=" + oEmp.legajo.ToString();
+                SqlCommand sqlCommand2 = new SqlCommand();
+                sqlCommand2.Connection = cn;
+                sqlCommand2.CommandType = CommandType.Text;
+                sqlCommand2.CommandText = str;
+                sqlCommand2.Transaction = trx;
+                int int32 = Convert.ToInt32(sqlCommand2.ExecuteScalar());
+                stringBuilder1.AppendLine("UPDATE EMPLEADOS SET ");
+                stringBuilder1.AppendLine("nombre=@nombre,");
+                stringBuilder1.AppendLine("fecha_alta_registro=@fecha_alta_registro,");
+                if (oEmp.fecha_ingreso.Length != 0)
+                    stringBuilder1.AppendLine("fecha_ingreso=@fecha_ingreso,");
+                else
+                    stringBuilder1.AppendLine("fecha_ingreso=null,");
+                stringBuilder1.AppendLine("cod_tipo_documento=@cod_tipo_documento,");
+                stringBuilder1.AppendLine("nro_documento=@nro_documento,");
+                stringBuilder1.AppendLine("cuil=@cuil,");
+                stringBuilder1.AppendLine("tarea=@tarea,");
+                stringBuilder1.AppendLine("cod_categoria=@cod_categoria,");
+                stringBuilder1.AppendLine("cod_cargo=@cod_cargo,");
+                stringBuilder1.AppendLine("nro_cta_sb=@nro_cta_sb,");
+                stringBuilder1.AppendLine("nro_cta_gastos= @nro_cta_gastos,");
+                stringBuilder1.AppendLine("cod_seccion=@cod_seccion,");
+                stringBuilder1.AppendLine("cod_clasif_per=@cod_clasif_per,");
+                stringBuilder1.AppendLine("cod_tipo_liq=@cod_tipo_liq,");
+                stringBuilder1.AppendLine("id_secretaria=@id_secretaria,");
+                stringBuilder1.AppendLine("id_direccion=@id_direccion,");
+                stringBuilder1.AppendLine("id_oficina=@id_oficina,");
+                stringBuilder1.AppendLine("id_regimen=@id_regimen,");
+                stringBuilder1.AppendLine("cod_escala_aumento=@cod_escala_aumento ");
+                if (oEmp.fecha_baja.Length != 0)
+                    stringBuilder1.AppendLine(",fecha_baja=@fecha_baja");
+                else
+                    stringBuilder1.AppendLine(",fecha_baja=null");
+                stringBuilder1.AppendLine(",cod_regimen_empleado=@cod_regimen_empleado");
+                stringBuilder1.AppendLine(",imprime_recibo=@imprime_recibo");
+                stringBuilder1.AppendLine(",id_programa=@id_programa");
+                stringBuilder1.AppendLine(",id_revista=@id_revista");
+                if (oEmp.fecha_revista.Length != 0)
+                    stringBuilder1.AppendLine(",fecha_revista=@fecha_revista");
+                else
+                    stringBuilder1.AppendLine(",fecha_revista=null");
+                stringBuilder1.AppendLine(",activo=@activo");
+                stringBuilder1.AppendLine(" WHERE legajo=@legajo");
+                SqlCommand sqlCommand3 = new SqlCommand();
+                sqlCommand3.Connection = cn;
+                sqlCommand3.CommandType = CommandType.Text;
+                sqlCommand3.CommandText = stringBuilder1.ToString();
+                sqlCommand3.Transaction = trx;
+                sqlCommand3.Parameters.Add(new SqlParameter("@legajo", (object)oEmp.legajo));
+                sqlCommand3.Parameters.Add(new SqlParameter("@nombre", (object)oEmp.nombre));
+                sqlCommand3.Parameters.Add(new SqlParameter("@fecha_alta_registro", oEmp.fecha_alta_registro.Length != 0 ? (object)oEmp.fecha_alta_registro : (object)""));
+                if (oEmp.fecha_ingreso.Length != 0)
+                    sqlCommand3.Parameters.Add(new SqlParameter("@fecha_ingreso", (object)oEmp.fecha_ingreso));
+                sqlCommand3.Parameters.Add(new SqlParameter("@cod_tipo_documento", (object)(oEmp.cod_tipo_documento > 0 ? oEmp.cod_tipo_documento : 0)));
+                sqlCommand3.Parameters.Add(new SqlParameter("@nro_documento", oEmp.nro_documento != null ? (object)oEmp.nro_documento : (object)(string)null));
+                sqlCommand3.Parameters.Add(new SqlParameter("@cuil", oEmp.cuil != null ? (object)oEmp.cuil : (object)(string)null));
+                sqlCommand3.Parameters.Add(new SqlParameter("@tarea", oEmp.tarea != null ? (object)oEmp.tarea : (object)(string)null));
+                sqlCommand3.Parameters.Add(new SqlParameter("@cod_cargo", (object)(oEmp.cod_cargo > 0 ? oEmp.cod_cargo : 0)));
+                sqlCommand3.Parameters.Add(new SqlParameter("@cod_categoria", (object)(oEmp.cod_categoria > 0 ? oEmp.cod_categoria : 0)));
+                sqlCommand3.Parameters.Add(new SqlParameter("@nro_cta_sb", oEmp.cod_cargo > 0 ? (object)ConsultaEmpleadoD.GetNro_cta_sb(oEmp.cod_cargo) : (object)""));
+                sqlCommand3.Parameters.Add(new SqlParameter("@nro_cta_gastos", oEmp.nro_cta_gastos != null ? (object)oEmp.nro_cta_gastos : (object)(string)null));
+                sqlCommand3.Parameters.Add(new SqlParameter("@cod_seccion", (object)(oEmp.cod_seccion > 0 ? oEmp.cod_seccion : 0)));
+                sqlCommand3.Parameters.Add(new SqlParameter("@cod_clasif_per", (object)(oEmp.cod_clasif_per > 0 ? oEmp.cod_clasif_per : 0)));
+                sqlCommand3.Parameters.Add(new SqlParameter("@cod_tipo_liq", (object)(oEmp.cod_tipo_liq > 0 ? oEmp.cod_tipo_liq : 0)));
+                sqlCommand3.Parameters.Add(new SqlParameter("@id_secretaria", (object)(oEmp.id_secretaria > 0 ? oEmp.id_secretaria : 0)));
+                sqlCommand3.Parameters.Add(new SqlParameter("@id_direccion", (object)(oEmp.id_direccion > 0 ? oEmp.id_direccion : 0)));
+                sqlCommand3.Parameters.Add(new SqlParameter("@id_oficina", (object)(oEmp.id_oficina > 0 ? oEmp.id_oficina : 0)));
+                sqlCommand3.Parameters.Add(new SqlParameter("@id_regimen", (object)(oEmp.id_regimen > 0 ? oEmp.id_regimen : 0)));
+                sqlCommand3.Parameters.Add(new SqlParameter("@cod_escala_aumento", (object)(oEmp.cod_escala_aumento > 0 ? oEmp.cod_escala_aumento : 0)));
+                sqlCommand3.Parameters.Add(new SqlParameter("@cod_regimen_empleado", (object)(oEmp.cod_regimen_empleado > 0 ? oEmp.cod_regimen_empleado : 0)));
+                if (oEmp.fecha_baja.Length != 0)
+                    sqlCommand3.Parameters.Add(new SqlParameter("@fecha_baja", (object)oEmp.fecha_baja));
+                sqlCommand3.Parameters.Add(new SqlParameter("@imprime_recibo", (object)oEmp.imprime_recibo));
+                sqlCommand3.Parameters.Add(new SqlParameter("@id_programa", (object)oEmp.id_programa));
+                sqlCommand3.Parameters.Add(new SqlParameter("@id_revista", (object)oEmp.id_revista));
+                if (oEmp.fecha_revista.Length != 0)
+                    sqlCommand3.Parameters.Add(new SqlParameter("@fecha_revista", (object)oEmp.fecha_revista));
+                sqlCommand3.Parameters.Add(new SqlParameter("@activo", (object)oEmp.activo));
+                EmpleadoD.Insert_cambios_empleados(oEmp.legajo, usuario, nameof(UpdateDatosEmpleado), "", cn, trx);
+                sqlCommand3.ExecuteNonQuery();
+                if (int32 != oEmp.cod_categoria)
+                {
+                    EmpleadoD.Cambios_categoria_empleado(oEmp.legajo, int32, usuario, "antes", "", cn, trx);
+                    EmpleadoD.Cambios_categoria_empleado(oEmp.legajo, oEmp.cod_categoria, usuario, "nueva", "", cn, trx);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                sqlCommand1 = (SqlCommand)null;
+            }
+            return oEmp.legajo;
+        }
+        public static int UpdateTab_Datos_Particulares(
+  Empleado oEmp,
+  string usuario,
+  SqlConnection cn,
+  SqlTransaction trx)
+        {
+            try
+            {
+                StringBuilder stringBuilder = new StringBuilder();
+                SqlCommand sqlCommand = new SqlCommand();
+                sqlCommand.Connection = cn;
+                stringBuilder.AppendLine("UPDATE EMPLEADOS set ");
+                stringBuilder.AppendLine("fecha_nacimiento=@fecha_nacimiento,");
+                stringBuilder.AppendLine("sexo=@sexo,");
+                stringBuilder.AppendLine("cod_estado_civil=@cod_estado_civil,");
+                stringBuilder.AppendLine("pais_domicilio=@pais_domicilio,");
+                stringBuilder.AppendLine("provincia_domicilio=@provincia_domicilio,");
+                stringBuilder.AppendLine("ciudad_domicilio=@ciudad_domicilio,");
+                stringBuilder.AppendLine("barrio_domicilio=@barrio_domicilio,");
+                stringBuilder.AppendLine("calle_domicilio=@calle_domicilio,");
+                stringBuilder.AppendLine("nro_domicilio=@nro_domicilio,");
+                stringBuilder.AppendLine("piso_domicilio=@piso_domicilio,");
+                stringBuilder.AppendLine("dpto_domicilio=@dpto_domicilio,");
+                stringBuilder.AppendLine("monoblock_domicilio=@monoblock_domicilio,");
+                stringBuilder.AppendLine("cod_postal=@cod_postal,");
+                stringBuilder.AppendLine("telefonos=@telefonos,");
+                stringBuilder.AppendLine("celular=@celular, ");
+                stringBuilder.AppendLine("email=@email");
+                sqlCommand.Parameters.Add(new SqlParameter("@fecha_nacimiento", oEmp.fecha_nacimiento != null ? (object)oEmp.fecha_nacimiento : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@sexo", oEmp.sexo != null ? (object)oEmp.sexo : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@cod_estado_civil", (object)(oEmp.cod_estado_civil > 0 ? oEmp.cod_estado_civil : 0)));
+                sqlCommand.Parameters.Add(new SqlParameter("@pais_domicilio", oEmp.pais_domicilio != null ? (object)oEmp.pais_domicilio : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@provincia_domicilio", oEmp.provincia_domicilio != null ? (object)oEmp.provincia_domicilio : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@ciudad_domicilio", oEmp.ciudad_domicilio != null ? (object)oEmp.ciudad_domicilio : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@barrio_domicilio", oEmp.barrio_domicilio != null ? (object)oEmp.barrio_domicilio : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@calle_domicilio", oEmp.calle_domicilio != null ? (object)oEmp.calle_domicilio : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@nro_domicilio", oEmp.nro_domicilio != null ? (object)oEmp.nro_domicilio : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@piso_domicilio", oEmp.piso_domicilio != null ? (object)oEmp.piso_domicilio : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@dpto_domicilio", oEmp.dpto_domicilio != null ? (object)oEmp.dpto_domicilio : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@monoblock_domicilio", oEmp.monoblock_domicilio != null ? (object)oEmp.monoblock_domicilio : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@cod_postal", oEmp.cod_postal != null ? (object)oEmp.cod_postal : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@telefonos", oEmp.telefonos != null ? (object)oEmp.telefonos : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@celular", oEmp.celular != null ? (object)oEmp.celular : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@email", oEmp.email != null ? (object)oEmp.email : (object)(string)null));
+                stringBuilder.AppendLine(" WHERE legajo=@legajo");
+                sqlCommand.Parameters.Add(new SqlParameter("@legajo", (object)oEmp.legajo));
+                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandText = stringBuilder.ToString();
+                sqlCommand.Transaction = trx;
+                EmpleadoD.Insert_cambios_empleados(oEmp.legajo, usuario, nameof(UpdateTab_Datos_Particulares), "", cn, trx);
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+            }
+            return oEmp.legajo;
+        }
+        public static int UpdateTab_Datos_Banco(
+  Empleado oEmp,
+  string usuario,
+  SqlConnection cn,
+  SqlTransaction trx)
+        {
+            try
+            {
+                StringBuilder stringBuilder = new StringBuilder();
+                SqlCommand sqlCommand = new SqlCommand();
+                sqlCommand.Connection = cn;
+                stringBuilder.AppendLine("UPDATE EMPLEADOS set ");
+                stringBuilder.AppendLine("cod_banco=@cod_banco,");
+                stringBuilder.AppendLine("tipo_cuenta=@tipo_cuenta,");
+                stringBuilder.AppendLine("nro_sucursal=@nro_sucursal,");
+                stringBuilder.AppendLine("nro_caja_ahorro=@nro_caja_ahorro,");
+                stringBuilder.AppendLine("nro_cbu=@nro_cbu");
+                sqlCommand.Parameters.Add(new SqlParameter("@cod_banco", (object)(oEmp.cod_banco > 0 ? oEmp.cod_banco : 0)));
+                sqlCommand.Parameters.Add(new SqlParameter("@tipo_cuenta", oEmp.tipo_cuenta != null ? (object)oEmp.tipo_cuenta : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@nro_sucursal", oEmp.nro_sucursal != null ? (object)oEmp.nro_sucursal : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@nro_caja_ahorro", oEmp.nro_caja_ahorro != null ? (object)oEmp.nro_caja_ahorro : (object)(string)null));
+                sqlCommand.Parameters.Add(new SqlParameter("@nro_cbu", oEmp.nro_cbu != null ? (object)oEmp.nro_cbu : (object)(string)null));
+                stringBuilder.AppendLine(" WHERE legajo=@legajo");
+                sqlCommand.Parameters.Add(new SqlParameter("@legajo", (object)oEmp.legajo));
+                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandText = stringBuilder.ToString();
+                sqlCommand.Transaction = trx;
+                EmpleadoD.Insert_cambios_empleados(oEmp.legajo, usuario, nameof(UpdateTab_Datos_Banco), "", cn, trx);
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+            }
+            return oEmp.legajo;
+        }
+
     }
 
 }
