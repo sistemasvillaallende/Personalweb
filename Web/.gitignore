@@ -1,0 +1,23 @@
+# Ignorar archivos de configuración de usuario
+*.user
+*.suo
+
+# Ignorar binarios y objetos de compilación
+bin/
+obj/
+
+# Ignorar carpetas de paquetes y dependencias
+packages/
+node_modules/
+
+# Ignorar archivos de logs
+*.log
+
+# Ignorar archivos de publicación
+*.Publish.xml
+
+# Ignorar archivos de dll
+*.dll
+
+# Ignorar archivos de pdb
+*.pdb
