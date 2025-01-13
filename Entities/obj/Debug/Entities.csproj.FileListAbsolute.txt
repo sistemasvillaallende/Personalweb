@@ -25,3 +25,12 @@ D:\DevSueldos\Personalweb\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.c
 D:\DevSueldos\Personalweb\Entities\obj\Debug\Entities.csproj.CopyComplete
 D:\DevSueldos\Personalweb\Entities\obj\Debug\Entities.dll
 D:\DevSueldos\Personalweb\Entities\obj\Debug\Entities.pdb
+D:\Muni\Dev\Personalweb2\Entities\bin\Debug\Entities.dll
+D:\Muni\Dev\Personalweb2\Entities\bin\Debug\Entities.pdb
+D:\Muni\Dev\Personalweb2\Entities\bin\Debug\Newtonsoft.Json.dll
+D:\Muni\Dev\Personalweb2\Entities\bin\Debug\Newtonsoft.Json.xml
+D:\Muni\Dev\Personalweb2\Entities\obj\Debug\Entities.csproj.AssemblyReference.cache
+D:\Muni\Dev\Personalweb2\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.cache
+D:\Muni\Dev\Personalweb2\Entities\obj\Debug\Entities.csproj.Up2Date
+D:\Muni\Dev\Personalweb2\Entities\obj\Debug\Entities.dll
+D:\Muni\Dev\Personalweb2\Entities\obj\Debug\Entities.pdb

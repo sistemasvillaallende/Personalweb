@@ -7,11 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Web {
-    
-    
-    public partial class index {
-        
+namespace Web
+{
+
+
+    public partial class index
+    {
+
         /// <summary>
         /// Control form1.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// Control divError.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
-        
+
         /// <summary>
         /// Control lblError.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblError;
-        
+
         /// <summary>
         /// Control btnOkError.
         /// </summary>
@@ -47,7 +49,7 @@ namespace Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnOkError;
-        
+
         /// <summary>
         /// Control divLogIn.
         /// </summary>
@@ -56,7 +58,7 @@ namespace Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divLogIn;
-        
+
         /// <summary>
         /// Control txtUsuario.
         /// </summary>
@@ -65,7 +67,7 @@ namespace Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtUsuario;
-        
+
         /// <summary>
         /// Control txtPass.
         /// </summary>
@@ -74,7 +76,7 @@ namespace Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtPass;
-        
+
         /// <summary>
         /// Control btnIngresar.
         /// </summary>

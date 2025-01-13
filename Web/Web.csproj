@@ -6320,6 +6320,59 @@
     <Content Include="App_Themes\bower_components\select2\tests\vendor\qunit-1.23.1.css" />
     <Content Include="App_Themes\bower_components\select2\tests\vendor\qunit-1.23.1.js" />
     <Content Include="App_Themes\bower_components\select2\vendor\jquery-2.1.0.js" />
+    <Content Include="App_Themes\Definitivo\css\all.min.css" />
+    <Content Include="App_Themes\Definitivo\css\apexcharts.css" />
+    <Content Include="App_Themes\Definitivo\css\bootstrap.min.css" />
+    <Content Include="App_Themes\Definitivo\css\docs.css" />
+    <Content Include="App_Themes\Definitivo\css\index-00ad47df0491a88d8ee7580820c200b2d57bca4af355868798a4d283578ac8f6.css" />
+    <Content Include="App_Themes\Definitivo\css\index-c20c294967c4ed0be90d33e130e591a57859fccaebd0a19bf00bf499d001afc3.css" />
+    <Content Include="App_Themes\Definitivo\css\main.css" />
+    <Content Include="App_Themes\Definitivo\dist\apexcharts.amd.js" />
+    <Content Include="App_Themes\Definitivo\dist\apexcharts.amd.js.LICENSE.txt" />
+    <Content Include="App_Themes\Definitivo\dist\apexcharts.common.js" />
+    <Content Include="App_Themes\Definitivo\dist\apexcharts.css" />
+    <Content Include="App_Themes\Definitivo\dist\apexcharts.esm.js" />
+    <Content Include="App_Themes\Definitivo\dist\apexcharts.js" />
+    <Content Include="App_Themes\Definitivo\dist\apexcharts.min.js" />
+    <Content Include="App_Themes\Definitivo\dist\styles.css" />
+    <Content Include="App_Themes\Definitivo\fonts\fontawesome-webfont.svg" />
+    <Content Include="App_Themes\Definitivo\fonts\fontawesome.svg" />
+    <Content Include="App_Themes\Definitivo\fonts\multa.svg" />
+    <Content Include="App_Themes\Definitivo\img\avatar1.jpg" />
+    <Content Include="App_Themes\Definitivo\img\avatar2.jpg" />
+    <Content Include="App_Themes\Definitivo\img\avatar3.jpg" />
+    <Content Include="App_Themes\Definitivo\img\avatar4.jpg" />
+    <Content Include="App_Themes\Definitivo\img\avatar5.jpg" />
+    <Content Include="App_Themes\Definitivo\img\user.png" />
+    <Content Include="App_Themes\Definitivo\js\analytics.js" />
+    <Content Include="App_Themes\Definitivo\js\bootstrap.bundle.min.js" />
+    <Content Include="App_Themes\Definitivo\js\default.js" />
+    <Content Include="App_Themes\Definitivo\js\ec.js" />
+    <Content Include="App_Themes\Definitivo\js\emojione.min.js" />
+    <Content Include="App_Themes\Definitivo\js\en.js" />
+    <Content Include="App_Themes\Definitivo\js\index-7f7b99e2fce428dfe1ffa7553744b98eb6c004f82f8f6656439c2f7c74d0a4dd.js" />
+    <Content Include="App_Themes\Definitivo\js\index.js" />
+    <Content Include="App_Themes\Definitivo\js\jquery-knob.js" />
+    <Content Include="App_Themes\Definitivo\js\js.js" />
+    <Content Include="App_Themes\Definitivo\js\knobchart.bundle.js" />
+    <Content Include="App_Themes\Definitivo\js\libscripts.bundle.js" />
+    <Content Include="App_Themes\Definitivo\js\linkid.js" />
+    <Content Include="App_Themes\Definitivo\js\mainscripts.bundle.js" />
+    <Content Include="App_Themes\Definitivo\js\standard_measurements-3bc54d0cbac28acaf9e49915490168f52bb9b8bea5d35f6edabb67a686a83af4.js" />
+    <Content Include="App_Themes\Definitivo\js\twk-app.js" />
+    <Content Include="App_Themes\Definitivo\js\twk-chunk-24d8db78.js" />
+    <Content Include="App_Themes\Definitivo\js\twk-chunk-2c776523.js" />
+    <Content Include="App_Themes\Definitivo\js\twk-chunk-2d0b383d.js" />
+    <Content Include="App_Themes\Definitivo\js\twk-chunk-2d0b9454.js" />
+    <Content Include="App_Themes\Definitivo\js\twk-chunk-48f3b594.js" />
+    <Content Include="App_Themes\Definitivo\js\twk-chunk-4fe9d5dd.js" />
+    <Content Include="App_Themes\Definitivo\js\twk-chunk-9294da6c.js" />
+    <Content Include="App_Themes\Definitivo\js\twk-chunk-common.js" />
+    <Content Include="App_Themes\Definitivo\js\twk-chunk-vendors.js" />
+    <Content Include="App_Themes\Definitivo\js\twk-main.js" />
+    <Content Include="App_Themes\Definitivo\js\twk-runtime.js" />
+    <Content Include="App_Themes\Definitivo\js\twk-vendor.js" />
+    <Content Include="App_Themes\Definitivo\js\uc.js" />
     <Content Include="App_Themes\dist\css\AdminLTE.css" />
     <Content Include="App_Themes\dist\css\AdminLTE.min.css" />
     <Content Include="App_Themes\dist\css\alt\AdminLTE-bootstrap-social.css" />
@@ -6388,11 +6441,66 @@
     <Content Include="App_Themes\dist\js\demo.js" />
     <Content Include="App_Themes\dist\js\pages\dashboard.js" />
     <Content Include="App_Themes\dist\js\pages\dashboard2.js" />
+    <Content Include="App_Themes\GestionPablo\css\colores.css" />
+    <Content Include="App_Themes\GestionPablo\css\style.css" />
+    <Content Include="App_Themes\GestionPablo\css\style2.css" />
+    <Content Include="App_Themes\GestionPablo\img\logoVertical.png" />
+    <Content Include="App_Themes\GestionPablo\img\person-digging-solid.svg" />
+    <Content Include="App_Themes\GestionPablo\img\separadorVertical.png" />
     <Content Include="App_Themes\images\LogoGestion.png" />
     <Content Include="App_Themes\images\LogoMuni.png" />
     <Content Include="App_Themes\images\usuario.png" />
+    <Content Include="App_Themes\images\vecino.png" />
     <Content Include="App_Themes\jQuery-2.1.4.min.js" />
     <Content Include="App_Themes\jquery.dataTables.js" />
+    <Content Include="App_Themes\NewTheme\css\apexcharts.css" />
+    <Content Include="App_Themes\NewTheme\css\index-00ad47df0491a88d8ee7580820c200b2d57bca4af355868798a4d283578ac8f6.css" />
+    <Content Include="App_Themes\NewTheme\css\index-c20c294967c4ed0be90d33e130e591a57859fccaebd0a19bf00bf499d001afc3.css" />
+    <Content Include="App_Themes\NewTheme\css\main.css" />
+    <Content Include="App_Themes\NewTheme\dist\apexcharts.amd.js" />
+    <Content Include="App_Themes\NewTheme\dist\apexcharts.amd.js.LICENSE.txt" />
+    <Content Include="App_Themes\NewTheme\dist\apexcharts.common.js" />
+    <Content Include="App_Themes\NewTheme\dist\apexcharts.css" />
+    <Content Include="App_Themes\NewTheme\dist\apexcharts.esm.js" />
+    <Content Include="App_Themes\NewTheme\dist\apexcharts.js" />
+    <Content Include="App_Themes\NewTheme\dist\apexcharts.min.js" />
+    <Content Include="App_Themes\NewTheme\fonts\fontawesome-webfont.svg" />
+    <Content Include="App_Themes\NewTheme\fonts\fontawesome.svg" />
+    <Content Include="App_Themes\NewTheme\fonts\multa.svg" />
+    <Content Include="App_Themes\NewTheme\img\avatar1.jpg" />
+    <Content Include="App_Themes\NewTheme\img\avatar2.jpg" />
+    <Content Include="App_Themes\NewTheme\img\avatar3.jpg" />
+    <Content Include="App_Themes\NewTheme\img\avatar4.jpg" />
+    <Content Include="App_Themes\NewTheme\img\avatar5.jpg" />
+    <Content Include="App_Themes\NewTheme\img\user.png" />
+    <Content Include="App_Themes\NewTheme\js\analytics.js" />
+    <Content Include="App_Themes\NewTheme\js\default.js" />
+    <Content Include="App_Themes\NewTheme\js\ec.js" />
+    <Content Include="App_Themes\NewTheme\js\emojione.min.js" />
+    <Content Include="App_Themes\NewTheme\js\en.js" />
+    <Content Include="App_Themes\NewTheme\js\index-7f7b99e2fce428dfe1ffa7553744b98eb6c004f82f8f6656439c2f7c74d0a4dd.js" />
+    <Content Include="App_Themes\NewTheme\js\index.js" />
+    <Content Include="App_Themes\NewTheme\js\jquery-knob.js" />
+    <Content Include="App_Themes\NewTheme\js\js.js" />
+    <Content Include="App_Themes\NewTheme\js\knobchart.bundle.js" />
+    <Content Include="App_Themes\NewTheme\js\libscripts.bundle.js" />
+    <Content Include="App_Themes\NewTheme\js\linkid.js" />
+    <Content Include="App_Themes\NewTheme\js\mainscripts.bundle.js" />
+    <Content Include="App_Themes\NewTheme\js\standard_measurements-3bc54d0cbac28acaf9e49915490168f52bb9b8bea5d35f6edabb67a686a83af4.js" />
+    <Content Include="App_Themes\NewTheme\js\twk-app.js" />
+    <Content Include="App_Themes\NewTheme\js\twk-chunk-24d8db78.js" />
+    <Content Include="App_Themes\NewTheme\js\twk-chunk-2c776523.js" />
+    <Content Include="App_Themes\NewTheme\js\twk-chunk-2d0b383d.js" />
+    <Content Include="App_Themes\NewTheme\js\twk-chunk-2d0b9454.js" />
+    <Content Include="App_Themes\NewTheme\js\twk-chunk-48f3b594.js" />
+    <Content Include="App_Themes\NewTheme\js\twk-chunk-4fe9d5dd.js" />
+    <Content Include="App_Themes\NewTheme\js\twk-chunk-9294da6c.js" />
+    <Content Include="App_Themes\NewTheme\js\twk-chunk-common.js" />
+    <Content Include="App_Themes\NewTheme\js\twk-chunk-vendors.js" />
+    <Content Include="App_Themes\NewTheme\js\twk-main.js" />
+    <Content Include="App_Themes\NewTheme\js\twk-runtime.js" />
+    <Content Include="App_Themes\NewTheme\js\twk-vendor.js" />
+    <Content Include="App_Themes\NewTheme\js\uc.js" />
     <Content Include="App_Themes\select2.min.css" />
     <Content Include="App_Themes\Tema1\bootstrap-responsive.min.css" />
     <Content Include="App_Themes\Tema1\bootstrap-theme.min.css" />
@@ -6438,6 +6546,40 @@
     <Content Include="App_Themes\Tema1\Style.css" />
     <Content Include="App_Themes\Tema1\theme.css" />
     <Content Include="App_Themes\Tema1\typica-login.css" />
+    <Content Include="Autoridades\AusentismoDireccion.aspx" />
+    <Content Include="Autoridades\AusentismoSec.aspx" />
+    <Content Include="Autoridades\DashboardDireccion.aspx" />
+    <Content Include="Autoridades\DashboardSecretaria.aspx" />
+    <Content Include="Autoridades\DesempenioDirecciones.aspx" />
+    <Content Include="Autoridades\DesempenioSec.aspx" />
+    <Content Include="Autoridades\DesempeñoDireccion.aspx" />
+    <Content Include="Autoridades\Direcciones\ListaEmpleados.aspx" />
+    <Content Include="Autoridades\Direcciones\Notificaciones.aspx" />
+    <Content Include="Autoridades\Direcciones\UnderConstruction.aspx" />
+    <Content Include="Autoridades\EvaluacionDireccion.aspx" />
+    <Content Include="Autoridades\EvaluacionSec.aspx" />
+    <Content Include="Autoridades\Evaluadores.aspx" />
+    <Content Include="Autoridades\LicenciasDireccion.aspx" />
+    <Content Include="Autoridades\LicenciasSec.aspx" />
+    <Content Include="Autoridades\ListaEmpleadosSec.aspx" />
+    <Content Include="Autoridades\NotificacionesSec.aspx" />
+    <Content Include="Autoridades\Resultado_evaluacionSec.aspx" />
+    <Content Include="Back\Ausentismo.aspx" />
+    <Content Include="Back\Dashboard.aspx" />
+    <Content Include="Back\DesempenioDirecciones.aspx" />
+    <Content Include="Back\Desempeniosecretarias.aspx" />
+    <Content Include="Back\EstadoEvaluacion.aspx" />
+    <Content Include="Back\Fichas.aspx" />
+    <Content Include="Back\Fichas_preguntas.aspx" />
+    <Content Include="Back\Licencias.aspx" />
+    <Content Include="Back\Personas_fichas.aspx" />
+    <Content Include="Back\Resultados_evaluacion_secretarias.aspx" />
+    <Content Include="Back\Resultado_evaluacion.aspx" />
+    <Content Include="Back\RevisionDirecciones.aspx" />
+    <Content Include="Back\RevisionSecretarias.aspx" />
+    <Content Include="css\all.min.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\docs.css" />
     <Content Include="imagenes\conceptos.jpg" />
     <Content Include="imagenes\escudo.jpeg" />
     <Content Include="imagenes\escudo.jpg" />
@@ -6949,6 +7091,141 @@
     <Content Include="App_Themes\bower_components\select2\src\scss\_dropdown.scss" />
     <Content Include="App_Themes\bower_components\select2\src\scss\_multiple.scss" />
     <Content Include="App_Themes\bower_components\select2\src\scss\_single.scss" />
+    <Content Include="MP\Dashboard.Master" />
+    <Content Include="MP\MasterNew.Master" />
+    <Content Include="MP\MP.Master" />
+    <Content Include="MP\MP_Desempenio.Master" />
+    <Content Include="Autoridades\MPDirecciones.Master" />
+    <Content Include="Autoridades\MPSec.Master" />
+    <Content Include="App_Themes\NewTheme\dist\locales\ar.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\ca.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\cs.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\da.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\de.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\el.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\en.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\es.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\et.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\fa.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\fi.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\fr.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\he.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\hi.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\hr.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\hu.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\hy.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\id.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\it.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\ja.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\ka.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\ko.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\lt.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\lv.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\nb.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\nl.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\pl.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\pt-br.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\pt.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\rs.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\ru.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\se.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\sk.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\sl.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\sq.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\th.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\tr.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\ua.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\zh-cn.json" />
+    <Content Include="App_Themes\NewTheme\dist\locales\zh-tw.json" />
+    <Content Include="App_Themes\NewTheme\fonts\fontawesome-webfont.eot" />
+    <Content Include="App_Themes\NewTheme\fonts\fontawesome-webfont.ttf" />
+    <Content Include="App_Themes\NewTheme\fonts\fontawesome-webfont.woff" />
+    <Content Include="App_Themes\NewTheme\fonts\fontawesome-webfont.woff2" />
+    <Content Include="App_Themes\NewTheme\fonts\fontawesome.eot" />
+    <Content Include="App_Themes\NewTheme\fonts\FontAwesome.otf" />
+    <Content Include="App_Themes\NewTheme\fonts\fontawesome.ttf" />
+    <Content Include="App_Themes\NewTheme\fonts\fontawesome.woff" />
+    <Content Include="App_Themes\NewTheme\fonts\icons-wdp.woff" />
+    <Content Include="App_Themes\NewTheme\fonts\multa.eot" />
+    <Content Include="App_Themes\NewTheme\fonts\multa.ttf" />
+    <Content Include="App_Themes\NewTheme\fonts\multa.woff" />
+    <Content Include="App_Themes\NewTheme\fonts\multa.woff2" />
+    <Content Include="App_Themes\NewTheme\fonts\readme.md" />
+    <Content Include="App_Themes\NewTheme\fonts\VastagoGrotesk-Black.otf" />
+    <Content Include="App_Themes\NewTheme\fonts\VastagoGrotesk-Light.otf" />
+    <Content Include="App_Themes\NewTheme\fonts\VastagoGrotesk-Medium.otf" />
+    <Content Include="App_Themes\NewTheme\fonts\VastagoGrotesk-Regular.otf" />
+    <Content Include="App_Themes\NewTheme\fonts\VastagoGrotesk-SemiBold.otf" />
+    <Content Include="App_Themes\NewTheme\js\js%281%29" />
+    <Content Include="App_Themes\GestionPablo\fonts\Genty Regular.ttf" />
+    <Content Include="App_Themes\GestionPablo\fonts\VastagoGrotesk-Black.otf" />
+    <Content Include="App_Themes\GestionPablo\fonts\VastagoGrotesk-Bold.otf" />
+    <Content Include="App_Themes\GestionPablo\fonts\VastagoGrotesk-Medium.otf" />
+    <Content Include="App_Themes\GestionPablo\fonts\VastagoGrotesk-Regular.otf" />
+    <Content Include="App_Themes\GestionPablo\fonts\VastagoGrotesk-SemiBold.otf" />
+    <Content Include="App_Themes\Definitivo\dist\locales\ar.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\ca.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\cs.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\da.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\de.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\el.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\en.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\es.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\et.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\fa.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\fi.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\fr.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\he.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\hi.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\hr.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\hu.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\hy.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\id.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\it.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\ja.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\ka.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\ko.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\lt.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\lv.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\nb.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\nl.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\pl.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\pt-br.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\pt.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\rs.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\ru.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\se.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\sk.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\sl.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\sq.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\th.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\tr.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\ua.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\zh-cn.json" />
+    <Content Include="App_Themes\Definitivo\dist\locales\zh-tw.json" />
+    <Content Include="App_Themes\Definitivo\fonts\fa-brands-400.woff2" />
+    <Content Include="App_Themes\Definitivo\fonts\fa-solid-900.woff2" />
+    <Content Include="App_Themes\Definitivo\fonts\fontawesome-webfont.eot" />
+    <Content Include="App_Themes\Definitivo\fonts\fontawesome-webfont.ttf" />
+    <Content Include="App_Themes\Definitivo\fonts\fontawesome-webfont.woff" />
+    <Content Include="App_Themes\Definitivo\fonts\fontawesome-webfont.woff2" />
+    <Content Include="App_Themes\Definitivo\fonts\fontawesome.eot" />
+    <Content Include="App_Themes\Definitivo\fonts\FontAwesome.otf" />
+    <Content Include="App_Themes\Definitivo\fonts\fontawesome.ttf" />
+    <Content Include="App_Themes\Definitivo\fonts\fontawesome.woff" />
+    <Content Include="App_Themes\Definitivo\fonts\Genty Regular.ttf" />
+    <Content Include="App_Themes\Definitivo\fonts\icons-wdp.woff" />
+    <Content Include="App_Themes\Definitivo\fonts\multa.eot" />
+    <Content Include="App_Themes\Definitivo\fonts\multa.ttf" />
+    <Content Include="App_Themes\Definitivo\fonts\multa.woff" />
+    <Content Include="App_Themes\Definitivo\fonts\multa.woff2" />
+    <Content Include="App_Themes\Definitivo\fonts\readme.md" />
+    <Content Include="App_Themes\Definitivo\fonts\VastagoGrotesk-Black.otf" />
+    <Content Include="App_Themes\Definitivo\fonts\VastagoGrotesk-Bold.otf" />
+    <Content Include="App_Themes\Definitivo\fonts\VastagoGrotesk-Medium.otf" />
+    <Content Include="App_Themes\Definitivo\fonts\VastagoGrotesk-Regular.otf" />
+    <Content Include="App_Themes\Definitivo\fonts\VastagoGrotesk-SemiBold.otf" />
+    <Content Include="App_Themes\Definitivo\js\js%281%29" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\sueldosweb.pubxml" />
@@ -7043,6 +7320,247 @@
     <Content Include="xsl\XSLAlertas.xsl" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Autoridades\AusentismoDireccion.aspx.cs">
+      <DependentUpon>AusentismoDireccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\AusentismoDireccion.aspx.designer.cs">
+      <DependentUpon>AusentismoDireccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\AusentismoSec.aspx.cs">
+      <DependentUpon>AusentismoSec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\AusentismoSec.aspx.designer.cs">
+      <DependentUpon>AusentismoSec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\DashboardDireccion.aspx.cs">
+      <DependentUpon>DashboardDireccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\DashboardDireccion.aspx.designer.cs">
+      <DependentUpon>DashboardDireccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\DashboardSecretaria.aspx.cs">
+      <DependentUpon>DashboardSecretaria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\DashboardSecretaria.aspx.designer.cs">
+      <DependentUpon>DashboardSecretaria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\DesempenioDirecciones.aspx.cs">
+      <DependentUpon>DesempenioDirecciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\DesempenioDirecciones.aspx.designer.cs">
+      <DependentUpon>DesempenioDirecciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\DesempenioSec.aspx.cs">
+      <DependentUpon>DesempenioSec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\DesempenioSec.aspx.designer.cs">
+      <DependentUpon>DesempenioSec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\DesempeñoDireccion.aspx.cs">
+      <DependentUpon>DesempeñoDireccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\DesempeñoDireccion.aspx.designer.cs">
+      <DependentUpon>DesempeñoDireccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\Direcciones\ListaEmpleados.aspx.cs">
+      <DependentUpon>ListaEmpleados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\Direcciones\ListaEmpleados.aspx.designer.cs">
+      <DependentUpon>ListaEmpleados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\Direcciones\Notificaciones.aspx.cs">
+      <DependentUpon>Notificaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\Direcciones\Notificaciones.aspx.designer.cs">
+      <DependentUpon>Notificaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\Direcciones\UnderConstruction.aspx.cs">
+      <DependentUpon>UnderConstruction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\Direcciones\UnderConstruction.aspx.designer.cs">
+      <DependentUpon>UnderConstruction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\EvaluacionDireccion.aspx.cs">
+      <DependentUpon>EvaluacionDireccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\EvaluacionDireccion.aspx.designer.cs">
+      <DependentUpon>EvaluacionDireccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\EvaluacionSec.aspx.cs">
+      <DependentUpon>EvaluacionSec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\EvaluacionSec.aspx.designer.cs">
+      <DependentUpon>EvaluacionSec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\Evaluadores.aspx.cs">
+      <DependentUpon>Evaluadores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\Evaluadores.aspx.designer.cs">
+      <DependentUpon>Evaluadores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\LicenciasDireccion.aspx.cs">
+      <DependentUpon>LicenciasDireccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\LicenciasDireccion.aspx.designer.cs">
+      <DependentUpon>LicenciasDireccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\LicenciasSec.aspx.cs">
+      <DependentUpon>LicenciasSec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\LicenciasSec.aspx.designer.cs">
+      <DependentUpon>LicenciasSec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\ListaEmpleadosSec.aspx.cs">
+      <DependentUpon>ListaEmpleadosSec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\ListaEmpleadosSec.aspx.designer.cs">
+      <DependentUpon>ListaEmpleadosSec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\MPDirecciones.Master.cs">
+      <DependentUpon>MPDirecciones.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\MPDirecciones.Master.designer.cs">
+      <DependentUpon>MPDirecciones.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\MPSec.Master.cs">
+      <DependentUpon>MPSec.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\MPSec.Master.designer.cs">
+      <DependentUpon>MPSec.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\NotificacionesSec.aspx.cs">
+      <DependentUpon>NotificacionesSec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\NotificacionesSec.aspx.designer.cs">
+      <DependentUpon>NotificacionesSec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autoridades\Resultado_evaluacionSec.aspx.cs">
+      <DependentUpon>Resultado_evaluacionSec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autoridades\Resultado_evaluacionSec.aspx.designer.cs">
+      <DependentUpon>Resultado_evaluacionSec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Back\Ausentismo.aspx.cs">
+      <DependentUpon>Ausentismo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Back\Ausentismo.aspx.designer.cs">
+      <DependentUpon>Ausentismo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Back\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Back\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Back\DesempenioDirecciones.aspx.cs">
+      <DependentUpon>DesempenioDirecciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Back\DesempenioDirecciones.aspx.designer.cs">
+      <DependentUpon>DesempenioDirecciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Back\Desempeniosecretarias.aspx.cs">
+      <DependentUpon>Desempeniosecretarias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Back\Desempeniosecretarias.aspx.designer.cs">
+      <DependentUpon>Desempeniosecretarias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Back\EstadoEvaluacion.aspx.cs">
+      <DependentUpon>EstadoEvaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Back\EstadoEvaluacion.aspx.designer.cs">
+      <DependentUpon>EstadoEvaluacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Back\Fichas.aspx.cs">
+      <DependentUpon>Fichas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Back\Fichas.aspx.designer.cs">
+      <DependentUpon>Fichas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Back\Fichas_preguntas.aspx.cs">
+      <DependentUpon>Fichas_preguntas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Back\Fichas_preguntas.aspx.designer.cs">
+      <DependentUpon>Fichas_preguntas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Back\Licencias.aspx.cs">
+      <DependentUpon>Licencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Back\Licencias.aspx.designer.cs">
+      <DependentUpon>Licencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Back\Personas_fichas.aspx.cs">
+      <DependentUpon>Personas_fichas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Back\Personas_fichas.aspx.designer.cs">
+      <DependentUpon>Personas_fichas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Back\Resultados_evaluacion_secretarias.aspx.cs">
+      <DependentUpon>Resultados_evaluacion_secretarias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Back\Resultados_evaluacion_secretarias.aspx.designer.cs">
+      <DependentUpon>Resultados_evaluacion_secretarias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Back\Resultado_evaluacion.aspx.cs">
+      <DependentUpon>Resultado_evaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Back\Resultado_evaluacion.aspx.designer.cs">
+      <DependentUpon>Resultado_evaluacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Back\RevisionDirecciones.aspx.cs">
+      <DependentUpon>RevisionDirecciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Back\RevisionDirecciones.aspx.designer.cs">
+      <DependentUpon>RevisionDirecciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Back\RevisionSecretarias.aspx.cs">
+      <DependentUpon>RevisionSecretarias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Back\RevisionSecretarias.aspx.designer.cs">
+      <DependentUpon>RevisionSecretarias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CIDI\Config.cs" />
+    <Compile Include="CIDI\Denuncia.cs" />
+    <Compile Include="CIDI\Domicilio.cs" />
+    <Compile Include="CIDI\Entrada.cs" />
+    <Compile Include="CIDI\FallecimientoReNaPer.cs" />
+    <Compile Include="CIDI\Informacion.cs" />
+    <Compile Include="CIDI\Representado.cs" />
+    <Compile Include="CIDI\Respuesta.cs" />
+    <Compile Include="CIDI\Usuario.cs" />
+    <Compile Include="CIDI\Utils.cs" />
     <Compile Include="impresiones\caratulaexpa4.aspx.cs">
       <DependentUpon>caratulaexpa4.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -7200,6 +7718,34 @@
     </Compile>
     <Compile Include="MP\Bootstrap.Master.designer.cs">
       <DependentUpon>Bootstrap.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MP\Dashboard.Master.cs">
+      <DependentUpon>Dashboard.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MP\Dashboard.Master.designer.cs">
+      <DependentUpon>Dashboard.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MP\MasterNew.Master.cs">
+      <DependentUpon>MasterNew.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MP\MasterNew.Master.designer.cs">
+      <DependentUpon>MasterNew.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MP\MP.Master.cs">
+      <DependentUpon>MP.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MP\MP.Master.designer.cs">
+      <DependentUpon>MP.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MP\MP_Desempenio.Master.cs">
+      <DependentUpon>MP_Desempenio.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MP\MP_Desempenio.Master.designer.cs">
+      <DependentUpon>MP_Desempenio.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="reportes\Acred_bco_generico.cs" />
@@ -7542,8 +8088,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="App_Themes\GestionPablo\js\" />
     <Folder Include="archivos\" />
     <Folder Include="bin\" />
+    <Folder Include="Evaluadores\" />
     <Folder Include="Excel\" />
     <Folder Include="obj\" />
     <Folder Include="secure\archivos\" />
