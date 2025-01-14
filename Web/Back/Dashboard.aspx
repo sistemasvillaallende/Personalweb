@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MP_Desempenio.Master" AutoEventWireup="true" 
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master" AutoEventWireup="true"
     CodeBehind="Dashboard.aspx.cs" Inherits="web.secure.Dashboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -49,7 +49,9 @@
         <div class="col-xl-3 col-lg-3 col-md-3" style="display: block">
             <div class="card top_counter">
                 <div class="list-group list-group-custom list-group-flush">
-                    <h3 style="padding-left: 20px; padding-top: 20px; font-size: 20px; color: var(--primary-color); font-weight: 600;">Incidencias del dia</h3>
+                    <h5 style="padding-left: 5px; font-size: 20px; color: var(--primary-color); font-weight: 600;">
+                        Incidencias del día
+                    </h5>
                     <hr style="margin-bottom: 0; margin-top: 5px; border-top: 3px solid lightgray; opacity: 1; margin-left: 20px; margin-right: 20px;" />
                     <div class="list-group-item d-flex align-items-center py-3"
                         style="padding-top: 5px !important; padding-bottom: 5px !important;">
@@ -99,8 +101,8 @@
                         <div class="content">
                             <button type="button" style="background-color: transparent; border: none; display: block; text-align: left"
                                 data-toggle="modal" data-target="#ModalCumple">
-                            <div>Cumpleaños</div>
-                            <h5 id="lblCumpleaños" runat="server" class="mb-0"></h5>                                
+                                <div>Cumpleaños</div>
+                                <h5 id="lblCumpleaños" runat="server" class="mb-0"></h5>
                             </button>
 
                         </div>
@@ -271,6 +273,7 @@
                 </div>
             </div>
         </div>
+        <!--
         <div class="col-xl-3 col-lg-3 col-md-3">
             <div class="card">
                 <div class="card-header border-0" style="padding-bottom: 0;">
@@ -542,9 +545,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row g-2 clearfix row-deck" style="margin-top: 20px;">
-        <div class="col-xl-12 col-lg-12 col-md-12" style="display: block">
+        -->
+        <div class="col-xl-6 col-lg-6 col-md-6" style="display: block">
             <div class="card">
                 <div class="card-header border-0" style="padding-bottom: 0;">
                     <h5 style="padding-left: 5px; font-size: 20px; color: var(--primary-color); font-weight: 600;">Distribución salarial, contratos y planta
@@ -663,7 +665,7 @@
                                 fontWeight: 400,
                                 horizontalAlign: 'center',
                                 offsetY: 0,
-                                position: 'left'
+                           
                             },
 
                         }
@@ -679,6 +681,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row g-2 clearfix row-deck" style="margin-top: 20px;">
     </div>
 
     <!-- Button trigger modal -->

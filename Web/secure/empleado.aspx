@@ -36,27 +36,27 @@
         </div>
     </div>--%>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style="text-align:right; margin-bottom: 20px;">
             <div class="btn-group" style="padding-bottom: 20px;">
-                <button type="button" class="btn btn-outline-primary" id="cmdConceptos" runat="server" onserverclick="cmdConceptos_ServerClick">
+                <button type="button" class="btn btn-outline-dark" id="cmdConceptos" runat="server" onserverclick="cmdConceptos_ServerClick">
                     <span class="glyphicon glyphicon-unchecked"></span>&nbsp;Conceptos
                 </button>
-                <button type="button" class="btn btn-outline-primary" id="cmdConsLegajo" runat="server" onserverclick="cmdConsLegajo_ServerClick">
+                <button type="button" class="btn btn-outline-dark" id="cmdConsLegajo" runat="server" onserverclick="cmdConsLegajo_ServerClick">
                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;Cons Legajo
                 </button>
-                <button type="button" class="btn btn-outline-primary" id="cmdCertificaciones" runat="server" onserverclick="cmdCertificaciones_ServerClick">
+                <button type="button" class="btn btn-outline-dark" id="cmdCertificaciones" runat="server" onserverclick="cmdCertificaciones_ServerClick">
                     <span class="glyphicon glyphicon-certificate"></span>&nbsp;Certificaciones
                 </button>
-                <button type="button" class="btn btn-outline-primary" id="cmdAnses" runat="server">
+                <button type="button" class="btn btn-outline-dark" id="cmdAnses" runat="server">
                     <span class="glyphicon glyphicon-book"></span>&nbsp;Anses
                 </button>
-                <button type="button" class="btn btn-outline-primary" id="cmdFamiliares" runat="server" onserverclick="cmdFamiliares_ServerClick">
+                <button type="button" class="btn btn-outline-dark" id="cmdFamiliares" runat="server" onserverclick="cmdFamiliares_ServerClick">
                     <span class="glyphicon glyphicon-picture"></span>&nbsp;Familiares
                 </button>
-                <button type="button" class="btn btn-outline-primary" id="cmdAportes">
+                <button type="button" class="btn btn-outline-dark" id="cmdAportes">
                     <span class="glyphicon glyphicon-briefcase"></span>&nbsp;Aportes
                 </button>
-                <button type="button" class="btn btn-outline-primary" id="cmdAltaBcoprov">
+                <button type="button" class="btn btn-outline-dark" id="cmdAltaBcoprov">
                     <span class="glyphicon glyphicon-pencil"></span>&nbsp;Alta Bco Prov
                 </button>
 

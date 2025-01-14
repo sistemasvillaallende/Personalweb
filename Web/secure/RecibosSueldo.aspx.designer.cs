@@ -7,11 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace web.secure {
-    
-    
-    public partial class RecibosSueldo {
-        
+namespace web.secure
+{
+
+
+    public partial class RecibosSueldo
+    {
+
         /// <summary>
         /// Control divError.
         /// </summary>
@@ -20,7 +22,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
-        
+
         /// <summary>
         /// Control txtError.
         /// </summary>
@@ -29,7 +31,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtError;
-        
+
         /// <summary>
         /// Control lblNombreEmpleado.
         /// </summary>
@@ -38,7 +40,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lblNombreEmpleado;
-        
+
         /// <summary>
         /// Control lblLegajo.
         /// </summary>
@@ -47,7 +49,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblLegajo;
-        
+
         /// <summary>
         /// Control lblTitulo.
         /// </summary>
@@ -56,7 +58,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTitulo;
-        
+
         /// <summary>
         /// Control ddlAnteriores.
         /// </summary>
@@ -65,7 +67,16 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ddlAnteriores;
-        
+
+        /// <summary>
+        /// Control cmdSalir.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton cmdSalir;
+
         /// <summary>
         /// Control divSueldos.
         /// </summary>
@@ -74,7 +85,16 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSueldos;
-        
+
+        /// <summary>
+        /// Control H1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl H1;
+
         /// <summary>
         /// Control divAguinaldos.
         /// </summary>
@@ -83,14 +103,5 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAguinaldos;
-        
-        /// <summary>
-        /// Control cmdSalir.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cmdSalir;
     }
 }

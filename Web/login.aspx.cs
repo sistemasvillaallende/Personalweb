@@ -87,7 +87,7 @@ namespace Web
                     Response.Cookies.Add(cookie);
                     //
                     FormsAuthentication.RedirectFromLoginPage(Session["usuario"].ToString().Replace("%", ""), false);
-                    Response.Redirect("~\\secure\\listempleados.aspx");
+                    Response.Redirect("~\\back\\dashboard.aspx");
                 }
                 else
                 {

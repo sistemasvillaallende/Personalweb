@@ -185,7 +185,7 @@
                             <div class="card" style="border: none;">
                                 <div class="card-header" id="headingOne" style="padding: 0; background-color: #f9fbfd;">
                                     <a id="mnuDashboard" runat="server" class="a-menu"
-                                        href="../secure/Dashboard.aspx">
+                                        href="../back/Dashboard.aspx">
                                         <i class="fa fa-tachometer"></i>
                                         <span>Panel de control</span>
                                     </a>
@@ -217,7 +217,7 @@
                                             data-target="#collapseTree" aria-expanded="false" aria-controls="collapseTwo">
                                             <i class="fa fa-graduation-cap"></i>
                                             Desempeño
-                                                <i class="fa fa-chevron-down" style="float: right;"></i>
+                                                <i class="fa fa-chevron-down" style="float: right; font-size: 18px !important;"></i>
                                         </a>
                                     </h2>
                                 </div>
@@ -264,7 +264,7 @@
                                             data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                             <i class="fa fa-list-ul"></i>
                                             Liquidaciones
-                                                <i class="fa fa-chevron-down" style="float: right;"></i>
+                                                <i class="fa fa-chevron-down" style="float: right; font-size: 18px !important;"></i>
                                         </a>
                                     </h2>
                                 </div>
@@ -331,7 +331,7 @@
                                             data-target="#collapseInformes" aria-expanded="false" aria-controls="collapseTwo">
                                             <i class="fa fa-info-circle"></i>
                                             Informes
-                                                <i class="fa fa-chevron-down" style="float: right;"></i>
+                                                <i class="fa fa-chevron-down" style="float: right; font-size: 18px !important;"></i>
                                         </a>
                                     </h2>
                                 </div>
@@ -369,7 +369,7 @@
             </div>
             </div>
             <div id="main-content" style="padding-left: 10px; padding-right: 10px; margin-top: 25px;">
-                <div class="container-fluid" style="padding-top: 5px !important; margin-top: 15px;">
+                <div class="container-fluid" style="padding-top: 5px !important; margin-top: 0px;">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>
