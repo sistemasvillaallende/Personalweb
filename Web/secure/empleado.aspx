@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master" AutoEventWireup="True" 
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master" AutoEventWireup="True"
     CodeBehind="empleado.aspx.cs" Inherits="web.secure.empleado" %>
 
 <%@ Register TagPrefix="ajaxToolkit" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
@@ -23,6 +23,15 @@
                 border-color: #dee2e6 #dee2e6 #fff;
                 border-width: 2px;
             }
+
+        .dropdown-arrow {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: url('data:image/svg+xml;utf8,<svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z" fill="gray"/></svg>') no-repeat right center;
+            background-size: 1em;
+            padding-right: 1.5em;
+        }
     </style>
 
 </asp:Content>
@@ -92,8 +101,7 @@
         </div>
     </div>
     <div class="container-fluid shadow p-3 mb-5 bg-white rounded"
-        style="background-color: white; padding-left: 2px !important; padding-top: 0px !important; 
-        padding-right: 2px !important; padding-bottom: 0 !important;">
+        style="background-color: white; padding-left: 2px !important; padding-top: 0px !important; padding-right: 2px !important; padding-bottom: 0 !important;">
         <div class="row">
             <%--<div class="col-md-12 col-md-offset-0">--%>
             <div class="box">
@@ -152,7 +160,7 @@
                                     <label>
                                         Tipo Dni:
                                     </label>
-                                    <asp:DropDownList ID="ddTipoDNI" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddTipoDNI" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddTipoDNI"
@@ -193,8 +201,7 @@
                                     <label>
                                         Cargo
                                     </label>
-                                    <asp:DropDownList ID="ddCargo" CssClass="form-control" runat="server" AppendDataBoundItems="True"
-                                        OnSelectedIndexChanged="ddCargo_SelectedIndexChanged" AutoPostBack="true">
+                                    <asp:DropDownList ID="ddCargo" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True" OnSelectedIndexChanged="ddCargo_SelectedIndexChanged" AutoPostBack="true">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="ddCargo"
@@ -205,7 +212,7 @@
                                     <label>
                                         Nº Cta Sueldo Basico
                                     </label>
-                                    <asp:DropDownList ID="ddCargoCuenta" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddCargoCuenta" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="ddCargoCuenta"
@@ -217,21 +224,22 @@
                                 <div class="col-md-4">
                                     <label>
                                         Seccion
+   
                                     </label>
-                                    <asp:DropDownList ID="ddSeccion" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddSeccion" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
 
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="ddSeccion"
                                         ErrorMessage="Debe Seleccionar La Seccion"
                                         ForeColor="#FF3300" InitialValue="0" ValidationGroup="ValidationDatos_empleado" Display="Dynamic">*</asp:RequiredFieldValidator>
-
                                 </div>
+
                                 <div class="col-md-4">
                                     <label>
                                         Categoria
                                     </label>
-                                    <asp:DropDownList ID="ddCategoria" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddCategoria" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
 
@@ -254,7 +262,7 @@
                                     <label>
                                         Clasificacion Personal
                                     </label>
-                                    <asp:DropDownList ID="ddClasificacion_personal" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddClasificacion_personal" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="ddClasificacion_personal"
@@ -265,7 +273,7 @@
                                     <label>
                                         Tipo Liquidacion
                                     </label>
-                                    <asp:DropDownList ID="ddTipo_liquidacion" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddTipo_liquidacion" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="ddTipo_liquidacion"
@@ -276,7 +284,7 @@
                                     <label>
                                         Oficina de Trabajo
                                     </label>
-                                    <asp:DropDownList ID="ddOficina" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddOficina" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="ddOficina"
@@ -289,8 +297,7 @@
                                     <label>
                                         Secretaria
                                     </label>
-                                    <asp:DropDownList ID="ddSecretaria" CssClass="form-control" runat="server" AppendDataBoundItems="True"
-                                        OnSelectedIndexChanged="ddSecretaria_SelectedIndexChanged" AutoPostBack="true">
+                                    <asp:DropDownList ID="ddSecretaria" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True" OnSelectedIndexChanged="ddSecretaria_SelectedIndexChanged" AutoPostBack="true">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="ddSecretaria"
@@ -301,8 +308,7 @@
                                     <label>
                                         Direccion
                                     </label>
-                                    <asp:DropDownList ID="ddDireccion" CssClass="form-control" runat="server" AppendDataBoundItems="True"
-                                        OnSelectedIndexChanged="ddDireccion_SelectedIndexChanged" AutoPostBack="true">
+                                    <asp:DropDownList ID="ddDireccion" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True" OnSelectedIndexChanged="ddDireccion_SelectedIndexChanged" AutoPostBack="true">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server"
@@ -314,7 +320,7 @@
                                     <label>
                                         Programa
                                     </label>
-                                    <asp:DropDownList ID="ddPrograma" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddPrograma" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="ddPrograma"
@@ -327,9 +333,11 @@
                                     <label>
                                         Regimen
                                     </label>
-                                    <asp:DropDownList ID="ddRegimen" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+
+                                    <asp:DropDownList ID="ddRegimen" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
+
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="ddRegimen"
                                         ErrorMessage="Debe Seleccionar Regimen!" ForeColor="#FF3300" InitialValue="0"
                                         ValidationGroup="ValidationDatos_empleado" Display="Dynamic">*</asp:RequiredFieldValidator>
@@ -338,7 +346,7 @@
                                     <label>
                                         Escala Aumento
                                     </label>
-                                    <asp:DropDownList ID="ddEscala" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddEscala" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
@@ -348,7 +356,7 @@
                                     <label>
                                         Situacion de Revista
                                     </label>
-                                    <asp:DropDownList ID="ddRevista" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddRevista" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="ddRevista"
@@ -365,11 +373,11 @@
                                         ErrorMessage="Ingrese Fecha de Revista" ForeColor="#FF3300" ValidationGroup="ValidationDatos_empleado"
                                         Display="Dynamic">*</asp:RequiredFieldValidator>
                                 </div>
-                                <div class="col-md-4">
-                                    <label>Activo?</label>
-                                    <div class="input-group">
-                                        <asp:CheckBox ID="ChkActivo" CssClass="form-control" runat="server" />
-                                    </div>
+                                <div class="col-md-4 pt-4">
+                                    <label>
+                                        <asp:CheckBox ID="ChkActivo" runat="server" />
+                                       <span class="ml-3"> Activo?</span>
+                                    </label>
                                 </div>
                             </div>
                             <div class="row" style="margin-bottom: 25px;">
@@ -380,12 +388,12 @@
                                     <asp:TextBox ID="txtFecha_baja" CssClass="form-control" runat="server"
                                         placeholder="Fecha de Baja"></asp:TextBox>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-8 mt-4">
                                     <div class="form-group col-md-6">
-                                        <label>Imprime Recibo?</label>
-                                        <div class="input-group">
-                                            <asp:CheckBox ID="chkImprime" CssClass="form-control" runat="server" />
-                                        </div>
+                                        <label>
+                                            <asp:CheckBox ID="chkImprime" runat="server" />
+                                            <span class="ml-3">Imprime Recibo?</spa>
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -402,17 +410,19 @@
                             <div class="row margen">
                                 <br />
                                 <div class="col-md-12" style="text-align: right;">
-                                    <asp:Button ID="cmdCancelar_tab_empleado" CssClass="btn btn-info" runat="server"
-                                        Text="Cancelar" OnClick="cmdCancelar_tab_empleado_Click" />
-                                    <asp:Button ID="cmdAceptar_tab_empleado" CssClass="btn btn-primary" runat="server"
-                                        ValidationGroup="ValidationDatos_empleado"
-                                        Text="Aceptar" OnClick="cmdAceptar_tab_empleado_Click" />
-                                    <button type="button" id="btnVolver1" runat="server"
-                                        onserverclick="btnVolver1_ServerClick" class="btn btn-warning">
-                                        <span class="glyphicon glyphicon glyphicon-new-window"></span>&nbsp;Volver
+                                    <asp:Button ID="Button1" CssClass="btn btn-danger btn-lg" runat="server"
+                                        Text="Cancelar" OnClick="cmdCancelar_tab_particulares_Click" />
+                                    <asp:Button ID="Button2" CssClass="btn btn-success btn-lg" runat="server"
+                                        ValidationGroup="ValidationDatosParticulares" OnClick="cmdAceptar_tab_Datos_Particulares_Click"
+                                        Text="Aceptar" />
+                                    <button type="button" id="Button3" runat="server" onserverclick="cmdVolver4_ServerClick" class="btn btn-warning btn-lg">
+                                        <span class="glyphicon glyphicon-new-window"></span>&nbsp;Volver
                                     </button>
                                 </div>
                             </div>
+                            <br />
+
+
                             <br />
                         </div>
                     </div>
@@ -550,7 +560,7 @@
                                             <label>
                                                 Banco
                                             </label>
-                                            <asp:DropDownList ID="ddBanco" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                            <asp:DropDownList ID="ddBanco" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
                                                 <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                             </asp:DropDownList>
 
@@ -559,7 +569,7 @@
                                             <label>
                                                 Tipo Cuenta
                                             </label>
-                                            <asp:DropDownList ID="ddTipo_cuenta" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                            <asp:DropDownList ID="ddTipo_cuenta" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
                                                 <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                             </asp:DropDownList>
 
@@ -649,7 +659,7 @@
                                             <label>
                                                 Sexo:
                                             </label>
-                                            <asp:DropDownList ID="ddSexo" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                            <asp:DropDownList ID="ddSexo" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
                                                 <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="ddSexo"
@@ -661,7 +671,7 @@
                                             <label>
                                                 Estado Civil
                                             </label>
-                                            <asp:DropDownList ID="ddEstadoCivil" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                            <asp:DropDownList ID="ddEstadoCivil" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
                                                 <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="ddEstadoCivil"
