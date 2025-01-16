@@ -521,31 +521,4 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="../js/MaxLength.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            //Specifying the Character Count control explicitly
-            $("[id*=txtObservaciones.ClientID]").MaxLength(
-                {
-                    MaxLength: 300,
-                    CharacterCountControl: $('#counter')
-                });
-            //Disable Character Count
-            //$("[id*=TextBox3]").MaxLength(
-            //{
-            //    MaxLength: 20,
-            //    DisplayCharacterCount: false
-            //});
-        });
-    </script>
-
-    <%-- <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function () {
-            var textBox = document.getElementById("<%= txtObservaciones.ClientID %>");
-            textBox.addEventListener("input", function () {
-                if (this.value.length > 100) {
-                    this.value = this.value.slice(0, 100);
-                }
-            });
-        });
-    </script>--%>
 </asp:Content>
