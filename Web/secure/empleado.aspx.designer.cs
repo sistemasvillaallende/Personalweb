@@ -519,31 +519,31 @@ namespace web.secure
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationDatos_empleado;
 
         /// <summary>
-        /// Control cmdCancelar_tab_empleado.
+        /// Control Button1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cmdCancelar_tab_empleado;
+        protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
-        /// Control cmdAceptar_tab_empleado.
+        /// Control Button2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cmdAceptar_tab_empleado;
+        protected global::System.Web.UI.WebControls.Button Button2;
 
         /// <summary>
-        /// Control btnVolver1.
+        /// Control Button3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnVolver1;
+        protected global::System.Web.UI.HtmlControls.HtmlButton Button3;
 
         /// <summary>
         /// Control UpdatePanel2.

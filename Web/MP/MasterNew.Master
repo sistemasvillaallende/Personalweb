@@ -185,9 +185,9 @@
                             <div class="card" style="border: none;">
                                 <div class="card-header" id="headingOne" style="padding: 0; background-color: #f9fbfd;">
                                     <a id="mnuDashboard" runat="server" class="a-menu"
-                                        href="../secure/Dashboard.aspx">
+                                        href="../back/Dashboard.aspx">
                                         <i class="fa fa-tachometer"></i>
-                                        <span>Panel de control</span>
+                                        <span>Panel de Control</span>
                                     </a>
                                 </div>
                             </div>
