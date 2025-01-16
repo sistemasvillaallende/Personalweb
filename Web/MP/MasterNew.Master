@@ -99,7 +99,49 @@
                 color: white !important;
                 margin-right: 10px;
             }
+
     </style>
+
+    <style>
+        .btn-control {
+            background-color: gray;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-control:hover {
+            background-color: darkgray;
+        }
+
+        .btn-control.cancelar {
+            background-color: rgb(180, 23, 9);
+        }
+
+        .btn-control.cancelar:hover {
+            background-color: rgb(110, 16, 16);
+        }
+
+        .btn-control.aceptar {
+            background-color: #2EACB3;
+        }
+
+        .btn-control.aceptar:hover {
+            background-color: #1F7F84;
+        }
+
+        .btn-control.volver {
+            background-color:rgb(207, 190, 0);
+        }
+
+        .btn-control.volver:hover {
+            background-color:rgb(119, 107, 0);
+        }
+    </style>    
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

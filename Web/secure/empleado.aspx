@@ -410,12 +410,12 @@
                             <div class="row margen">
                                 <br />
                                 <div class="col-md-12" style="text-align: right;">
-                                    <asp:Button ID="Button1" CssClass="btn btn-danger btn-lg" runat="server"
+                                    <asp:Button ID="Button1" CssClass="btn-control cancelar" runat="server"
                                         Text="Cancelar" OnClick="cmdCancelar_tab_particulares_Click" />
-                                    <asp:Button ID="Button2" CssClass="btn btn-success btn-lg" runat="server"
+                                    <asp:Button ID="Button2" CssClass="btn-control aceptar" runat="server"
                                         ValidationGroup="ValidationDatosParticulares" OnClick="cmdAceptar_tab_Datos_Particulares_Click"
                                         Text="Aceptar" />
-                                    <button type="button" id="Button3" runat="server" onserverclick="cmdVolver4_ServerClick" class="btn btn-warning btn-lg">
+                                    <button type="button" id="Button3" runat="server" onserverclick="cmdVolver4_ServerClick" class="btn-control volver">
                                         <span class="glyphicon glyphicon-new-window"></span>&nbsp;Volver
                                     </button>
                                 </div>
@@ -533,13 +533,13 @@
                                     <div class="row" style="margin-bottom: 25px;">
                                         <br />
                                         <div class="col-md-12" style="text-align: right;">
-                                            <asp:Button ID="cmdCancelar_tab_obsocial" CssClass="btn btn-info" runat="server"
+                                            <asp:Button ID="cmdCancelar_tab_obsocial" CssClass="btn-control cancelar" runat="server"
                                                 Text="Cancelar" OnClick="cmdCancelar_tab_obsocial_Click" />
-                                            <asp:Button ID="cmdAceptar_tab_obsocial" CssClass="btn btn-primary" runat="server"
+                                            <asp:Button ID="cmdAceptar_tab_obsocial" CssClass="btn-control aceptar" runat="server"
                                                 ValidationGroup="ValidationDatos_ObSocial"
                                                 Text="Aceptar" OnClick="cmdAceptar_tab_contrato_Click" />
                                             <button type="button" id="cmdVolver2" runat="server"
-                                                onserverclick="cmdVolver2_ServerClick" class="btn btn-warning">
+                                                onserverclick="cmdVolver2_ServerClick" class="btn-control volver">
                                                 <span class="glyphicon glyphicon glyphicon-new-window"></span>&nbsp;Volver
                                             </button>
                                         </div>
@@ -614,13 +614,13 @@
                                     <div class="row" style="margin-bottom: 25px;">
                                         <br />
                                         <div class="col-md-12" style="text-align: right;">
-                                            <asp:Button ID="cmdCancelar_tab_contrato" CssClass="btn btn-info" runat="server"
+                                            <asp:Button ID="cmdCancelar_tab_contrato" CssClass="btn-control cancelar" runat="server"
                                                 Text="Cancelar" OnClick="cmdCancelar_tab_contrato_Click" />
-                                            <asp:Button ID="cmdAceptar_tab_contrato" CssClass="btn btn-primary" runat="server"
+                                            <asp:Button ID="cmdAceptar_tab_contrato" CssClass="btn-control aceptar" runat="server"
                                                 Text="Aceptar" ValidationGroup="ValidationDatos_Bco" OnClick="cmdAceptar_tab_Datos_Banco_Click" />
 
                                             <button type="button" id="cmdVolver3" runat="server"
-                                                onserverclick="cmdVolver3_ServerClick" class="btn btn-warning">
+                                                onserverclick="cmdVolver3_ServerClick" class="btn-control volver">
                                                 <span class="glyphicon glyphicon glyphicon-new-window"></span>&nbsp;Volver
                                             </button>
 
@@ -784,13 +784,13 @@
                                 <div class="row" style="margin-bottom: 25px;">
                                     <br />
                                     <div class="col-md-12" style="text-align: right;">
-                                        <asp:Button ID="cmdCancelar_tab_particulares" CssClass="btn btn-info" runat="server"
+                                        <asp:Button ID="cmdCancelar_tab_particulares" CssClass="btn-control cancelar" runat="server"
                                             Text="Cancelar" OnClick="cmdCancelar_tab_particulares_Click" />
-                                        <asp:Button ID="cmdAceptar_tab_Datos_Particulares" CssClass="btn btn-primary" runat="server"
+                                        <asp:Button ID="cmdAceptar_tab_Datos_Particulares" CssClass="btn-control aceptar" runat="server"
                                             ValidationGroup="ValidationDatosParticulares" OnClick="cmdAceptar_tab_Datos_Particulares_Click"
                                             Text="Aceptar" />
                                         <button type="button" id="cmdVolver4" runat="server"
-                                            onserverclick="cmdVolver4_ServerClick" class="btn btn-warning">
+                                            onserverclick="cmdVolver4_ServerClick" class="btn-control volver">
 
                                             <span class="glyphicon glyphicon glyphicon-new-window"></span>&nbsp;Volver
                                         </button>
