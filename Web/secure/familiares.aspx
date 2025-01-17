@@ -6,8 +6,8 @@
 
     <style>
         .pry {
-            background-color: #3c8dbc;
-            border-color: #083048;
+            background-color: #007bff;
+            border-color: #0056b3;
             color: white;
         }
 
@@ -38,34 +38,35 @@
             margin: 4% auto;
         }
 
-            .gridview a {
-                margin: 5px;
-                border-radius: 50%;
-                background-color: #444;
-                padding: 5px 10px 5px 10px;
-                color: #fff !important;
-                text-decoration: none;
-                -o-box-shadow: 1px 1px 1px #111;
-                -moz-box-shadow: 1px 1px 1px #111;
-                -webkit-box-shadow: 1px 1px 1px #111;
-                box-shadow: 1px 1px 1px #111;
-            }
+        .gridview a {
+            margin: 5px;
+            border-radius: 50%;
+            background-color: #343a40;
+            padding: 5px 10px;
+            color: #fff !important;
+            text-decoration: none;
+            box-shadow: 1px 1px 1px #111;
+        }
 
-                .gridview a:hover {
-                    background-color: #1e8d12;
-                    color: #fff;
-                }
+        .gridview a:hover {
+            background-color: #28a745;
+            color: #fff;
+        }
 
-            .gridview span {
-                background-color: #ae2676;
-                color: #fff;
-                /*-o-box-shadow: 1px 1px 1px #111;*/
-                -moz-box-shadow: 1px 1px 1px #111;
-                -webkit-box-shadow: 1px 1px 1px #111;
-                box-shadow: 1px 1px 1px #111;
-                border-radius: 50%;
-                padding: 5px 10px 5px 10px;
-            }
+        .gridview span {
+            background-color: #dc3545;
+            color: #fff;
+            box-shadow: 1px 1px 1px #111;
+            border-radius: 50%;
+            padding: 5px 10px;
+        }
+    </style>
+
+    <style>
+        .modal-dialog {
+            width:80dvw;
+            margin: 30px auto;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -131,13 +132,13 @@
                                                         </div>
                                                         <div class="col-xs-6">
                                                             <div class="btn-group pull-right" id="div1" runat="server">
-                                                                <asp:LinkButton ID="LinkButtonVolver" CssClass="btn btn-default" runat="server" OnClick="LinkButtonVolver_Click">
+                                                                <asp:LinkButton ID="LinkButtonVolver" CssClass="btn-control volver" runat="server" OnClick="LinkButtonVolver_Click">
                                                             <i class="fa fa-sign-out"></i> Volver a Empleados
                                                                 </asp:LinkButton>
                                                             </div>
                                                             &nbsp;
                                                             <div class="btn-group pull-right" id="div2" runat="server">
-                                                                <asp:LinkButton ID="lbtnAddFamilia" CssClass="btn btn-default" runat="server" OnClick="lbtnAddFamilia_Click">
+                                                                <asp:LinkButton ID="lbtnAddFamilia" CssClass="btn-control aceptar" runat="server" OnClick="lbtnAddFamilia_Click">
                                                             <i class="fa fa-plus"></i>&nbsp;Agregar Familiares
                                                                 </asp:LinkButton>
                                                             </div>
@@ -280,123 +281,94 @@
                 TargetControlID="Button1"
                 ID="Datos_ModalPopupExtender">
             </ajaxToolkit:ModalPopupExtender>
-            <div class="modal-dialog" id="modalDatosFamiliares" runat="server" style="background-color: white; padding: 20px;">
+                        <div class="modal-dialog" id="modalDatosFamiliares" runat="server">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button"
-                            runat="server"
-                            id="btnCloseModal"
-                            onserverclick="btnCloseModal_ServerClick"
-                            class="close" data-dismiss="modal"
-                            aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                        <button type="button" runat="server" id="btnCloseModal" onserverclick="btnCloseModal_ServerClick" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
                         <h4 class="modal-title">
-                            <asp:Label ID="lblTituloFormModal" runat="server" Text="Label"></asp:Label>
-                            <h4 class="modal-title">Agregar Items</h4>
+                            <asp:Label ID="lblTituloFormModal" runat="server"></asp:Label>
+                            Agregar Items
                         </h4>
                     </div>
-
-                    <div class="modal-body" id="activity" style="min-height: 320px;">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Nombre Familiar</label>
-                                    <asp:TextBox ID="txtNombre" runat="server" autocomplete="false"
-                                        placeholder="Ingrese Nombre de la Persona" CssClass="form-control"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ValidationGroup="GroupItems"
-                                        ControlToValidate="txtNombre" ErrorMessage="Debe Ingresar el Nombre" SetFocusOnError="True">*</asp:RequiredFieldValidator>
-                                </div>
+            
+                    <div class="modal-body" id="activity">
+                        <div class="form-group">
+                            <label>Nombre Familiar</label>
+                            <asp:TextBox ID="txtNombre" runat="server" autocomplete="false" placeholder="Ingrese Nombre de la Persona" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ValidationGroup="GroupItems" ControlToValidate="txtNombre" ErrorMessage="Debe Ingresar el Nombre" SetFocusOnError="True" CssClass="text-danger">*</asp:RequiredFieldValidator>
+                        </div>
+            
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Tipo Doc</label>
+                                <asp:DropDownList ID="ddTipoDNI" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                    <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="ddTipoDNI" ErrorMessage="Debe Seleccionar el Tipo De Doc" ForeColor="#FF3300" InitialValue="0" ValidationGroup="GroupItems" Display="Dynamic" CssClass="text-danger">*</asp:RequiredFieldValidator>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Nro Documento</label>
+                                <asp:TextBox ID="txtNrodocumento" runat="server" autocomplete="false" placeholder="Nro Documento" CssClass="form-control"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtNrodocumento" ErrorMessage="Debe ingresar Nro Documento" SetFocusOnError="True" ValidationGroup="GroupItems" CssClass="text-danger">*</asp:RequiredFieldValidator>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <label>Tipo Doc</label>
-                                    <asp:DropDownList ID="ddTipoDNI" CssClass="form-control" runat="server" AppendDataBoundItems="True">
-                                        <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
-                                    </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="ddTipoDNI"
-                                        ErrorMessage="Debe Seleccionar el Tipo De Doc" ForeColor="#FF3300" InitialValue="0"
-                                        ValidationGroup="GroupItems" Display="Dynamic">*</asp:RequiredFieldValidator>
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Nro Documento</label>
-                                    <asp:TextBox ID="txtNrodocumento" runat="server" Width="90%" autocomplete="false"
-                                        placeholder="Nro Documento" CssClass="form-control"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtNrodocumento"
-                                        ErrorMessage="Debe ingresar Nro Documento" SetFocusOnError="True" ValidationGroup="GroupItems">*</asp:RequiredFieldValidator>
-                                </div>
+            
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Sexo</label>
+                                <asp:DropDownList ID="ddSexo" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                    <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
+                                    <asp:ListItem Value="1">FEMENINO</asp:ListItem>
+                                    <asp:ListItem Value="2">MASCULINO</asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="ddSexo" ErrorMessage="Debe Seleccionar Sexo" ForeColor="#FF3300" InitialValue="0" ValidationGroup="GroupItems" Display="Dynamic" CssClass="text-danger">*</asp:RequiredFieldValidator>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Fecha Nac</label>
+                                <asp:TextBox ID="txtFecha_nacimiento" runat="server" autocomplete="false" placeholder="Fecha Nacimiento" CssClass="form-control"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtFecha_nacimiento" ErrorMessage="Debe ingresar Fecha de Nacimiento" SetFocusOnError="True" ValidationGroup="GroupItems" CssClass="text-danger">*</asp:RequiredFieldValidator>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <label>Sexo</label>
-                                    <asp:DropDownList ID="ddSexo" CssClass="form-control" runat="server" AppendDataBoundItems="True">
-                                        <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
-                                        <asp:ListItem Selected="False" Value="1">FEMENINO</asp:ListItem>
-                                        <asp:ListItem Selected="False" Value="2">MASCULINO</asp:ListItem>
-                                    </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="ddSexo"
-                                        ErrorMessage="Debe Seleccionar Sexo" ForeColor="#FF3300" InitialValue="0"
-                                        ValidationGroup="GroupItems" Display="Dynamic">*</asp:RequiredFieldValidator>
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Fecha Nac</label>
-                                    <asp:TextBox ID="txtFecha_nacimiento" runat="server" Width="90%" autocomplete="false" CssClass="form-control"
-                                        placeholder="Fecha Nacimiento"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtFecha_nacimiento"
-                                        ErrorMessage="Debe ingresar Fecha de Nacimiento" SetFocusOnError="True" ValidationGroup="GroupItems">*</asp:RequiredFieldValidator>
+            
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label>Parentezco</label>
+                                <asp:DropDownList ID="ddParentezco" CssClass="form-control" runat="server" AppendDataBoundItems="True">
+                                    <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
+                                    <asp:ListItem Value="1">HIJO/A</asp:ListItem>
+                                    <asp:ListItem Value="2">CONYUGUE</asp:ListItem>
+                                    <asp:ListItem Value="3">CONCUBINO/A</asp:ListItem>
+                                    <asp:ListItem Value="4">NIETO/A</asp:ListItem>
+                                    <asp:ListItem Value="5">PADRE/MADRE</asp:ListItem>
+                                    <asp:ListItem Value="6">FAMILIAR A CARGO</asp:ListItem>
+                                    <asp:ListItem Value="7">HIJASTRO/A</asp:ListItem>
+                                    <asp:ListItem Value="8">SOBRINO/A</asp:ListItem>
+                                    <asp:ListItem Value="9">TIO/A</asp:ListItem>
+                                    <asp:ListItem Value="10">HERMANO/A</asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="ddParentezco" ErrorMessage="Debe Seleccionar" ForeColor="#FF3300" InitialValue="0" ValidationGroup="GroupItems" Display="Dynamic" CssClass="text-danger">*</asp:RequiredFieldValidator>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Salario Fam</label>
+                                <div class="form-check">
+                                    <asp:CheckBox ID="chkSalario" CssClass="form-check-input" runat="server" />
                                 </div>
                             </div>
-                        </div>
-                        <br />
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-4">
-                                    <label>Parentezco</label>
-                                    <asp:DropDownList ID="ddParentezco" CssClass="form-control" runat="server" AppendDataBoundItems="True">
-                                        <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
-                                        <asp:ListItem Selected="False" Value="1">HIJO/A</asp:ListItem>
-                                        <asp:ListItem Selected="False" Value="2">CONYUGUE</asp:ListItem>
-                                        <asp:ListItem Selected="False" Value="3">CONCUBINO/A</asp:ListItem>
-                                        <asp:ListItem Selected="False" Value="4">NIETO/A</asp:ListItem>
-                                        <asp:ListItem Selected="False" Value="5">PADRE/MADRE</asp:ListItem>
-                                        <asp:ListItem Selected="False" Value="6">FAMILIAR A CARGO</asp:ListItem>
-                                        <asp:ListItem Selected="False" Value="7">HIJASTRO/A</asp:ListItem>
-                                        <asp:ListItem Selected="False" Value="8">SOBRINO/A</asp:ListItem>
-                                        <asp:ListItem Selected="False" Value="9">TIO/A</asp:ListItem>
-                                        <asp:ListItem Selected="False" Value="10">HERMANO/A</asp:ListItem>
-                                    </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="ddParentezco"
-                                        ErrorMessage="Debe Seleccionar" ForeColor="#FF3300" InitialValue="0"
-                                        ValidationGroup="GroupItems" Display="Dynamic">*</asp:RequiredFieldValidator>
-                                </div>
-                                <div class="col-md-4">
-                                    <label>Salario Fam</label>
-                                    <div class="input-group">
-                                        <asp:CheckBox ID="chkSalario" CssClass="form-control" runat="server" />
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <label>Incapacitado</label>
-                                    <div class="input-group">
-                                        <asp:CheckBox ID="chkIncapacitado" CssClass="form-control" runat="server" />
-                                    </div>
+                            <div class="form-group col-md-4">
+                                <label>Incapacitado</label>
+                                <div class="form-check">
+                                    <asp:CheckBox ID="chkIncapacitado" CssClass="form-check-input" runat="server" />
                                 </div>
                             </div>
                         </div>
                     </div>
-
+            
                     <div class="modal-footer">
-                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ValidationGroup="GroupItems" />
-                        <asp:Button ID="CancelarFam" runat="server"
-                            CssClass="btn btn-default" Text="Cancelar"
-                            OnClick="CancelarFam_Click" />
-                        <asp:Button ID="AceptarFam" runat="server"
-                            ValidationGroup="GroupItems"
-                            CssClass="btn btn-primary" Text="Aceptar"
-                            OnClick="AceptarFam_Click" />
+                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ValidationGroup="GroupItems" CssClass="text-danger" />
+                        <asp:Button ID="CancelarFam" runat="server" CssClass="btn btn-secondary" Text="Cancelar" OnClick="CancelarFam_Click" />
+                        <asp:Button ID="AceptarFam" runat="server" ValidationGroup="GroupItems" CssClass="btn btn-primary" Text="Aceptar" OnClick="AceptarFam_Click" />
                     </div>
                 </div>
             </div>
