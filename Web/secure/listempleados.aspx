@@ -273,9 +273,15 @@
                                                 </button>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item"
+<<<<<<< HEAD
                                                         href="empleado.aspx?legajo=<%#Eval("legajo")%>&op=modifica">Editar</a>
                                                     <a class="dropdown-item" href="#">Ver</a>
                                                     <a class="dropdown-item" href="#">Recibos</a>
+=======
+                                                        href="empleado.aspx?legajo=<%#Eval("legajo")%>&op=modifica">Ver</a>
+                                                    <a class="dropdown-item" href="#">Editar</a>
+                                                    <a class="dropdown-item" href="recibossueldo.aspx?legajo=<%#Eval("legajo")%>">Recibos Sueldo</a>
+>>>>>>> origin/Merge
                                                 </div>
                                             </div>
                                         </div>

@@ -31,9 +31,29 @@ namespace web.secure
         {
             try
             {
+                int mes = 0;
+                int anio = 0;
+                if (DateTime.Now.Month == 1)
+                {
+                    anio = DateTime.Now.Year - 1;
+                    mes = 11;
+                }
+                else
+                {
+                    if (DateTime.Now.Month == 2)
+                    {
+                        anio = DateTime.Now.Year - 1;
+                        mes = 12;
+                    }
+                    else
+                    {
+                        anio = DateTime.Now.Year;
+                        mes = DateTime.Now.Month - 2;
+                    }
 
+                }
                 object lst = DAL.EstadisticaSueldos.readSueldosPlanta(
-                    DateTime.Now.Month - 2, DateTime.Now.Year);
+                    mes, anio);
                 return lst;
             }
             catch (Exception ex)
@@ -44,7 +64,7 @@ namespace web.secure
         [WebMethod]
         public static object ResultadoEvaluacion()
         {
-                
+
             return DAL.Fichas.Resultados_x_filtro.read(3);
         }
         [WebMethod]

@@ -15,7 +15,6 @@ C:\Users\juanf\Devs\Personalweb\BLL\bin\Debug\BLL.dll
 C:\Users\juanf\Devs\Personalweb\BLL\bin\Debug\BLL.pdb
 C:\Users\juanf\Devs\Personalweb\BLL\bin\Debug\DAL.dll
 C:\Users\juanf\Devs\Personalweb\BLL\bin\Debug\Entities.dll
-C:\Users\juanf\Devs\Personalweb\BLL\bin\Debug\Newtonsoft.Json.dll
 C:\Users\juanf\Devs\Personalweb\BLL\bin\Debug\DAL.pdb
 C:\Users\juanf\Devs\Personalweb\BLL\bin\Debug\Entities.pdb
 C:\Users\juanf\Devs\Personalweb\BLL\bin\Debug\Newtonsoft.Json.xml

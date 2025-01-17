@@ -89,7 +89,27 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="obj\Debug\BLL.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\BLL.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\BLL.csproj.Up2Date" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\BLL.dll" />
+    <Content Include="bin\Debug\BLL.pdb" />
+    <Content Include="bin\Debug\DAL.dll" />
+    <Content Include="bin\Debug\DAL.pdb" />
+    <Content Include="bin\Debug\Entities.dll" />
+    <Content Include="bin\Debug\Entities.pdb" />
+    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
+    <Content Include="bin\Debug\Newtonsoft.Json.xml" />
+    <Content Include="obj\Debug\BLL.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\BLL.dll" />
+    <Content Include="obj\Debug\BLL.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
