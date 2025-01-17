@@ -2,7 +2,6 @@ D:\Muni\Dev\Personalweb2\BLL\bin\Debug\BLL.dll
 D:\Muni\Dev\Personalweb2\BLL\bin\Debug\BLL.pdb
 D:\Muni\Dev\Personalweb2\BLL\bin\Debug\DAL.dll
 D:\Muni\Dev\Personalweb2\BLL\bin\Debug\Entities.dll
-D:\Muni\Dev\Personalweb2\BLL\bin\Debug\Newtonsoft.Json.dll
 D:\Muni\Dev\Personalweb2\BLL\bin\Debug\DAL.pdb
 D:\Muni\Dev\Personalweb2\BLL\bin\Debug\Entities.pdb
 D:\Muni\Dev\Personalweb2\BLL\bin\Debug\Newtonsoft.Json.xml
