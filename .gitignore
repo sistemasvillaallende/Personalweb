@@ -6,4 +6,5 @@
 # Ignore Debug and bin folders
 **/Debug/
 **/bin/
+**/obj/
 
