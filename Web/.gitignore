@@ -3,8 +3,8 @@
 *.suo
 
 # Ignorar binarios y objetos de compilación
-BLL/bin/Debug/
-BLL/obj/
+**/Debug/
+**/bin/
 
 # Ignorar carpetas de paquetes y dependencias
 packages/
