@@ -819,6 +819,7 @@ namespace DAL
                 strSQL.AppendLine("FULL JOIN FICHAS_ESTADOS_EVALUACION z");
                 strSQL.AppendLine("ON X.ID_ESTADO = Z.ID");
                 strSQL.AppendLine("WHERE e.fecha_baja is null");
+                strSQL.AppendLine("AND e.legajo IS NOT NULL");
                 strSQL.AppendLine("ORDER BY e.legajo");
 
                 using (SqlConnection conn = DALBase.GetConnection("Siimva"))
@@ -1254,7 +1255,7 @@ namespace DAL
 
         }
 
-        public static DataSet ListDirecciones(int id_secretaria)
+        public static DataSet ListDirecciones(int id_direccion)
         {
 
             string strSQL = "";
@@ -1269,10 +1270,11 @@ namespace DAL
             //strSQl = strSQl & "JOIN ejercicios e ON "
             //strSQl = strSQl & "e.activo=1 and "
             //strSQl = strSQl & "e.ejercicio=dxs.ejercicio "
-            strSQL += "WHERE dxs.activo=1 ";
+            strSQL += "WHERE dxs.activo=0 ";
+            //strSQL += "WHERE dxs.activo=1 ";
 
-            if (id_secretaria > 0)
-                strSQL += " AND dxs.id_secretaria=" + id_secretaria;
+            if (id_direccion > 0)
+                strSQL += " AND dxs.id_secretaria=" + id_direccion;
             strSQL += " ORDER By d.descripcion";
 
             DataSet ds;

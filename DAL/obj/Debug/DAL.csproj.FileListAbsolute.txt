@@ -9,3 +9,14 @@ D:\Muni\Dev\Personalweb2\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 D:\Muni\Dev\Personalweb2\DAL\obj\Debug\DAL.csproj.Up2Date
 D:\Muni\Dev\Personalweb2\DAL\obj\Debug\DAL.dll
 D:\Muni\Dev\Personalweb2\DAL\obj\Debug\DAL.pdb
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\DAL\bin\Debug\DAL.dll
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\DAL\bin\Debug\DAL.pdb
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\DAL\bin\Debug\Entities.dll
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\DAL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\DAL\bin\Debug\Entities.pdb
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\DAL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\DAL\obj\Debug\DAL.csproj.Up2Date
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\DAL\obj\Debug\DAL.dll
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\DAL\obj\Debug\DAL.pdb

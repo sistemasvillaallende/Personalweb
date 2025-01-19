@@ -34,3 +34,12 @@ D:\Muni\Dev\Personalweb2\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.ca
 D:\Muni\Dev\Personalweb2\Entities\obj\Debug\Entities.csproj.Up2Date
 D:\Muni\Dev\Personalweb2\Entities\obj\Debug\Entities.dll
 D:\Muni\Dev\Personalweb2\Entities\obj\Debug\Entities.pdb
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\Entities\bin\Debug\Entities.dll
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\Entities\bin\Debug\Entities.pdb
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\Entities\bin\Debug\Newtonsoft.Json.dll
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\Entities\bin\Debug\Newtonsoft.Json.xml
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\Entities\obj\Debug\Entities.csproj.AssemblyReference.cache
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.cache
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\Entities\obj\Debug\Entities.csproj.Up2Date
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\Entities\obj\Debug\Entities.dll
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\Entities\obj\Debug\Entities.pdb
