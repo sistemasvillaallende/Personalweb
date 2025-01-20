@@ -186,20 +186,20 @@
                 <!-- ////////////////////////////// DETALLE ////////////////////////////////////////////////// -->
                 <div class="row">
                     <div class="col-md-12 col-md-offset-2">
-                        <div class="panel-heading" style="height: 40px;">
-                            <h4>Conceptos del Empleado</h4>
-                        </div>
-                        <div class="row">
 
+                        <div class="row">
                             <div class="col-md-12">
-                                <div class="col-md-12" style="text-align: right;">
-                                    <asp:LinkButton ID="lnkAgrega_conceptos" CssClass="btn-control aceptar"
-                                        runat="server" OnClick="lnkAgrega_conceptos_Click">
-                                        <i class="fa fa-money"></i> Agregar Concepto
-                                    </asp:LinkButton>
+                                <div class="row p-3">
+                                    <div class="panel-heading col-6">
+                                        <h4>Conceptos del Empleado</h4>
+                                    </div>
+                                    <div class="col-md-6" style="text-align: right;">
+                                        <asp:LinkButton ID="lnkAgrega_conceptos" CssClass="btn-control aceptar"
+                                            runat="server" OnClick="lnkAgrega_conceptos_Click">
+                                            <i class="fa fa-money"></i> Agregar Concepto
+                                        </asp:LinkButton>
+                                    </div>
                                 </div>
-                                <br />
-                                <br />
                                 <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
                                 <!-- ////////////////////////////// GRILLA DETALLE /////////////////////////////////////// -->
                                 <div class="col-md-12 mb-3">

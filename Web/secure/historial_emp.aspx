@@ -8,7 +8,7 @@
 
 
         <div class="row" style="padding-top: 60px;">
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-12 col-md-offset-1">
                 <div class="row">
                     <div class="panel panel-primary">
                         <div class="panel-heading" style="height: 40px;">
@@ -17,7 +17,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <div class="col-md-8 col-md-offset-1" style="padding-top: 10px;">
+                                <div class="col-md-8 col-md-offset-1">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>
@@ -43,17 +43,17 @@
                     </div>
 
                     <div class="panel panel-primary">
-                        <div class="panel-heading" style="height: 40px;">
+                        <div class="panel-heading">
                             <h4>Historial Movimientos del Empleado</h4>
                         </div>
                         <br />
 
                         <div class="panel-body">
-                            <div class="row" style="padding: 10px; padding-top: 10px;">
-                                <div style="overflow: scroll; height: 300px;">
-                                    <asp:GridView ID="gvDetalle" CssClass="table" runat="server" CellPadding="4"
-                                        ForeColor="Black" GridLines="Horizontal" BackColor="White" BorderColor="#CCCCCC"
-                                        BorderStyle="None" BorderWidth="1px" Width="100%">
+                            <div class="row" style="padding: 10px; padding-top: 5px;">
+                                <div class="col-12" style="overflow: auto; height: 400px;">
+                                    <asp:GridView ID="gvDetalle" CssClass="table table-striped table-bordered w-100"
+                                        runat="server" CellPadding="4" ForeColor="Black" GridLines="Horizontal"
+                                        BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                                         <FooterStyle BackColor="#CCCC99" ForeColor="Black"></FooterStyle>
                                         <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White">
                                         </HeaderStyle>
@@ -68,7 +68,6 @@
                                     </asp:GridView>
                                 </div>
                             </div>
-
                         </div>
 
                         <div class="panel-footer" style="text-align: right;">
