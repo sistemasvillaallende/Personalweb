@@ -1,6 +1,0 @@
-diff a/.gitignore b/.gitignore	(rejected hunks)
-@@ -3,3 +3,4 @@
- ################################################################################
- 
- /.vs/personalweb
-+Personalweb2.rar
