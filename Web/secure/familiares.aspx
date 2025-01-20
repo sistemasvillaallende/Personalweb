@@ -106,7 +106,7 @@
                         </div>
                         <div class="outer_div">
                             <div class="row">
-                                <div class="col-md-10 col-md-offset-1">
+                                <div class="col-md-12 col-md-offset-1">
                                     <div class="box" style="margin-top: 10px;">
                                         <div class="box-header with-border">
                                             <div class="row">
@@ -139,7 +139,7 @@
                                                             &nbsp;
                                                             <div class="btn-group pull-right" id="div2" runat="server">
                                                                 <asp:LinkButton ID="lbtnAddFamilia" CssClass="btn-control aceptar" runat="server" OnClick="lbtnAddFamilia_Click">
-                                                            <i class="fa fa-plus"></i>&nbsp;Agregar Familiares
+                                                                    <i class="fa fa-plus"></i>&nbsp;Agregar Familiares
                                                                 </asp:LinkButton>
                                                             </div>
                                                         </div>
@@ -161,7 +161,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="auto-style1" style="margin-top: 20px;">
+                                        <div class="table-informacion">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <asp:GridView ID="gvFamiliares" CssClass="table" runat="server"
@@ -223,21 +223,15 @@
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>--%>
                                                             <asp:BoundField DataField="opcion" HeaderText="opcion" Visible="False" />
-                                                            <asp:TemplateField HeaderText="Accion">
+                                                            <asp:TemplateField HeaderText="Acciones">
                                                                 <HeaderStyle />
                                                                 <ItemTemplate>
                                                                     <asp:ImageButton ID="imgbEdit" runat="server" CommandName="editar"
-                                                                        ImageUrl="~/App_Themes/Tema1/Images/editar.gif"
-                                                                        OnClientClick="return confirm('¿Está seguro de Modificar este registro?');"
+                                                                        ImageUrl="~/App_Themes/Estilos2025/editar.svg"
                                                                         CommandArgument="<%# Container.DataItemIndex %>"
                                                                         CausesValidation="False" />
-                                                                </ItemTemplate>
-                                                            </asp:TemplateField>
-                                                            <asp:TemplateField HeaderText="Accion">
-                                                                <HeaderStyle />
-                                                                <ItemTemplate>
                                                                     <asp:ImageButton ID="imgbDelete" runat="server" CommandName="elimina"
-                                                                        ImageUrl="~/App_Themes/Tema1/Images/delete.gif"
+                                                                        ImageUrl="~/App_Themes/Estilos2025/eliminar.svg"
                                                                         OnClientClick="return confirm('¿Está seguro de Eliminar este registro?');"
                                                                         CommandArgument="<%# Container.DataItemIndex %>"
                                                                         CausesValidation="False" />
