@@ -51,6 +51,8 @@
     <Compile Include="AUX_DETALLE_SUELDO.cs" />
     <Compile Include="AUX_MAESTRO_SUELDO.cs" />
     <Compile Include="Categorias.cs" />
+    <Compile Include="Categoria_profesional_monotributo.cs" />
+    <Compile Include="Categoria_profesional_monotributo_hist.cs" />
     <Compile Include="Conceptos.cs" />
     <Compile Include="LstCtas_x_concepto.cs" />
     <Compile Include="Pago_sueldo_macro.cs" />
