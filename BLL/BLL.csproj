@@ -50,6 +50,7 @@
     <Compile Include="Acred_bco_provB.cs" />
     <Compile Include="AUX_MAESTRO_SUELDO.cs" />
     <Compile Include="CategoriasB.cs" />
+    <Compile Include="Categoria_profesional_monotributoB.cs" />
     <Compile Include="Concepto_Liq_x_EmpB.cs" />
     <Compile Include="ConsultaEmpleadoB.cs" />
     <Compile Include="Concepto_liqB.cs" />

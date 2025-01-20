@@ -111,9 +111,9 @@ namespace BLL
             return DAL.ConsultaEmpleadoD.ListSemestres(cod_semestre);
         }
 
-        public static DataSet ListDirecciones(int id_secretaria)
+        public static DataSet ListDirecciones(int id_direccion)
         {
-            return DAL.ConsultaEmpleadoD.ListDirecciones(id_secretaria);
+            return DAL.ConsultaEmpleadoD.ListDirecciones(id_direccion);
 
         }
 

@@ -72,7 +72,12 @@ namespace Entities
         public int id_revista { get; set; }
         public string fecha_revista { get; set; }
         public bool activo { get; set; }
-
+        public int licenciagenerada { get; set; }
+        public int licenciadisponible { get; set; }
+        public int licenciausadas { get; set; }
+        public int razonesparticulares { get; set; }
+        public string evaluadores { get; set; }
+        public int id_profesional_monotributo { get; set; }
 
         public Empleado()
         {
@@ -133,6 +138,12 @@ namespace Entities
             id_revista = 1;
             fecha_revista = string.Empty;
             activo = true;
+            licenciagenerada = 0;
+            licenciadisponible = 0;
+            licenciausadas = 0;
+            razonesparticulares = 0;
+            evaluadores = string.Empty;
+            id_profesional_monotributo = 0;
         }
 
     }
