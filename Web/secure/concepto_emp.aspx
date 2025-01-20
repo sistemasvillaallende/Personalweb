@@ -127,10 +127,10 @@
                                                 <div class="col-md-12 offset-md-1">
                                                     <div class="row form">
                                                         <div class="col-md-6">
-                                                            <div class="form-group">
+                                                            <div class="form-group row">
                                                                 <label for="txtLegajo">Legajo:</label>
                                                                 <asp:TextBox ID="txtLegajo" runat="server"
-                                                                    CssClass="form-control"></asp:TextBox>
+                                                                    CssClass="input-control"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5"
                                                                     runat="server" ControlToValidate="txtLegajo"
                                                                     ErrorMessage="Debe Ingresar Legajo"
@@ -149,7 +149,7 @@
                                                             <div class="form-group">
                                                                 <label for="txtNombre">Nombre:</label>
                                                                 <asp:TextBox ID="txtNombre" runat="server"
-                                                                    CssClass="form-control"></asp:TextBox>
+                                                                    CssClass="input-control"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
                                                                     runat="server" ControlToValidate="txtNombre"
                                                                     ErrorMessage="Debe Ingresar Nombre"
@@ -202,7 +202,7 @@
                                 <br />
                                 <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
                                 <!-- ////////////////////////////// GRILLA DETALLE /////////////////////////////////////// -->
-                                <div class="col-md-12">
+                                <div class="col-md-12 mb-3">
                                     <asp:UpdatePanel ID="PanelDetalle" runat="server" UpdateMode="Conditional">
                                         <Triggers>
                                             <asp:PostBackTrigger ControlID="lbtnExporCtaCte" />
@@ -241,15 +241,15 @@
                                                         <asp:TemplateField HeaderText="Accion">
                                                             <%--<HeaderStyle BackColor="#d9edf7" />--%>
                                                             <ItemTemplate>
-                                                                <asp:ImageButton ID="imgbDelete" runat="server"
-                                                                    CommandName="deleterow"
-                                                                    ImageUrl="~/App_Themes/Tema1/Images/delete.gif"
-                                                                    OnClientClick="return confirm('¿Está seguro de eliminar este registro?');"
-                                                                    CommandArgument=' <%# Container.DataItemIndex %> '
-                                                                    CausesValidation="False" />
                                                                 <asp:ImageButton ID="imgbEdit" runat="server"
                                                                     CommandName="editrow"
-                                                                    ImageUrl="~/App_Themes/Tema1/Images/editar.gif"
+                                                                    ImageUrl="~/App_Themes/Estilos2025/editar.svg"
+                                                                    CausesValidation="False" />
+                                                                <asp:ImageButton ID="imgbDelete" runat="server"
+                                                                    CommandName="deleterow"
+                                                                    ImageUrl="~/App_Themes/Estilos2025/eliminar.svg"
+                                                                    OnClientClick="return confirm('¿Está seguro de eliminar este registro?');"
+                                                                    CommandArgument=' <%# Container.DataItemIndex %> '
                                                                     CausesValidation="False" />
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
@@ -379,7 +379,7 @@
                 <div class="panel-body">
                     <asp:UpdatePanel ID="UpdatePanelConcepto" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
-                            <div class="modal-header col-md-12">                                
+                            <div class="modal-header col-md-12">
                                 <h4 class="modal-title">
                                     <asp:Label ID="lblTituloFormModal" runat="server" Text="Agregar Conceptos">
                                     </asp:Label>
@@ -409,7 +409,7 @@
                                     <div class="form-group col-md-4">
                                         <label>Cod Concepto</label>
                                         <asp:TextBox ID="txtCod_concepto_liq" runat="server" autocomplete="false"
-                                            placeholder="Ingrese Codigo" AutoPostBack="True" CssClass="form-control"
+                                            placeholder="Ingrese Codigo" AutoPostBack="True" CssClass="input-control"
                                             OnTextChanged="txtCod_concepto_liq_TextChanged"></asp:TextBox>
                                         <asp:CompareValidator ID="CompareValidator6" runat="server"
                                             ValidationGroup="cliente" ControlToValidate="txtCod_concepto_liq"
@@ -422,7 +422,7 @@
                                     <div class="form-group col-md-8">
                                         <label>Concepto</label>
                                         <asp:TextBox ID="txtConcepto" runat="server" autocomplete="false"
-                                            placeholder="Concepto" CssClass="form-control"></asp:TextBox>
+                                            placeholder="Concepto" CssClass="input-control"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                                             ValidationGroup="cliente" Display="Dynamic" ControlToValidate="txtConcepto"
                                             ErrorMessage="Debe Ingresar Concepto">*</asp:RequiredFieldValidator>
@@ -432,7 +432,7 @@
                                     <div class="form-group col-md-4">
                                         <label>Valor/Monto</label>
                                         <asp:TextBox ID="txtValor" runat="server" autocomplete="false"
-                                            CssClass="form-control" placeholder="Valor / Monto"></asp:TextBox>
+                                            CssClass="input-control" placeholder="Valor / Monto"></asp:TextBox>
                                         <asp:CompareValidator ID="CompareValidator5" runat="server"
                                             ValidationGroup="cliente" ControlToValidate="txtValor"
                                             ErrorMessage="Debe Ingresar Valor" Type="Double" Display="Dynamic"
@@ -443,8 +443,9 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Fecha Vto</label>
-                                        <asp:TextBox ID="txtFecha_vto" runat="server" autocomplete="false"
-                                            placeholder="Fecha Vto." CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtFecha_vto" runat="server" TextMode="Date"
+                                            autocomplete="false" placeholder="Fecha Vto." CssClass="form-control">
+                                        </asp:TextBox>
                                         <asp:CompareValidator ID="CompareValidator4" runat="server"
                                             ValidationGroup="cliente" ControlToValidate="txtFecha_vto"
                                             ErrorMessage="Debe Ingresar Fecha_vto" Type="Date" Operator="DataTypeCheck">
@@ -462,7 +463,7 @@
                                         <div class="form-group">
                                             <label>Motivo/Obs:</label>
                                             <asp:TextBox ID="txtObs" runat="server" TextMode="MultiLine"
-                                                CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
+                                                CssClass="input-control" ClientIDMode="Static"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server"
                                                 ErrorMessage="Motivo por el cual se realiza este trámite"
                                                 ControlToValidate="txtObs" ForeColor="#FF3300" Display="Dynamic"
@@ -479,8 +480,8 @@
                                         <button type="button" class="btn-control aceptar" runat="server" id="btnAceptar"
                                             validationgroup="cliente" onserverclick="btnAceptar_ServerClick">
                                             Aceptar</button>
-                                        <button type="button" class="btn-control" runat="server" id="btnCancelar"
-                                            onserverclick="btnCancelar_ServerClick">
+                                        <button type="button" class="btn-control cancelar" runat="server"
+                                            id="btnCancelar" onserverclick="btnCancelar_ServerClick">
                                             Cancelar</button>
                                     </div>
                                 </div>
@@ -556,6 +557,7 @@
                     document.body.innerHTML = contenidoOriginal;
                 }
             </script>
+
 
             <script type="text/javascript"
                 src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
