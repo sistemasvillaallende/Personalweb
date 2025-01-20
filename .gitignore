@@ -6,7 +6,3 @@
 # Ignorar carpetas bin y obj en cualquier lugar del proyecto
 **/bin/
 **/obj/
-
-# Ignorar carpetas específicas (DAL y BLL)
-DAL/
-BLL/
