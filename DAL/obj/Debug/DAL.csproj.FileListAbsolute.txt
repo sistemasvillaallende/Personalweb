@@ -20,3 +20,14 @@ C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\DAL\obj\Debug\DAL.cs
 C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\DAL\obj\Debug\DAL.csproj.Up2Date
 C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\DAL\obj\Debug\DAL.dll
 C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\DAL\obj\Debug\DAL.pdb
+C:\Users\juanf\Devs\Personalweb\DAL\bin\Debug\DAL.dll
+C:\Users\juanf\Devs\Personalweb\DAL\bin\Debug\DAL.pdb
+C:\Users\juanf\Devs\Personalweb\DAL\bin\Debug\Entities.dll
+C:\Users\juanf\Devs\Personalweb\DAL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\juanf\Devs\Personalweb\DAL\bin\Debug\Entities.pdb
+C:\Users\juanf\Devs\Personalweb\DAL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\juanf\Devs\Personalweb\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\juanf\Devs\Personalweb\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\juanf\Devs\Personalweb\DAL\obj\Debug\DAL.csproj.Up2Date
+C:\Users\juanf\Devs\Personalweb\DAL\obj\Debug\DAL.dll
+C:\Users\juanf\Devs\Personalweb\DAL\obj\Debug\DAL.pdb
