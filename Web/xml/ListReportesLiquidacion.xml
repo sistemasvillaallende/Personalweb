@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<NewDataSet>
+	<Record>
+		<IDName>1</IDName>
+		<Name>Resumen de Conceptos</Name>
+	</Record>
+	<Record>
+		<IDName>2</IDName>
+		<Name>Resumen de Conceptos (Excel)</Name>
+	</Record>
+	<Record>
+		<IDName>3</IDName>
+		<Name>Resumen de Conceptos Fijos</Name>
+	</Record>
+	<Record>
+		<IDName>4</IDName>
+		<Name>Resumen de Conceptos Variables</Name>
+	</Record>
+	<Record>
+		<IDName>5</IDName>
+		<Name>Asiento de Sueldos</Name>
+	</Record>
+	<Record>
+		<IDName>6</IDName>
+		<Name>Asiento de Sueldos (Excel)</Name>
+	</Record>
+	<Record>
+		<IDName>7</IDName>
+		<Name>Planilla de Sueldos</Name>
+	</Record>
+	<Record>
+		<IDName>8</IDName>
+		<Name>Planilla de Sueldos por Jurisdiccion, SubJur. y Oficina</Name>
+	</Record>
+	<Record>
+		<IDName>9</IDName>
+		<Name>Planilla de Sueldos Excel</Name>
+	</Record>
+	<Record>
+		<IDName>10</IDName>
+		<Name>Planilla de Importes para Cheques</Name>
+	</Record>
+	<Record>
+		<IDName>11</IDName>
+		<Name>Resumen de Aportes Jubilatorios</Name>
+	</Record>
+	<Record>
+		<IDName>12</IDName>
+		<Name>Resumen de Aportes Jubilatorios x Sec</Name>
+	</Record>
+	<Record>
+		<IDName>13</IDName>
+		<Name>Resumen de Aportes Obra Social</Name>
+	</Record>
+	<Record>
+		<IDName>14</IDName>
+		<Name>Resumen de Aportes Obra Social x Sec
+		</Name>
+	</Record>
+	<Record>
+		<IDName>15</IDName>
+		<Name>Etiquetas</Name>
+	</Record>
+	<Record>
+		<IDName>16</IDName>
+		<Name>Resumen de Conceptos Fijos para la Orden de Pedido</Name>
+	</Record>
+	<Record>
+		<IDName>17</IDName>
+		<Name>Resumen de Conceptos Variables para la Orden de Pedido</Name>
+	</Record>
+</NewDataSet>

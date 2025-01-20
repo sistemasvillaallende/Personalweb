@@ -1,0 +1,136 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.Master.cs" Inherits="web.MP.Dashnoard" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+
+    <link href="../App_Themes/Definitivo/css/docs.css" rel="stylesheet" />
+    <link href="../App_Themes/GestionPablo/css/style.css?v=2" rel="stylesheet" />
+    <link href="../App_Themes/GestionPablo/css/colores.css" rel="stylesheet" />
+    <script src="../App_Themes/Definitivo/js/bootstrap.bundle.min.js"></script>
+    <link href="../App_Themes/FontAwesome/css/all.min.css" rel="stylesheet" />
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        .btn-usuario {
+            background: transparent;
+            display: inline-flex;
+            padding: 0;
+            align-items: center;
+            border: none;
+            padding-right: 10px;
+        }
+
+        .btn-user :hover {
+            border: solid 3px lightgrey;
+            border-color: lightgrey !important;
+            text-decoration: none !important;
+        }
+
+        .btn-user :active {
+            border: solid 3px lightgrey;
+        }
+    </style>
+    <title>Municipalidad Villa Allende</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104459607-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-104459607-1');
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header class="clearfix mobile print" style="text-align: center; display: none">
+            <div class="row">
+                <div class="col-md-12" style="margin-top: 15px; margin-bottom: 15px;">
+                    <a href="../BackEnd/Home.aspx">
+                        <img src="../img/LogoPablo.png" style="height: 50px;" />
+                    </a>
+                </div>
+            </div>
+            <div class="container-fluid"
+                style="background: linear-gradient(87deg, rgb(148 23 23) 0%, rgba(255,35,0,1) 41%, rgb(255 233 0) 79%);">
+                <div class="row">
+                    <div class="col-md-12" style="padding-top: 15px;">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <header class="clearfix no-mobile print" style="text-align: left; position: fixed; width: 100%; z-index: 1000; background-color: white; margin-top: -5px;">
+            <div class="row" style="padding-top: 10px; padding-bottom: 0px;">
+                <div class="col-md-4" style="padding-left: 5%;">
+                    <a href="/BackEnd/Home.aspx">
+                        <img src="/img/LogoPablo.png" style="height: 60px;" />
+                    </a>
+                </div>
+                <div class="col-md-4" style="align-items: center; display: flex; text-align: center;">
+                    <a href="#" style="width: 100%;">
+                        <h2 class="section-title__title"
+                            style="color: #6f6f6e; font-size: 24px; line-height: 10px; text-decoration-line: overline;">
+                            <img src="/App_Themes/NuevaWeb/img/pagoonline.png" style="height: 60px;" />
+                            SIIMVA WEB
+                            <img src="/img/condor.png" style="height: 80px; margin-top: -10px;" />
+                        </h2>
+                    </a>
+                </div>
+                <div class="col-md-4" style="padding-right: 5%; align-items: center; display: inline-grid; text-align: right;">
+                    <div class="dropdown">
+                        <button class="btn-usuario" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img id="imgUsuario" runat="server" src="../img/usuario.png" class="img-thumbnail" alt="..." style="height: 55px; border: none;" />
+                            <ul style="color: gray; list-style: none; text-align: left; padding-left: 0; margin-bottom: 0px;">
+                                <li id="liNombre" runat="server">Ignacio Martin</li>
+                                <li id="liApellido" runat="server">Velez Spitale</li>
+                            </ul>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li style="display: grid; padding: 15px 25px 0px 25px" class="li-usuario">
+                                <strong id="mnuPcApellido" runat="server">Velez Spitale</strong>
+                                <span id="mnuPcNombre" runat="server">Ignacio Martin</span></li>
+                            <li style="display: flex; padding: 15px 25px 0px 25px" class="li-usuario">
+                                <span style="display: ruby;">Oficina: </span>
+                                <span style="display: block; margin-left: 10px;" id="SpanOficina" runat="server"></span></li>
+                            <li style="display: flex; padding: 15px 25px 0px 25px" class="li-usuario">
+                                <span style="display: ruby;">CUIT: </span>
+                                <span style="display: block; margin-left: 10px;" id="mnuPcCuit" runat="server">23-27.173.499-9</span></li>
+                            <li style="display: flex; padding: 15px 25px 0px 25px" class="li-usuario">
+                                <span style="display: block;">CIDI: </span>
+                                <span style="display: block; margin-left: 10px;" id="mnuPcNivelCidi" runat="server">Nivel 2</span></li>
+                            <li style="padding: 15px; border-top: solid 1px lightgray; margin-top: 15px;">
+                                <a class="dropdown-item" href="#" runat="server" id="btnCerraSession" onserverclick="btnCerraSession_ServerClick" style="text-align: center; border: solid 3px lightgray; border-radius: 10px; padding: 8px;">Cerrar Sesion</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid"
+                style="background: linear-gradient(87deg, rgb(148 23 23) 0%, rgba(255,35,0,1) 41%, rgb(255 233 0) 79%);">
+                <div class="row">
+                    <div class="col-md-12" style="padding-top: 15px;">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <script src="../js/jquery.min.js"></script>
+    </form>
+</body>
+</html>
+

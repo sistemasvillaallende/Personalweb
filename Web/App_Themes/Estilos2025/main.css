@@ -1,0 +1,98 @@
+:root {
+    --color-gray: gray;
+    --color-white: white;
+    --color-darkgray: darkgray;
+    --color-cancelar: rgb(180, 23, 9);
+    --color-cancelar-hover: rgb(110, 16, 16);
+    --color-aceptar: #2EACB3;
+    --color-aceptar-hover: #1F7F84;
+    --color-volver: rgb(207, 190, 0);
+    --color-volver-hover: rgb(119, 107, 0);
+    --color-primario: rgb(36, 88, 139);
+    --color-primario-hover: #163758;
+  }
+
+  /*BOTONES*/
+  
+  .btn-control {
+    background-color: var(--color-gray);
+    color: var(--color-white);
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 3px;
+  }
+  
+  .btn-control:hover {
+    background-color: var(--color-darkgray);
+  }
+  
+  /* Variantes */
+  .btn-control.cancelar {
+    background-color: var(--color-cancelar);
+  }
+  
+  .btn-control.cancelar:hover {
+    background-color: var(--color-cancelar-hover);
+  }
+  
+  .btn-control.aceptar {
+    background-color: var(--color-aceptar);
+  }
+  
+  .btn-control.aceptar:hover {
+    background-color: var(--color-aceptar-hover);
+  }
+  
+  .btn-control.volver {
+    background-color: var(--color-volver);
+  }
+  
+  .btn-control.volver:hover {
+    background-color: var(--color-volver-hover);
+  }
+  
+  .btn-control.primario {
+    background-color: var(--color-primario);
+  }
+  
+  .btn-control.primario:hover {
+    background-color: var(--color-primario-hover);
+  }
+  
+  /*FORMULARIOS*/
+
+  .input-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #3e5e7e;
+    background-color: #ff0000;
+    background-clip: padding-box;
+    border: 3px solid #ced4da;
+    border-radius: 1rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* MODALES */
+
+.modal-windows{
+border-radius: 10px;
+padding-bottom: 5px;
+width: 40%;
+background-color: white;
+box-shadow: 0px 0px 10px #000;
+}

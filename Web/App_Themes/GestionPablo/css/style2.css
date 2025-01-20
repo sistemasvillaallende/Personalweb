@@ -1,0 +1,209 @@
+﻿@media (min-width: 900px) {
+    .no-mobile {
+        display: block;
+    }
+
+    .mobile {
+        display: none;
+    }
+
+    .li-usuario {
+        display: block;
+        margin-bottom: 10px;
+        border-bottom: solid 1px lightgrey;
+        padding-bottom: 5px;
+    }
+}
+
+@media (max-width: 900px) {
+    body {
+        padding-top: 70px; /* Margen superior igual a la altura del header */
+        padding-bottom: 50px; /* Margen inferior igual a la altura del footer */
+        margin: 0; /* Elimina márgenes */
+    }
+
+    .no-mobile {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu_vecino {
+        display: none;
+    }
+
+    .main-header-two__top-inner:before {
+        background-color: transparent !important;
+    }
+
+    .main-header-two__top-inner {
+        padding-left: 0;
+    }
+
+    .barra_menu_movile {
+        background-color: var(--roofsie-base) !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        padding-bottom: 10px;
+    }
+
+
+    .main-header-two__top-inner:after {
+        border-top: none;
+    }
+
+    .container-fluid {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .content_desktop {
+        margin-left: 0px;
+        padding: 20px !important;
+    }
+
+    .box_desktop {
+        padding: 15px !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .menu_vecino_mobile {
+        display: none !important;
+    }
+
+    .content_desktop {
+        padding: 15px !important;
+        padding-left: 230px !important;
+    }
+
+    .aside_mobile_menu {
+        margin-top: -60px;
+    }
+
+    .aside_mobile {
+        margin-top: 143px;
+    }
+
+
+    .box_desktop {
+        padding: 0px !important;
+    }
+
+    .header-desktop {
+        padding-left: 150px;
+    }
+}
+
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+    background-color: #6f6f6e;
+    border-color: none;
+    color: white
+}
+
+.nav > li > a:hover, .nav > li > a:active, .nav > li > a:focus {
+    color: #444;
+    float: right;
+    background: transparent;
+}
+
+.skin-yellow .sidebar-menu > li.header {
+    color: black;
+    background-color: transparent;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.skin-yellow .sidebar a {
+    color: black;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.sidebar-menu > li {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: transparent;
+}
+
+.main-sidebar {
+    margin-left: 15px;
+    border-radius: 15px;
+}
+
+@media (max-width: 768px) {
+    .main-sidebar {
+        margin-left: 0px;
+        border-radius: 0px;
+    }
+
+    .content_desktop {
+        margin-left: 0px;
+        padding: 15px !important;
+    }
+
+    .main-sidebar, .left-side {
+        -webkit-transform: translate(-230px, 0);
+        -ms-transform: translate(-230px, 0);
+        -o-transform: translate(-230px, 0);
+        transform: translate(-230px, 0);
+    }
+
+    .headerPC {
+        display: none;
+    }
+
+    .headerMobile {
+        display: block;
+    }
+
+    .aside_mobile {
+        margin-top: 120px;
+    }
+
+    aside_mobile_menu {
+        margin-top: -110px;
+    }
+
+    .sidebar {
+        margin-top: -60px;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .headerPC {
+        display: block;
+    }
+
+    .headerMobile {
+        display: none;
+    }
+
+    .sidebar {
+        margin-top: 5px;
+    }
+}
+
+@media (min-width: 900px) {
+    .sidebar-mini.sidebar-collapse .main-sidebar .user-panel > .info, .sidebar-mini.sidebar-collapse .sidebar-form, .sidebar-mini.sidebar-collapse .sidebar-menu > li > a > span, .sidebar-mini.sidebar-collapse .sidebar-menu > li > .treeview-menu, .sidebar-mini.sidebar-collapse .sidebar-menu > li > a > .pull-right, .sidebar-mini.sidebar-collapse .sidebar-menu li.header {
+        display: inline-block !important;
+    }
+
+    .sidebar-mini.sidebar-collapse .main-sidebar {
+        -webkit-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        -o-transform: translate(0, 0);
+        transform: translate(0, 0);
+        width: 230px !important;
+        z-index: 850;
+    }
+}
