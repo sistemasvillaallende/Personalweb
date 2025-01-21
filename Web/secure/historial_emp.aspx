@@ -50,8 +50,8 @@
 
                         <div class="panel-body">
                             <div class="row" style="padding: 10px; padding-top: 5px;">
-                                <div class="col-12" style="overflow: auto; height: 400px;">
-                                    <asp:GridView ID="gvDetalle" CssClass="table table-striped table-bordered w-100"
+                                <div class="table-informacion">
+                                    <asp:GridView ID="gvDetalle" CssClass="table table-hover table-bordered"
                                         runat="server" CellPadding="4" ForeColor="Black" GridLines="Horizontal"
                                         BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                                         <FooterStyle BackColor="#CCCC99" ForeColor="Black"></FooterStyle>
@@ -75,7 +75,7 @@
                                 <asp:Button ID="btnConsultar" CssClass="btn-control aceptar" runat="server"
                                     Text="Consultar Movimientos" CausesValidation="False"
                                     OnClick="btnConsultar_Click" />
-                                <asp:Button ID="btnExporCtaCte" CssClass="btn-control primario" runat="server"
+                                <asp:Button ID="btnExporCtaCte" CssClass="btn-control excel" runat="server"
                                     Text="Exportar a Excel" CausesValidation="False" OnClick="btnExporCtaCte_Click" />
                                 <asp:Button ID="btnSalir" runat="server" CssClass="btn-control volver" Text="Salir"
                                     CausesValidation="False" OnClick="btnSalir_Click" />
