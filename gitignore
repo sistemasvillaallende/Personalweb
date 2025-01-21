@@ -1,0 +1,8 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/personalweb
+# Ignorar carpetas bin y obj en cualquier lugar del proyecto
+**/bin/
+**/obj/
