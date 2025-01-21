@@ -1,5 +1,5 @@
-﻿    <%@ Page Title="" Language="C#" MasterPageFile="~/MP/MP_Desempenio.Master"
-    AutoEventWireup="true" CodeBehind="Personas_fichas.aspx.cs" 
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MP_Desempenio.Master"
+    AutoEventWireup="true" CodeBehind="Personas_fichas.aspx.cs"
     Inherits="web.secure.Personas_fichas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -107,7 +107,7 @@
                                 runat="server"></h3>
                         </div>
                         <div class="col-md-4">
-                            <div class="btn-group pull-right" style="display:block;">
+                            <div class="btn-group pull-right" style="display: block;">
                                 <button type="button" class="btn btn-info" id="btnNuevo" runat="server"
                                     onserverclick="btnNuevo_ServerClick">
                                     Nuevo</button>
@@ -147,11 +147,13 @@
                                         <div id="divResultado" visible="false" runat="server"
                                             style="border: solid 1px darkgray; padding: 15px; border-radius: 15px; font-size: 18px; font-weight: 500;">
                                         </div>
-                                        <div id="divGrupo" visible="false" runat="server" style="padding-left: 10px; padding-top: 10px;">
+                                        <div id="divGrupo" visible="false" runat="server" style="padding-top: 10px;">
                                         </div>
-                                        <div class="item" style="padding-left: 10px;">
-                                            <span class="name" id="lblPregunta" runat="server" style="color: var(--bs-success);"><%# Eval("TEXTO_PREGUNTA") %></span>
-                                            <span style="padding-left: 25px;" id="lblRespuesta" runat="server"><%# Eval("TEXTO_RESPUESTA") %></span>
+                                        <div class="item" style="display: grid; padding-bottom: 10px; border-bottom: solid gainsboro;">
+                                            <span class="name" id="lblPregunta" runat="server"
+                                                style="color: var(--bs-success);"><%# Eval("TEXTO_PREGUNTA") %></span>
+                                            <span style="font-weight: 500;"
+                                                id="lblRespuesta" runat="server"><%# Eval("TEXTO_RESPUESTA") %></span>
                                         </div>
                                     </ItemTemplate>
                                     <FooterTemplate>
@@ -168,7 +170,7 @@
                                                 <h3 class="box-title" id="lblEvaluado"
                                                     style="font-size: 16px; color: var(--bs-secondary);"
                                                     runat="server">Evaluado: 
-                                                    <span style="color:var(--primary-color)">Martin Velez</span></h3>
+                                                    <span style="color: var(--primary-color)">Martin Velez</span></h3>
                                                 <h3 class="box-title" id="lblConformidad"
                                                     style="font-size: 16px; color: var(--bs-secondary);"
                                                     runat="server">Estado: Aguardando conformidad</h3>

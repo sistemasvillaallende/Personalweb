@@ -533,41 +533,44 @@ namespace web.secure
                             sumf += item.PUNTUACION;
                         }
                     }
-                    resultadof = sumf / cantf;
-                    divResultadoTotal.Visible = true;
-                    if (resultadof >= 75)
+                    if (cantf > 0)
                     {
-                        divResultadoTotal.InnerHtml = string.Format(
-                            @"Resultado promedio de la evaluación: 
+                        resultadof = sumf / cantf;
+                        divResultadoTotal.Visible = true;
+                        if (resultadof >= 75)
+                        {
+                            divResultadoTotal.InnerHtml = string.Format(
+                                @"Resultado promedio de la evaluación: 
                                     <strong style=""color: var(--bs-success);"">{0}%</strong>",
-                             Math.Round(resultadof, 2));
-                    }
-                    else
-                    {
-                        divResultadoTotal.InnerHtml = string.Format(
-                            @"Resultado promedio de la evaluación: 
+                                 Math.Round(resultadof, 2));
+                        }
+                        else
+                        {
+                            divResultadoTotal.InnerHtml = string.Format(
+                                @"Resultado promedio de la evaluación: 
                                     <strong style=""color: var(--bs-danger);"">{0}%</strong>",
-                            Math.Round(resultadof, 2));
-                    }
+                                Math.Round(resultadof, 2));
+                        }
 
-                    HtmlGenericControl lblEvaluadorOriginal =
-                        (HtmlGenericControl)e.Row.FindControl("lblEvaluadorOriginal");
-                    HtmlGenericControl lblEvaluado =
-                        (HtmlGenericControl)e.Row.FindControl("lblEvaluado"); 
-                    HtmlGenericControl lblConformidad =
-                        (HtmlGenericControl)e.Row.FindControl("lblConformidad"); 
+                        HtmlGenericControl lblEvaluadorOriginal =
+                            (HtmlGenericControl)e.Row.FindControl("lblEvaluadorOriginal");
+                        HtmlGenericControl lblEvaluado =
+                            (HtmlGenericControl)e.Row.FindControl("lblEvaluado");
+                        HtmlGenericControl lblConformidad =
+                            (HtmlGenericControl)e.Row.FindControl("lblConformidad");
 
-                    lblEvaluadorOriginal.InnerHtml =
-                        string.Format(@"Evaluador: <span style=""color:var(--primary-color)"">
+                        lblEvaluadorOriginal.InnerHtml =
+                            string.Format(@"Evaluador: <span style=""color:var(--primary-color)"">
                                       {0}</span>", ConvertirALetraCapital(evaluador));
 
-                    lblEvaluado.InnerHtml =
-                        string.Format(@"Evaluado: <span style=""color:var(--primary-color)"">
+                        lblEvaluado.InnerHtml =
+                            string.Format(@"Evaluado: <span style=""color:var(--primary-color)"">
                                       {0}</span>", ConvertirALetraCapital(lblNombre.InnerHtml));
 
-                    lblConformidad.InnerHtml =
-                        string.Format(@"Conformidad: <span style=""color:var(--bs-orange);"">
+                        lblConformidad.InnerHtml =
+                            string.Format(@"Conformidad: <span style=""color:var(--bs-orange);"">
                                       {0}</span>", ConvertirALetraCapital(hIdEstado.Value));
+                    }
                 }
             }
             catch (Exception ex)
