@@ -784,7 +784,7 @@ namespace DAL
 
 
         }
-        public static List<Entities.LstEmpleados> GetEmpleados()
+        public static List<Entities.LstEmpleados> GetEmpleados() // grilla de empleados
         {
             StringBuilder strSQL = new StringBuilder();
             StringBuilder strCondicion = new StringBuilder();

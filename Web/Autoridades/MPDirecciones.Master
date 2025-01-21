@@ -81,7 +81,7 @@
                                 </a>                                
                                 <a class="btn btn-outline-primary" id="btnSalir"
                                     runat="server" visible="false"
-                                    href="~/secure/Dashboard.aspx">
+                                    href="~/back/Dashboard.aspx">
                                     <span class="fa fa-sign-out"></span>
                                     Regresar a RRHH
                                 </a>

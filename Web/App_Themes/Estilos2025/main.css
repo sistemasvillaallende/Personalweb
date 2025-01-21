@@ -1,0 +1,135 @@
+:root {
+  --color-gray: gray;
+  --color-white: white;
+  --color-darkgray: darkgray;
+  --color-cancelar: rgb(180, 23, 9);
+  --color-cancelar-hover: rgb(110, 16, 16);
+  --color-aceptar: #2EACB3;
+  --color-aceptar-hover: #1F7F84;
+  --color-volver: rgb(207, 190, 0);
+  --color-volver-hover: rgb(119, 107, 0);
+  --color-primario: rgb(36, 88, 139);
+  --color-primario-hover: #163758;
+}
+
+/*BOTONES*/
+
+.btn-control {
+  background-color: var(--color-gray);
+  color: var(--color-white);
+  border-radius: 5px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 3px;
+  text-decoration: none;
+  /* Remove underline from links */
+  display: inline-block;
+  /* Ensure it looks like a button */
+}
+
+.btn-control:hover {
+  background-color: var(--color-gray-dark);
+  /* Optional: Add a hover effect */
+}
+
+.btn-control:active {
+  background-color: var(--color-gray-darker);
+  /* Optional: Add an active effect */
+}
+
+/* Variantes */
+.btn-control.cancelar {
+  background-color: var(--color-cancelar);
+}
+
+.btn-control.cancelar:hover {
+  background-color: var(--color-cancelar-hover);
+}
+
+.btn-control.aceptar {
+  background-color: var(--color-aceptar);
+}
+
+.btn-control.aceptar:hover {
+  background-color: var(--color-aceptar-hover);
+}
+
+.btn-control.volver {
+  background-color: var(--color-volver);
+}
+
+.btn-control.volver:hover {
+  background-color: var(--color-volver-hover);
+}
+
+.btn-control.primario {
+  background-color: var(--color-primario);
+}
+
+.btn-control.primario:hover {
+  background-color: var(--color-primario-hover);
+}
+
+/*FORMULARIOS*/
+
+.input-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+input.input-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+textarea.input-control {
+  height: auto;
+}
+
+.input-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* MODALES */
+
+.modal-windows {
+  border-radius: 10px;
+  padding-bottom: 5px;
+  width: 40%;
+  background-color: white;
+  box-shadow: 0px 0px 10px #000;
+}
+
+.table-informacion {
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 30px;
+}

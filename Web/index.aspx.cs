@@ -103,7 +103,7 @@ namespace Web
                         Response.Cookies.Add(cookie1);
                         FormsAuthentication.RedirectFromLoginPage(Session["usuario"].ToString().Replace("%", ""), false);
 
-                        Response.Redirect("~\\secure\\Dashboard.aspx");
+                        Response.Redirect("~\\back\\Dashboard.aspx");
                     }
                     if (objUsu.id_direccion != 0)
                     {
@@ -120,7 +120,7 @@ namespace Web
                         Response.Cookies.Add(cookie2);
                         FormsAuthentication.RedirectFromLoginPage(Session["usuario"].ToString().Replace("%", ""), false);
 
-                        Response.Redirect("~\\secure\\Dashboard.aspx");
+                        Response.Redirect("~\\back\\Dashboard.aspx");
                     }
                     HttpCookie cookie = new HttpCookie("UserSistema");
                     cookie["id_oficina_usuario"] = id_oficina.ToString();
@@ -135,7 +135,7 @@ namespace Web
                     Response.Cookies.Add(cookie);
                     FormsAuthentication.RedirectFromLoginPage(Session["usuario"].ToString().Replace("%", ""), false);
 
-                    Response.Redirect("~\\secure\\Dashboard.aspx");
+                    Response.Redirect("~\\back\\Dashboard.aspx");
                 }
 
                 else

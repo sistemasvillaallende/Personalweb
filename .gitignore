@@ -1,5 +1,8 @@
-.vs/personalweb/FileContentIndex/0b628751-14cf-482c-b5ee-b1e47e3cd8d2.vsidx
-.vs/personalweb/FileContentIndex/37775acc-5172-4395-a3cc-4fcefaa81bce.vsidx
-.vs/personalweb/FileContentIndex/5c5d0b8b-3e55-411a-ae11-188ad767b5df.vsidx
-.vs/personalweb/FileContentIndex/9fb50277-01ba-4779-af1c-7f7e65d8e445.vsidx
-.vs/personalweb/FileContentIndex/de6a6c0f-05e0-4b98-b04c-3bef427a10ff.vsidx
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/personalweb
+# Ignorar carpetas bin y obj en cualquier lugar del proyecto
+**/bin/
+**/obj/
