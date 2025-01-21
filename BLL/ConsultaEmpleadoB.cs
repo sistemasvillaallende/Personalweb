@@ -193,6 +193,11 @@ namespace BLL
             return DAL.ConsultaEmpleadoD.ListRevista(id);
         }
 
+         public static DataSet ListCategoriaProfesional()
+        {
+            return DAL.ConsultaEmpleadoD.ListCategoriaProfesional();
+        }
+
         //public DataSet ListAsuntos()
         //{
         //  dsDatos = objExp.ListAsuntos();
