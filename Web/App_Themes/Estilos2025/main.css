@@ -167,40 +167,37 @@ textarea.input-control {
   border-radius: 50%;
 }
 
-/* GRIDVIEW */
+/*GRIDVIEW*/
 
-.gridview {
+.gridview-category {
   background-color: #fff;
-  height: 60px;
-  padding: 2px;
-  margin: 4% auto;
 }
 
-.gridview a {
-  margin: 5px;
-  border-radius: 50%;
-  background-color: #444;
-  padding: 5px 10px 5px 10px;
+.gridview-category th,
+.gridview-category td,
+.gridview-category tr,
+.gridview-category table,
+.gridview-category tbody,
+.gridview-category thead {
+  border: none;
+}
+
+.gridview-category a {
+  background-color: #b6b6b6;
   color: #fff !important;
   text-decoration: none;
-  -o-box-shadow: 1px 1px 1px #111;
-  -moz-box-shadow: 1px 1px 1px #111;
-  -webkit-box-shadow: 1px 1px 1px #111;
-  box-shadow: 1px 1px 1px #111;
+  border-radius: 3px;
+  padding: 5px 10px 5px 10px;
 }
 
-.gridview a:hover {
-  background-color: #1e8d12;
+.gridview-category a:hover {
+  background-color: #5A6268;
   color: #fff;
 }
 
-.gridview span {
-  background-color: #ae2676;
+.gridview-category span {
+  background-color: #5A6268;
   color: #fff;
-  /*-o-box-shadow: 1px 1px 1px #111;*/
-  -moz-box-shadow: 1px 1px 1px #111;
-  -webkit-box-shadow: 1px 1px 1px #111;
-  box-shadow: 1px 1px 1px #111;
-  border-radius: 50%;
+  border-radius: 3px;
   padding: 5px 10px 5px 10px;
 }
