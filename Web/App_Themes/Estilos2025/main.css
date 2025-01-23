@@ -1,7 +1,6 @@
 :root {
-  --color-gray: gray;
-  --color-white: white;
-  --color-darkgray: darkgray;
+  --color-gray: rgb(100, 100, 100);
+  --color-darkgray: rgb(196, 196, 196);
   --color-cancelar: rgb(180, 23, 9);
   --color-cancelar-hover: rgb(110, 16, 16);
   --color-aceptar: #2EACB3;
@@ -10,13 +9,15 @@
   --color-volver-hover: rgb(119, 107, 0);
   --color-primario: rgb(36, 88, 139);
   --color-primario-hover: #163758;
+  --color-excel: #1D6F42;
+  --color-excel-hover: #0F4A2A;
 }
 
 /*BOTONES*/
 
 .btn-control {
   background-color: var(--color-gray);
-  color: var(--color-white);
+  color: white;
   border-radius: 5px;
   border: none;
   padding: 10px 20px;
@@ -72,6 +73,14 @@
   background-color: var(--color-primario-hover);
 }
 
+.btn-control.excel {
+  background-color: var(--color-excel);
+}
+
+.btn-control.excel:hover {
+  background-color: var(--color-excel-hover);
+}
+
 /*FORMULARIOS*/
 
 .input-control {
@@ -118,6 +127,20 @@ textarea.input-control {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
+.seleciones {
+  display: flex;
+  flex-direction: row;
+  /* Alinea los elementos de forma horizontal */
+  justify-content: flex-start;
+  /* Alinea los elementos al inicio del contenedor */
+  align-items: center;
+  /* Alinea los elementos verticalmente al centro */
+  gap: 10px;
+  /* Espacio entre los elementos */
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
 /* MODALES */
 
 .modal-windows {
@@ -126,10 +149,55 @@ textarea.input-control {
   width: 40%;
   background-color: white;
   box-shadow: 0px 0px 10px #000;
+  width: 90dvw;
+  margin: 30px auto;
+  max-width: 600px;
 }
 
+/*TABLAS*/
 .table-informacion {
   margin-top: 20px;
-  width: 100%;
-  border-radius: 30px;
+  overflow: scroll;
+  height: 300px;
+}
+
+.foto-empleado {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+/*GRIDVIEW*/
+
+.gridview-category {
+  background-color: #fff;
+}
+
+.gridview-category th,
+.gridview-category td,
+.gridview-category tr,
+.gridview-category table,
+.gridview-category tbody,
+.gridview-category thead {
+  border: none;
+}
+
+.gridview-category a {
+  background-color: #b6b6b6;
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 3px;
+  padding: 5px 10px 5px 10px;
+}
+
+.gridview-category a:hover {
+  background-color: #5A6268;
+  color: #fff;
+}
+
+.gridview-category span {
+  background-color: #5A6268;
+  color: #fff;
+  border-radius: 3px;
+  padding: 5px 10px 5px 10px;
 }

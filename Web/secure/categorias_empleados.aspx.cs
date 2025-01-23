@@ -60,7 +60,7 @@ namespace web.secure
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#FFCC80'");
+                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#DADADA'");
                 e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='#FFFFFF'");
 
                 Entities.Categorias oCat = (Entities.Categorias)e.Row.DataItem;
@@ -180,7 +180,8 @@ namespace web.secure
                 else
                     txtError.InnerText = message;
                 divError.Visible = true;
-            };
+            }
+            ;
         }
 
         private void NuevoCategoria()
