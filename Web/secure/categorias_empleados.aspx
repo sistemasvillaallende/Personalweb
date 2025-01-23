@@ -2,9 +2,9 @@
     CodeBehind="categorias_empleados.aspx.cs" Inherits="web.secure.categorias_empleados" %>
 
     <%@ Register TagPrefix="ajaxToolkit" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
+
         <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-
+            <link href="../App_Themes/dist/css/AdminLTE.min.css" rel="stylesheet" />
         </asp:Content>
 
         <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -71,45 +71,50 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="form-group">
+
                                                                 <div class="col-xs-6">
-                                                                    <div class="input-group">
-                                                                        <input type="text" class="form-control"
+
+                                                                    <div
+                                                                        class="formulario-busqueda d-flex justify-content-between">
+
+                                                                        <input type="text" class="input-control col-10"
                                                                             id="txtInput" runat="server"
                                                                             placeholder="Buscar por Categoria" />
-                                                                        <span class="input-group-btn">
-                                                                            <button class="btn btn-info" type="button"
-                                                                                id="btnBuscar" runat="server"
-                                                                                onserverclick="btnBuscar_ServerClick">
-                                                                                <span
-                                                                                    class="fa fa-search"></span>Buscar</button>
-                                                                        </span>
+
+
+                                                                        <button class="btn-control busqueda w-100"
+                                                                            type="button" id="btnBuscar" runat="server"
+                                                                            onserverclick="btnBuscar_ServerClick">
+                                                                            <span
+                                                                                class="fa fa-search"></span>Buscar</button>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-xs-6">
                                                                     <div class="btn-group pull-right" id="divActualiza"
                                                                         runat="server">
                                                                         <asp:LinkButton ID="lbtnActualizar_valores"
-                                                                            CssClass="btn btn-app btn-default"
+                                                                            CssClass="btn-control secondary"
                                                                             runat="server"
                                                                             OnClick="lbtnActualizar_valores_Click">
                                                                             <i class="fa fa-money"></i>&nbsp;Actualizar
                                                                             Valores
                                                                         </asp:LinkButton>
                                                                         <asp:LinkButton ID="lbtnNuevo"
-                                                                            CssClass="btn btn-app" runat="server"
-                                                                            OnClick="lbtnNuevo_Click">
+                                                                            CssClass="btn-control primario"
+                                                                            runat="server" OnClick="lbtnNuevo_Click">
                                                                             <i class="fa fa-plus"></i>&nbsp;Nueva
                                                                             Categoria
                                                                         </asp:LinkButton>
                                                                         <asp:LinkButton ID="LinkExportar"
-                                                                            CssClass="btn btn-app" runat="server"
+                                                                            CssClass="btn-control excel" runat="server"
                                                                             OnClick="LinkExportar_Click">
                                                                             <i class="fa fa-download"></i>&nbsp;Exportar
                                                                             Excel
                                                                         </asp:LinkButton>
                                                                         <asp:LinkButton ID="lbtnSalir"
-                                                                            CssClass="btn btn-app bg-orange"
-                                                                            runat="server" OnClick="lbtnSalir_Click">
+                                                                            CssClass="btn-control volver" runat="server"
+                                                                            OnClick="lbtnSalir_Click">
                                                                             <i class="fa fa-sign-out"></i>&nbsp;Salir
                                                                         </asp:LinkButton>
                                                                     </div>
@@ -278,27 +283,32 @@
                                             BehaviorID="modalPopupExtender" TargetControlID="Button1"
                                             ID="modalPopupExtender">
                                         </ajaxToolkit:ModalPopupExtender>
-                                        <div class="modal-dialog" id="modalDatosCategorias" runat="server"
-                                            style="background-color: white; padding: 20px;">
-                                            <div class="modal-content">
+
+                                        <div id="modalDatosCategorias" runat="server">
+                                            <div class="modal-windows">
                                                 <div class="modal-header">
-                                                    <button type="button" runat="server" id="btnCloseModal"
-                                                        onserverclick="btnCloseModal_ServerClick" class="close"
-                                                        data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">×</span></button>
+
                                                     <h4 class="modal-title">
                                                         <asp:Label ID="lblTituloFormModal" runat="server" Text="Label">
                                                         </asp:Label>
                                                     </h4>
+
+                                                    <button type="button" runat="server" id="btnCloseModal"
+                                                        onserverclick="btnCloseModal_ServerClick" class="close"
+                                                        data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span></button>
+
                                                 </div>
 
-                                                <div class="modal-body" id="activity" style="min-height: 320px;">
+                                                <div class="modal-body" id="activity">
                                                     <div class="row">
                                                         <div class="form-group col-md-4">
+
                                                             <label>Codigo</label>
-                                                            <asp:TextBox ID="txtCodigo" CssClass="form-control"
+                                                            <asp:TextBox ID="txtCodigo" CssClass="input-control"
                                                                 placeholder="Ingrese Codigo" runat="server">
                                                             </asp:TextBox>
+
                                                             <asp:RequiredFieldValidator ID="rv1" runat="server"
                                                                 ValidationGroup="cliente" Text="*" ForeColor="Red"
                                                                 Display="Dynamic" ErrorMessage="Ingrese Codigo"
@@ -313,7 +323,7 @@
                                                     <div class="row">
                                                         <div class="form-group col-md-6">
                                                             <label>Descripcion Categoria</label>
-                                                            <asp:TextBox ID="txtDes_categoria" CssClass="form-control"
+                                                            <asp:TextBox ID="txtDes_categoria" CssClass="input-control"
                                                                 runat="server"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5"
                                                                 runat="server" ValidationGroup="cliente" Text="*"
@@ -324,7 +334,7 @@
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label>Sueldo Basico</label>
-                                                            <asp:TextBox ID="txtSueldo_basico" CssClass="form-control"
+                                                            <asp:TextBox ID="txtSueldo_basico" CssClass="input-control"
                                                                 runat="server"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="rv4" runat="server"
                                                                 ValidationGroup="cliente" Text="*" ForeColor="Red"
@@ -339,10 +349,10 @@
                                                     <asp:ValidationSummary ID="ValidationSummary1" runat="server"
                                                         ForeColor="Red" ValidationGroup="cliente" />
                                                     <asp:Button ID="btnCancelar" runat="server"
-                                                        CssClass="btn btn-default" Text="Cancelar"
+                                                        CssClass="btn-control cancelar" Text="Cancelar"
                                                         OnClick="btnCancelar_Click" />
                                                     <asp:Button ID="btnAceptar" runat="server" ValidationGroup="cliente"
-                                                        CssClass="btn btn-primary" Text="Aceptar"
+                                                        CssClass="btn-control aceptar" Text="Aceptar"
                                                         OnClick="btnAceptar_Click" />
 
                                                 </div>
