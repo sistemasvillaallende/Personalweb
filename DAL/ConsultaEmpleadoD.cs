@@ -784,7 +784,7 @@ namespace DAL
 
 
         }
-        public static List<Entities.LstEmpleados> GetEmpleados()
+        public static List<Entities.LstEmpleados> GetEmpleados() 
         {
             StringBuilder strSQL = new StringBuilder();
             StringBuilder strCondicion = new StringBuilder();
@@ -2041,7 +2041,40 @@ namespace DAL
         }
 
 
+ public static DataSet ListCategoriaProfesional()
+        {
+            string strSQL = "";
+            DataSet ds;
+            SqlDataAdapter adapter;
 
+            strSQL = " select  id_profesional_monotributo, categoria from CATEGORIA_PROFESIONAL_MONOTRIBUTO ";
+
+
+            using (SqlConnection conn = DALBase.GetConnection("Siimva"))
+            {
+                try
+                {
+                    ds = new DataSet();
+
+                    SqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = strSQL.ToString();
+                    cmd.Connection.Open();
+
+
+                    adapter = new SqlDataAdapter(cmd);
+                    adapter.SelectCommand = cmd;
+                    adapter.Fill(ds);
+
+                    return ds;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+        }
 
     }
 }

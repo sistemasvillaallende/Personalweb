@@ -812,6 +812,8 @@ namespace DAL
                         if (!dr.IsDBNull(fecha_revista))
                             objEmp.fecha_revista = Convert.ToDateTime(dr["fecha_revista"], culturaFecArgentina).ToString("dd/MM/yyyy");
                         if (!dr.IsDBNull(activo)) objEmp.activo = dr.GetBoolean(activo);
+                        if (!dr.IsDBNull(dr.GetOrdinal("id_profesional_monotributo")))
+                            objEmp.id_profesional_monotributo = dr.GetInt32(dr.GetOrdinal("id_profesional_monotributo"));
                     }
                 }
             }

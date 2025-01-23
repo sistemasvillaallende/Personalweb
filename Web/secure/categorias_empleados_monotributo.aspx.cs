@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace web.secure
 {
-    public partial class categorias_empleados : System.Web.UI.Page
+    public partial class categorias_empleados_monotributo : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,7 +21,6 @@ namespace web.secure
                 Session.Add("opcion", 0);
                 CargarGrilla();
             }
-            //CargarGrilla();
 
 
             string var = Request.Params["__EVENTARGUMENT"];
@@ -36,8 +35,8 @@ namespace web.secure
 
         private void CargarGrilla()
         {
-            gvCategorias.DataSource = BLL.CategoriasB.GetCategorias();
-            gvCategorias.DataBind();
+            gvCategoriasMono.DataSource = BLL.Categoria_profesional_monotributoB.GetCategoriaProfesionalMono();
+            gvCategoriasMono.DataBind();
         }
 
         protected void lbtnNuevo_Click(object sender, EventArgs e)
@@ -45,9 +44,9 @@ namespace web.secure
             Session["opcion"] = 1;
             txtCodigo.Text = "0";
             lblTituloFormModal.Text = "Nuevo Categoria";
-            txtDes_categoria.Text = "";
-            txtSueldo_basico.Text = "";
-            txtDes_categoria.Focus();
+            txtCategoria.Text = "";
+            txtMonto.Text = "";
+            txtMonto.Focus();
             modalPopupExtender.Show();
         }
 
@@ -56,31 +55,32 @@ namespace web.secure
             Response.Redirect("home.aspx");
         }
 
-        protected void gvCategorias_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void gvCategoriasMono_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#DADADA'");
+                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#FFCC80'");
                 e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='#FFFFFF'");
 
-                Entities.Categorias oCat = (Entities.Categorias)e.Row.DataItem;
-                Label lblCodigo = (Label)e.Row.FindControl("lblCodigo");
+                Entities.Categoria_profesional_monotributo oCat = (Entities.Categoria_profesional_monotributo)e.Row.DataItem;
+                Label lblIdCateMono = (Label)e.Row.FindControl("lblIdCateMono");
                 Label lblFecha_alta = (Label)e.Row.FindControl("lblFecha_alta");
-                Label lblDes_categoria = (Label)e.Row.FindControl("lblDes_categoria");
-                //Label lblSueldo_basico = (Label)e.Row.FindControl("lblSueldo_basico");
-                //
-                lblCodigo.Text = oCat.cod_categoria.ToString();
-                lblFecha_alta.Text = oCat.fecha_alta_registro.ToString();
-                lblDes_categoria.Text = oCat.des_categoria.ToString();
-                //lblSueldo_basico.Text = oCat.sueldo_basico.ToString();
+                Label lblCategoria = (Label)e.Row.FindControl("lblCategoria");
+                //Label lblMonto = (Label)e.Row.FindControl("lblMonto");
+                //TextBox txtMonto = (TextBox)e.Row.FindControl("txtMonto");
+
+                lblIdCateMono.Text = oCat.id_profesional_monotributo.ToString();
+                lblFecha_alta.Text = oCat.fecha_alta.ToString();
+                lblCategoria.Text = oCat.categoria.ToString();
+                // lblMonto.Text = oCat.monto.ToString();
 
             }
         }
 
-        protected void gvCategorias_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvCategoriasMono_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int index = Convert.ToInt32(e.CommandArgument);
-            int indicePaginado = index - (gvCategorias.PageSize * gvCategorias.PageIndex);
+            int indicePaginado = index - (gvCategoriasMono.PageSize * gvCategoriasMono.PageIndex);
             int codigo = 0;
 
             try
@@ -88,17 +88,17 @@ namespace web.secure
                 if (e.CommandName == "Page")
                     return;
 
-                codigo = Convert.ToInt32(gvCategorias.DataKeys[indicePaginado].Values["cod_categoria"]);
+                codigo = Convert.ToInt32(gvCategoriasMono.DataKeys[indicePaginado].Values["id_profesional_monotributo"]);
 
                 if (e.CommandName == "editar")
                 {
                     hID.Value = ID.ToString();
                     lblTituloFormModal.Text = "Editar datos de la Categoria";
                     //
-                    Entities.Categorias oCat = BLL.CategoriasB.GetByPk(codigo);
-                    txtCodigo.Text = oCat.cod_categoria.ToString();
-                    txtDes_categoria.Text = Convert.ToString(oCat.des_categoria);
-                    txtSueldo_basico.Text = oCat.sueldo_basico.ToString();
+                    Entities.Categoria_profesional_monotributo oCat = BLL.Categoria_profesional_monotributoB.GetByPk(codigo);
+                    txtCodigo.Text = oCat.id_profesional_monotributo.ToString();
+                    txtCategoria.Text = Convert.ToString(oCat.categoria);
+                    txtMonto.Text = oCat.monto.ToString();
                     Session["opcion"] = 2;
                     uPanelCliente.Update();
                     modalPopupExtender.Show();
@@ -107,6 +107,10 @@ namespace web.secure
                 {
                     //BLL.Plan_CuentasB.deletePlan(id_tipo_cuenta, id_grupo_cuenta, id_cuenta);v
                     //FillPlan();
+                    txtCodigo.Text = codigo.ToString();
+
+                    EliminaCategoria();
+                    CargarGrilla();
                 }
             }
             catch (Exception ex)
@@ -117,9 +121,9 @@ namespace web.secure
 
         }
 
-        protected void gvCategorias_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void gvCategoriasMono_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gvCategorias.PageIndex = e.NewPageIndex;
+            gvCategoriasMono.PageIndex = e.NewPageIndex;
             CargarGrilla();
         }
 
@@ -155,19 +159,38 @@ namespace web.secure
 
         private void EliminaCategoria()
         {
-            throw new NotImplementedException();
+            string message = string.Empty;
+            try
+            {
+                int id = Convert.ToInt32(txtCodigo.Text);
+
+                BLL.Categoria_profesional_monotributoB.EliminaCategoria(id);
+
+                message = "Eliminación de la categoría finalizó correctamente...";
+                msjConfirmar.InnerHtml = message;
+                divConfirma.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                modalPopupExtender.Hide();
+                if (string.IsNullOrEmpty(message))
+                    txtError.InnerText = ex.Message;
+                else
+                    txtError.InnerText = message;
+                divError.Visible = true;
+            }
         }
 
         private void ModificaCategoria()
         {
-            Entities.Categorias oCate = new Entities.Categorias();
+            Entities.Categoria_profesional_monotributo oCate = new Entities.Categoria_profesional_monotributo();
             string message = string.Empty;
             try
             {
-                oCate.cod_categoria = Convert.ToInt32(txtCodigo.Text);
-                oCate.des_categoria = (txtDes_categoria.Text);
-                oCate.sueldo_basico = Convert.ToDecimal(txtSueldo_basico.Text);
-                BLL.CategoriasB.ModificaCategoria(oCate);
+                oCate.id_profesional_monotributo = Convert.ToInt32(txtCodigo.Text);
+                oCate.categoria = txtCategoria.Text;
+                oCate.monto = Convert.ToDecimal(txtMonto.Text);
+                BLL.Categoria_profesional_monotributoB.ModificaCategoria(oCate);
                 message = "Modificacion de la Categoria Termino Ok ...";
                 msjConfirmar.InnerHtml = message;
                 divConfirma.Visible = true;
@@ -186,15 +209,15 @@ namespace web.secure
 
         private void NuevoCategoria()
         {
-            Entities.Categorias oCate = new Entities.Categorias();
+            Entities.Categoria_profesional_monotributo oCate = new Entities.Categoria_profesional_monotributo();
             string message = string.Empty;
             try
             {
-                oCate.cod_categoria = 0;
-                oCate.des_categoria = txtDes_categoria.Text;
-                oCate.sueldo_basico = Convert.ToDecimal(txtSueldo_basico.Text);
-                oCate.fecha_alta_registro = DateTime.Today.ToString();
-                BLL.CategoriasB.NuevaCategoria(oCate);
+                oCate.id_profesional_monotributo = 0;
+                oCate.categoria = txtCategoria.Text;
+                oCate.monto = Convert.ToDecimal(txtMonto.Text);
+                oCate.fecha_alta = DateTime.Today;
+                BLL.Categoria_profesional_monotributoB.NuevaCategoria(oCate);
                 message = "Alta de la Categoria Termino Ok ...";
                 msjConfirmar.InnerHtml = message;
                 divConfirma.Visible = true;
@@ -216,8 +239,8 @@ namespace web.secure
             var strCate = txtInput.Value;
             if (txtInput.Value.Length > 0)
             {
-                gvCategorias.DataSource = BLL.CategoriasB.FindCategoriaByDes(strCate);
-                gvCategorias.DataBind();
+                gvCategoriasMono.DataSource = BLL.Categoria_profesional_monotributoB.FindCategoriaByDes(strCate);
+                gvCategoriasMono.DataBind();
             }
             else
                 CargarGrilla();
@@ -226,13 +249,13 @@ namespace web.secure
         protected void lbtnActualizar_valores_Click(object sender, EventArgs e)
         {
             //popupActualizarMontos.Show();
-            foreach (GridViewRow item in gvCategorias.Rows)
+            foreach (GridViewRow item in gvCategoriasMono.Rows)
             {
                 if (item.RowType == DataControlRowType.DataRow)
                 {
-                    TextBox txtSueldo_basico = (TextBox)item.FindControl("txtSueldo_basico");
-                    if (txtSueldo_basico != null)
-                        txtSueldo_basico.Enabled = true;
+                    TextBox txtMonto = (TextBox)item.FindControl("txtMonto");
+                    if (txtMonto != null)
+                        txtMonto.Enabled = true;
                 }
             }
             divActualiza.Visible = false;
@@ -250,17 +273,17 @@ namespace web.secure
             popupActualizarMontos.Hide();
         }
 
-        protected void gvCategorias2_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvCategoriasMono2_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
         }
 
-        protected void gvCategorias2_RowCreated(object sender, GridViewRowEventArgs e)
+        protected void gvCategoriasMono2_RowCreated(object sender, GridViewRowEventArgs e)
         {
 
         }
 
-        protected void gvCategorias2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void gvCategoriasMono2_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
 
         }
@@ -272,13 +295,13 @@ namespace web.secure
 
         protected void btnCancelarValores_Click(object sender, EventArgs e)
         {
-            foreach (GridViewRow item in gvCategorias.Rows)
+            foreach (GridViewRow item in gvCategoriasMono.Rows)
             {
                 if (item.RowType == DataControlRowType.DataRow)
                 {
-                    TextBox txtSueldo_basico = (TextBox)item.FindControl("txtSueldo_basico");
-                    if (txtSueldo_basico != null)
-                        txtSueldo_basico.Enabled = false;
+                    TextBox txtMonto = (TextBox)item.FindControl("txtMonto");
+                    if (txtMonto != null)
+                        txtMonto.Enabled = false;
                 }
             }
             divActualiza.Visible = true;
@@ -290,18 +313,18 @@ namespace web.secure
         {
             using (TransactionScope scope = new TransactionScope())
             {
-                foreach (GridViewRow item in gvCategorias.Rows)
+                foreach (GridViewRow item in gvCategoriasMono.Rows)
                 {
                     if (item.RowType == DataControlRowType.DataRow)
                     {
-                        TextBox txtSueldo_basico = (TextBox)item.FindControl("txtSueldo_basico");
-                        if (txtSueldo_basico != null)
+                        TextBox txtMonto = (TextBox)item.FindControl("txtMonto");
+                        if (txtMonto != null)
                         {
-                            int id = int.Parse(gvCategorias.DataKeys[item.RowIndex].Values["cod_categoria"].ToString());
-                            Entities.Categorias obj = BLL.CategoriasB.GetByPk(id);
-                            obj.sueldo_basico = Convert.ToDecimal(txtSueldo_basico.Text);
-                            txtSueldo_basico.Enabled = false;
-                            BLL.CategoriasB.ModificaSueldoBasico(obj);
+                            int id = int.Parse(gvCategoriasMono.DataKeys[item.RowIndex].Values["id_profesional_monotributo"].ToString());
+                            Entities.Categoria_profesional_monotributo obj = BLL.Categoria_profesional_monotributoB.GetByPk(id);
+                            obj.monto = Convert.ToDecimal(txtMonto.Text);
+                            txtMonto.Enabled = false;
+                            BLL.Categoria_profesional_monotributoB.ModificaMonto(obj);
                         }
                     }
                 }
@@ -351,8 +374,8 @@ namespace web.secure
             try
             {
                 GridView gv = new GridView();
-                List<Entities.Categorias> lst = new List<Entities.Categorias>();
-                lst = BLL.CategoriasB.GetCategorias();
+                List<Entities.Categoria_profesional_monotributo> lst = new List<Entities.Categoria_profesional_monotributo>();
+                lst = BLL.Categoria_profesional_monotributoB.GetCategoriaProfesionalMono();
                 gv.DataSource = lst;
                 gv.DataBind();
                 ExportToExcel("Categorias", gv);
@@ -366,3 +389,5 @@ namespace web.secure
         }
     }
 }
+
+
