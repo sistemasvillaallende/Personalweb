@@ -43,6 +43,7 @@
     <asp:HiddenField ID="hCantPreguntas" runat="server" />
     <asp:HiddenField ID="hIdRelevamiento" runat="server" />
     <asp:HiddenField ID="hIdFicha" runat="server" />
+    <asp:HiddenField ID="hIdFic" runat="server" />
     <asp:HiddenField ID="hIdEstado" runat="server" />
     <div class="container-fluid shadow p-3 mb-5 bg-white rounded"
         style="background-color: white; padding-left: 25px !important; padding-top: 5px !important;">
@@ -53,7 +54,7 @@
                         <div style="margin-bottom: 15px;">
                             <img
                                 style="width: 60px; height: 60px; float: left; border: 2px solid #d2d6de; padding: 2px; border-radius: 50%; vertical-align: middle;"
-                                src="../../dist/img/user1-128x128.jpg" alt="user image" runat="server" id="imgUser" />
+                                src="../img/usuario.png" alt="user image" id="imgUser" />
                             <span style="font-size: 16px; font-weight: 600; display: block; margin-left: 70px;">
                                 <a runat="server" id="lblNombre" href="#" style="color: var(--primary-color); text-decoration: none;"></a>
                             </span>
@@ -152,7 +153,7 @@
                                         <div class="item" style="display: grid; padding-bottom: 10px; border-bottom: solid gainsboro;">
                                             <span class="name" id="lblPregunta" runat="server"
                                                 style="color: var(--bs-success);"><%# Eval("TEXTO_PREGUNTA") %></span>
-                                            <span style="font-weight: 500;"
+                                            <span style="font-weight: 600; font-size: 20px;"
                                                 id="lblRespuesta" runat="server"><%# Eval("TEXTO_RESPUESTA") %></span>
                                         </div>
                                     </ItemTemplate>
@@ -206,12 +207,12 @@
                             <div id="divGrupo" runat="server" style="padding-left: 10px; padding-top: 20px;">
                             </div>
                             <div class="row" id="divPorcentual" runat="server" style="align-items: center;">
-                                <div class="col-md-4" style="padding-left: 25px;">
+                                <div class="col-md-6" style="padding-left: 25px;">
                                     <p style="color: var(--secondary); padding: 10px; display: contents;">
                                         <asp:Label ID="lblPregunta" runat="server" Text='<%# Eval("PREGUNTA") %>'></asp:Label>
                                     </p>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-6">
                                     <p style="margin-left: 25px; margin-right: 25px; margin-bottom: 0;"
                                         id="pRadio" runat="server">
                                         <asp:RadioButtonList ID="rbtn" runat="server"></asp:RadioButtonList>

@@ -239,14 +239,14 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="../secure/Desempeniosecretarias.aspx"
+                                                <a href="../Back/Desempeniosecretarias.aspx"
                                                     class="a-menu">
                                                     <i class="fa fa-tachometer"></i>
                                                     <span>Secretarias</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="../secure/Resultado_evaluacion.aspx"
+                                                <a href="../Back/Resultado_evaluacion.aspx"
                                                     class="a-menu">
                                                     <i class="fa fa-pie-chart"></i>
                                                     <span>Resultados</span>
