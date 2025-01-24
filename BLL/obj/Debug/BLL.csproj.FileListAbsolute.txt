@@ -32,3 +32,14 @@ C:\Users\juanf\Devs\Personalweb\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 C:\Users\juanf\Devs\Personalweb\BLL\obj\Debug\BLL.csproj.Up2Date
 C:\Users\juanf\Devs\Personalweb\BLL\obj\Debug\BLL.dll
 C:\Users\juanf\Devs\Personalweb\BLL\obj\Debug\BLL.pdb
+D:\DevSueldos\Personalweb\BLL\bin\Debug\BLL.dll
+D:\DevSueldos\Personalweb\BLL\bin\Debug\BLL.pdb
+D:\DevSueldos\Personalweb\BLL\bin\Debug\DAL.dll
+D:\DevSueldos\Personalweb\BLL\bin\Debug\Entities.dll
+D:\DevSueldos\Personalweb\BLL\bin\Debug\DAL.pdb
+D:\DevSueldos\Personalweb\BLL\bin\Debug\Entities.pdb
+D:\DevSueldos\Personalweb\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+D:\DevSueldos\Personalweb\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\DevSueldos\Personalweb\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\DevSueldos\Personalweb\BLL\obj\Debug\BLL.dll
+D:\DevSueldos\Personalweb\BLL\obj\Debug\BLL.pdb

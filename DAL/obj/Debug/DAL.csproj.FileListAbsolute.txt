@@ -31,3 +31,14 @@ C:\Users\juanf\Devs\Personalweb\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\juanf\Devs\Personalweb\DAL\obj\Debug\DAL.csproj.Up2Date
 C:\Users\juanf\Devs\Personalweb\DAL\obj\Debug\DAL.dll
 C:\Users\juanf\Devs\Personalweb\DAL\obj\Debug\DAL.pdb
+D:\DevSueldos\Personalweb\DAL\bin\Debug\DAL.dll
+D:\DevSueldos\Personalweb\DAL\bin\Debug\DAL.pdb
+D:\DevSueldos\Personalweb\DAL\bin\Debug\Entities.dll
+D:\DevSueldos\Personalweb\DAL\bin\Debug\Newtonsoft.Json.dll
+D:\DevSueldos\Personalweb\DAL\bin\Debug\Entities.pdb
+D:\DevSueldos\Personalweb\DAL\bin\Debug\Newtonsoft.Json.xml
+D:\DevSueldos\Personalweb\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\DevSueldos\Personalweb\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\DevSueldos\Personalweb\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\DevSueldos\Personalweb\DAL\obj\Debug\DAL.dll
+D:\DevSueldos\Personalweb\DAL\obj\Debug\DAL.pdb
