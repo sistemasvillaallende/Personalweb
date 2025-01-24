@@ -13,6 +13,10 @@
             color: var(--bs-gray-600);
         }
 
+        .modal {
+            top: 100 !important;
+        }
+
         .apexcharts-canvas text {
             fill: gray !important;
             font-size: 15px;
@@ -41,7 +45,7 @@
         }
     </style>
 
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -49,8 +53,7 @@
         <div class="col-xl-3 col-lg-3 col-md-3" style="display: block">
             <div class="card top_counter">
                 <div class="list-group list-group-custom list-group-flush">
-                    <h5 style="padding-left: 5px; font-size: 20px; color: var(--primary-color); font-weight: 600;">
-                        Incidencias del día
+                    <h5 style="padding-left: 5px; font-size: 20px; color: var(--primary-color); font-weight: 600;">Incidencias del día
                     </h5>
                     <hr style="margin-bottom: 0; margin-top: 5px; border-top: 3px solid lightgray; opacity: 1; margin-left: 20px; margin-right: 20px;" />
                     <div class="list-group-item d-flex align-items-center py-3"
@@ -575,62 +578,40 @@
                                         name: response.d[2][0],
                                         data: response.d[2][1]
                                     }])
-                                    //chartSueldosPlanta.addPointAnnotation({
-                                    //    x: 'Media',
-                                    //    y: response.d[0][1][1],
-                                    //    label: {
-                                    //        text: '$' + response.d[0][1][1]
-                                    //    },
-                                    //});
-                                    //chartSueldosPlanta.addPointAnnotation({
-                                    //    x: 'Media',
-                                    //    y: response.d[1][1][1],
-                                    //    label: {
-                                    //        text: '$' + response.d[1][1][1]
-                                    //    },
-                                    //});
-                                    //chartSueldosPlanta.addPointAnnotation({
-                                    //    x: 'Media',
-                                    //    y: response.d[2][1][1],
-                                    //    label: {
-                                    //        text: '$' + response.d[2][1][1]
-                                    //    },
-                                    //});
-                                    //chartSueldosPlanta.addPointAnnotation({
-                                    //    x: 'Moda Planta',
-                                    //    y: response.d[3],
-                                    //    label: {
-                                    //        text: 'Moda Planta: $' + response.d[0][1][3]
-                                    //    },
-                                    //});
-                                    //chartSueldosPlanta.addPointAnnotation({
-                                    //    x: 'Sueldo minimo Planta',
-                                    //    y: response.d[0],
-                                    //    label: {
-                                    //        text: 'Sueldo minimo Planta: $' + response.d[0][1][0]
-                                    //    },
-                                    //});
+
                                     const formatoMoneda = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' });
 
-                                    //chartSueldosPlanta.addPointAnnotation({
-                                    //    x: 'Sueldo maximo Planta',
-                                    //    y: response.d[4],
-                                    //    label: {
-                                    //        text: 'Sueldo maximo Planta: $' + response.d[0][1][4]
-                                    //    },
-                                    //});
-                                    //chartSueldosPlanta.addXaxisAnnotation({
-                                    //    x: 'Media',
-                                    //    label: {
-                                    //        text: formatoMoneda.format(response.d[0][1][1])
-                                    //    },
-                                    //})
                                 },
                                 error: function (error) {
                                     console.log(error);
                                 }
                             });
+                            $.ajax({
+                                type: "POST",
+                                url: "Dashboard.aspx/sueldosPlanta",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (response) {
+                                    chartSueldosPlanta.updateSeries([{
+                                        name: response.d[0][0],
+                                        data: response.d[0][1]
+                                    },
+                                    {
+                                        name: response.d[1][0],
+                                        data: response.d[1][1]
+                                    },
+                                    {
+                                        name: response.d[2][0],
+                                        data: response.d[2][1]
+                                    }])
 
+                                    const formatoMoneda = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' });
+
+                                },
+                                error: function (error) {
+                                    console.log(error);
+                                }
+                            });
                         });
                     </script>
                     <script>
@@ -665,7 +646,7 @@
                                 fontWeight: 400,
                                 horizontalAlign: 'center',
                                 offsetY: 0,
-                           
+
                             },
 
                         }
@@ -704,10 +685,8 @@
                             <asp:BoundField DataField="LEG_LEGAJO" HeaderText="Legajo" />
                             <asp:BoundField DataField="LEG_APYNOM" HeaderText="Nombre" />
                             <asp:BoundField DataField="RES_FECHA" HeaderText="Fecha" DataFormatString="{0:dd/MM/yyyy}" />
-                            <asp:BoundField DataField="JUS_DESDE" HeaderText="Desde" DataFormatString="{0:dd/MM/yyyy}" />
-                            <asp:BoundField DataField="JUS_HASTA" HeaderText="Hasta" DataFormatString="{0:dd/MM/yyyy}" />
+
                             <asp:BoundField DataField="CON_DESCRIP" HeaderText="Descripción" />
-                            <asp:BoundField DataField="JUS_NOTAS" HeaderText="Notas" />
                         </Columns>
                     </asp:GridView>
                 </div>
@@ -733,10 +712,7 @@
                             <asp:BoundField DataField="LEG_LEGAJO" HeaderText="Legajo" />
                             <asp:BoundField DataField="LEG_APYNOM" HeaderText="Nombre" />
                             <asp:BoundField DataField="RES_FECHA" HeaderText="Fecha" DataFormatString="{0:dd/MM/yyyy}" />
-                            <asp:BoundField DataField="JUS_DESDE" HeaderText="Desde" DataFormatString="{0:dd/MM/yyyy}" />
-                            <asp:BoundField DataField="JUS_HASTA" HeaderText="Hasta" DataFormatString="{0:dd/MM/yyyy}" />
                             <asp:BoundField DataField="CON_DESCRIP" HeaderText="Descripción" />
-                            <asp:BoundField DataField="JUS_NOTAS" HeaderText="Notas" />
                         </Columns>
                     </asp:GridView>
                 </div>
@@ -761,10 +737,7 @@
                             <asp:BoundField DataField="LEG_LEGAJO" HeaderText="Legajo" />
                             <asp:BoundField DataField="LEG_APYNOM" HeaderText="Nombre" />
                             <asp:BoundField DataField="RES_FECHA" HeaderText="Fecha" DataFormatString="{0:dd/MM/yyyy}" />
-                            <asp:BoundField DataField="JUS_DESDE" HeaderText="Desde" DataFormatString="{0:dd/MM/yyyy}" />
-                            <asp:BoundField DataField="JUS_HASTA" HeaderText="Hasta" DataFormatString="{0:dd/MM/yyyy}" />
                             <asp:BoundField DataField="CON_DESCRIP" HeaderText="Descripción" />
-                            <asp:BoundField DataField="JUS_NOTAS" HeaderText="Notas" />
                         </Columns>
                     </asp:GridView>
                 </div>
@@ -778,7 +751,7 @@
         <div class="modal-dialog" style="max-width: 80%;">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ModalSinLabel">Ausentes con aviso</h5>
+                    <h5 class="modal-title" id="ModalSinLabel">Ausentes sin procesar</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -789,10 +762,7 @@
                             <asp:BoundField DataField="LEG_LEGAJO" HeaderText="Legajo" />
                             <asp:BoundField DataField="LEG_APYNOM" HeaderText="Nombre" />
                             <asp:BoundField DataField="RES_FECHA" HeaderText="Fecha" DataFormatString="{0:dd/MM/yyyy}" />
-                            <asp:BoundField DataField="JUS_DESDE" HeaderText="Desde" DataFormatString="{0:dd/MM/yyyy}" />
-                            <asp:BoundField DataField="JUS_HASTA" HeaderText="Hasta" DataFormatString="{0:dd/MM/yyyy}" />
                             <asp:BoundField DataField="CON_DESCRIP" HeaderText="Descripción" />
-                            <asp:BoundField DataField="JUS_NOTAS" HeaderText="Notas" />
                         </Columns>
                     </asp:GridView>
                 </div>
@@ -832,4 +802,48 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('#<%=gvLicencias.ClientID %>').dataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                },
+                order: false,
+                pageLength: 5,
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+            
+            $('#<%=gvCon.ClientID %>').dataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                },
+                order: false,
+                pageLength: 5,
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+
+            $('#<%=
+        gvSin.ClientID %>').dataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                },
+                order: false,
+                pageLength: 5,
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+
+    </script>
 </asp:Content>

@@ -45,7 +45,14 @@ namespace web.secure
 
         protected void gvResultados_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         protected void DDLEvaluaciones_SelectedIndexChanged(object sender, EventArgs e)
