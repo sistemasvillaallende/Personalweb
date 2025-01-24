@@ -1,12 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master" AutoEventWireup="true"
     CodeBehind="certificaciones.aspx.cs" Inherits="web.secure.certificaciones" UICulture="es" Culture="es-MX" %>
 
-    <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    </asp:Content>
+
     <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+        <link href="../App_Themes/dist/css/AdminLTE.min.css" rel="stylesheet" />
+
         <div class="row" style="padding-top: 60px;">
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-12 col-md-offset-1">
                 <div class="row">
                     <div class="panel panel-primary">
                         <div class="panel-heading" style="height: 40px;">
@@ -17,7 +18,7 @@
 
                         <div class="panel-body">
                             <div class="form-group">
-                                <div class="col-md-8 col-md-offset-1" style="padding-top: 10px;">
+                                <div class="col-md-6 col-md-offset-1" style="padding-top: 10px;">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>
@@ -57,10 +58,10 @@
                                 <div class="panel-body">
                                     <div class="row" style="padding: 20px; padding-top: 10px;">
                                         <div style="overflow: scroll; height: 300px;">
-                                            <asp:GridView ID="gvDetalle" CssClass="" runat="server" Width="100%"
-                                                CellPadding="4" ForeColor="Black" GridLines="Horizontal"
-                                                AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC"
-                                                BorderStyle="None" BorderWidth="1px">
+                                            <asp:GridView ID="gvDetalle" CssClass="table table-hover table-bordered"
+                                                runat="server" Width="100%" CellPadding="4" ForeColor="Black"
+                                                GridLines="Horizontal" AutoGenerateColumns="False" BackColor="White"
+                                                BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                                                 <Columns>
                                                     <asp:BoundField HeaderText="Legajo" DataField="legajo">
                                                         <HeaderStyle HorizontalAlign="Left" />
@@ -105,14 +106,19 @@
 
                         <!-- ////////////////////////////////// BOTONES ////////////////////////////////////////////// -->
                         <div class="panel-footer" style="text-align: right;">
-                            <div class="form-group">
+                            <div class="btn-group pull-right">
+
                                 <asp:Button ID="btnConsultar" CssClass="btn-control aceptar" runat="server"
                                     Text="Consultar Movimientos" CausesValidation="False"
                                     OnClick="btnConsultar_Click" />
-                                <asp:Button ID="btnExporCtaCte" CssClass="btn btn-success" runat="server"
+
+                                <asp:Button ID="btnExporCtaCte" CssClass="btn-control excel" runat="server"
                                     Text="Exportar a Excel" CausesValidation="False" OnClick="btnExporCtaCte_Click" />
-                                <asp:Button ID="btnSalir" runat="server" CssClass="btn btn-warning" Text="Salir"
-                                    CausesValidation="False" OnClick="btnSalir_Click" />
+
+                                <asp:LinkButton ID="lbtnSalir" CssClass="btn-control volver" runat="server"
+                                    OnClick="btnSalir_Click">
+                                    <i class="fa fa-sign-out"></i> Volver
+                                </asp:LinkButton>
                             </div>
                         </div>
                     </div>

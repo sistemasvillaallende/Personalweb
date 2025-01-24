@@ -5,76 +5,8 @@
 
         <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
             <link href="../App_Themes/dist/css/AdminLTE.min.css" rel="stylesheet" />
-            <style type="text/css">
-                .auto-style1 {
-                    position: relative;
-                    min-height: 1px;
-                    float: left;
-                    width: 100%;
-                    left: 0px;
-                    top: 0px;
-                    padding-left: 15px;
-                    padding-right: 15px;
-                }
-
-                .auto-style2 {
-                    display: block;
-                    width: 100%;
-                    height: 34px;
-                    padding: 6px 12px;
-                    font-size: 14px;
-                    line-height: 1.42857143;
-                    color: #555;
-                    background-color: #fff;
-                    background-image: none;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-                    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-                    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-                    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-                    left: 0px;
-                    top: 1px;
-                }
-            </style>
-            <style type="text/css">
-                .gridview {
-                    background-color: #fff;
-                    height: 60px;
-                    padding: 2px;
-                    margin: 4% auto;
-                }
-
-                .gridview a {
-                    margin: 5px;
-                    border-radius: 50%;
-                    background-color: #444;
-                    padding: 5px 10px 5px 10px;
-                    color: #fff !important;
-                    text-decoration: none;
-                    -o-box-shadow: 1px 1px 1px #111;
-                    -moz-box-shadow: 1px 1px 1px #111;
-                    -webkit-box-shadow: 1px 1px 1px #111;
-                    box-shadow: 1px 1px 1px #111;
-                }
-
-                .gridview a:hover {
-                    background-color: #1e8d12;
-                    color: #fff;
-                }
-
-                .gridview span {
-                    background-color: #ae2676;
-                    color: #fff;
-                    /*-o-box-shadow: 1px 1px 1px #111;*/
-                    -moz-box-shadow: 1px 1px 1px #111;
-                    -webkit-box-shadow: 1px 1px 1px #111;
-                    box-shadow: 1px 1px 1px #111;
-                    border-radius: 50%;
-                    padding: 5px 10px 5px 10px;
-                }
-            </style>
         </asp:Content>
+
         <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
             <div class="row" style="margin-top: 35px; padding-top: 25px">
@@ -124,45 +56,42 @@
 
                                         <div class="panel-body">
                                             <div class="form-group">
-                                                <div class="col-md-12 offset-md-1">
-                                                    <div class="row form">
+                                                <div class="col-md-8  col-md-offset-1">
+                                                    <div class="row">
                                                         <div class="col-md-6">
-                                                            <div class="form-group row">
-                                                                <label for="txtLegajo">Legajo:</label>
-                                                                <asp:TextBox ID="txtLegajo" runat="server"
-                                                                    CssClass="input-control"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5"
-                                                                    runat="server" ControlToValidate="txtLegajo"
-                                                                    ErrorMessage="Debe Ingresar Legajo"
-                                                                    ValidationGroup="Validation1"
-                                                                    CssClass="text-danger"></asp:RequiredFieldValidator>
-                                                                <asp:CompareValidator ID="CompareValidator2"
-                                                                    runat="server"
-                                                                    ErrorMessage="El valor debe ser de Tipo Numerico"
-                                                                    Operator="DataTypeCheck" Type="Integer"
-                                                                    ControlToValidate="txtLegajo"
-                                                                    ValidationGroup="Validation1"
-                                                                    CssClass="text-danger"></asp:CompareValidator>
-                                                            </div>
+                                                            <label>
+                                                                Legajo :
+                                                            </label>
+                                                            <asp:TextBox ID="txtLegajo" runat="server"
+                                                                CssClass="input-control"></asp:TextBox>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5"
+                                                                runat="server" ControlToValidate="txtLegajo"
+                                                                ErrorMessage="Debe Ingresar Legajo"
+                                                                ValidationGroup="Validation1">*
+                                                            </asp:RequiredFieldValidator>
+                                                            <asp:CompareValidator ID="CompareValidator2" runat="server"
+                                                                ErrorMessage="El valor debe ser de Tipo Numerico"
+                                                                Operator="DataTypeCheck" Type="Integer"
+                                                                ControlToValidate="txtLegajo"
+                                                                ValidationGroup="Validation1">*</asp:CompareValidator>
                                                         </div>
+
                                                         <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="txtNombre">Nombre:</label>
-                                                                <asp:TextBox ID="txtNombre" runat="server"
-                                                                    CssClass="input-control"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
-                                                                    runat="server" ControlToValidate="txtNombre"
-                                                                    ErrorMessage="Debe Ingresar Nombre"
-                                                                    ValidationGroup="Validation1"
-                                                                    CssClass="text-danger"></asp:RequiredFieldValidator>
-                                                                <asp:CompareValidator ID="CompareValidator1"
-                                                                    runat="server"
-                                                                    ErrorMessage="El valor debe ser de Tipo Numerico"
-                                                                    Operator="DataTypeCheck" Type="Integer"
-                                                                    ControlToValidate="txtNombre"
-                                                                    ValidationGroup="Validation1"
-                                                                    CssClass="text-danger"></asp:CompareValidator>
-                                                            </div>
+                                                            <label>
+                                                                Nombre :
+                                                            </label>
+                                                            <asp:TextBox ID="txtNombre" runat="server"
+                                                                CssClass="input-control"></asp:TextBox>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
+                                                                runat="server" ControlToValidate="txtNombre"
+                                                                ErrorMessage="Debe Ingresar Nombre"
+                                                                ValidationGroup="Validation1">*
+                                                            </asp:RequiredFieldValidator>
+                                                            <asp:CompareValidator ID="CompareValidator1" runat="server"
+                                                                ErrorMessage="El valor debe ser de Tipo Numerico"
+                                                                Operator="DataTypeCheck" Type="Integer"
+                                                                ControlToValidate="txtNombre"
+                                                                ValidationGroup="Validation1">*</asp:CompareValidator>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -198,19 +127,17 @@
                                         <i class="fa fa-money"></i> Agregar Concepto
                                     </asp:LinkButton>
                                 </div>
-                                <br />
-                                <br />
                                 <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
                                 <!-- ////////////////////////////// GRILLA DETALLE /////////////////////////////////////// -->
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-12">
                                     <asp:UpdatePanel ID="PanelDetalle" runat="server" UpdateMode="Conditional">
                                         <Triggers>
                                             <asp:PostBackTrigger ControlID="lbtnExporCtaCte" />
                                         </Triggers>
                                         <ContentTemplate>
-                                            <div style="overflow: scroll; height: 300px;">
+                                            <div class="table-informacion">
                                                 <asp:GridView ID="gvDetalle" runat="server" AutoGenerateColumns="False"
-                                                    Width="100%" CssClass="table"
+                                                    Width="100%" CssClass="table table-hover table-bordered"
                                                     EmptyDataText="No hay detalle agregado!!!" GridLines="Horizontal"
                                                     OnRowCommand="gvDetalle_RowCommand"
                                                     OnRowCreated="gvDetalle_RowCreated" BackColor="White"
@@ -238,18 +165,18 @@
                                                             <%--<HeaderStyle BackColor="#D9EDF7" />--%>
                                                             <ItemStyle HorizontalAlign="Left" />
                                                         </asp:BoundField>
-                                                        <asp:TemplateField HeaderText="Accion">
+                                                        <asp:TemplateField HeaderText="Acciones">
                                                             <%--<HeaderStyle BackColor="#d9edf7" />--%>
                                                             <ItemTemplate>
-                                                                <asp:ImageButton ID="imgbEdit" runat="server"
-                                                                    CommandName="editrow"
-                                                                    ImageUrl="~/App_Themes/Estilos2025/editar.svg"
-                                                                    CausesValidation="False" />
                                                                 <asp:ImageButton ID="imgbDelete" runat="server"
                                                                     CommandName="deleterow"
                                                                     ImageUrl="~/App_Themes/Estilos2025/eliminar.svg"
                                                                     OnClientClick="return confirm('¿Está seguro de eliminar este registro?');"
                                                                     CommandArgument=' <%# Container.DataItemIndex %> '
+                                                                    CausesValidation="False" />
+                                                                <asp:ImageButton ID="imgbEdit" runat="server"
+                                                                    CommandName="editrow"
+                                                                    ImageUrl="~/App_Themes/Estilos2025/editar.svg"
                                                                     CausesValidation="False" />
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
@@ -267,7 +194,7 @@
                                                     <SortedDescendingHeaderStyle BackColor="#242121" />
                                                 </asp:GridView>
                                             </div>
-                                            <br />
+
                                             <label id="lblCantidad" runat="server" class="form-control"
                                                 style="text-align: right; background-color: #d9edf7;">
                                                 Cantidad: 0</label>
@@ -279,7 +206,7 @@
                                 </div>
                                 <!-- ////////////////////////////////// BOTONES ////////////////////////////////////////////// -->
                                 <div class="col-md-12" style="text-align: right;">
-                                    <%--<div class="pull-righ" style="padding-bottom: 20px;">
+                                    <%--<div class="btn-group pull-righ" style="padding-bottom: 20px;">
                                         <asp:Button ID="btnConfirma" runat="server" CssClass="btn btn-app btn-primary"
                                             Text="Confirmar" OnClick="btnConfirma_Click" />
                                         <asp:Button ID="btnExporCtaCte" CssClass="btn btn-app btn-link" runat="server"
@@ -288,7 +215,7 @@
                                             Text="Salir" CausesValidation="False" OnClick="btnSalir_Click" />
                                 </div>--%>
 
-                                <div class="pull-right">
+                                <div class="btn-group pull-right">
                                     <asp:LinkButton ID="lbtnConfirma" CssClass="btn-control primario" runat="server"
                                         OnClick="lbtnConfirma_Click"
                                         OnClientClick="return confirm('Desea Confirmar los Cambios...');">
@@ -300,7 +227,7 @@
                                     </asp:LinkButton>
                                     <asp:LinkButton ID="lbtnSalir" CssClass="btn-control volver" runat="server"
                                         OnClick="lbtnSalir_Click">
-                                        <i class="fa fa-sign-out"></i> Salir
+                                        <i class="fa fa-sign-out"></i> Volver
                                     </asp:LinkButton>
                                 </div>
                             </div>
@@ -372,22 +299,22 @@
                     PopupControlID="divModalDetalle" BehaviorID="modalPopupDetalle" TargetControlID="Button2"
                     OkControlID="btnAceptar" ID="modalPopupDetalle">
                 </ajaxToolkit:ModalPopupExtender>
-                <div id="divModalDetalle" runat="server" class="panel panel-info modal-windows">
-                    <%--<div class="panel-heading">
-                        <h4>Agregar Items</h4>
-                </div>--%>
-                <div class="panel-body">
+                <div id="divModalDetalle" runat="server" class="modal-windows">
+
                     <asp:UpdatePanel ID="UpdatePanelConcepto" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
                             <div class="modal-header col-md-12">
+
                                 <h4 class="modal-title">
-                                    <asp:Label ID="lblTituloFormModal" runat="server" Text="Agregar Conceptos">
+                                    <asp:Label ID="lblTituloFormModal" runat="server" Text="Conceptos">
                                     </asp:Label>
                                 </h4>
+
                                 <button type="button" runat="server" id="btnCloseModal"
                                     onserverclick="btnCloseModal_ServerClick" class="close" data-dismiss="modal"
                                     aria-label="Close">
                                     <span aria-hidden="true">×</span></button>
+
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-12">
@@ -404,7 +331,7 @@
 
                                 </div>
                             </div>
-                            <div class="modal-body" id="m1" style="min-height: 320px;">
+                            <div class="modal-body" id="m1">
                                 <div class="row">
                                     <div class="form-group col-md-4">
                                         <label>Cod Concepto</label>
@@ -425,7 +352,8 @@
                                             placeholder="Concepto" CssClass="input-control"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                                             ValidationGroup="cliente" Display="Dynamic" ControlToValidate="txtConcepto"
-                                            ErrorMessage="Debe Ingresar Concepto">*</asp:RequiredFieldValidator>
+                                            ErrorMessage="Debe Ingresar Concepto">*
+                                        </asp:RequiredFieldValidator>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -439,20 +367,21 @@
                                             Operator="DataTypeCheck">*</asp:CompareValidator>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
                                             ControlToValidate="txtValor" ErrorMessage="Debe ingresa Valor"
-                                            Display="Dynamic" ValidationGroup="cliente">*</asp:RequiredFieldValidator>
+                                            Display="Dynamic" ValidationGroup="cliente">*
+                                        </asp:RequiredFieldValidator>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Fecha Vto</label>
-                                        <asp:TextBox ID="txtFecha_vto" runat="server" TextMode="Date"
-                                            autocomplete="false" placeholder="Fecha Vto." CssClass="form-control">
-                                        </asp:TextBox>
+                                        <asp:TextBox ID="txtFecha_vto" runat="server" autocomplete="false"
+                                            placeholder="Fecha Vto." CssClass="input-control"></asp:TextBox>
                                         <asp:CompareValidator ID="CompareValidator4" runat="server"
                                             ValidationGroup="cliente" ControlToValidate="txtFecha_vto"
                                             ErrorMessage="Debe Ingresar Fecha_vto" Type="Date" Operator="DataTypeCheck">
                                             *</asp:CompareValidator>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
                                             ControlToValidate="txtFecha_vto" ErrorMessage="Debe ingresar Fecha_vto"
-                                            Display="Dynamic" ValidationGroup="cliente">*</asp:RequiredFieldValidator>
+                                            Display="Dynamic" ValidationGroup="cliente">*
+                                        </asp:RequiredFieldValidator>
                                     </div>
                                     <div class="form-group col-md-4">
                                         &nbsp;
@@ -486,11 +415,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <br />
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
-            </div>
-            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+                <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             </div>
             </div>
 
@@ -558,8 +487,34 @@
                 }
             </script>
 
-
             <script type="text/javascript"
                 src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script type="text/javascript" src="../js/MaxLength.min.js"></script>
+            <script type="text/javascript">
+                $(function () {
+                    //Specifying the Character Count control explicitly
+                    $("[id*=txtObservaciones.ClientID]").MaxLength(
+                        {
+                            MaxLength: 300,
+                            CharacterCountControl: $('#counter')
+                        });
+                    //Disable Character Count
+                    //$("[id*=TextBox3]").MaxLength(
+                    //{
+                    //    MaxLength: 20,
+                    //    DisplayCharacterCount: false
+                    //});
+                });
+            </script>
+
+            <%-- <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function () {
+                var textBox = document.getElementById("<%= txtObservaciones.ClientID %>");
+                    textBox.addEventListener("input", function () {
+                    if (this.value.length > 100) {
+                    this.value = this.value.slice(0, 100);
+                    }
+                    });
+                    });
+                    </script>--%>
         </asp:Content>

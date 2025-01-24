@@ -273,7 +273,7 @@
                                     <label>
                                         Tipo Liquidacion
                                     </label>
-                                    <asp:DropDownList ID="ddTipo_liquidacion" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddTipo_liquidacion" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True" AutoPostBack="true"  OnSelectedIndexChanged="ddTipoLiquidacion_SelectedIndexChanged">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="ddTipo_liquidacion"
@@ -356,7 +356,7 @@
                                     <label>
                                         Situacion de Revista
                                     </label>
-                                    <asp:DropDownList ID="ddRevista" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddRevista" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True"  >
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="ddRevista"
@@ -373,6 +373,20 @@
                                         ErrorMessage="Ingrese Fecha de Revista" ForeColor="#FF3300" ValidationGroup="ValidationDatos_empleado"
                                         Display="Dynamic">*</asp:RequiredFieldValidator>
                                 </div>
+                                <div class="col-md-4 ">
+    <label>
+        Categoría Profesional Monotributo
+    </label>
+    <asp:DropDownList ID="ddCategoriaProfesional" CssClass="form-control dropdown-arrow" runat="server" 
+        AppendDataBoundItems="True" Visible="false" AutoPostBack="true">
+        <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
+    </asp:DropDownList>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidatorCategoria" runat="server"
+        ControlToValidate="ddCategoriaProfesional" ErrorMessage="Debe seleccionar una categoría"
+        ForeColor="#FF3300" InitialValue="0" ValidationGroup="ValidationDatos_empleado"
+        Display="Dynamic">*</asp:RequiredFieldValidator>
+</div>
+
                                 <div class="col-md-4 pt-4">
                                     <label>
                                         <asp:CheckBox ID="ChkActivo" runat="server" />

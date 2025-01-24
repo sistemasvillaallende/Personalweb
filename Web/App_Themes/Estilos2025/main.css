@@ -1,42 +1,36 @@
 :root {
-  --color-gray: gray;
-  --color-white: white;
-  --color-darkgray: darkgray;
+  --color-gray: rgb(100, 100, 100);
   --color-cancelar: rgb(180, 23, 9);
   --color-cancelar-hover: rgb(110, 16, 16);
-  --color-aceptar: #2EACB3;
-  --color-aceptar-hover: #1F7F84;
+  --color-aceptar: #157347;
+  --color-aceptar-hover: #105535;
+  --color-second: #686f77;
+  --color-second-hover: #494e53;
   --color-volver: rgb(207, 190, 0);
   --color-volver-hover: rgb(119, 107, 0);
-  --color-primario: rgb(36, 88, 139);
-  --color-primario-hover: #163758;
+  --color-primario: #0D6EFD;
+  --color-primario-hover: #0e55be;
+  --color-excel: #1D6F42;
+  --color-excel-hover: #0F4A2A;
 }
 
 /*BOTONES*/
 
 .btn-control {
-  background-color: var(--color-gray);
-  color: var(--color-white);
+  background-color: var(--color-second);
   border-radius: 5px;
+  color: white !important;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin: 3px;
   text-decoration: none;
-  /* Remove underline from links */
   display: inline-block;
-  /* Ensure it looks like a button */
 }
 
 .btn-control:hover {
-  background-color: var(--color-gray-dark);
-  /* Optional: Add a hover effect */
-}
-
-.btn-control:active {
-  background-color: var(--color-gray-darker);
-  /* Optional: Add an active effect */
+  background-color: var(--color-second-hover);
 }
 
 /* Variantes */
@@ -70,6 +64,30 @@
 
 .btn-control.primario:hover {
   background-color: var(--color-primario-hover);
+}
+
+.btn-control.excel {
+  background-color: var(--color-excel);
+}
+
+.btn-control.excel:hover {
+  background-color: var(--color-excel-hover);
+}
+
+.btn-control.busqueda {
+  background-color: var(--color-aceptar);
+}
+
+.btn-control.busqueda:hover {
+  background-color: var(--color-aceptar-hover);
+}
+
+.btn-control.secondary {
+  background-color: var(--color-second);
+}
+
+.btn-control.secondary:hover {
+  background-color: var(--color-second-hover);
 }
 
 /*FORMULARIOS*/
@@ -118,6 +136,20 @@ textarea.input-control {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
+.seleciones {
+  display: flex;
+  flex-direction: row;
+  /* Alinea los elementos de forma horizontal */
+  justify-content: flex-start;
+  /* Alinea los elementos al inicio del contenedor */
+  align-items: center;
+  /* Alinea los elementos verticalmente al centro */
+  gap: 10px;
+  /* Espacio entre los elementos */
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
 /* MODALES */
 
 .modal-windows {
@@ -126,10 +158,66 @@ textarea.input-control {
   width: 40%;
   background-color: white;
   box-shadow: 0px 0px 10px #000;
+  width: 90dvw;
+  margin: 30px auto;
+  max-width: 600px;
 }
 
+/*TABLAS*/
 .table-informacion {
   margin-top: 20px;
-  width: 100%;
-  border-radius: 30px;
+  overflow: scroll;
+  height: 300px;
+}
+
+.foto-empleado {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+/*GRIDVIEW*/
+
+.gridview-category {
+  background-color: #fff;
+}
+
+.gridview-category th,
+.gridview-category td,
+.gridview-category tr,
+.gridview-category table,
+.gridview-category tbody,
+.gridview-category thead {
+  border: none;
+}
+
+.gridview-category a {
+  background-color: #b6b6b6;
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 3px;
+  padding: 5px 10px 5px 10px;
+}
+
+.gridview-category a:hover {
+  background-color: #5A6268;
+  color: #fff;
+}
+
+.gridview-category span {
+  background-color: #5A6268;
+  color: #fff;
+  border-radius: 3px;
+  padding: 5px 10px 5px 10px;
+}
+
+/* FORMULARIO DE BÚSQUEDA */
+.formulario-busqueda {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-left: 5px;
+  margin-top: 10px;
 }

@@ -259,7 +259,7 @@ namespace web.secure
                         txtFecha_pago.Text = oLiq.fecha_pago;
                         txtPer_ult_dep.Text = oLiq.per_ult_dep;
                         txtFecha_ult_deposito.Text = oLiq.fecha_ult_dep;
-                        
+
                         chkPublicar.Checked = Convert.ToBoolean(oLiq.publica);
                         chkCerrada.Checked = Convert.ToBoolean(oLiq.cerrada);
                         chkPrueba.Checked = Convert.ToBoolean(oLiq.prueba);
@@ -361,7 +361,7 @@ namespace web.secure
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#FFCC80'");
+                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#DADADA'");
                 e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='#FFFFFF'");
 
                 Entities.Liquidacion oLiq = (Entities.Liquidacion)e.Row.DataItem;

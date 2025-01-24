@@ -13,7 +13,7 @@ namespace web.secure
     {
         private string operacion = "";
         private int legajo;
-        
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,6 +25,18 @@ namespace web.secure
             {
                 this.CargarCombos();
                 this.AsignarDatos(EmpleadoB.GetByPkTodos(this.legajo));
+
+                string selectedCase = ddTipo_liquidacion.SelectedValue;
+
+                if (selectedCase == "9") 
+                {
+                    ddCategoriaProfesional.Visible = true;
+                   
+                }
+                else
+                {
+                    ddCategoriaProfesional.Visible = false;
+                }
             }
             string str = this.Request.Params["__EVENTARGUMENT"];
             if (str == "Confirma")
@@ -111,6 +123,10 @@ namespace web.secure
             this.ddEstadoCivil.DataValueField = "cod_estado_civil";
             this.ddEstadoCivil.DataSource = (object)ConsultaEmpleadoB.ListEstado_Civil();
             this.ddEstadoCivil.DataBind();
+            this.ddCategoriaProfesional.DataTextField = "categoria";
+            this.ddCategoriaProfesional.DataValueField = "id_profesional_monotributo";
+            this.ddCategoriaProfesional.DataSource = (object)ConsultaEmpleadoB.ListCategoriaProfesional();
+            this.ddCategoriaProfesional.DataBind();
         }
 
         protected void ddSecretaria_SelectedIndexChanged(object sender, EventArgs e)
@@ -205,6 +221,7 @@ namespace web.secure
                 this.chkImprime.Checked = objEmpleado.imprime_recibo > (short)0;
                 this.ddRevista.SelectedValue = Convert.ToString(objEmpleado.id_revista);
                 this.txtFecha_revista.Text = objEmpleado.fecha_revista;
+                this.ddCategoriaProfesional.SelectedValue = Convert.ToString(objEmpleado.id_profesional_monotributo);
                 if (objEmpleado.activo)
                     this.ChkActivo.Checked = true;
                 else
@@ -509,5 +526,25 @@ namespace web.secure
             });
             this.Response.Redirect("../secure/familiares.aspx");
         }
+
+        protected void ddTipoLiquidacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            string selectedCase = ddTipo_liquidacion.SelectedValue;
+
+            if (selectedCase == "9") // No liquida
+            {
+                ddCategoriaProfesional.Visible = true;
+                
+            }
+            else
+            {
+                ddCategoriaProfesional.Visible = false;
+            }
+        }
+
+
+
+
     }
 }
