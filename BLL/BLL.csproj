@@ -51,6 +51,7 @@
     <Compile Include="AUX_MAESTRO_SUELDO.cs" />
     <Compile Include="CategoriasB.cs" />
     <Compile Include="Categoria_profesional_monotributoB.cs" />
+    <Compile Include="Categoria_profesional_monotributo_histB.cs" />
     <Compile Include="Concepto_Liq_x_EmpB.cs" />
     <Compile Include="ConsultaEmpleadoB.cs" />
     <Compile Include="Concepto_liqB.cs" />

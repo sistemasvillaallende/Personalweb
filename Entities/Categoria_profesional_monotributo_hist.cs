@@ -10,13 +10,13 @@ namespace Entities
     {
         public int id_profesional_monotributo { get; set; }
         public int id_movimiento { get; set; }
-        public DateTime fecha_alta { get; set; }
+        public DateTime fecha_movimiento { get; set; }
         public decimal monto { get; set; }
         public Categoria_profesional_monotributo_hist()
         {
             id_profesional_monotributo = 0;
             id_movimiento = 0;
-            fecha_alta = DateTime.Now;
+            fecha_movimiento = DateTime.Now;
             monto = 0;
         }
     }
