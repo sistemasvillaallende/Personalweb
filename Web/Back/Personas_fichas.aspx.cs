@@ -20,26 +20,27 @@ namespace web.secure
                 string legajo = Request.QueryString["legajo"].ToString();
                 int idFicha = int.Parse(Request.QueryString["idFicha"].ToString());
                 hIdFicha.Value = idFicha.ToString();
+               
                 List<DAL.Fichas.Fichas_Relevamientos> lstR =
                     BLL.Fichas.Fichas_Relevamientos.read(idFicha, legajo);
-
-                //if (lstR.Count == 0)
+                
+                if (lstR.Count == 0)
                     fillGrilla();
-                //else
-                //{
-                //    foreach (var item in lstR)
-                //    {
-                //        HtmlGenericControl li = new HtmlGenericControl();
-                //        li.TagName = "li";
-                //        HtmlAnchor a = new HtmlAnchor();
-                //        a.ServerClick += new EventHandler(btnCambiar_Click);
-                //        a.InnerText = item.FECHA.ToShortDateString();
-                //        a.ID = item.ID.ToString();
-                //        li.Controls.Add(a);
-                //        ddlAnteriores.Controls.Add(li);
-                //    }
+                else
+                {
+                    foreach (var item in lstR)
+                    {
+                        HtmlGenericControl li = new HtmlGenericControl();
+                        li.TagName = "li";
+                        HtmlAnchor a = new HtmlAnchor();
+                        a.ServerClick += new EventHandler(btnCambiar_Click);
+                        a.InnerText = item.FECHA.ToShortDateString();
+                        a.ID = item.ID.ToString();
+                        li.Controls.Add(a);
+                        ddlAnteriores.Controls.Add(li);
+                    }
 
-                //}
+                }
 
             }
             catch (Exception ex)
@@ -79,9 +80,11 @@ namespace web.secure
                     List<DAL.Fichas.Fichas_Relevamientos> lstR =
                         BLL.Fichas.Fichas_Relevamientos.read(int.Parse(hIdFicha.Value), legajo);
 
-                    DAL.Fichas.Ficha objFicha = DAL.Fichas.Ficha.getByPk(lstR[0].ID_FICHA);
-                    lblNombreEvaluacion.InnerHtml = objFicha.NOMBRE;
-
+                    if (lstR.Count() > 0)
+                    {
+                        DAL.Fichas.Ficha objFicha = DAL.Fichas.Ficha.getByPk(lstR[0].ID_FICHA);
+                        lblNombreEvaluacion.InnerHtml = objFicha.NOMBRE;
+                    }
                     List<Entities.LstEmpleados> lst = DAL.EmpleadoD.GetByLegajo(legajo);
                     if (lst.Count() > 0)
                     {
@@ -89,7 +92,7 @@ namespace web.secure
                         lblCategoria.InnerHtml = obj.cod_categoria.ToString();
                         lblLegajo.InnerHtml = obj.legajo.ToString();
                         lblNombre.InnerHtml = obj.nombre;
-                        imgUser.Src = obj.passTemp;
+                        //imgUser.Src = obj.passTemp;
 
                         lblFechaIngreso.InnerHtml = obj.fecha_ingreso;
                         lblTipoLiq.InnerHtml = obj.des_tipo_liq;
@@ -533,41 +536,44 @@ namespace web.secure
                             sumf += item.PUNTUACION;
                         }
                     }
-                    resultadof = sumf / cantf;
-                    divResultadoTotal.Visible = true;
-                    if (resultadof >= 75)
+                    if (cantf > 0)
                     {
-                        divResultadoTotal.InnerHtml = string.Format(
-                            @"Resultado promedio de la evaluación: 
+                        resultadof = sumf / cantf;
+                        divResultadoTotal.Visible = true;
+                        if (resultadof >= 75)
+                        {
+                            divResultadoTotal.InnerHtml = string.Format(
+                                @"Resultado promedio de la evaluación: 
                                     <strong style=""color: var(--bs-success);"">{0}%</strong>",
-                             Math.Round(resultadof, 2));
-                    }
-                    else
-                    {
-                        divResultadoTotal.InnerHtml = string.Format(
-                            @"Resultado promedio de la evaluación: 
+                                 Math.Round(resultadof, 2));
+                        }
+                        else
+                        {
+                            divResultadoTotal.InnerHtml = string.Format(
+                                @"Resultado promedio de la evaluación: 
                                     <strong style=""color: var(--bs-danger);"">{0}%</strong>",
-                            Math.Round(resultadof, 2));
-                    }
+                                Math.Round(resultadof, 2));
+                        }
 
-                    HtmlGenericControl lblEvaluadorOriginal =
-                        (HtmlGenericControl)e.Row.FindControl("lblEvaluadorOriginal");
-                    HtmlGenericControl lblEvaluado =
-                        (HtmlGenericControl)e.Row.FindControl("lblEvaluado"); 
-                    HtmlGenericControl lblConformidad =
-                        (HtmlGenericControl)e.Row.FindControl("lblConformidad"); 
+                        HtmlGenericControl lblEvaluadorOriginal =
+                            (HtmlGenericControl)e.Row.FindControl("lblEvaluadorOriginal");
+                        HtmlGenericControl lblEvaluado =
+                            (HtmlGenericControl)e.Row.FindControl("lblEvaluado");
+                        HtmlGenericControl lblConformidad =
+                            (HtmlGenericControl)e.Row.FindControl("lblConformidad");
 
-                    lblEvaluadorOriginal.InnerHtml =
-                        string.Format(@"Evaluador: <span style=""color:var(--primary-color)"">
+                        lblEvaluadorOriginal.InnerHtml =
+                            string.Format(@"Evaluador: <span style=""color:var(--primary-color)"">
                                       {0}</span>", ConvertirALetraCapital(evaluador));
 
-                    lblEvaluado.InnerHtml =
-                        string.Format(@"Evaluado: <span style=""color:var(--primary-color)"">
+                        lblEvaluado.InnerHtml =
+                            string.Format(@"Evaluado: <span style=""color:var(--primary-color)"">
                                       {0}</span>", ConvertirALetraCapital(lblNombre.InnerHtml));
 
-                    lblConformidad.InnerHtml =
-                        string.Format(@"Conformidad: <span style=""color:var(--bs-orange);"">
+                        lblConformidad.InnerHtml =
+                            string.Format(@"Conformidad: <span style=""color:var(--bs-orange);"">
                                       {0}</span>", ConvertirALetraCapital(hIdEstado.Value));
+                    }
                 }
             }
             catch (Exception ex)

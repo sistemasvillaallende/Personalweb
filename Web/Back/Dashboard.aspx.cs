@@ -129,7 +129,15 @@ namespace web.secure
                         DateTime.Now.Day);
                     lblCumpleaños.InnerHtml = lstCumpleaños.Count().ToString();
 
-                    List<DAL.Ausencias> lstAusencias =
+                    gvCumple.DataSource = lstCumpleaños;
+                    gvCumple.DataBind();
+                    if (gvCumple.Rows.Count > 0)
+                    {
+                        gvCumple.UseAccessibleHeader = true;
+                        gvCumple.HeaderRow.TableSection = TableRowSection.TableHeader;
+                    }
+
+                    List <DAL.Ausencias> lstAusencias =
                         DAL.Ausencias.read(DateTime.Now.Month,
                         DateTime.Now.Day, DateTime.Now.Year);
 
@@ -137,16 +145,64 @@ namespace web.secure
                         lstAusencias.FindAll(
                             Li => Li.CON_DESCRIP.Contains("Licencia")).Count();
 
+                    List<DAL.Ausencias> lstLic = lstAusencias.FindAll(
+                            Li => Li.CON_DESCRIP.Contains("Licencia"));
+
+                    gvLicencias.DataSource = lstLic;
+                    gvLicencias.DataBind();
+                    if (gvLicencias.Rows.Count > 0)
+                    {
+                        gvLicencias.UseAccessibleHeader = true;
+                        gvLicencias.HeaderRow.TableSection = TableRowSection.TableHeader;
+                    }
                     int razones =
                         lstAusencias.FindAll(
                             Li => Li.CON_DESCRIP.Contains("Razones")).Count();
+
+                    List<DAL.Ausencias> lstRazones = lstAusencias.FindAll(
+        Li => Li.CON_DESCRIP.Contains("Razones"));
+
+                    gvRazones.DataSource = lstRazones;
+                    gvRazones.DataBind();
+                    if (gvRazones.Rows.Count > 0)
+                    {
+                        gvRazones.UseAccessibleHeader = true;
+                        gvRazones.HeaderRow.TableSection = TableRowSection.TableHeader;
+                    }
 
                     int sinInformar =
                         lstAusencias.FindAll(
                             Li => Li.CON_DESCRIP.Length == 0).Count();
 
+                    List<DAL.Ausencias> lstSinInformar = lstAusencias.FindAll(
+                            Li => Li.CON_DESCRIP.Length == 0);
+
+
+                    gvSin.DataSource = lstSinInformar;
+                    gvSin.DataBind();
+                    if (gvSin.Rows.Count > 0)
+                    {
+                        gvSin.UseAccessibleHeader = true;
+                        gvSin.HeaderRow.TableSection = TableRowSection.TableHeader;
+                    }
+
                     int conAviso = lstAusencias.Count() - licencias -
                         razones - sinInformar;
+
+                    List<DAL.Ausencias> pre_resultado = 
+                        lstAusencias.Except(lstLic).ToList();
+                    List<DAL.Ausencias> pre_resultado2 =
+                        pre_resultado.Except(lstRazones).ToList();
+                    List<DAL.Ausencias> resultado =
+                        pre_resultado2.Except(lstSinInformar).ToList();
+
+                    gvCon.DataSource =  resultado; 
+                    gvCon.DataBind();
+                    if (gvCon.Rows.Count > 0)
+                    {
+                        gvCon.UseAccessibleHeader = true;
+                        gvCon.HeaderRow.TableSection = TableRowSection.TableHeader;
+                    }
 
                     lblAusentesAviso.InnerHtml = conAviso.ToString();
                     lblAusentesSinAviso.InnerHtml = sinInformar.ToString();

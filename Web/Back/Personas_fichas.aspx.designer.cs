@@ -7,11 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace web.secure {
-    
-    
-    public partial class Personas_fichas {
-        
+namespace web.secure
+{
+
+
+    public partial class Personas_fichas
+    {
+
         /// <summary>
         /// Control hCantPreguntas.
         /// </summary>
@@ -20,7 +22,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hCantPreguntas;
-        
+
         /// <summary>
         /// Control hIdRelevamiento.
         /// </summary>
@@ -29,7 +31,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hIdRelevamiento;
-        
+
         /// <summary>
         /// Control hIdFicha.
         /// </summary>
@@ -38,7 +40,16 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hIdFicha;
-        
+
+        /// <summary>
+        /// Control hIdFic.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hIdFic;
+
         /// <summary>
         /// Control hIdEstado.
         /// </summary>
@@ -47,16 +58,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hIdEstado;
-        
-        /// <summary>
-        /// Control imgUser.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgUser;
-        
+
         /// <summary>
         /// Control lblNombre.
         /// </summary>
@@ -65,7 +67,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lblNombre;
-        
+
         /// <summary>
         /// Control lblLegajo.
         /// </summary>
@@ -74,7 +76,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblLegajo;
-        
+
         /// <summary>
         /// Control lblCategoria.
         /// </summary>
@@ -83,7 +85,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCategoria;
-        
+
         /// <summary>
         /// Control lblTipoLiq.
         /// </summary>
@@ -92,7 +94,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lblTipoLiq;
-        
+
         /// <summary>
         /// Control lblFechaIngreso.
         /// </summary>
@@ -101,7 +103,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFechaIngreso;
-        
+
         /// <summary>
         /// Control lblOficinas.
         /// </summary>
@@ -110,7 +112,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblOficinas;
-        
+
         /// <summary>
         /// Control lblFecha.
         /// </summary>
@@ -119,7 +121,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFecha;
-        
+
         /// <summary>
         /// Control lblNombreEvaluador.
         /// </summary>
@@ -128,7 +130,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNombreEvaluador;
-        
+
         /// <summary>
         /// Control lblNombreEvaluacion.
         /// </summary>
@@ -137,7 +139,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNombreEvaluacion;
-        
+
         /// <summary>
         /// Control divPreguntas.
         /// </summary>
@@ -146,7 +148,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPreguntas;
-        
+
         /// <summary>
         /// Control divRespuestas.
         /// </summary>
@@ -155,7 +157,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRespuestas;
-        
+
         /// <summary>
         /// Control lblTitulo.
         /// </summary>
@@ -164,7 +166,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTitulo;
-        
+
         /// <summary>
         /// Control btnNuevo.
         /// </summary>
@@ -173,7 +175,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnNuevo;
-        
+
         /// <summary>
         /// Control ddlAnteriores.
         /// </summary>
@@ -182,7 +184,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ddlAnteriores;
-        
+
         /// <summary>
         /// Control DDLRelevamientos.
         /// </summary>
@@ -191,7 +193,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DDLRelevamientos;
-        
+
         /// <summary>
         /// Control gvRespuestas.
         /// </summary>
@@ -200,7 +202,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvRespuestas;
-        
+
         /// <summary>
         /// Control gvPreguntas.
         /// </summary>
@@ -209,7 +211,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvPreguntas;
-        
+
         /// <summary>
         /// Control divError.
         /// </summary>
@@ -218,7 +220,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
-        
+
         /// <summary>
         /// Control lblError.
         /// </summary>
@@ -227,7 +229,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblError;
-        
+
         /// <summary>
         /// Control btnCancelar.
         /// </summary>
@@ -236,7 +238,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnCancelar;
-        
+
         /// <summary>
         /// Control btnAceptar.
         /// </summary>
@@ -245,7 +247,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnAceptar;
-        
+
         /// <summary>
         /// Control btnEliminar.
         /// </summary>

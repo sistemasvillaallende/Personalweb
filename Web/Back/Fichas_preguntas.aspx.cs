@@ -277,7 +277,7 @@ namespace web.secure
                 {
                     DAL.Fichas.Fichas_Preguntas byPk2 = BLL.Fichas.Fichas_Preguntas.getByPk(int.Parse(this.hIdPregunta.Value));
                     byPk2.PREGUNTA = this.txtTextoPregunta.Text;
-                    byPk2.TIPO_PREGUNTA = byPk1.TIPO == 1 ? 5 : int.Parse(this.DDLSeccion.SelectedItem.Value);
+                    //byPk2.TIPO_PREGUNTA = byPk1.TIPO == 1 ? 5 : int.Parse(this.DDLSeccion.SelectedItem.Value);
                     BLL.Fichas.Fichas_Preguntas.update(byPk2.ID, byPk2.PREGUNTA, byPk2.ID_GRUPO);
                 }
                 else if (byPk1.TIPO != 1)
