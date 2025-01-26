@@ -10,17 +10,6 @@ D:\Muni\Dev\Personalweb2\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 D:\Muni\Dev\Personalweb2\BLL\obj\Debug\BLL.csproj.Up2Date
 D:\Muni\Dev\Personalweb2\BLL\obj\Debug\BLL.dll
 D:\Muni\Dev\Personalweb2\BLL\obj\Debug\BLL.pdb
-C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\bin\Debug\BLL.dll
-C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\bin\Debug\BLL.pdb
-C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\bin\Debug\DAL.dll
-C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\bin\Debug\Entities.dll
-C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\bin\Debug\DAL.pdb
-C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\bin\Debug\Entities.pdb
-C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
-C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
-C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\obj\Debug\BLL.csproj.Up2Date
-C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\obj\Debug\BLL.dll
-C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\obj\Debug\BLL.pdb
 C:\Users\juanf\Devs\Personalweb\BLL\bin\Debug\BLL.dll
 C:\Users\juanf\Devs\Personalweb\BLL\bin\Debug\BLL.pdb
 C:\Users\juanf\Devs\Personalweb\BLL\bin\Debug\DAL.dll
@@ -43,3 +32,14 @@ D:\DevSueldos\Personalweb\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 D:\DevSueldos\Personalweb\BLL\obj\Debug\BLL.csproj.CopyComplete
 D:\DevSueldos\Personalweb\BLL\obj\Debug\BLL.dll
 D:\DevSueldos\Personalweb\BLL\obj\Debug\BLL.pdb
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\bin\Debug\BLL.dll
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\bin\Debug\BLL.pdb
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\bin\Debug\DAL.dll
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\bin\Debug\Entities.dll
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\bin\Debug\DAL.pdb
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\bin\Debug\Entities.pdb
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\obj\Debug\BLL.csproj.Up2Date
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\obj\Debug\BLL.dll
+C:\Users\fer22\Desktop\ultima version Personal2\Personalweb\BLL\obj\Debug\BLL.pdb
