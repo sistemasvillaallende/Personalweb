@@ -67,262 +67,124 @@ namespace DAL
             }
             return lst;
         }
+
+        public static List<Entities.Categoria_profesional_historialDTO> GetHistorialDetalle()
+        {
+
+            StringBuilder strSQL = new StringBuilder();
+            strSQL.AppendLine("SELECT cat.categoria, hist.id_movimiento, hist.fecha_movimiento, hist.monto");
+            strSQL.AppendLine("FROM CATEGORIA_PROFESIONAL_MONOTRIBUTO_HIST hist");
+            strSQL.AppendLine(" LEFT JOIN CATEGORIA_PROFESIONAL_MONOTRIBUTO cat");
+            strSQL.AppendLine(" ON hist.id_profesional_monotributo = cat.id_profesional_monotributo");
+            strSQL.AppendLine(" ORDER BY hist.id_profesional_monotributo");
+
+            using (SqlConnection conn = DALBase.GetConnection("Siimva"))
+            {
+                try
+                {
+                    SqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = strSQL.ToString();
+                    cmd.Connection.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    List<Entities.Categoria_profesional_historialDTO> lst = new List<Entities.Categoria_profesional_historialDTO>();
+                    Entities.Categoria_profesional_historialDTO obj;
+                    if (dr.HasRows)
+                    {
+                        int categoria = dr.GetOrdinal("categoria");
+                        int id_movimiento = dr.GetOrdinal("id_movimiento");
+                        int fecha_movimiento = dr.GetOrdinal("fecha_movimiento");
+                        int monto = dr.GetOrdinal("monto");
+                        while (dr.Read())
+                        {
+                            obj = new Entities.Categoria_profesional_historialDTO();
+                            if (!dr.IsDBNull(categoria)) obj.categoria = dr.GetString(categoria);
+                            if (!dr.IsDBNull(id_movimiento)) obj.id_movimiento = dr.GetInt32(id_movimiento);
+                            if (!dr.IsDBNull(fecha_movimiento)) obj.fecha_movimiento = dr.GetDateTime(fecha_movimiento);
+                            if (!dr.IsDBNull(monto)) obj.monto = dr.GetDecimal(monto);
+                            lst.Add(obj);
+                        }
+                        dr.Close();
+                    }
+                    return lst;
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error in query!" + e.ToString());
+                    throw e;
+                }
+            }
+        }
+
+        public static void AgregarAlHistorial(int id_profesional_monotributo, decimal monto)
+        {
+            try
+            {
+                 var nuevoIdMovimiento = 0;
+
+                using (SqlConnection con = DALBase.GetConnection("Siimva"))
+                {
+                     if (con.State != ConnectionState.Open)
+                    {
+                        con.Open();
+                    }
+
+                    using (SqlCommand cmd1 = new SqlCommand())
+                    {
+                        StringBuilder SQL = new StringBuilder();
+                        SQL.AppendLine("SELECT isnull(max(id_movimiento),0) FROM CATEGORIA_PROFESIONAL_MONOTRIBUTO_HIST ");
+                        SQL.AppendLine("WHERE id_profesional_monotributo = @id_profesional_monotributo ");
+                        cmd1.Connection = con;
+                        cmd1.CommandType = CommandType.Text;
+                        cmd1.Parameters.AddWithValue("@id_profesional_monotributo", id_profesional_monotributo);
+                        cmd1.CommandText = SQL.ToString();
+
+                        nuevoIdMovimiento = Convert.ToInt32(cmd1.ExecuteScalar()) + 1;
+                    }
+
+                    StringBuilder sql = new StringBuilder();
+                    sql.AppendLine("INSERT INTO CATEGORIA_PROFESIONAL_MONOTRIBUTO_HIST(");
+                    sql.AppendLine(" id_profesional_monotributo");
+                    sql.AppendLine(", id_movimiento");
+                    sql.AppendLine(", fecha_movimiento");
+                    sql.AppendLine(", monto");
+                    sql.AppendLine(")");
+                    sql.AppendLine("VALUES");
+                    sql.AppendLine("(");
+                    sql.AppendLine("@id_profesional_monotributo");
+                    sql.AppendLine(", @id_movimiento");
+                    sql.AppendLine(", @fecha_movimiento");
+                    sql.AppendLine(", @monto");
+                    sql.AppendLine(")");
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@id_profesional_monotributo", id_profesional_monotributo);
+                        cmd.Parameters.AddWithValue("@id_movimiento", nuevoIdMovimiento);
+                        cmd.Parameters.AddWithValue("@fecha_movimiento", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@monto", monto);
+                        cmd.Connection = con;
+                        cmd.CommandText = sql.ToString();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error in query!" + e.ToString());
+                throw e;
+            }
+        }
     }
 }
 
 
-// public static List<Entities.Categoria_profesional_monotributo_hist> FindCategoriaByDes(string descripcion)
-// {
-//     StringBuilder strSQL = new StringBuilder();
-//     StringBuilder strCondicion = new StringBuilder();
-//     {
-
-//         strSQL.AppendLine("SELECT id_profesional_monotributo, id_movimiento, fecha_movimiento , monto ");
-//         strSQL.AppendLine("FROM CATEGORIA_PROFESIONAL_MONOTRIBUTO_HIST");
-//         strSQL.AppendLine("WHERE categoria LIKE @descripcion");
-//         strSQL.AppendLine("ORDER BY id_profesional_monotributo");
-
-//         using (SqlConnection conn = DALBase.GetConnection("Siimva"))
-//         {
-//             try
-//             {
-//                 SqlCommand cmd = conn.CreateCommand();
-//                 cmd.CommandType = CommandType.Text;
-//                 cmd.CommandText = strSQL.ToString();
-//                 cmd.Parameters.AddWithValue("@descripcion", "%" + descripcion + "%");
-//                 cmd.Connection.Open();
-//                 return getLstCategoriaProfesional(cmd);
-//             }
-//             catch (Exception ex)
-//             {
-//                 throw ex;
-//             }
-//         }
-
-//     }
-// }
-
-// public static Entities.Categoria_profesional_monotributo GetByPk(int codigo)
-// {
-//     Entities.Categoria_profesional_monotributo obj = new Entities.Categoria_profesional_monotributo();
-//     SqlCommand cmd;
-//     SqlDataReader dr;
-//     StringBuilder strSQL = new StringBuilder();
-
-//     strSQL.AppendLine("SELECT id_profesional_monotributo ,categoria, fecha_alta, monto ");
-//     strSQL.AppendLine("FROM CATEGORIA_PROFESIONAL_MONOTRIBUTO");
-//     strSQL.AppendLine("WHERE id_profesional_monotributo = @codigo");
-
-//     cmd = new SqlCommand();
-//     cmd.Parameters.Add(new SqlParameter("@codigo", codigo));
-
-//     try
-//     {
-//         using (SqlConnection conn = DALBase.GetConnection("Siimva"))
-//         {
-//             try
-//             {
-//                 cmd.Connection = conn;
-//                 cmd.CommandType = CommandType.Text;
-//                 cmd.CommandText = strSQL.ToString();
-//                 cmd.Connection.Open();
-//                 dr = cmd.ExecuteReader();
-//             }
-//             catch (Exception ex)
-//             {
-//                 throw ex;
-//             }
-//             while (dr.Read())
-//             {
-//                 if (!dr.IsDBNull(dr.GetOrdinal("id_profesional_monotributo")))
-//                     obj.id_profesional_monotributo = dr.GetInt32(dr.GetOrdinal("id_profesional_monotributo"));
-
-//                 if (!dr.IsDBNull(dr.GetOrdinal("categoria")))
-//                     obj.categoria = dr.GetString(dr.GetOrdinal("categoria"));
-
-//                 if (!dr.IsDBNull(dr.GetOrdinal("fecha_alta")))
-//                     obj.fecha_alta = dr.GetDateTime(dr.GetOrdinal("fecha_alta"));
-
-//                 if (!dr.IsDBNull(dr.GetOrdinal("monto")))
-//                     obj.monto = dr.GetDecimal(dr.GetOrdinal("monto"));
-
-//             }
-//             dr.Close();
-//         }
-//     }
-
-//     catch (Exception e)
-//     {
-//         Console.WriteLine("Error in query!" + e.ToString());
-//         throw e;
-//     }
-//     finally
-//     { cmd = null; strSQL = null; }
-
-//     return obj;
-// }
 
 
 
-//         public static void NuevaCategoria(Entities.Categoria_profesional_monotributo oCate)
-//         {
-//             StringBuilder strSQL = new StringBuilder();
-//             try
-//             {
-//                 // Usando 'using' para manejar la conexión de manera automática
-//                 using (SqlConnection cn = DALBase.GetConnection("Siimva"))
-//                 {
-//                     // Abrir la conexión si no está abierta
-//                     if (cn.State != ConnectionState.Open)
-//                     {
-//                         cn.Open();
-//                     }
-
-//                     // Verificar si es una nueva categoría
-//                     if (oCate.id_profesional_monotributo == 0)
-//                     {
-//                         // Usamos 'using' para el comando también
-//                         using (SqlCommand cmd1 = new SqlCommand())
-//                         {
-//                             StringBuilder SQL = new StringBuilder();
-//                             SQL.AppendLine("SELECT isnull(max(id_profesional_monotributo),0) FROM CATEGORIA_PROFESIONAL_MONOTRIBUTO");
-
-//                             cmd1.Connection = cn;
-//                             cmd1.CommandType = CommandType.Text;
-//                             cmd1.CommandText = SQL.ToString();
-
-//                             // Asignamos el nuevo id
-//                             oCate.id_profesional_monotributo = Convert.ToInt32(cmd1.ExecuteScalar()) + 1;
-//                         }
-//                     }
-
-//                     // Preparar el SQL para la inserción
-//                     strSQL.AppendLine("INSERT INTO CATEGORIA_PROFESIONAL_MONOTRIBUTO");
-//                     strSQL.AppendLine("(id_profesional_monotributo,");
-//                     strSQL.AppendLine("categoria,");
-//                     strSQL.AppendLine("fecha_alta,");
-//                     strSQL.AppendLine("monto)");
-//                     strSQL.AppendLine("VALUES");
-//                     strSQL.AppendLine("(@id_profesional_monotributo,");
-//                     strSQL.AppendLine("@categoria,");
-//                     strSQL.AppendLine("@fecha_alta,");
-//                     strSQL.AppendLine("@monto)");
-
-//                     using (SqlCommand cmd = new SqlCommand())
-//                     {
-//                         cmd.Parameters.AddWithValue("@id_profesional_monotributo", oCate.id_profesional_monotributo);
-//                         cmd.Parameters.AddWithValue("@categoria", oCate.categoria);
-//                         cmd.Parameters.AddWithValue("@fecha_alta", oCate.fecha_alta);
-//                         cmd.Parameters.AddWithValue("@monto", oCate.monto);
-//                         cmd.Connection = cn;
-//                         cmd.CommandType = CommandType.Text;
-//                         cmd.CommandText = strSQL.ToString();
-
-//                         cmd.ExecuteNonQuery();
-//                     }
-//                 }
-//             }
-//             catch (Exception e)
-//             {
-//                 throw e;
-//             }
-//         }
 
 
-//         public static void ModificaCategoria(Entities.Categoria_profesional_monotributo oCate)
-//         {
-//             SqlCommand cmd = null;
-//             SqlConnection cn = DALBase.GetConnection("Siimva");
-//             StringBuilder strSQL = new StringBuilder();
-//             try
-//             {
 
-//                 strSQL.AppendLine("UPDATE CATEGORIA_PROFESIONAL_MONOTRIBUTO set");
-//                 strSQL.AppendLine("categoria=@categoria,");
-//                 strSQL.AppendLine("monto=@monto");
-//                 strSQL.AppendLine("WHERE id_profesional_monotributo=@id_profesional_monotributo");
-
-//                 cmd = new SqlCommand();
-//                 cmd.Parameters.AddWithValue("@id_profesional_monotributo", oCate.id_profesional_monotributo);
-//                 cmd.Parameters.AddWithValue("@categoria", oCate.categoria);
-//                 cmd.Parameters.AddWithValue("@monto", oCate.monto);
-
-//                 cmd.Connection = cn;
-//                 cmd.CommandType = CommandType.Text;
-//                 cmd.CommandText = strSQL.ToString();
-//                 cmd.Connection.Open();
-//                 cmd.ExecuteNonQuery();
-//             }
-//             catch (Exception e)
-//             {
-
-//                 throw e;
-//             }
-
-//             finally
-//             {
-//                 cmd = null;
-//                 cn.Close();
-//             }
-//         }
-
-//         public static void ModificaMonto(Entities.Categoria_profesional_monotributo oCate)
-//         {
-//             SqlCommand cmd = null;
-//             SqlConnection cn = DALBase.GetConnection("Siimva");
-//             StringBuilder strSQL = new StringBuilder();
-//             try
-//             {
-
-//                 strSQL.AppendLine("UPDATE CATEGORIA_PROFESIONAL_MONOTRIBUTO set");
-//                 strSQL.AppendLine("monto=@monto");
-//                 strSQL.AppendLine("WHERE id_profesional_monotributo=@id_profesional_monotributo");
-
-//                 cmd = new SqlCommand();
-//                 cmd.Parameters.AddWithValue("@id_profesional_monotributo", oCate.id_profesional_monotributo);
-//                 cmd.Parameters.AddWithValue("@monto", oCate.monto);
-
-//                 cmd.Connection = cn;
-//                 cmd.CommandType = CommandType.Text;
-//                 cmd.CommandText = strSQL.ToString();
-//                 cmd.Connection.Open();
-//                 cmd.ExecuteNonQuery();
-//             }
-//             catch (Exception e)
-//             {
-
-//                 throw e;
-//             }
-
-//             finally
-//             {
-//                 cmd = null;
-//                 cn.Close();
-//             }
-//         }
-
-//         public static void EliminarCategoria(int id)
-//         {
-//             using (SqlConnection cn = DALBase.GetConnection("Siimva"))
-//             {
-//                 using (SqlCommand cmd = new SqlCommand())
-//                 {
-//                     try
-//                     {
-//                         cn.Open();
-//                         cmd.Connection = cn;
-//                         cmd.CommandType = CommandType.Text;
-//                         cmd.CommandText = "DELETE FROM CATEGORIA_PROFESIONAL_MONOTRIBUTO WHERE id_profesional_monotributo = @id_profesional_monotributo";
-//                         cmd.Parameters.AddWithValue("@id_profesional_monotributo", id);
-
-//                         cmd.ExecuteNonQuery();
-//                     }
-//                     catch (Exception e)
-//                     {
-//                         throw e; 
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }

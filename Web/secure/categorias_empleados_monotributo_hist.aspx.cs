@@ -33,7 +33,7 @@ namespace web.secure
 
         private void CargarGrilla()
         {
-            gvCategoriasMono.DataSource = BLL.Categoria_profesional_monotributo_histB.GetCategoriaProfesionalMonoHist();
+            gvCategoriasMono.DataSource = BLL.Categoria_profesional_monotributo_histB.GetHistorialDetalle();
             gvCategoriasMono.DataBind();
         }
 
@@ -60,17 +60,18 @@ namespace web.secure
                 e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#FFCC80'");
                 e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='#FFFFFF'");
 
-                Entities.Categoria_profesional_monotributo_hist oCat = (Entities.Categoria_profesional_monotributo_hist)e.Row.DataItem;
-                Label lblIdCateMono = (Label)e.Row.FindControl("lblIdCateMono");
-                Label lblFecha_alta = (Label)e.Row.FindControl("lblFecha_alta");
+                Entities.Categoria_profesional_historialDTO oCat = (Entities.Categoria_profesional_historialDTO)e.Row.DataItem;
                 Label lblCategoria = (Label)e.Row.FindControl("lblCategoria");
+                Label lblMovimiento = (Label)e.Row.FindControl("lblMovimiento");
+                Label lblFechaMovimiento = (Label)e.Row.FindControl("lblFechaMovimiento");
+                Label lblMonto = (Label)e.Row.FindControl("lblMonto");
                 //Label lblMonto = (Label)e.Row.FindControl("lblMonto");
                 //TextBox txtMonto = (TextBox)e.Row.FindControl("txtMonto");
 
-                lblIdCateMono.Text = oCat.id_profesional_monotributo.ToString();
-                lblFecha_alta.Text = oCat.fecha_movimiento.ToString();
-                lblCategoria.Text = oCat.id_movimiento.ToString();
-                // lblMonto.Text = oCat.monto.ToString();
+                lblCategoria.Text = oCat.categoria.ToString();
+                lblMovimiento.Text = oCat.id_movimiento.ToString();
+                lblFechaMovimiento.Text = oCat.fecha_movimiento.ToString();
+                lblMonto.Text = oCat.monto.ToString();
 
             }
         }
@@ -86,7 +87,7 @@ namespace web.secure
                 if (e.CommandName == "Page")
                     return;
 
-                codigo = Convert.ToInt32(gvCategoriasMono.DataKeys[indicePaginado].Values["id_profesional_monotributo"]);
+                //codigo = Convert.ToInt32(gvCategoriasMono.DataKeys[indicePaginado].Values["id_profesional_monotributo"]);
 
                 if (e.CommandName == "editar")
                 {

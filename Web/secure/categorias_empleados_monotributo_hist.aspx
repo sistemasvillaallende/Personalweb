@@ -104,31 +104,11 @@
                                                 CellPadding="4"
                                                 AutoGenerateColumns="False"
                                                 ForeColor="#333333"
-                                                GridLines="None" DataKeyNames="id_profesional_monotributo" AllowPaging="True"
+                                                GridLines="None" DataKeyNames="categoria" AllowPaging="True"
                                                 OnPageIndexChanging="gvCategoriasMono_PageIndexChanging" PageSize="8">
                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775"></AlternatingRowStyle>
                                                 <Columns>
-                                                    <asp:TemplateField HeaderText="Id id_profesional_monotributo " ItemStyle-Width="10%">
-                                                        <ItemTemplate>
-                                                            <p>
-                                                                <asp:Label ID="lblIdCateMono" runat="server" Text=""></asp:Label>
-                                                            </p>
-
-                                                        </ItemTemplate>
-                                                        <ItemStyle Width="10%" />
-                                                    </asp:TemplateField>
-
-                                                    <asp:TemplateField HeaderText="Fecha Movimiento" ItemStyle-Width="20%">
-                                                        <ItemTemplate>
-                                                            <p>
-                                                                <asp:Label ID="lblFecha_alta" runat="server" Text=""></asp:Label>
-                                                            </p>
-
-                                                        </ItemTemplate>
-                                                        <ItemStyle Width="20%" />
-                                                    </asp:TemplateField>
-
-                                                    <asp:TemplateField HeaderText="Id movimiento" ItemStyle-Width="50%">
+                                                    <asp:TemplateField HeaderText="Categoria " ItemStyle-Width="10%">
                                                         <ItemTemplate>
                                                             <p>
                                                                 <asp:Label ID="lblCategoria" runat="server" Text=""></asp:Label>
@@ -138,26 +118,36 @@
                                                         <ItemStyle Width="50%" />
                                                     </asp:TemplateField>
 
-                                                    <%--<asp:TemplateField HeaderText="Monto" ItemStyle-Width="20%">
+                                                    <asp:TemplateField HeaderText="Numero movimiento" ItemStyle-Width="50%">
+                                                        <ItemTemplate>
+                                                            <p>
+                                                                <asp:Label ID="lblMovimiento" runat="server" Text=""></asp:Label>
+                                                            </p>
+
+                                                        </ItemTemplate>
+                                                        <ItemStyle Width="10%" />
+                                                    </asp:TemplateField>
+
+                                                    <asp:TemplateField HeaderText="Fecha Movimiento" ItemStyle-Width="20%">
+                                                        <ItemTemplate>
+                                                            <p>
+                                                                <asp:Label ID="lblFechaMovimiento" runat="server" Text=""></asp:Label>
+                                                            </p>
+
+                                                        </ItemTemplate>
+                                                        <ItemStyle Width="20%" />
+                                                    </asp:TemplateField>
+
+
+                                                    <asp:TemplateField HeaderText="Monto" ItemStyle-Width="20%">
                                                 <ItemTemplate>
                                                     <p>
                                                         <asp:Label ID="lblMonto" runat="server" Text=""></asp:Label>
                                                     </p>
                                                 </ItemTemplate>
                                                 <ItemStyle Width="20%" />
-                                            </asp:TemplateField>--%>
+                                            </asp:TemplateField>
 
-                                                    <asp:TemplateField>
-                                                        <ItemTemplate>
-                                                            <asp:TextBox ID="txtMonto"
-                                                                CssClass="form-control"
-                                                                Text='<%#Eval("monto")%>'
-                                                                Enabled="false"
-                                                                runat="server"></asp:TextBox>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-
-                                                
                                                 </Columns>
                                                 <EditRowStyle BackColor="#999999"></EditRowStyle>
                                                 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White"></FooterStyle>
