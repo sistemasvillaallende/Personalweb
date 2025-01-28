@@ -6,38 +6,7 @@
 
         <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
             <link href="../App_Themes/dist/css/AdminLTE.min.css" rel="stylesheet" />
-            <style type="text/css">
-                .auto-style1 {
-                    position: relative;
-                    min-height: 1px;
-                    float: left;
-                    width: 100%;
-                    left: 0px;
-                    top: 0px;
-                    padding-left: 15px;
-                    padding-right: 15px;
-                }
 
-                .auto-style2 {
-                    display: block;
-                    width: 100%;
-                    height: 34px;
-                    padding: 6px 12px;
-                    font-size: 14px;
-                    line-height: 1.42857143;
-                    color: #555;
-                    background-color: #fff;
-                    background-image: none;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-                    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-                    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-                    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-                    left: 0px;
-                    top: 1px;
-                }
-            </style>
             <style type="text/css">
                 .gridview {
                     background-color: #fff;
@@ -272,7 +241,7 @@
                                                     <asp:PostBackTrigger ControlID="lbtnExporCtaCte" />
                                                 </Triggers>
                                                 <ContentTemplate>
-                                                    <div class="auto-style1" style="margin-top: 10px;">
+                                                    <div>
                                                         <asp:GridView ID="gvDetalle" runat="server"
                                                             AutoGenerateColumns="False" Width="100%" CssClass="table"
                                                             AllowPaging="True" PageSize="10"
