@@ -352,7 +352,7 @@ namespace web.secure
 
         protected void cmdSalir_Click(object sender, EventArgs e)
         {
-            Response.Redirect("cargar_conceptos.aspx");
+            Response.Redirect("home.aspx");
         }
 
         protected void cmdCerrar_Click(object sender, EventArgs e)
