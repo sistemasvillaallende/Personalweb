@@ -100,7 +100,7 @@
                         </div>
                         <div class="box-footer" style="text-align: right;">
                             <a class="btn-control excel" onclick="abrirmodalConceptos();">
-                                <i class="fa fa-file-excel-o"></i>Cargar Excel
+                                <i class="fa fa-file-excel-o"></i> Cargar Excel
                             </a>
                             <a href="#" class="btn-control excel" onclick="abrirmodalVerformato()">
                                 <i class="fa fa-file-photo-o"></i>&nbsp;Formato Excel
