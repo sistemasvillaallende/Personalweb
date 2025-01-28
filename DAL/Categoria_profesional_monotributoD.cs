@@ -221,19 +221,15 @@ namespace DAL
             StringBuilder strSQL = new StringBuilder();
             try
             {
-                // Usando 'using' para manejar la conexión de manera automática
                 using (SqlConnection cn = DALBase.GetConnection("Siimva"))
                 {
-                    // Abrir la conexión si no está abierta
                     if (cn.State != ConnectionState.Open)
                     {
                         cn.Open();
                     }
 
-                    // Verificar si es una nueva categoría
                     if (oCate.id_profesional_monotributo == 0)
                     {
-                        // Usamos 'using' para el comando también
                         using (SqlCommand cmd1 = new SqlCommand())
                         {
                             StringBuilder SQL = new StringBuilder();
@@ -243,12 +239,10 @@ namespace DAL
                             cmd1.CommandType = CommandType.Text;
                             cmd1.CommandText = SQL.ToString();
 
-                            // Asignamos el nuevo id
                             oCate.id_profesional_monotributo = Convert.ToInt32(cmd1.ExecuteScalar()) + 1;
                         }
                     }
 
-                    // Preparar el SQL para la inserción
                     strSQL.AppendLine("INSERT INTO CATEGORIA_PROFESIONAL_MONOTRIBUTO");
                     strSQL.AppendLine("(id_profesional_monotributo,");
                     strSQL.AppendLine("categoria,");

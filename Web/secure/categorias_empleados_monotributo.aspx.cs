@@ -190,6 +190,14 @@ namespace web.secure
                 oCate.id_profesional_monotributo = Convert.ToInt32(txtCodigo.Text);
                 oCate.categoria = txtCategoria.Text;
                 oCate.monto = Convert.ToDecimal(txtMonto.Text);
+
+                var datosActuales = BLL.Categoria_profesional_monotributoB.GetByPk(oCate.id_profesional_monotributo);
+
+                if (datosActuales != null && datosActuales.monto != oCate.monto)
+                {
+                    BLL.Categoria_profesional_monotributo_histB.AgregarAlHistorial(oCate.id_profesional_monotributo, oCate.monto);
+                }
+
                 BLL.Categoria_profesional_monotributoB.ModificaCategoria(oCate);
                 message = "Modificacion de la Categoria Termino Ok ...";
                 msjConfirmar.InnerHtml = message;

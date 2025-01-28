@@ -7560,6 +7560,7 @@
     <Content Include="secure\accesodenegado.html" />
     <Content Include="secure\cargar_conceptos.aspx" />
     <Content Include="secure\categorias_empleados_monotributo.aspx" />
+    <Content Include="secure\categorias_empleados_monotributo_hist.aspx" />
     <Content Include="secure\familiares.aspx" />
     <Content Include="secure\liquidaciones.aspx" />
     <Content Include="secure\novedades2.aspx" />
@@ -8280,6 +8281,13 @@
     </Compile>
     <Compile Include="secure\categorias_empleados_monotributo.aspx.designer.cs">
       <DependentUpon>categorias_empleados_monotributo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="secure\categorias_empleados_monotributo_hist.aspx.cs">
+      <DependentUpon>categorias_empleados_monotributo_hist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secure\categorias_empleados_monotributo_hist.aspx.designer.cs">
+      <DependentUpon>categorias_empleados_monotributo_hist.aspx</DependentUpon>
     </Compile>
     <Compile Include="secure\certificaciones.aspx.cs">
       <DependentUpon>certificaciones.aspx</DependentUpon>
