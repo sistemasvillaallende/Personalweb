@@ -90,6 +90,13 @@
                                                                 <div class="col-xs-6">
                                                                     <div class="btn-group pull-right" id="divActualiza"
                                                                         runat="server">
+                                                                        <asp:LinkButton ID="lbtnHistorial"
+                                                                            CssClass="btn-control aceptar"
+                                                                            runat="server"
+                                                                            OnClick="lbtnHistorial_Click">
+                                                                            <i class="fa fa-history"></i>&nbsp;Ver
+                                                                            Historial
+                                                                        </asp:LinkButton>
                                                                         <asp:LinkButton ID="lbtnActualizar_valores"
                                                                             CssClass="btn-control secondary"
                                                                             runat="server"

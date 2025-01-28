@@ -395,6 +395,11 @@ namespace web.secure
 
 
         }
+
+        protected void lbtnHistorial_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("categorias_empleados_monotributo_hist.aspx");
+        }
     }
 }
 

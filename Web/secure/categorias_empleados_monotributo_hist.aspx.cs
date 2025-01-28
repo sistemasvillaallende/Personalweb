@@ -57,7 +57,7 @@ namespace web.secure
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#FFCC80'");
+                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#DADADA'");
                 e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='#FFFFFF'");
 
                 Entities.Categoria_profesional_historialDTO oCat = (Entities.Categoria_profesional_historialDTO)e.Row.DataItem;
@@ -152,7 +152,7 @@ namespace web.secure
         //     }
         // }
 
- 
+
 
         // protected void btnBuscar_ServerClick(object sender, EventArgs e)
         // {
