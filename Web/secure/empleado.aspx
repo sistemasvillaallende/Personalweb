@@ -262,7 +262,7 @@
                                     <label>
                                         Clasificacion Personal
                                     </label>
-                                    <asp:DropDownList ID="ddClasificacion_personal" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddClasificacion_personal" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True" AutoPostBack="true" OnSelectedIndexChanged="ddClasificacion_personal_SelectedIndexChanged">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="ddClasificacion_personal"
@@ -273,7 +273,7 @@
                                     <label>
                                         Tipo Liquidacion
                                     </label>
-                                    <asp:DropDownList ID="ddTipo_liquidacion" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True" AutoPostBack="true"  OnSelectedIndexChanged="ddTipoLiquidacion_SelectedIndexChanged">
+                                    <asp:DropDownList ID="ddTipo_liquidacion" CssClass="form-control dropdown-arrow" runat="server" AppendDataBoundItems="True" >
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="ddTipo_liquidacion"
@@ -374,9 +374,9 @@
                                         Display="Dynamic">*</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-md-4 ">
-    <label>
-        Categoría Profesional Monotributo
-    </label>
+                                    <asp:Label ID="lblCategoriaProfesional" runat="server" Visible="false">
+                                        Categoría Profesional Monotributo
+                                    </asp:Label>
     <asp:DropDownList ID="ddCategoriaProfesional" CssClass="form-control dropdown-arrow" runat="server" 
         AppendDataBoundItems="True" Visible="false" AutoPostBack="true">
         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>

@@ -1120,5 +1120,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton cmdVolver4;
+        protected global::System.Web.UI.WebControls.Label lblCategoriaProfesional;
+
     }
 }

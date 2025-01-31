@@ -165,8 +165,16 @@ namespace web.secure
             try
             {
                 oCate.cod_categoria = Convert.ToInt32(txtCodigo.Text);
-                oCate.des_categoria = (txtDes_categoria.Text);
+                oCate.des_categoria = txtDes_categoria.Text;
                 oCate.sueldo_basico = Convert.ToDecimal(txtSueldo_basico.Text);
+                
+                var datosActuales = BLL.Categorias_historialB.GetByPk(oCate.cod_categoria);
+
+                if (datosActuales != null && datosActuales.sueldo_basico != oCate.sueldo_basico)
+                {
+                    BLL.Categorias_historialB.AgregarAlHistorial(oCate.cod_categoria, oCate.des_categoria, oCate.sueldo_basico);
+                }
+                
                 BLL.CategoriasB.ModificaCategoria(oCate);
                 message = "Modificacion de la Categoria Termino Ok ...";
                 msjConfirmar.InnerHtml = message;
@@ -361,6 +369,9 @@ namespace web.secure
             {
                 throw ex;
             }
+
+
+
 
 
         }
