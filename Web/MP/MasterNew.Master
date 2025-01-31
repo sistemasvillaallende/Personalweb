@@ -330,11 +330,31 @@
                             </div>
                             <div class="card" style="border: none;">
                                 <div class="card-header" style="padding: 0; background-color: #f9fbfd;">
-                                    <a id="mnuAportes" runat="server" class="a-menu"
-                                        href="../secure/cargar_conceptos.aspx">
-                                        <i class="fa fa-address-book"></i>
-                                        <span>Aportes Jubilatorios</span>
-                                    </a>
+                                    <h2 class="mb-0">
+                                        <a class="a-menu collapsed" href="#" data-toggle="collapse" data-target="#collapseAportes" aria-expanded="false" aria-controls="collapseAportes">
+                                            <i class="fa fa-address-book"></i>
+                                            Aportes Jubilatorios
+                                            <i class="fa fa-chevron-down" style="float: right; font-size: 18px !important;"></i>
+                                        </a>
+                                    </h2>
+                                </div>
+                                <div id="collapseAportes" class="collapse" aria-labelledby="headingAportes" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <a href="../secure/novedades.aspx" class="a-menu">
+                                                    <i class="fa fa-pencil"></i>
+                                                    <span>Carga de Concepto Manual</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="../secure/novedades2.aspx" class="a-menu">
+                                                    <i class="fa fa-file-excel-o"></i>
+                                                    <span>Carga de Concepto via Excel</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card" style="border: none;">

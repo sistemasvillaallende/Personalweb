@@ -123,11 +123,11 @@
                                                             <div class="form-group" style="text-align: right"
                                                                 id="divAcepta" visible="false" runat="server">
                                                                 <asp:Button ID="btnCancelarValores"
-                                                                    CssClass="btn btn-warning" runat="server"
+                                                                    CssClass="btn-control cancelar" runat="server"
                                                                     Text="Cancelar"
                                                                     OnClick="btnCancelarValores_Click" />
                                                                 <asp:Button ID="btnAceptarValores" runat="server"
-                                                                    CssClass="btn btn-primary" Text="Aceptar"
+                                                                    CssClass="btn-control aceptar" Text="Aceptar"
                                                                     OnClick="btnAceptarValores_Click" />
                                                             </div>
                                                         </div>
