@@ -298,6 +298,72 @@ namespace DAL
         }
 
 
+        public static List<Entities.CategoriasCantidad> GetCategoriasCantidad()
+        {
+            using (SqlConnection conn = DALBase.GetConnection("Siimva"))
+            {
+                try
+                {
+                    SqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText =
+                    @"  SELECT c.cod_categoria, 
+                                           c.fecha_alta_registro, 
+                                           c.des_categoria, 
+                                           c.sueldo_basico,
+                                           COUNT(e.legajo) AS cantidad_empleados
+                                    FROM CATEGORIAS c
+                                    LEFT JOIN EMPLEADOS e ON c.cod_categoria = e.cod_categoria 
+                                        AND e.fecha_baja IS NULL 
+                                        AND e.legajo IS NOT NULL
+                                    GROUP BY c.cod_categoria, c.fecha_alta_registro, c.des_categoria, c.sueldo_basico
+                                    ORDER BY c.cod_categoria;";
+
+                    cmd.Connection.Open();
+
+                    List<Entities.CategoriasCantidad> lst = new List<Entities.CategoriasCantidad>();
+                    Entities.CategoriasCantidad oCat;
+
+                    try
+                    {
+                        SqlDataReader dr = cmd.ExecuteReader();
+
+
+                        if (dr.HasRows)
+                        {
+                            int codigo = dr.GetOrdinal("cod_categoria");
+                            int fecha = dr.GetOrdinal("fecha_alta_registro");
+                            int descripcion = dr.GetOrdinal("des_categoria");
+                            int sueldo = dr.GetOrdinal("sueldo_basico");
+                            int cantidad = dr.GetOrdinal("cantidad_empleados");
+
+                            while (dr.Read())
+                            {
+                                oCat = new Entities.CategoriasCantidad();
+
+                                if (!dr.IsDBNull(codigo)) oCat.cod_categoria = dr.GetInt32(codigo);
+                                if (!dr.IsDBNull(fecha)) oCat.fecha_alta_registro = Convert.ToString(dr.GetDateTime(fecha));
+                                if (!dr.IsDBNull(fecha)) oCat.des_categoria = Convert.ToString(dr.GetString(descripcion));
+                                if (!dr.IsDBNull(sueldo)) oCat.sueldo_basico = dr.GetDecimal(sueldo);
+                                if (!dr.IsDBNull(cantidad)) oCat.cantidad_empleados = dr.GetInt32(cantidad);
+                                lst.Add(oCat);
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Error in query!" + e.ToString());
+                        throw e;
+                    }
+                    return lst;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
 
     }
 }

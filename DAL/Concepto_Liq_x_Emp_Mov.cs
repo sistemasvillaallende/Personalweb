@@ -5,40 +5,18 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entities;
+
 
 namespace DAL
 {
     public class Concepto_Liq_x_Emp_Mov : DALBase
     {
-        public int id { get; set; }
-        public int legajo { get; set; }
-        public DateTime fecha_mov { get; set; }
-        public int id_tipo_movimiento { get; set; }
-        public int cod_concepto_liq { get; set; }
-        public decimal valor_concepto_liq { get; set; }
-        public DateTime fecha_vto { get; set; }
-        public string descripcion { get; set; }
-        public string observacion { get; set; }
-        public string usuario { get; set; }
 
-        public Concepto_Liq_x_Emp_Mov()
+        private static List<Entities.ConceptoLiqxEmpMov> mapeo(SqlDataReader dr)
         {
-            id = 0;
-            legajo = 0;
-            fecha_mov = DateTime.Now;
-            id_tipo_movimiento = 0;
-            cod_concepto_liq = 0;
-            valor_concepto_liq = 0;
-            fecha_vto = DateTime.Now;
-            descripcion = string.Empty;
-            observacion = string.Empty;
-            usuario = string.Empty;
-        }
-
-        private static List<Concepto_Liq_x_Emp_Mov> mapeo(SqlDataReader dr)
-        {
-            List<Concepto_Liq_x_Emp_Mov> lst = new List<Concepto_Liq_x_Emp_Mov>();
-            Concepto_Liq_x_Emp_Mov obj;
+            List<ConceptoLiqxEmpMov> lst = new List<ConceptoLiqxEmpMov>();
+            ConceptoLiqxEmpMov obj;
             if (dr.HasRows)
             {
                 int id = dr.GetOrdinal("id");
@@ -53,7 +31,7 @@ namespace DAL
                 int usuario = dr.GetOrdinal("usuario");
                 while (dr.Read())
                 {
-                    obj = new Concepto_Liq_x_Emp_Mov();
+                    obj = new ConceptoLiqxEmpMov();
                     if (!dr.IsDBNull(id)) { obj.id = dr.GetInt32(id); }
                     if (!dr.IsDBNull(legajo)) { obj.legajo = dr.GetInt32(legajo); }
                     if (!dr.IsDBNull(fecha_mov)) { obj.fecha_mov = dr.GetDateTime(fecha_mov); }
@@ -70,11 +48,11 @@ namespace DAL
             return lst;
         }
 
-        public static List<Concepto_Liq_x_Emp_Mov> read()
+        public static List<Entities.ConceptoLiqxEmpMov> read()
         {
             try
             {
-                List<Concepto_Liq_x_Emp_Mov> lst = new List<Concepto_Liq_x_Emp_Mov>();
+                List<ConceptoLiqxEmpMov> lst = new List<ConceptoLiqxEmpMov>();
                 using (SqlConnection con = GetConnection("Siimva"))
                 {
                     SqlCommand cmd = con.CreateCommand();
@@ -92,14 +70,14 @@ namespace DAL
             }
         }
 
-        public static Concepto_Liq_x_Emp_Mov getByPk(int id)
+        public static Entities.ConceptoLiqxEmpMov getByPk(int id)
         {
             try
             {
                 StringBuilder sql = new StringBuilder();
                 sql.AppendLine("SELECT *FROM Concep_liquid_x_empleado_mov WHERE");
                 sql.AppendLine("id = @id");
-                Concepto_Liq_x_Emp_Mov obj = null;
+                ConceptoLiqxEmpMov obj = null;
                 using (SqlConnection con = GetConnection("Siimva"))
                 {
                     SqlCommand cmd = con.CreateCommand();
@@ -108,7 +86,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.Connection.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
-                    List<Concepto_Liq_x_Emp_Mov> lst = mapeo(dr);
+                    List<ConceptoLiqxEmpMov> lst = mapeo(dr);
                     if (lst.Count != 0)
                         obj = lst[0];
                 }
@@ -120,7 +98,34 @@ namespace DAL
             }
         }
 
-        public static int insert(Concepto_Liq_x_Emp_Mov obj)
+        public static List<Entities.ConceptoLiqxEmpMov> getAllByLegajo(int legajo)
+        {
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine("SELECT  * FROM Concep_liquid_x_empleado_mov WHERE");
+                sql.AppendLine("legajo = @legajo");
+                List<ConceptoLiqxEmpMov> lst;
+                using (SqlConnection con = GetConnection("Siimva"))
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = sql.ToString();
+                    cmd.Parameters.AddWithValue("@legajo", legajo);
+                    cmd.Connection.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    lst = mapeo(dr);
+                   
+                }
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static int insert(Entities.ConceptoLiqxEmpMov obj)
         {
             try
             {
@@ -173,7 +178,7 @@ namespace DAL
             }
         }
 
-        public static void update(Concepto_Liq_x_Emp_Mov obj)
+        public static void update(Entities.ConceptoLiqxEmpMov obj)
         {
             try
             {
@@ -214,7 +219,7 @@ namespace DAL
             }
         }
 
-        public static void delete(Concepto_Liq_x_Emp_Mov obj)
+        public static void delete(Entities.ConceptoLiqxEmpMov obj)
         {
             try
             {
