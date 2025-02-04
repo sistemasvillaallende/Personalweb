@@ -222,8 +222,8 @@ namespace DAL
             {
                 string operacion = string.Empty;
                 DateTimeFormatInfo culturaFecArgentina = new System.Globalization.CultureInfo("es-AR", false).DateTimeFormat;
-                Concepto_Liq_x_Emp_Mov objMov = new Concepto_Liq_x_Emp_Mov();
-
+                ConceptoLiqxEmpMov objMov = new ConceptoLiqxEmpMov();
+                // ACA MODIFICAR PARA LLAMAR AL METODO DIRECTAMENTE
                 string strSQL = @"INSERT INTO CONCEP_LIQUID_X_EMPLEADO_MOV
                                    (legajo
                                    ,fecha_mov

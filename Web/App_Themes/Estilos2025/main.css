@@ -1,17 +1,34 @@
 :root {
-  --color-gray: rgb(100, 100, 100);
-  --color-cancelar: rgb(180, 23, 9);
-  --color-cancelar-hover: rgb(110, 16, 16);
-  --color-aceptar: #157347;
-  --color-aceptar-hover: #105535;
-  --color-second: #686f77;
-  --color-second-hover: #494e53;
-  --color-volver: rgb(207, 190, 0);
-  --color-volver-hover: rgb(119, 107, 0);
-  --color-primario: #0D6EFD;
-  --color-primario-hover: #0e55be;
-  --color-excel: #1D6F42;
-  --color-excel-hover: #0F4A2A;
+  --color-gray: #6c757d;
+  /* Bootstrap secondary color */
+  --color-cancelar: #dc3545;
+  /* Bootstrap danger color */
+  --color-cancelar-hover: #c82333;
+  /* Bootstrap danger hover color */
+  --color-peligro: #ff073a;
+  /* Bootstrap red color */
+  --color-peligro-hover: #d90429;
+  /* Darker red */
+  --color-aceptar: #28a745;
+  /* Bootstrap success color */
+  --color-aceptar-hover: #218838;
+  /* Bootstrap success hover color */
+  --color-second: #17a2b8;
+  /* Bootstrap info color */
+  --color-second-hover: #138496;
+  /* Bootstrap info hover color */
+  --color-volver: #ffc107;
+  /* Bootstrap warning color */
+  --color-volver-hover: #e0a800;
+  /* Bootstrap warning hover color */
+  --color-primario: #007bff;
+  /* Bootstrap primary color */
+  --color-primario-hover: #0056b3;
+  /* Bootstrap primary hover color */
+  --color-excel: #20c997;
+  /* Bootstrap teal color */
+  --color-excel-hover: #17a2b8;
+  /* Bootstrap teal hover color */
 }
 
 /*BOTONES*/
@@ -88,6 +105,14 @@
 
 .btn-control.secondary:hover {
   background-color: var(--color-second-hover);
+}
+
+.btn-control.peligro {
+  background-color: var(--color-peligro);
+}
+
+.btn-control.peligro:hover {
+  background-color: var(--color-peligro-hover);
 }
 
 /*FORMULARIOS*/
@@ -167,7 +192,7 @@ textarea.input-control {
 .table-informacion {
   margin-top: 20px;
   overflow: scroll;
-  height: 300px;
+  height: 400px;
 }
 
 .foto-empleado {

@@ -36,7 +36,7 @@ namespace web.secure
 
         private void CargarGrilla()
         {
-            gvCategorias.DataSource = BLL.CategoriasB.GetCategorias();
+            gvCategorias.DataSource = BLL.CategoriasB.GetCategoriasCantidad();
             gvCategorias.DataBind();
         }
 
@@ -63,15 +63,16 @@ namespace web.secure
                 e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#DADADA'");
                 e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='#FFFFFF'");
 
-                Entities.Categorias oCat = (Entities.Categorias)e.Row.DataItem;
+                Entities.CategoriasCantidad oCat = (Entities.CategoriasCantidad)e.Row.DataItem;
                 Label lblCodigo = (Label)e.Row.FindControl("lblCodigo");
                 Label lblFecha_alta = (Label)e.Row.FindControl("lblFecha_alta");
                 Label lblDes_categoria = (Label)e.Row.FindControl("lblDes_categoria");
-                //Label lblSueldo_basico = (Label)e.Row.FindControl("lblSueldo_basico");
+                Label lblCantidad = (Label)e.Row.FindControl("lblCantidad");
                 //
                 lblCodigo.Text = oCat.cod_categoria.ToString();
                 lblFecha_alta.Text = oCat.fecha_alta_registro.ToString();
                 lblDes_categoria.Text = oCat.des_categoria.ToString();
+                lblCantidad.Text = oCat.cantidad_empleados.ToString(); 
                 //lblSueldo_basico.Text = oCat.sueldo_basico.ToString();
 
             }
@@ -107,6 +108,14 @@ namespace web.secure
                 {
                     //BLL.Plan_CuentasB.deletePlan(id_tipo_cuenta, id_grupo_cuenta, id_cuenta);v
                     //FillPlan();
+                }
+                if (e.CommandName == "detalles")
+                {
+                    hID.Value = ID.ToString();
+                    lblTituloFormModal.Text = "Detalles";
+                    Response.Redirect($"Empleado_categoria_detalle.aspx?cod_categoria={codigo}");
+
+
                 }
             }
             catch (Exception ex)
@@ -165,8 +174,16 @@ namespace web.secure
             try
             {
                 oCate.cod_categoria = Convert.ToInt32(txtCodigo.Text);
-                oCate.des_categoria = (txtDes_categoria.Text);
+                oCate.des_categoria = txtDes_categoria.Text;
                 oCate.sueldo_basico = Convert.ToDecimal(txtSueldo_basico.Text);
+
+                var datosActuales = BLL.Categorias_historialB.GetByPk(oCate.cod_categoria);
+
+                if (datosActuales != null && datosActuales.sueldo_basico != oCate.sueldo_basico)
+                {
+                    BLL.Categorias_historialB.AgregarAlHistorial(oCate.cod_categoria, oCate.des_categoria, oCate.sueldo_basico);
+                }
+
                 BLL.CategoriasB.ModificaCategoria(oCate);
                 message = "Modificacion de la Categoria Termino Ok ...";
                 msjConfirmar.InnerHtml = message;

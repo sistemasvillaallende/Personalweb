@@ -90,6 +90,13 @@
                                                                 <div class="col-xs-6">
                                                                     <div class="btn-group pull-right" id="divActualiza"
                                                                         runat="server">
+                                                                        <asp:LinkButton ID="lbtnHistorial"
+                                                                            CssClass="btn-control aceptar"
+                                                                            runat="server"
+                                                                            OnClick="lbtnHistorial_Click">
+                                                                            <i class="fa fa-history"></i>&nbsp;Ver
+                                                                            Historial
+                                                                        </asp:LinkButton>
                                                                         <asp:LinkButton ID="lbtnActualizar_valores"
                                                                             CssClass="btn-control secondary"
                                                                             runat="server"
@@ -120,11 +127,11 @@
                                                             <div class="form-group" style="text-align: right"
                                                                 id="divAcepta" visible="false" runat="server">
                                                                 <asp:Button ID="btnCancelarValores"
-                                                                    CssClass="btn btn-warning" runat="server"
+                                                                    CssClass="btn-control cancelar" runat="server"
                                                                     Text="Cancelar"
                                                                     OnClick="btnCancelarValores_Click" />
                                                                 <asp:Button ID="btnAceptarValores" runat="server"
-                                                                    CssClass="btn btn-primary" Text="Aceptar"
+                                                                    CssClass="btn-control acepetar" Text="Aceptar"
                                                                     OnClick="btnAceptarValores_Click" />
                                                             </div>
                                                         </div>
@@ -176,7 +183,7 @@
 
                                                                         <asp:TemplateField
                                                                             HeaderText="Descripcion Categoria"
-                                                                            ItemStyle-Width="50%">
+                                                                            ItemStyle-Width="40%">
                                                                             <ItemTemplate>
                                                                                 <p>
                                                                                     <asp:Label ID="lblCategoria"
@@ -185,11 +192,11 @@
                                                                                 </p>
 
                                                                             </ItemTemplate>
-                                                                            <ItemStyle Width="50%" />
+                                                                            <ItemStyle Width="40%" />
                                                                         </asp:TemplateField>
 
                                                                         <%--<asp:TemplateField HeaderText="Monto"
-                                                                            ItemStyle-Width="20%">
+                                                                            ItemStyle-Width="30%">
                                                                             <ItemTemplate>
                                                                                 <p>
                                                                                     <asp:Label ID="lblMonto"
@@ -197,7 +204,7 @@
                                                                                     </asp:Label>
                                                                                 </p>
                                                                             </ItemTemplate>
-                                                                            <ItemStyle Width="20%" />
+                                                                            <ItemStyle Width="30%" />
                                                                             </asp:TemplateField>--%>
 
                                                                             <asp:TemplateField>

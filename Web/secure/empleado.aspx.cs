@@ -26,12 +26,11 @@ namespace web.secure
                 this.CargarCombos();
                 this.AsignarDatos(EmpleadoB.GetByPkTodos(this.legajo));
 
-                string selectedCase = ddTipo_liquidacion.SelectedValue;
+                string selectedCase = ddClasificacion_personal.SelectedValue;
 
-                if (selectedCase == "9") 
+                if (selectedCase == "6")
                 {
                     ddCategoriaProfesional.Visible = true;
-                   
                 }
                 else
                 {
@@ -527,24 +526,24 @@ namespace web.secure
             this.Response.Redirect("../secure/familiares.aspx");
         }
 
-        protected void ddTipoLiquidacion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-            string selectedCase = ddTipo_liquidacion.SelectedValue;
 
-            if (selectedCase == "9") // No liquida
+        protected void ddClasificacion_personal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedCase = ddClasificacion_personal.SelectedValue;
+
+            if (selectedCase == "6") // Monotributo
             {
                 ddCategoriaProfesional.Visible = true;
-                
+                lblCategoriaProfesional.Visible = true;
             }
             else
             {
                 ddCategoriaProfesional.Visible = false;
+                lblCategoriaProfesional.Visible = false;
             }
         }
 
-
-
+        
 
     }
 }
