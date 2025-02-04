@@ -177,24 +177,6 @@ namespace web.MP
         protected global::System.Web.UI.HtmlControls.HtmlAnchor mnuRecibos;
 
         /// <summary>
-        /// Control btnEvaluar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnEvaluar;
-
-        /// <summary>
-        /// Control mnuCategoriaEmpleados.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor mnuCategoriaEmpleados;
-
-        /// <summary>
         /// Control mnuAportes.
         /// </summary>
         /// <remarks>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace web.secure
@@ -47,6 +48,41 @@ namespace web.secure
         {
             try
             {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    DAL.Fichas.Resultado_evaluacion obj =
+                        (DAL.Fichas.Resultado_evaluacion)e.Row.DataItem;
+                    HtmlGenericControl divLink =
+                        (HtmlGenericControl)e.Row.FindControl("divLink");
+
+                    HtmlGenericControl divLinkEval =
+                        (HtmlGenericControl)e.Row.FindControl("divLinkEval");
+                    if (obj.ID_FICHA != 0)
+                    {
+                        divLink.Visible = true;
+                        divLinkEval.Visible = false;
+                    }
+                    else
+                    {
+                        HtmlAnchor anchor = new HtmlAnchor();
+                        HtmlGenericControl span = new HtmlGenericControl();
+                        span.Attributes.Add("class", "fa fa-pencil-square-o");
+                        span.Style.Add("font-size", "30px;");
+                        anchor.HRef = string.Format(
+                            "Personas_fichas.aspx?idFicha={0}&legajo={1}",
+                            DDLEvaluaciones.SelectedItem.Value,
+                            obj.LEGAGO);
+                        anchor.Controls.Add(span);
+                        divLinkEval.Controls.Add(anchor);
+                        /*
+                         <a href="Personas_fichas.aspx?idFicha=&legajo=<%#Eval("LEGAGO")%>">
+                                            <span class="fa fa-search-plus"></span>
+                                        </a>
+                         */
+                        divLink.Visible = false;
+                        divLinkEval.Visible = true;
+                    }
+                }
 
             }
             catch (Exception ex)
@@ -62,7 +98,7 @@ namespace web.secure
                 fillResultados();
             }
             catch (Exception ex)
-            {            
+            {
                 throw ex;
             }
         }

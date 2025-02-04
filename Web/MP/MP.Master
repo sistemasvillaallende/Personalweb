@@ -243,13 +243,6 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" id="btnEvaluar" runat="server"
-                                                    class="a-menu">
-                                                    <i class="fa fa-graduation-cap"></i>
-                                                    <span>Evaluar</span>
-                                                </a>
-                                            </li>
-                                            <li>
                                                 <a href="../secure/Desempeniosecretarias.aspx"
                                                     class="a-menu">
                                                     <i class="fa fa-tachometer"></i>
@@ -260,7 +253,7 @@
                                                 <a href="../secure/Resultado_evaluacion.aspx"
                                                     class="a-menu">
                                                     <i class="fa fa-pie-chart"></i>
-                                                    <span>Resultados</span>
+                                                    <span>Evaluaciones</span>
                                                 </a>
                                             </li>
                                         </ul>
