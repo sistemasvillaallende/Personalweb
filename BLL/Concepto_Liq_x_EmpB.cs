@@ -19,6 +19,18 @@ namespace BLL
             return DAL.Concepto_Liq_x_EmpD.FillConceptoLiqxEmp(legajo);
         }
 
+
+        public static List<Historial_conceptos> GetHistorial_ConceptosXLegajo(int legajo)
+        {
+            return DAL.Concepto_Liq_x_EmpD.GetHistorial_ConceptosXLegajo(legajo);
+        }
+
+        public static List<Cambios_empleado> GetCambiosEmpleadoXLegajo(int legajo)
+        {
+            return DAL.Concepto_Liq_x_EmpD.GetCambiosEmpleadoXLegajo(legajo);
+        }
+
+
         public static void UpdateConceptoxEmp(int legajo, List<ConceptoLiqxEmp> oDetalle, string obsauditoria, string usuario)
         {
             try

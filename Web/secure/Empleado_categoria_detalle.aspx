@@ -40,32 +40,9 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Empleados por categoria</h3>
+                                <h3 class="card-title">Movimientos Categorias de Empleado</h3>
                             </div>
-                            <div class="card-body">
-                                <asp:UpdatePanel ID="PanelInfomacion" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-                                        <div class="alert alert-success alert-dismissible fade show" runat="server"
-                                            id="divConfirma" visible="false" role="alert">
-                                            <strong>Aviso Importante!</strong>
-                                            <p id="msjConfirmar" runat="server"></p>
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
-                                                onclick="__doPostBack('<%=PanelInfomacion.ClientID%>', 'Confirma');">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="alert alert-warning alert-dismissible fade show" runat="server"
-                                            id="divError" visible="false" role="alert">
-                                            <strong>Error!</strong>
-                                            <p id="txtError" runat="server"></p>
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
-                                                onclick="__doPostBack('<%=PanelInfomacion.ClientID%>', 'Alerta');">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                                <div>
+                            
                                     <asp:GridView ID="gvCategoriasEmple" CssClass="table table-hover table-bordered"
                                         runat="server" OnRowDataBound="gvCategoriasEmple_RowDataBound"
                                         OnRowCommand="gvCategoriasEmple_RowCommand" CellPadding="4"

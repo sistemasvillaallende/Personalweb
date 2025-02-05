@@ -7558,6 +7558,7 @@
     <None Include="Properties\PublishProfiles\sueldosweb.pubxml" />
     <Content Include="secure\404.html" />
     <Content Include="secure\accesodenegado.html" />
+    <Content Include="secure\cambios_empleado.aspx" />
     <Content Include="secure\cargar_conceptos.aspx" />
     <Content Include="secure\categorias_empleados_monotributo.aspx" />
     <Content Include="secure\categorias_empleados_monotributo_hist.aspx" />
@@ -8264,6 +8265,13 @@
     <Compile Include="secure\aportes_jubilatorios.aspx.designer.cs">
       <DependentUpon>aportes_jubilatorios.aspx</DependentUpon>
     </Compile>
+    <Compile Include="secure\cambios_empleado.aspx.cs">
+      <DependentUpon>cambios_empleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secure\cambios_empleado.aspx.designer.cs">
+      <DependentUpon>cambios_empleado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="secure\cargar_conceptos.aspx.cs">
       <DependentUpon>cargar_conceptos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -8294,6 +8302,7 @@
     </Compile>
     <Compile Include="secure\categoria_empleados_hist.aspx.cs">
       <DependentUpon>categoria_empleados_hist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="secure\categoria_empleados_hist.aspx.designer.cs">
       <DependentUpon>categoria_empleados_hist.aspx</DependentUpon>

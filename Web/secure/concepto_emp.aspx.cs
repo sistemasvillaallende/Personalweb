@@ -224,6 +224,17 @@ namespace web.secure
             modalPopupDetalle.Hide();
         }
 
+
+        protected void lbtnHistConceptos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Concepto_Liq_x_Emp_Mov.aspx?legajo=" + legajo);
+        }
+
+        protected void lbtnHistCambios_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("cambios_empleado.aspx?legajo=" + legajo);
+        }
+
         protected void btnAceptar_ServerClick(object sender, EventArgs e)
         {
             int op = 0;
@@ -435,7 +446,7 @@ namespace web.secure
                             break;
                         }
                     case 3://Delete
-                        { 
+                        {
                             BLL.Concepto_Liq_x_EmpB.DeleteConceptoxEmp(Convert.ToInt32(txtLegajo.Text), lstDetalle, lstDetalleBorrar, obsAuditoria, usuario);
                             divInformacion.Visible = true;
                             msjInformacion.InnerHtml = "Los datos han sido ingresada de forma correcta!!!";

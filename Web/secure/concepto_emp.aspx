@@ -216,6 +216,16 @@
                                 </div>--%>
 
                                 <div class="btn-group pull-right">
+                                    <asp:LinkButton ID="lbtnHistConceptos"
+                                        CssClass="btn-control primario" runat="server"
+                                        OnClick="lbtnHistConceptos_Click">
+                                    <i class="fa fa-sign-out"></i>&nbsp;Historial Conceptos
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnHistCambios"
+                                        CssClass="btn-control primario" runat="server"
+                                        OnClick="lbtnHistCambios_Click">
+                                    <i class="fa fa-sign-out"></i>&nbsp;Historial Cambios
+                                    </asp:LinkButton>
                                     <asp:LinkButton ID="lbtnConfirma" CssClass="btn-control primario" runat="server"
                                         OnClick="lbtnConfirma_Click"
                                         OnClientClick="return confirm('Desea Confirmar los Cambios...');">

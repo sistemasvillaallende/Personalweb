@@ -50,6 +50,7 @@
     <Compile Include="Auditoria.cs" />
     <Compile Include="AUX_DETALLE_SUELDO.cs" />
     <Compile Include="AUX_MAESTRO_SUELDO.cs" />
+    <Compile Include="Cambios_empleado.cs" />
     <Compile Include="Categorias.cs" />
     <Compile Include="CategoriasCantidad.cs" />
     <Compile Include="Categorias_historial.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="ConceptoLiqxEmpMov.cs" />
     <Compile Include="Conceptos.cs" />
     <Compile Include="Empleados_categoria_cant.cs" />
+    <Compile Include="Historial_conceptos.cs" />
     <Compile Include="LstCtas_x_concepto.cs" />
     <Compile Include="Pago_sueldo_macro.cs" />
     <Compile Include="F931.cs" />
