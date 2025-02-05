@@ -22,6 +22,7 @@ namespace web.secure
         protected Label lblLegajo;
         protected Label lblCargo;
         protected PlaceHolder phMovimientosInternos;
+        protected PlaceHolder phVariacionConceptos;
         int legajo;
         string nombre;
 
@@ -84,8 +85,46 @@ namespace web.secure
 
         private void CargarGrillaConceptos(int legajo)
         {
-            gvConceptoMov.DataSource = BLL.Concepto_Liq_x_EmpB.GetHistorial_ConceptosXLegajo(legajo);
-            gvConceptoMov.DataBind();
+            var conceptos = BLL.Concepto_Liq_x_EmpB.GetHistorial_ConceptosXLegajo(legajo);
+            foreach (var concepto in conceptos)
+            {
+                var divEvent = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                divEvent.Attributes["class"] = "timeline__event animated fadeInUp delay-2s timeline__event--type3";
+
+                var divIcon = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                divIcon.Attributes["class"] = "timeline__event__icon";
+                var icon = new System.Web.UI.HtmlControls.HtmlGenericControl("i");
+                icon.Attributes["class"] = "lni-burger";
+                var divDate = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                divDate.Attributes["class"] = "timeline__event__date";
+                divDate.InnerText = concepto.Fecha.ToString("dd-MM-yyyy");
+                divIcon.Controls.Add(icon);
+                divIcon.Controls.Add(divDate);
+
+                var divContent = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                divContent.Attributes["class"] = "timeline__event__content";
+                var divTitle = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                divTitle.Attributes["class"] = "timeline__event__title";
+                divTitle.InnerText = concepto.Tipo_movimiento;
+                var divDescription = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                divDescription.Attributes["class"] = "timeline__event__description";
+                var pDescription = new System.Web.UI.HtmlControls.HtmlGenericControl("p");
+                pDescription.Attributes["style"] = "margin-bottom: 0;";
+                pDescription.InnerHtml = $"<strong>Concepto:</strong> {concepto.Concepto}<br>" +
+                                         $"<strong>Cod. Concepto:</strong> {concepto.Cod_concepto_liq}<br>" +
+                                         $"<strong>Valor Concepto:</strong> {concepto.Valor_concepto_liq}<br>" +
+                                         $"<strong>Observacion:</strong> {concepto.Observacion}<br>" +
+                                         $"<strong>Usuario Carga:</strong> {concepto.Usuario_Carga}";
+                divDescription.Controls.Add(pDescription);
+
+                divContent.Controls.Add(divTitle);
+                divContent.Controls.Add(divDescription);
+
+                divEvent.Controls.Add(divIcon);
+                divEvent.Controls.Add(divContent);
+
+                phVariacionConceptos.Controls.Add(divEvent);
+            }
         }
 
         private void ActualizarInformacionCabecera(int legajo)
@@ -166,28 +205,7 @@ namespace web.secure
 
         protected void gvConceptoMov_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#DADADA'");
-                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='#FFFFFF'");
-
-                Entities.Historial_conceptos oCon = (Entities.Historial_conceptos)e.Row.DataItem;
-                Label lblFechaMov = (Label)e.Row.FindControl("lblFechaMov");
-                Label lblUsuarioCarga = (Label)e.Row.FindControl("lblUsuarioCarga");
-                Label lblTipoMov = (Label)e.Row.FindControl("lblTipoMov");
-                Label lblCodConcepto = (Label)e.Row.FindControl("lblCodConcepto");
-                Label lblConcepto = (Label)e.Row.FindControl("lblConcepto");
-                Label lblValorConcepto = (Label)e.Row.FindControl("lblValorConcepto");
-                Label lblObservacion = (Label)e.Row.FindControl("lblObservacion");
-
-                lblFechaMov.Text = oCon.Fecha.ToString("d/M/yyyy");
-                lblUsuarioCarga.Text = oCon.Usuario_Carga.ToString();
-                lblTipoMov.Text = oCon.Tipo_movimiento.ToString();
-                lblCodConcepto.Text = oCon.Cod_concepto_liq.ToString();
-                lblConcepto.Text = oCon.Concepto.ToString();
-                lblValorConcepto.Text = oCon.Valor_concepto_liq.ToString();
-                lblObservacion.Text = oCon.Observacion.ToString();
-            }
+            // This method is no longer needed for the timeline structure
         }
 
         protected void gvConceptoMov_RowCommand(object sender, GridViewCommandEventArgs e)
