@@ -12,6 +12,12 @@ namespace web.secure
     {
         protected GridView gvCambios;
         protected GridView gvConceptoMov;
+        protected Label lblTarea;
+        protected Label lblLiquidacion;
+        protected Label lblCategoria;
+        protected Label lblClasificacionPersonal;
+        protected Label lblSeccion;
+        protected Label lblPasoContrato;
         int legajo;
         string nombre;
 
@@ -26,6 +32,7 @@ namespace web.secure
                 Session.Add("opcion", 0);
                 CargarGrillaCambios(legajo);
                 CargarGrillaConceptos(legajo);
+                ActualizarInformacionCabecera(legajo);
             }
         }
 
@@ -39,6 +46,62 @@ namespace web.secure
         {
             gvConceptoMov.DataSource = BLL.Concepto_Liq_x_EmpB.GetHistorial_ConceptosXLegajo(legajo);
             gvConceptoMov.DataBind();
+        }
+
+        private void ActualizarInformacionCabecera(int legajo)
+        {
+            var cambios = BLL.Concepto_Liq_x_EmpB.GetCambiosEmpleadoXLegajo(legajo);
+
+            var primerRegistro = cambios.OrderBy(c => c.fecha_cambio).FirstOrDefault();
+            if (primerRegistro != null)
+            {
+                lblPasoContrato.Text = primerRegistro.fecha_cambio.ToString("dd-MM-yyyy");
+            }
+
+            var ultimoCambioTarea = cambios
+                .Where(c => c.descripcion_cambio.StartsWith("Cambio de Tarea:"))
+                .OrderByDescending(c => c.fecha_cambio)
+                .FirstOrDefault();
+            if (ultimoCambioTarea != null)
+            {
+                lblTarea.Text = ultimoCambioTarea.descripcion_cambio.Replace("Cambio de Tarea:", "").Trim();
+            }
+
+            var ultimoCambioLiquidacion = cambios
+                .Where(c => c.descripcion_cambio.StartsWith("Cambio Tipo Liquidacion:"))
+                .OrderByDescending(c => c.fecha_cambio)
+                .FirstOrDefault();
+            if (ultimoCambioLiquidacion != null)
+            {
+                lblLiquidacion.Text = ultimoCambioLiquidacion.descripcion_cambio.Replace("Cambio Tipo Liquidacion:", "").Trim();
+            }
+
+            var ultimoCambioCategoria = cambios
+                .Where(c => c.descripcion_cambio.StartsWith("Cambio de Categoria:"))
+                .OrderByDescending(c => c.fecha_cambio)
+                .FirstOrDefault();
+            if (ultimoCambioCategoria != null)
+            {
+                lblCategoria.Text = ultimoCambioCategoria.descripcion_cambio.Replace("Cambio de Categoria:", "").Trim();
+            }
+
+            var ultimoCambioClasificacion = cambios
+                .Where(c => c.descripcion_cambio.StartsWith("Cambio Clasificacion Personal:"))
+                .OrderByDescending(c => c.fecha_cambio)
+                .FirstOrDefault();
+            if (ultimoCambioClasificacion != null)
+            {
+                lblClasificacionPersonal.Text = ultimoCambioClasificacion.descripcion_cambio.Replace("Cambio Clasificacion Personal:", "").Trim();
+            }
+
+            var ultimoCambioSeccion = cambios
+                .Where(c => c.descripcion_cambio.StartsWith("Cambio de Seccion:"))
+                .OrderByDescending(c => c.fecha_cambio)
+                .FirstOrDefault();
+            if (ultimoCambioSeccion != null)
+            {
+                lblSeccion.Text = ultimoCambioSeccion.descripcion_cambio.Replace("Cambio de Seccion:", "").Trim();
+            }
         }
 
         protected void gvCambios_RowDataBound(object sender, GridViewRowEventArgs e)

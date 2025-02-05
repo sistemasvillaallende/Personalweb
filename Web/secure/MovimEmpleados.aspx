@@ -134,20 +134,31 @@
                     <p style="width: 33%; border-right: solid; margin-bottom: 0">
                         <strong style="display: block; font-size: 18px;">Velez Spitale, Ignacio Martin</strong>
                         <span style="font-size: 16px; display: block;">Legajo: 710</span>
-                        <span style="font-size: 16px; display: block;">Paso a contrato: 20-08-2011</span>
+                        <span style="font-size: 16px; display: block;">Paso a contrato: <asp:Label ID="lblPasoContrato"
+                                runat="server" Text="20-08-2011"></asp:Label></span>
                     </p>
                     <p style="width: 33%; padding-left: 20px; border-right: solid; margin-bottom: 0">
-                        <span style="font-size: 16px; display: block;"><strong>Clasificacion Personal:</strong> Personal
-                            Contratado</span>
+                        <span style="font-size: 16px; display: block;"><strong>Clasificacion Personal:</strong>
+                            <asp:Label ID="lblClasificacionPersonal" runat="server" Text="Personal Contratado">
+                            </asp:Label>
+                        </span>
                         <span style="font-size: 16px; display: block;"><strong>Cargo:</strong> INSPECTOR I</span>
-                        <span style="font-size: 16px; display: block;"><strong>Categoria:</strong> 4</span>
+                        <span style="font-size: 16px; display: block;"><strong>Categoria:</strong>
+                            <asp:Label ID="lblCategoria" runat="server" Text="4"></asp:Label>
+                        </span>
                     </p>
                     <p style="width: 33%; padding-left: 20px; margin-bottom: 0">
-                        <span style="font-size: 16px; display: block;"><strong>Seccion:</strong> Personal Contratado
-                            Administrativo</span>
-                        <span style="font-size: 16px; display: block;"><strong>Tarea:</strong> Administrativo Hospital
-                            Municipal Josefina Prieur</span>
-                        <span style="font-size: 16px; display: block;"><strong>Liquidacion:</strong> EFECTIVOS</span>
+                        <span style="font-size: 16px; display: block;"><strong>Seccion:</strong>
+                            <asp:Label ID="lblSeccion" runat="server" Text="Personal Contratado Administrativo">
+                            </asp:Label>
+                        </span>
+                        <span style="font-size: 16px; display: block;"><strong>Tarea:</strong>
+                            <asp:Label ID="lblTarea" runat="server"
+                                Text="Administrativo Hospital Municipal Josefina Prieur"></asp:Label>
+                        </span>
+                        <span style="font-size: 16px; display: block;"><strong>Liquidacion:</strong>
+                            <asp:Label ID="lblLiquidacion" runat="server" Text="EFECTIVOS"></asp:Label>
+                        </span>
                     </p>
                 </div>
             </div>
