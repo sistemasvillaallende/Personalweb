@@ -20,7 +20,7 @@ namespace web.secure
 
             if (Session["usuario"] == null)
                 Response.Redirect("../login.aspx");
-                codCategoria = Convert.ToInt32(Request.QueryString["cod_categoria"]);
+            codCategoria = Convert.ToInt32(Request.QueryString["cod_categoria"]);
             if (!Page.IsPostBack)
             {
                 Session.Add("opcion", 0);
@@ -54,7 +54,7 @@ namespace web.secure
                 Label lblLegajo = (Label)e.Row.FindControl("lblLegajo");
                 Label lblNombre = (Label)e.Row.FindControl("lblNombre");
                 Label lblNroDocumento = (Label)e.Row.FindControl("lblNroDocumento");
-            
+
                 lblLegajo.Text = oCat.legajo.ToString();
                 lblNombre.Text = oCat.nombre.ToString();
                 lblNroDocumento.Text = oCat.nro_documento.ToString();
@@ -65,7 +65,7 @@ namespace web.secure
         {
             int index = Convert.ToInt32(e.CommandArgument);
             int indicePaginado = index - (gvCategoriasEmple.PageSize * gvCategoriasEmple.PageIndex);
-   
+
         }
 
         protected void gvCategoriasEmple_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -73,6 +73,6 @@ namespace web.secure
             gvCategoriasEmple.PageIndex = e.NewPageIndex;
             CargarGrilla(codCategoria);
         }
-        
+
     }
 }

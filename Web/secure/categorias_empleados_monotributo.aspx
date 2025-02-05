@@ -183,7 +183,7 @@
 
                                                                         <asp:TemplateField
                                                                             HeaderText="Descripcion Categoria"
-                                                                            ItemStyle-Width="50%">
+                                                                            ItemStyle-Width="40%">
                                                                             <ItemTemplate>
                                                                                 <p>
                                                                                     <asp:Label ID="lblCategoria"
@@ -192,11 +192,11 @@
                                                                                 </p>
 
                                                                             </ItemTemplate>
-                                                                            <ItemStyle Width="50%" />
+                                                                            <ItemStyle Width="40%" />
                                                                         </asp:TemplateField>
 
                                                                         <%--<asp:TemplateField HeaderText="Monto"
-                                                                            ItemStyle-Width="20%">
+                                                                            ItemStyle-Width="30%">
                                                                             <ItemTemplate>
                                                                                 <p>
                                                                                     <asp:Label ID="lblMonto"
@@ -204,7 +204,7 @@
                                                                                     </asp:Label>
                                                                                 </p>
                                                                             </ItemTemplate>
-                                                                            <ItemStyle Width="20%" />
+                                                                            <ItemStyle Width="30%" />
                                                                             </asp:TemplateField>--%>
 
                                                                             <asp:TemplateField>
