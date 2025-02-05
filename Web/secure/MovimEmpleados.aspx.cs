@@ -21,6 +21,7 @@ namespace web.secure
         protected Label lblNombre;
         protected Label lblLegajo;
         protected Label lblCargo;
+        protected PlaceHolder phMovimientosInternos;
         int legajo;
         string nombre;
 
@@ -43,8 +44,42 @@ namespace web.secure
 
         private void CargarGrillaCambios(int legajo)
         {
-            gvCambios.DataSource = BLL.Concepto_Liq_x_EmpB.GetCambiosEmpleadoXLegajo(legajo);
-            gvCambios.DataBind();
+            var cambios = BLL.Concepto_Liq_x_EmpB.GetCambiosEmpleadoXLegajo(legajo);
+            foreach (var cambio in cambios)
+            {
+                var divEvent = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                divEvent.Attributes["class"] = "timeline__event animated fadeInUp delay-2s timeline__event--type2";
+
+                var divIcon = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                divIcon.Attributes["class"] = "timeline__event__icon";
+                var icon = new System.Web.UI.HtmlControls.HtmlGenericControl("i");
+                icon.Attributes["class"] = "lni-burger";
+                var divDate = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                divDate.Attributes["class"] = "timeline__event__date";
+                divDate.InnerText = cambio.fecha_cambio.ToString("dd-MM-yyyy");
+                divIcon.Controls.Add(icon);
+                divIcon.Controls.Add(divDate);
+
+                var divContent = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                divContent.Attributes["class"] = "timeline__event__content";
+                var divTitle = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                divTitle.Attributes["class"] = "timeline__event__title";
+                divTitle.InnerText = "Cambio de Tarea";
+                var divDescription = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                divDescription.Attributes["class"] = "timeline__event__description";
+                var pDescription = new System.Web.UI.HtmlControls.HtmlGenericControl("p");
+                pDescription.Attributes["style"] = "margin-bottom: 0;";
+                pDescription.InnerText = cambio.descripcion_cambio;
+                divDescription.Controls.Add(pDescription);
+
+                divContent.Controls.Add(divTitle);
+                divContent.Controls.Add(divDescription);
+
+                divEvent.Controls.Add(divIcon);
+                divEvent.Controls.Add(divContent);
+
+                phMovimientosInternos.Controls.Add(divEvent);
+            }
         }
 
         private void CargarGrillaConceptos(int legajo)
@@ -120,18 +155,7 @@ namespace web.secure
 
         protected void gvCambios_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#DADADA'");
-                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='#FFFFFF'");
-
-                Entities.Cambios_empleado oCon = (Entities.Cambios_empleado)e.Row.DataItem;
-                Label lblFechaMov = (Label)e.Row.FindControl("lblFechaMov");
-                Label lblDesCambios = (Label)e.Row.FindControl("lblDesCambios");
-
-                lblFechaMov.Text = oCon.fecha_cambio.ToString("d/M/yyyy");
-                lblDesCambios.Text = oCon.descripcion_cambio.ToString();
-            }
+            // This method is no longer needed for the timeline structure
         }
 
         protected void gvCambios_RowCommand(object sender, GridViewCommandEventArgs e)
