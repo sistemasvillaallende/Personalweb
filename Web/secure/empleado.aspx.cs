@@ -496,6 +496,11 @@ namespace web.secure
             this.Response.Redirect(string.Format("../secure/historial_emp.aspx?legajo={0}&nombre={1}&op={2}", (object)this.txtLegajo.Text, (object)this.txtNombre.Text, (object)this.operacion));
         }
 
+        protected void cmdMovimEmpleados_ServerClick(object sender, EventArgs e)
+        {
+            this.Response.Redirect(string.Format("../secure/MovimEmpleados.aspx?legajo={0}&nombre={1}", (object)this.txtLegajo.Text, (object)this.txtNombre.Text));
+        }
+
         protected void cmdCancelar_tab_empleado_Click(object sender, EventArgs e)
         {
             this.Response.Redirect("listempleados.aspx");
@@ -543,7 +548,7 @@ namespace web.secure
             }
         }
 
-        
+
 
     }
 }
