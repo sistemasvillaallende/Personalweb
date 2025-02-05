@@ -18,6 +18,9 @@ namespace web.secure
         protected Label lblClasificacionPersonal;
         protected Label lblSeccion;
         protected Label lblPasoContrato;
+        protected Label lblNombre;
+        protected Label lblLegajo;
+        protected Label lblCargo;
         int legajo;
         string nombre;
 
@@ -30,6 +33,8 @@ namespace web.secure
             if (!Page.IsPostBack)
             {
                 Session.Add("opcion", 0);
+                lblNombre.Text = nombre;
+                lblLegajo.Text = legajo.ToString();
                 CargarGrillaCambios(legajo);
                 CargarGrillaConceptos(legajo);
                 ActualizarInformacionCabecera(legajo);
@@ -101,6 +106,15 @@ namespace web.secure
             if (ultimoCambioSeccion != null)
             {
                 lblSeccion.Text = ultimoCambioSeccion.descripcion_cambio.Replace("Cambio de Seccion:", "").Trim();
+            }
+
+            var ultimoCambioCargo = cambios
+                .Where(c => c.descripcion_cambio.StartsWith("Cambio de Cargo:"))
+                .OrderByDescending(c => c.fecha_cambio)
+                .FirstOrDefault();
+            if (ultimoCambioCargo != null)
+            {
+                lblCargo.Text = ultimoCambioCargo.descripcion_cambio.Replace("Cambio de Cargo:", "").Trim();
             }
         }
 
