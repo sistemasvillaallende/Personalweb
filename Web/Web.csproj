@@ -7566,6 +7566,7 @@
     <Content Include="secure\Empleado_categoria_detalle.aspx" />
     <Content Include="secure\familiares.aspx" />
     <Content Include="secure\liquidaciones.aspx" />
+    <Content Include="secure\MovimEmpleados.aspx" />
     <Content Include="secure\novedades2.aspx" />
     <Content Include="secure\secure.rar" />
     <Content Include="secure\secure2.rar" />
@@ -8294,6 +8295,7 @@
     </Compile>
     <Compile Include="secure\categoria_empleados_hist.aspx.cs">
       <DependentUpon>categoria_empleados_hist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="secure\categoria_empleados_hist.aspx.designer.cs">
       <DependentUpon>categoria_empleados_hist.aspx</DependentUpon>
@@ -8402,6 +8404,13 @@
     </Compile>
     <Compile Include="secure\list_personal.aspx.designer.cs">
       <DependentUpon>list_personal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="secure\MovimEmpleados.aspx.cs">
+      <DependentUpon>MovimEmpleados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secure\MovimEmpleados.aspx.designer.cs">
+      <DependentUpon>MovimEmpleados.aspx</DependentUpon>
     </Compile>
     <Compile Include="secure\novedades2.aspx.cs">
       <DependentUpon>novedades2.aspx</DependentUpon>
