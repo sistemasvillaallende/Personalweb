@@ -48,6 +48,10 @@
                 <div class="row">
                     <div class="col-md-12" style="text-align:right; margin-bottom: 20px;">
                         <div class="btn-group" style="padding-bottom: 20px;">
+                            <button type="button" class="btn btn-outline-dark" id="cmdMovimEmpleados" runat="server"
+                                onserverclick="cmdMovimEmpleados_ServerClick">
+                                <span class="glyphicon glyphicon-transfer"></span>&nbsp;Movimientos
+                            </button>
                             <button type="button" class="btn btn-outline-dark" id="cmdConceptos" runat="server"
                                 onserverclick="cmdConceptos_ServerClick">
                                 <span class="glyphicon glyphicon-unchecked"></span>&nbsp;Conceptos
@@ -73,10 +77,7 @@
                             <button type="button" class="btn btn-outline-dark" id="cmdAltaBcoprov">
                                 <span class="glyphicon glyphicon-pencil"></span>&nbsp;Alta Bco Prov
                             </button>
-                            <button type="button" class="btn btn-outline-dark" id="cmdMovimEmpleados" runat="server"
-                                onserverclick="cmdMovimEmpleados_ServerClick">
-                                <span class="glyphicon glyphicon-transfer"></span>&nbsp;Movim Empleados
-                            </button>
+
                         </div>
                     </div>
                 </div>
