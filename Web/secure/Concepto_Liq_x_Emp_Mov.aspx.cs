@@ -28,7 +28,7 @@ namespace web.secure
         }
 
         private void CargarGrilla(int legajo)
-        {  
+        {
             gvConceptoMov.DataSource = BLL.Concepto_Liq_x_EmpB.GetHistorial_ConceptosXLegajo(legajo);
             gvConceptoMov.DataBind();
         }
