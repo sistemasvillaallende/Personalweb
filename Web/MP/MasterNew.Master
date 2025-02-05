@@ -106,7 +106,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+<body style="background-color:white !important">
 
     <form id="form1" runat="server">
         <script src="https://code.jquery.com/jquery.js"></script>
@@ -235,13 +235,6 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" id="btnEvaluar" runat="server"
-                                                    class="a-menu">
-                                                    <i class="fa fa-graduation-cap"></i>
-                                                    <span>Evaluar</span>
-                                                </a>
-                                            </li>
-                                            <li>
                                                 <a href="../Back/Desempeniosecretarias.aspx"
                                                     class="a-menu">
                                                     <i class="fa fa-tachometer"></i>
@@ -252,7 +245,7 @@
                                                 <a href="../Back/Resultado_evaluacion.aspx"
                                                     class="a-menu">
                                                     <i class="fa fa-pie-chart"></i>
-                                                    <span>Resultados</span>
+                                                    <span>Evaluaciones</span>
                                                 </a>
                                             </li>
                                         </ul>

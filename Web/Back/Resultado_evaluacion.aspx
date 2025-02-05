@@ -74,8 +74,12 @@
                                 <ItemTemplate>
                                     <div id="divLink" runat="server">
                                         <a href="Personas_fichas.aspx?idFicha=<%#Eval("ID_FICHA")%>&legajo=<%#Eval("LEGAGO")%>">
-                                            <span class="fa fa-search-plus"></span>
+                                            <span style="font-size: 30px;"
+                                                class="fa fa-search-plus"></span>
                                         </a>
+                                    </div>
+                                    <div id="divLinkEval" runat="server">
+                                        
                                     </div>
                                 </ItemTemplate>
                             </asp:TemplateField>
