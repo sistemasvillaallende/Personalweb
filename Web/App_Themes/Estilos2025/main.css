@@ -1,118 +1,114 @@
 :root {
-  --color-gray: #6c757d;
-  /* Bootstrap secondary color */
-  --color-cancelar: #dc3545;
-  /* Bootstrap danger color */
-  --color-cancelar-hover: #c82333;
-  /* Bootstrap danger hover color */
-  --color-peligro: #ff073a;
-  /* Bootstrap red color */
-  --color-peligro-hover: #d90429;
-  /* Darker red */
-  --color-aceptar: #28a745;
-  /* Bootstrap success color */
-  --color-aceptar-hover: #218838;
-  /* Bootstrap success hover color */
-  --color-second: #17a2b8;
-  /* Bootstrap info color */
-  --color-second-hover: #138496;
-  /* Bootstrap info hover color */
-  --color-volver: #ffc107;
-  /* Bootstrap warning color */
-  --color-volver-hover: #e0a800;
-  /* Bootstrap warning hover color */
-  --color-primario: #007bff;
-  /* Bootstrap primary color */
-  --color-primario-hover: #0056b3;
-  /* Bootstrap primary hover color */
-  --color-excel: #20c997;
-  /* Bootstrap teal color */
-  --color-excel-hover: #17a2b8;
-  /* Bootstrap teal hover color */
+  --color-amarillo: #FFCD00;
+  --color-magenta: #EC1E79;
+  --color-rojo: #FF0000;
+  --color-azul: #0000FF;
+  --color-celeste: #00A1FF;
+  --color-marron: #D37530;
+  --color-morado: #8500A9;
+  --color-verde-oscuro: #00C474;
+  --color-verde: #B2E702;
 }
 
 /*BOTONES*/
 
 .btn-control {
-  background-color: var(--color-second);
   border-radius: 5px;
-  color: white !important;
-  border: none;
+  color: var(--color-celeste);
+  border: 2px solid var(--color-celeste);
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  transition: color 0.3s ease;
   margin: 3px;
   text-decoration: none;
   display: inline-block;
 }
 
 .btn-control:hover {
-  background-color: var(--color-second-hover);
+  background-color: var(--color-celeste);
+  color: white;
 }
 
 /* Variantes */
 .btn-control.cancelar {
-  background-color: var(--color-cancelar);
+  color: var(--color-rojo);
+  border: 2px solid var(--color-rojo);
 }
 
 .btn-control.cancelar:hover {
-  background-color: var(--color-cancelar-hover);
+  background-color: var(--color-rojo);
+  color: white;
 }
 
 .btn-control.aceptar {
-  background-color: var(--color-aceptar);
+  color: var(--color-azul);
+  border: 2px solid var(--color-azul);
 }
 
 .btn-control.aceptar:hover {
-  background-color: var(--color-aceptar-hover);
+  background-color: var(--color-azul);
+  color: white;
 }
 
 .btn-control.volver {
-  background-color: var(--color-volver);
+  color: var(--color-marron);
+  border: 2px solid var(--color-marron);
 }
 
 .btn-control.volver:hover {
-  background-color: var(--color-volver-hover);
+  background-color: var(--color-marron);
+  color: white;
 }
 
 .btn-control.primario {
-  background-color: var(--color-primario);
+  color: var(--color-morado);
+  border: 2px solid var(--color-morado);
 }
 
 .btn-control.primario:hover {
-  background-color: var(--color-primario-hover);
+  background-color: var(--color-morado);
+  color: white;
 }
 
 .btn-control.excel {
-  background-color: var(--color-excel);
+  color: var(--color-verde-oscuro);
+  border: 2px solid var(--color-verde-oscuro);
 }
 
 .btn-control.excel:hover {
-  background-color: var(--color-excel-hover);
+  background-color: var(--color-verde-oscuro);
+  color: white;
 }
 
 .btn-control.busqueda {
-  background-color: var(--color-aceptar);
+  color: var(--color-azul);
+  border: 2px solid var(--color-azul);
 }
 
 .btn-control.busqueda:hover {
-  background-color: var(--color-aceptar-hover);
+  background-color: var(--color-azul);
+  color: white;
 }
 
 .btn-control.secondary {
-  background-color: var(--color-second);
+  color: var(--color-celeste);
+  border: 2px solid var(--color-celeste);
 }
 
 .btn-control.secondary:hover {
-  background-color: var(--color-second-hover);
+  background-color: var(--color-celeste);
+  color: white;
 }
 
 .btn-control.peligro {
-  background-color: var(--color-peligro);
+  color: var(--color-rojo);
+  border: 2px solid var(--color-rojo);
 }
 
 .btn-control.peligro:hover {
-  background-color: var(--color-peligro-hover);
+  background-color: var(--color-rojo);
+  color: white;
 }
 
 /*FORMULARIOS*/
