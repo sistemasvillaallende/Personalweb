@@ -40,7 +40,7 @@ namespace web.secure
             if (ok == false)
                 Response.Redirect("accesodenegado.html");
             else
-                Response.Redirect("listempleados.aspx");
+                Response.Redirect("secure/home.aspx");
 
             objSeguridad = null;
         }
@@ -93,7 +93,7 @@ namespace web.secure
 
         protected void lnbPivot_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         protected void lnbLiquidacion_Click(object sender, EventArgs e)

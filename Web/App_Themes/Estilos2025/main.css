@@ -8,6 +8,7 @@
   --color-morado: #8500A9;
   --color-verde-oscuro: #00C474;
   --color-verde: #B2E702;
+  --color-standart: #2EACB3;
 }
 
 /*BOTONES*/
@@ -356,4 +357,45 @@ textarea.input-control {
   border-radius: 15px;
   box-shadow: 0px 2px 16px -2px rgba(0, 0, 0, 0.75);
   margin-bottom: 20px;
+}
+
+/*BOTONES PARA INICIO */
+.botones-home {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.home-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 3px;
+  border-radius: 5px;
+  border: 2px solid var(--color-standart);
+  background-color: var(--color-standart);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 300px;
+  min-width: 200px;
+}
+
+.home-button:hover {
+  background-color: white;
+  color: var(--color-standart);
+}
+
+.icon-style {
+  font-size: 30px;
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
+  transition: color 0.3s ease;
+  width: 100%;
 }
