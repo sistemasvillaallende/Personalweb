@@ -53,59 +53,63 @@
         <div class="col-xl-3 col-lg-3 col-md-3" style="display: block">
             <div class="card top_counter">
                 <div class="list-group list-group-custom list-group-flush">
-                    <h5 style="padding-left: 5px; font-size: 20px; color: var(--primary-color); font-weight: 600;">Incidencias del día
+                    <h5 style="padding-left: 20px; font-size: 18px; color: var(--primary-color); font-weight: 600; padding-top: 15px; padding-bottom: 0px; margin-bottom: 2px;">Incidencias del día
                     </h5>
                     <hr style="margin-bottom: 0; margin-top: 5px; border-top: 3px solid lightgray; opacity: 1; margin-left: 20px; margin-right: 20px;" />
                     <div class="list-group-item d-flex align-items-center py-3"
-                        style="padding-top: 5px !important; padding-bottom: 5px !important;">
+                        style="padding: 5px !important;">
                         <div class="icon text-center me-3"><i class="fa fa-plane"></i></div>
                         <div class="content">
                             <button type="button" style="background-color: transparent; border: none; display: block; text-align: left"
                                 data-toggle="modal" data-target="#ModalLic">
-                                <div>Personal de Licencia</div>
-                                <h5 id="lblLicencia" runat="server" class="mb-0"></h5>
+                                <div style="font-size: 16px;">Personal de Licencia</div>
+                                <h5 style="font-size: 16px;" id="lblLicencia" runat="server" class="mb-0"></h5>
                             </button>
 
                         </div>
                     </div>
-                    <div class="list-group-item d-flex align-items-center py-3">
+                    <div class="list-group-item d-flex align-items-center py-3"
+                        style="padding: 5px !important;">
                         <div class="icon text-center me-3"><i class="fa fa-coffee"></i></div>
                         <div class="content">
                             <button type="button" style="background-color: transparent; border: none; display: block; text-align: left"
                                 data-toggle="modal" data-target="#ModalRazones">
-                                <div>Razones Particulares</div>
-                                <h5 id="lblRazones" runat="server" class="mb-0"></h5>
+                                <div style="font-size: 16px;">Razones Particulares</div>
+                                <h5 style="font-size: 16px;" id="lblRazones" runat="server" class="mb-0"></h5>
                             </button>
                         </div>
                     </div>
-                    <div class="list-group-item d-flex align-items-center py-3">
+                    <div class="list-group-item d-flex align-items-center py-3"
+                        style="padding: 5px !important;">
                         <div class="icon text-center me-3"><i class="fa fa-ambulance"></i></div>
                         <div class="content">
                             <button type="button" style="background-color: transparent; border: none; display: block; text-align: left"
                                 data-toggle="modal" data-target="#ModalCon">
-                                <div>Ausentes con aviso</div>
-                                <h5 id="lblAusentesAviso" runat="server" class="mb-0"></h5>
+                                <div style="font-size: 16px;">Ausentes con aviso</div>
+                                <h5 style="font-size: 16px;" id="lblAusentesAviso" runat="server" class="mb-0"></h5>
                             </button>
 
                         </div>
                     </div>
-                    <div class="list-group-item d-flex align-items-center py-3">
+                    <div class="list-group-item d-flex align-items-center py-3"
+                        style="padding: 5px !important;">
                         <div class="icon text-center me-3"><i class="fa fa-question-circle"></i></div>
                         <div class="content">
                             <button type="button" style="background-color: transparent; border: none; display: block; text-align: left"
                                 data-toggle="modal" data-target="#ModalSin">
-                                <div>Ausentes sin procesar</div>
-                                <h5 id="lblAusentesSinAviso" runat="server" class="mb-0"></h5>
+                                <div style="font-size: 16px;">Ausentes sin procesar</div>
+                                <h5 style="font-size: 16px;" id="lblAusentesSinAviso" runat="server" class="mb-0"></h5>
                             </button>
                         </div>
                     </div>
-                    <div class="list-group-item d-flex align-items-center py-3">
+                    <div class="list-group-item d-flex align-items-center py-3"
+                        style="padding: 5px !important;">
                         <div class="icon text-center me-3"><i class="fa fa-birthday-cake"></i></div>
                         <div class="content">
                             <button type="button" style="background-color: transparent; border: none; display: block; text-align: left"
                                 data-toggle="modal" data-target="#ModalCumple">
-                                <div>Cumpleaños</div>
-                                <h5 id="lblCumpleaños" runat="server" class="mb-0"></h5>
+                                <div style="font-size: 16px;">Cumpleaños</div>
+                                <h5 style="font-size: 16px;" id="lblCumpleaños" runat="server" class="mb-0"></h5>
                             </button>
 
                         </div>
@@ -818,7 +822,7 @@
                     'copy', 'csv', 'excel', 'pdf', 'print'
                 ]
             });
-            
+
             $('#<%=gvCon.ClientID %>').dataTable({
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"

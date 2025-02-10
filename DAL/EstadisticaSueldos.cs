@@ -42,7 +42,7 @@ namespace DAL
                     WHERE anio=@anio AND nro_liquidacion=(
                     SELECT nro_liquidacion FROM LIQUIDACIONES
                     WHERE anio=@anio AND periodo=@periodo
-                    AND publica=1 AND cod_tipo_liq=1)
+                    AND publica=1 AND cod_tipo_liq=1 AND aguinaldo=0)
 
                     UNION
 

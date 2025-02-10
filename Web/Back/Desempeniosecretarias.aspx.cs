@@ -10,12 +10,31 @@ namespace web.secure
 {
     public partial class Desempeniosecretarias : System.Web.UI.Page
     {
+        private void fillResultados()
+        {
+            List<DAL.Fichas.Resultado_evaluacion> lst =
+            DAL.Fichas.Resultado_evaluacion.read(
+                int.Parse(DDLEvaluaciones.SelectedItem.Value));
+            //gvResultados.DataSource = lst;
+            //gvResultados.DataBind();
+            //if (lst.Count > 0)
+            //{
+            //    gvResultados.UseAccessibleHeader = true;
+            //    gvResultados.HeaderRow.TableSection = TableRowSection.TableHeader;
+            //}
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
                 if (!IsPostBack)
                 {
+                    DDLEvaluaciones.DataTextField = "NOMBRE";
+                    DDLEvaluaciones.DataValueField = "ID";
+                    DDLEvaluaciones.DataSource = DAL.Fichas.Ficha.read();
+                    DDLEvaluaciones.DataBind();
+
+                    fillResultados();
                     if (Request.QueryString["id_secretaria"] == null)
                     {
                         List<DAL.Secretarias_grilla> lst =
