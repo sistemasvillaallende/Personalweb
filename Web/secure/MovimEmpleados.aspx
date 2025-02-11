@@ -8,6 +8,20 @@
     <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
         <div class="container-fluid marco">
             <div class="row" style="padding: 15px;">
+                <div>
+                    <asp:LinkButton ID="LinkExportar"
+                    CssClass="btn-control excel" runat="server"
+                    OnClick="LinkExportar_Click">
+                    <i class="fa fa-download"></i>&nbsp;Exportar
+                    Excel Conceptos
+                    </asp:LinkButton>
+                    <asp:LinkButton ID="LinkExportarHist"
+                    CssClass="btn-control excel" runat="server"
+                    OnClick="LinkExportar_Click_Hist">
+                    <i class="fa fa-download"></i>&nbsp;Exportar
+                    Excel Cambios
+                    </asp:LinkButton>
+                </div>
                 <div class="col-md-12"
                     style="display: flex; padding: 15px; background-color: white; padding-top: 0; -moz-box-shadow: 0px 2px 16px -2px rgba(0, 0, 0, 0.75); border-bottom: solid;">
                     <p style="width: 33%; border-right: solid; margin-bottom: 0">

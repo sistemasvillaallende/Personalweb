@@ -11,5 +11,9 @@ namespace web.secure {
     
     
     public partial class MovimEmpleados {
+
+     protected global::System.Web.UI.WebControls.LinkButton LinkExportar;
+     protected global::System.Web.UI.WebControls.LinkButton LinkExportarHist;
+
     }
 }
