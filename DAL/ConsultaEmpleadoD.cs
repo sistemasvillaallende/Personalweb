@@ -822,6 +822,8 @@ namespace DAL
                 strSQL.AppendLine("AND e.legajo IS NOT NULL");
                 strSQL.AppendLine("ORDER BY e.legajo");
 
+
+
                 using (SqlConnection conn = DALBase.GetConnection("Siimva"))
                 {
                     try
