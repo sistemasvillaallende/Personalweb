@@ -983,6 +983,67 @@ namespace DAL
 
             }
         }
+
+         public static List<Entities.LstEmpleados> GetEmpleadosByCategoria(int cod_categoria) 
+        {
+            StringBuilder strSQL = new StringBuilder();
+            {
+
+                strSQL.AppendLine("SELECT");
+                strSQL.AppendLine("e.legajo, rtrim(ltrim(e.nombre)) as nombre, ");
+                strSQL.AppendLine("convert(varchar(10), e.fecha_ingreso, 103) as fecha_ingreso,");
+                strSQL.AppendLine("convert(varchar(10), e.fecha_nacimiento, 103) as fecha_nacimiento,");
+                strSQL.AppendLine("e.cod_categoria, c.des_categoria, e.tarea, tl.des_tipo_liq,");
+                strSQL.AppendLine("b.nom_banco, e.nro_caja_ahorro, e.nro_cbu,");
+                strSQL.AppendLine("e.nro_documento, e.nro_cta_sb, e.nro_cta_gastos,");
+                strSQL.AppendLine("rtrim(ltrim(s.descripcion)) as Secretaria, rtrim(ltrim(d1.descripcion)) as Direccion,");
+                strSQL.AppendLine("ltrim(rtrim(o.nombre_oficina)) as Oficina,");
+                strSQL.AppendLine("e.celular, e.telefonos, e.email, passTemp, ISNULL(z.NOMBRE, 'SIN EVALUAR') AS NOMBRE_ESTADO");
+                /**/
+                strSQL.AppendLine("FROM EMPLEADOS e");
+                strSQL.AppendLine("LEFT join TIPOS_LIQUIDACION tl on");
+                strSQL.AppendLine("tl.cod_tipo_liq = e.cod_tipo_liq");
+                strSQL.AppendLine("LEFT join BANCOS b on");
+                strSQL.AppendLine("b.cod_banco = e.cod_banco");
+                strSQL.AppendLine("LEFT join CATEGORIAS c on");
+                strSQL.AppendLine("e.cod_categoria = c.cod_categoria");
+                strSQL.AppendLine("LEFT join secretaria s on");
+                strSQL.AppendLine("s.id_secretaria = e.id_secretaria");
+                strSQL.AppendLine("LEFT join direccion d1 on");
+                strSQL.AppendLine("d1.id_direccion = e.id_direccion");
+                strSQL.AppendLine("LEFT join oficinas o on");
+                strSQL.AppendLine("o.codigo_oficina = e.id_oficina");
+                strSQL.AppendLine("FULL JOIN FICHAS_RELEVAMIENTOS X ON");
+                strSQL.AppendLine("X.CUIT = e.legajo");
+                strSQL.AppendLine("FULL JOIN FICHAS_ESTADOS_EVALUACION z");
+                strSQL.AppendLine("ON X.ID_ESTADO = Z.ID");
+                strSQL.AppendLine("WHERE e.fecha_baja is null");
+                strSQL.AppendLine("AND e.cod_categoria = @cod_categoria");
+                strSQL.AppendLine("AND e.legajo IS NOT NULL");
+                strSQL.AppendLine("ORDER BY e.legajo");
+
+                using (SqlConnection conn = DALBase.GetConnection("Siimva"))
+                {
+                    try
+                    {
+                        SqlCommand cmd = conn.CreateCommand();
+                        cmd.CommandType = CommandType.Text;
+                        cmd.CommandText = strSQL.ToString();
+                        cmd.Parameters.AddWithValue("cod_categoria",cod_categoria);
+                        cmd.Connection.Open();
+                        return getLstEmpleado(cmd);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+
+            }
+        }
+
+
+
         private static List<Entities.LstEmpleados> getLstEmpleado(SqlCommand cmd)
         {
 
@@ -2077,6 +2138,12 @@ namespace DAL
             }
 
         }
+
+
+
+
+
+
 
     }
 }

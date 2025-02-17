@@ -222,8 +222,8 @@ namespace DAL
             {
                 string operacion = string.Empty;
                 DateTimeFormatInfo culturaFecArgentina = new System.Globalization.CultureInfo("es-AR", false).DateTimeFormat;
-                Concepto_Liq_x_Emp_Mov objMov = new Concepto_Liq_x_Emp_Mov();
-
+                ConceptoLiqxEmpMov objMov = new ConceptoLiqxEmpMov();
+                // ACA MODIFICAR PARA LLAMAR AL METODO DIRECTAMENTE
                 string strSQL = @"INSERT INTO CONCEP_LIQUID_X_EMPLEADO_MOV
                                    (legajo
                                    ,fecha_mov
@@ -1186,6 +1186,185 @@ namespace DAL
 
         }
 
+
+        public static List<Historial_conceptos> GetHistorial_ConceptosXLegajo(int legajo)
+        {
+            try
+            {
+
+                string strSQL = @"SELECT 
+                                    CONVERT(DATE, fecha_movimiento) AS FECHA,
+                                    C.NOMBRE_COMPLETO AS 'USUARIO CARGA',
+                                    operacion AS 'TIPO MOVIMIENTO',
+                                    A.cod_concepto_liq,
+                                    B.des_concepto_liq AS 'CONCEPTO',
+                                    A.valor_concepto_liq,
+                                       CAST('' AS VARCHAR(MAX)) AS OBSERVACION
+                                FROM HIST_CONCEP_LIQUID_X_EMPLEADO A
+                                INNER JOIN CONCEPTOS_LIQUIDACION B ON A.cod_concepto_liq = B.cod_concepto_liq
+                                INNER JOIN USUARIOS_V2 C ON A.usuario = C.NOMBRE
+                                WHERE A.legajo = @legajo
+                                
+                                UNION
+                                
+                                SELECT 
+                                    CONVERT(DATE, fecha_mov), 
+                                    D.NOMBRE_COMPLETO,
+                                    CASE id_tipo_movimiento
+                                        WHEN 1 THEN 'ALTA'
+                                        WHEN 2 THEN 'MODIFICA'
+                                        WHEN 3 THEN 'ELIMINA'
+                                   END AS 'MOVIMIENTO', 
+                                    A.cod_concepto_liq,
+                                    B.des_concepto_liq,
+                                    A.valor_concepto_liq,
+                                    CAST(A.observacion AS VARCHAR(MAX)) AS ONSERVACION
+                                FROM CONCEP_LIQUID_X_EMPLEADO_MOV A
+                                INNER JOIN CONCEPTOS_LIQUIDACION B ON A.cod_concepto_liq = B.cod_concepto_liq
+                                INNER JOIN TIPOS_CONCEPTOS_LIQ C ON A.id_tipo_movimiento = C.cod_tipo_concepto
+                                INNER JOIN USUARIOS_V2 D ON A.usuario = D.NOMBRE
+                                WHERE A.legajo = @legajo
+
+                                ORDER BY CONVERT(DATE, fecha_movimiento) ASC;";
+
+                // DateTimeFormatInfo culturaFecArgentina = new System.Globalization.CultureInfo("es-AR", false).DateTimeFormat;
+                List<Historial_conceptos> lst = new List<Historial_conceptos>();
+                Historial_conceptos obj;
+                using (SqlConnection cn = DALBase.GetConnection("SIIMVA"))
+                {
+                    SqlCommand cmd = cn.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@legajo", legajo);
+                    cmd.CommandText = strSQL;
+                    cmd.Connection.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows)
+                    {
+                        int Fecha = dr.GetOrdinal("FECHA");
+                        int Usuario_Carga = dr.GetOrdinal("USUARIO CARGA");
+                        int Tipo_movimiento = dr.GetOrdinal("TIPO MOVIMIENTO");
+                        int Cod_concepto_liq = dr.GetOrdinal("cod_concepto_liq");
+                        int Concepto = dr.GetOrdinal("CONCEPTO");
+                        int Valor_concepto_liq = dr.GetOrdinal("valor_concepto_liq");
+                        int Observacion = dr.GetOrdinal("OBSERVACION");
+
+                        while (dr.Read())
+                        {
+                            obj = new Historial_conceptos();
+                            obj.Fecha = dr.GetDateTime(Fecha);
+                            obj.Usuario_Carga = dr.GetString(Usuario_Carga);
+                            obj.Tipo_movimiento = dr.GetString(Tipo_movimiento);
+                            obj.Cod_concepto_liq = dr.GetInt32(Cod_concepto_liq);
+                            obj.Concepto = dr.GetString(Concepto);
+                            obj.Valor_concepto_liq = dr.GetDecimal(Valor_concepto_liq);
+                            obj.Observacion = dr.GetString(Observacion);
+                            lst.Add(obj);
+                        }
+                    }
+                    return lst;
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+
+        public static List<Cambios_empleado> GetCambiosEmpleadoXLegajo(int legajo)
+        {
+            try
+            {
+
+                string strSQL = @"SELECT 
+                                    	MIN(CONVERT(DATE, fecha_movimiento)) AS fecha_cambio,
+                                    	'Cambio de Tarea: ' + tarea AS descripcion_cambio
+                                    FROM HIST_CAMBIO_EMPLEADOS
+                                    WHERE legajo=@legajo AND cod_categoria IS NOT NULL
+                                    GROUP BY tarea
+                                    --ORDER BY MIN(CONVERT(DATE, fecha_movimiento))
+                                    UNION
+                                    SELECT 
+                                    	MIN(CONVERT(DATE, fecha_movimiento)) AS fecha_cambio,
+                                    	'Cambio de Seccion: ' + B.des_seccion AS descripcion_cambio
+                                    FROM HIST_CAMBIO_EMPLEADOS A
+                                    INNER JOIN SECCIONES B ON A.cod_seccion=B.cod_seccion
+                                    WHERE legajo=@legajo AND cod_categoria IS NOT NULL
+                                    GROUP BY B.des_seccion
+                                    UNION
+                                    SELECT 
+                                    	MIN(CONVERT(DATE, fecha_movimiento)) AS fecha_cambio,
+                                    	'Cambio de Categoria: ' + CONVERT(VARCHAR(10),cod_categoria) AS descripcion_cambio
+                                    
+                                    FROM HIST_CAMBIO_EMPLEADOS
+                                    WHERE legajo=@legajo AND cod_categoria IS NOT NULL                                     
+                                    GROUP BY cod_categoria
+                                                                        
+                                    UNION
+                                    SELECT 
+                                    	MIN(CONVERT(DATE, fecha_movimiento)) AS fecha_cambio,
+                                    	'Cambio de Cargo: ' + B.desc_cargo AS descripcion_cambio
+	
+                                    FROM HIST_CAMBIO_EMPLEADOS A
+                                    INNER JOIN CARGOS B ON A.cod_cargo=B.cod_cargo
+                                    WHERE legajo=@legajo AND cod_categoria IS NOT NULL
+                                    GROUP BY B.desc_cargo
+                                    UNION
+                                    SELECT 
+                                    	MIN(CONVERT(DATE, fecha_movimiento)) AS fecha_cambio,
+                                    	'Cambio Clasificacion Personal: ' + B.des_clasif_per AS descripcion_cambio
+                                    	
+                                    FROM HIST_CAMBIO_EMPLEADOS A
+                                    INNER JOIN CLASIFICACIONES_PERSONAL B ON A.cod_clasif_per=B.cod_clasif_per
+                                    WHERE legajo=@legajo AND cod_categoria IS NOT NULL
+                                    GROUP BY B.des_clasif_per
+                                    UNION
+                                    SELECT 
+                                    	MIN(CONVERT(DATE, fecha_movimiento)) AS fecha_cambio,
+                                    	'Cambio Tipo Liquidacion: ' + B.des_tipo_liq  AS descripcion_cambio
+                                     	
+                                     FROM HIST_CAMBIO_EMPLEADOS A
+                                     INNER JOIN TIPOS_LIQUIDACION B ON A.cod_tipo_liq=B.cod_tipo_liq
+                                     WHERE legajo=@legajo AND cod_categoria IS NOT NULL
+                                     GROUP BY B.des_tipo_liq
+                                     ORDER BY MIN(CONVERT(DATE, fecha_movimiento))";
+
+                // DateTimeFormatInfo culturaFecArgentina = new System.Globalization.CultureInfo("es-AR", false).DateTimeFormat;
+                List<Cambios_empleado> lst = new List<Cambios_empleado>();
+                Cambios_empleado obj;
+                using (SqlConnection cn = DALBase.GetConnection("SIIMVA"))
+                {
+                    SqlCommand cmd = cn.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@legajo", legajo);
+                    cmd.CommandText = strSQL;
+                    cmd.Connection.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows)
+                    {
+                        int fecha_cambio = dr.GetOrdinal("fecha_cambio");
+                        int descripcion_cambio = dr.GetOrdinal("descripcion_cambio");
+
+
+                        while (dr.Read())
+                        {
+                            obj = new Cambios_empleado();
+                            obj.fecha_cambio = dr.GetDateTime(fecha_cambio);
+                            obj.descripcion_cambio = dr.GetString(descripcion_cambio);
+                            lst.Add(obj);
+                        }
+                    }
+                    return lst;
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 
 }

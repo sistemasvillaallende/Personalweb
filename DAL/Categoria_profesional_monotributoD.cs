@@ -161,60 +161,7 @@ namespace DAL
         }
 
 
-        //public static void NuevaCategoria(Entities.Categoria_profesional_monotributo oCate)
-        //{
-        //    SqlCommand cmd = null;
-        //    SqlCommand cmd1 = null;
-        //    SqlConnection cn = DALBase.GetConnection("Siimva");
-        //    StringBuilder strSQL = new StringBuilder();
-        //    try
-        //    {
-        //        if (oCate.id_profesional_monotributo == 0)
-        //        {
-        //            StringBuilder SQL = new StringBuilder();
-        //            SQL.AppendLine("SELECT isnull(max(id_profesional_categoria),0) FROM CATEGORIA_PROFESIONAL_MONOTRIBUTO");
-        //            cmd1 = new SqlCommand();
-        //            cmd1.Connection = cn;
-        //            cmd1.CommandType = CommandType.Text;
-        //            cmd1.CommandText = SQL.ToString();
-        //            oCate.id_profesional_monotributo = Convert.ToInt32(cmd1.ExecuteScalar()) + 1;
-
-        //        }
-
-        //        strSQL.AppendLine("INSERT into  CATEGORIA_PROFESIONAL_MONOTRIBUTO");
-        //        strSQL.AppendLine("(id_profesional_monotributo,");
-        //        strSQL.AppendLine("categoria,");
-        //        strSQL.AppendLine("fecha_alta,");
-        //        strSQL.AppendLine("monto)");
-        //        strSQL.AppendLine("VALUES");
-        //        strSQL.AppendLine("(@id_profesional_monotributo,");
-        //        strSQL.AppendLine("@categoria,");
-        //        strSQL.AppendLine("@fecha_alta,");
-        //        strSQL.AppendLine("@monto)");
-
-        //        cmd = new SqlCommand();
-        //        cmd.Parameters.AddWithValue("@id_profesional_monotributo", oCate.id_profesional_monotributo);
-        //        cmd.Parameters.AddWithValue("@categoria", oCate.categoria);
-        //        cmd.Parameters.AddWithValue("@fecha_alta", oCate.fecha_alta);
-        //        cmd.Parameters.AddWithValue("@monto", oCate.monto);
-        //        cmd.Connection = cn;
-        //        cmd.CommandType = CommandType.Text;
-        //        cmd.CommandText = strSQL.ToString();
-        //        cmd.Connection.Open();
-        //        cmd.ExecuteNonQuery();
-        //    }
-        //    catch (Exception e)
-        //    {
-
-        //        throw e;
-        //    }
-
-        //    finally
-        //    {
-        //        cmd = null;
-        //        cn.Close();
-        //    }
-        //}
+     
 
         public static void NuevaCategoria(Entities.Categoria_profesional_monotributo oCate)
         {

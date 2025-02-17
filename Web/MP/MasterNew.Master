@@ -106,7 +106,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+<body style="background-color:white !important">
 
     <form id="form1" runat="server">
         <script src="https://code.jquery.com/jquery.js"></script>
@@ -126,12 +126,12 @@
                     style="text-align: left; position: fixed; width: 100%; z-index: 5000; background-color: white;">
                     <div class="row" style="padding-top: 0px; padding-bottom: 0px; height: 80px;">
                         <div class="col-md-4" style="padding-left: 5%;">
-                            <a href="../Back/Inicio.aspx">
+                            <a href="../secure/home.aspx">
                                 <img src="../img/LogoPablo.png" style="height: 60px;" />
                             </a>
                         </div>
                         <div class="col-md-4" style="height: 90px !important; align-items: center; vertical-align: middle; display: inline-flex;">
-                            <a href="../Back/Inicio.aspx" style="width: 100%;">
+                            <a href="../secure/home.aspx" style="width: 100%;">
                                 <h2 class="section-title__title"
                                     style="text-align: center; margin-top: 0; color: #6f6f6e; font-size: 24px; line-height: 10px; text-decoration-line: overline;">
                                     <img id="imgSeccion" runat="server"
@@ -235,13 +235,6 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" id="btnEvaluar" runat="server"
-                                                    class="a-menu">
-                                                    <i class="fa fa-graduation-cap"></i>
-                                                    <span>Evaluar</span>
-                                                </a>
-                                            </li>
-                                            <li>
                                                 <a href="../Back/Desempeniosecretarias.aspx"
                                                     class="a-menu">
                                                     <i class="fa fa-tachometer"></i>
@@ -252,7 +245,7 @@
                                                 <a href="../Back/Resultado_evaluacion.aspx"
                                                     class="a-menu">
                                                     <i class="fa fa-pie-chart"></i>
-                                                    <span>Resultados</span>
+                                                    <span>Evaluaciones</span>
                                                 </a>
                                             </li>
                                         </ul>

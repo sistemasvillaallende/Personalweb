@@ -26,12 +26,11 @@ namespace web.secure
                 this.CargarCombos();
                 this.AsignarDatos(EmpleadoB.GetByPkTodos(this.legajo));
 
-                string selectedCase = ddTipo_liquidacion.SelectedValue;
+                string selectedCase = ddClasificacion_personal.SelectedValue;
 
-                if (selectedCase == "9") 
+                if (selectedCase == "6")
                 {
                     ddCategoriaProfesional.Visible = true;
-                   
                 }
                 else
                 {
@@ -497,6 +496,11 @@ namespace web.secure
             this.Response.Redirect(string.Format("../secure/historial_emp.aspx?legajo={0}&nombre={1}&op={2}", (object)this.txtLegajo.Text, (object)this.txtNombre.Text, (object)this.operacion));
         }
 
+        protected void cmdMovimEmpleados_ServerClick(object sender, EventArgs e)
+        {
+            this.Response.Redirect(string.Format("../secure/MovimEmpleados.aspx?legajo={0}&nombre={1}", (object)this.txtLegajo.Text, (object)this.txtNombre.Text));
+        }
+
         protected void cmdCancelar_tab_empleado_Click(object sender, EventArgs e)
         {
             this.Response.Redirect("listempleados.aspx");
@@ -527,22 +531,22 @@ namespace web.secure
             this.Response.Redirect("../secure/familiares.aspx");
         }
 
-        protected void ddTipoLiquidacion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-            string selectedCase = ddTipo_liquidacion.SelectedValue;
 
-            if (selectedCase == "9") // No liquida
+        protected void ddClasificacion_personal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedCase = ddClasificacion_personal.SelectedValue;
+
+            if (selectedCase == "6") // Monotributo
             {
                 ddCategoriaProfesional.Visible = true;
-                
+                lblCategoriaProfesional.Visible = true;
             }
             else
             {
                 ddCategoriaProfesional.Visible = false;
+                lblCategoriaProfesional.Visible = false;
             }
         }
-
 
 
 

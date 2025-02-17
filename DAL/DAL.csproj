@@ -54,6 +54,7 @@
     <Compile Include="AUX_DETALLE_SUELDO.cs" />
     <Compile Include="AUX_MAESTRO_SUELDO.cs" />
     <Compile Include="CategoriasD.cs" />
+    <Compile Include="Categorias_historialD.cs" />
     <Compile Include="Categoria_profesional_monotributoD.cs" />
     <Compile Include="Categoria_profesional_monotributo_histD.cs" />
     <Compile Include="Concepto_Liq_x_Emp_Mov.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Direcciones_grilla.cs" />
     <Compile Include="EmpleadoD.cs" />
     <Compile Include="Empleados.cs" />
+    <Compile Include="Empleados_categoria_cantD.cs" />
     <Compile Include="EmpxFamiliar.cs" />
     <Compile Include="EstadisticaSueldos.cs" />
     <Compile Include="Familiares.cs" />

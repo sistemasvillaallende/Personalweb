@@ -122,8 +122,8 @@
 
                             <div class="col-md-12">
                                 <div class="col-md-12" style="text-align: right;">
-                                    <asp:LinkButton ID="lnkAgrega_conceptos" CssClass="btn-control aceptar"
-                                        runat="server" OnClick="lnkAgrega_conceptos_Click">
+                                    <asp:LinkButton ID="lnkAgrega_conceptos" CssClass="btn-control" runat="server"
+                                        OnClick="lnkAgrega_conceptos_Click">
                                         <i class="fa fa-money"></i> Agregar Concepto
                                     </asp:LinkButton>
                                 </div>
@@ -216,12 +216,20 @@
                                 </div>--%>
 
                                 <div class="btn-group pull-right">
-                                    <asp:LinkButton ID="lbtnConfirma" CssClass="btn-control primario" runat="server"
+                                    <asp:LinkButton ID="lbtnHistConceptos" CssClass="btn-control primario"
+                                        runat="server" OnClick="lbtnHistConceptos_Click">
+                                        <i class="fa fa-sign-out"></i>&nbsp;Historial Conceptos
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnHistCambios" CssClass="btn-control primario" runat="server"
+                                        OnClick="lbtnHistCambios_Click">
+                                        <i class="fa fa-sign-out"></i>&nbsp;Historial Cambios
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnConfirma" CssClass="btn-control aceptar" runat="server"
                                         OnClick="lbtnConfirma_Click"
                                         OnClientClick="return confirm('Desea Confirmar los Cambios...');">
                                         <i class="fa fa-play-circle"></i> Confirma
                                     </asp:LinkButton>
-                                    <asp:LinkButton ID="lbtnExporCtaCte" CssClass="btn-control aceptar" runat="server"
+                                    <asp:LinkButton ID="lbtnExporCtaCte" CssClass="btn-control excel" runat="server"
                                         OnClick="lbtnExporCtaCte_Click">
                                         <i class="fa fa-plus"></i> Excel
                                     </asp:LinkButton>

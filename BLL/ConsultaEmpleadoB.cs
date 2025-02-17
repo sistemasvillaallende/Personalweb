@@ -52,10 +52,18 @@ namespace BLL
         {
             return DAL.ConsultaEmpleadoD.GetByNombre(nombre);
         }
+
+        public static List<Entities.LstEmpleados> GetEmpleadosByCategoria(int cod_categoria) {
+
+            return DAL.ConsultaEmpleadoD.GetEmpleadosByCategoria(cod_categoria);
+        }
+
+
         /// <summary>
         /// //////////////////////////////////////////////////////////////////////////////
         /// </summary>
         /// <returns></returns>
+
 
 
         public static DataSet ListOficinas(int id_oficina)

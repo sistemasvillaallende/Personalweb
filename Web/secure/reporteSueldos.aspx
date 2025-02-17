@@ -7,8 +7,8 @@
         </asp:Content>
         <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-            <div class="row" style="margin-top: 100px;">
-                <div class="col-md-6 col-md-offset-3">
+            <div class="row marco">
+                <div class="col-md-12 col-md-offset-3">
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">

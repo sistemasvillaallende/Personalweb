@@ -26,7 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -7558,11 +7558,16 @@
     <None Include="Properties\PublishProfiles\sueldosweb.pubxml" />
     <Content Include="secure\404.html" />
     <Content Include="secure\accesodenegado.html" />
+    <Content Include="secure\cambios_empleado.aspx" />
     <Content Include="secure\cargar_conceptos.aspx" />
     <Content Include="secure\categorias_empleados_monotributo.aspx" />
     <Content Include="secure\categorias_empleados_monotributo_hist.aspx" />
+    <Content Include="secure\categoria_empleados_hist.aspx" />
+    <Content Include="secure\Concepto_Liq_x_Emp_Mov.aspx" />
+    <Content Include="secure\Empleado_categoria_detalle.aspx" />
     <Content Include="secure\familiares.aspx" />
     <Content Include="secure\liquidaciones.aspx" />
+    <Content Include="secure\MovimEmpleados.aspx" />
     <Content Include="secure\novedades2.aspx" />
     <Content Include="secure\secure.rar" />
     <Content Include="secure\secure2.rar" />
@@ -8261,6 +8266,13 @@
     <Compile Include="secure\aportes_jubilatorios.aspx.designer.cs">
       <DependentUpon>aportes_jubilatorios.aspx</DependentUpon>
     </Compile>
+    <Compile Include="secure\cambios_empleado.aspx.cs">
+      <DependentUpon>cambios_empleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secure\cambios_empleado.aspx.designer.cs">
+      <DependentUpon>cambios_empleado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="secure\cargar_conceptos.aspx.cs">
       <DependentUpon>cargar_conceptos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -8289,6 +8301,13 @@
     <Compile Include="secure\categorias_empleados_monotributo_hist.aspx.designer.cs">
       <DependentUpon>categorias_empleados_monotributo_hist.aspx</DependentUpon>
     </Compile>
+    <Compile Include="secure\categoria_empleados_hist.aspx.cs">
+      <DependentUpon>categoria_empleados_hist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secure\categoria_empleados_hist.aspx.designer.cs">
+      <DependentUpon>categoria_empleados_hist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="secure\certificaciones.aspx.cs">
       <DependentUpon>certificaciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -8310,12 +8329,26 @@
     <Compile Include="secure\concepto_emp.aspx.designer.cs">
       <DependentUpon>concepto_emp.aspx</DependentUpon>
     </Compile>
+    <Compile Include="secure\Concepto_Liq_x_Emp_Mov.aspx.cs">
+      <DependentUpon>Concepto_Liq_x_Emp_Mov.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secure\Concepto_Liq_x_Emp_Mov.aspx.designer.cs">
+      <DependentUpon>Concepto_Liq_x_Emp_Mov.aspx</DependentUpon>
+    </Compile>
     <Compile Include="secure\empleado.aspx.cs">
       <DependentUpon>empleado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="secure\empleado.aspx.designer.cs">
       <DependentUpon>empleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="secure\Empleado_categoria_detalle.aspx.cs">
+      <DependentUpon>Empleado_categoria_detalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secure\Empleado_categoria_detalle.aspx.designer.cs">
+      <DependentUpon>Empleado_categoria_detalle.aspx</DependentUpon>
     </Compile>
     <Compile Include="secure\familiares.aspx.cs">
       <DependentUpon>familiares.aspx</DependentUpon>
@@ -8379,6 +8412,13 @@
     </Compile>
     <Compile Include="secure\list_personal.aspx.designer.cs">
       <DependentUpon>list_personal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="secure\MovimEmpleados.aspx.cs">
+      <DependentUpon>MovimEmpleados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secure\MovimEmpleados.aspx.designer.cs">
+      <DependentUpon>MovimEmpleados.aspx</DependentUpon>
     </Compile>
     <Compile Include="secure\novedades2.aspx.cs">
       <DependentUpon>novedades2.aspx</DependentUpon>

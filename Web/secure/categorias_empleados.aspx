@@ -174,10 +174,22 @@
                                                                             </ItemTemplate>
                                                                             <ItemStyle Width="20%" />
                                                                         </asp:TemplateField>
+                                                                        <asp:TemplateField HeaderText="Cantidad Empleados"
+                                                                        ItemStyle-Width="10%">
+                                                                        <ItemTemplate>
+                                                                            <p>
+                                                                                <asp:Label ID="lblCantidad"
+                                                                                    runat="server" Text="">
+                                                                                </asp:Label>
+                                                                            </p>
+
+                                                                        </ItemTemplate>
+                                                                        <ItemStyle Width="10%" />
+                                                                    </asp:TemplateField>
 
                                                                         <asp:TemplateField
                                                                             HeaderText="Descripcion Categoria"
-                                                                            ItemStyle-Width="50%">
+                                                                            ItemStyle-Width="38%">
                                                                             <ItemTemplate>
                                                                                 <p>
                                                                                     <asp:Label ID="lblDes_categoria"
@@ -186,7 +198,7 @@
                                                                                 </p>
 
                                                                             </ItemTemplate>
-                                                                            <ItemStyle Width="50%" />
+                                                                            <ItemStyle Width="38%" />
                                                                         </asp:TemplateField>
 
                                                                         <%--<asp:TemplateField
@@ -241,6 +253,18 @@
                                                                                                     <i
                                                                                                         class="fa fa-edit"></i>&nbsp
                                                                                                     Borrar
+                                                                                                </asp:LinkButton>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <asp:LinkButton
+                                                                                                    ID="lbtaDetalles"
+                                                                                                    CommandName="detalles"
+                                                                                                    CommandArgument="<%# Container.DataItemIndex %>"
+                                                                                                    runat="server"
+                                                                                                    class="dropdown-item">
+                                                                                                    <i
+                                                                                                        class="fa fa-edit"></i>&nbsp
+                                                                                                    Detalles
                                                                                                 </asp:LinkButton>
                                                                                             </li>
                                                                                         </ul>

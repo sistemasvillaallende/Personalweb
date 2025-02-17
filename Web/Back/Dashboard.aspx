@@ -117,7 +117,7 @@
         <div class="col-xl-3 col-lg-3 col-md-3">
             <div class="card">
                 <div class="card-header border-0" style="padding-bottom: 0;">
-                    <h5 style="padding-left: 5px; font-size: 20px; color: var(--primary-color); font-weight: 600;">Estructura de personal
+                    <h5 style="padding-left: 5px; font-size: 20px; color: var(--primary-color); font-weight: 600;">Dotación de personal
                     </h5>
                     <hr style="margin-top: 10px; border-top: 3px solid lightgray; opacity: 1; margin-left: 5px; margin-right: 5px;" />
                 </div>
