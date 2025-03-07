@@ -17,8 +17,6 @@ namespace web.secure
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
-                Response.Redirect("../login.aspx");
             if (!Page.IsPostBack)
             {
                 chkConAquinaldo.Checked = false;

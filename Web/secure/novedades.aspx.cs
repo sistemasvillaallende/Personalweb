@@ -19,8 +19,6 @@ namespace web.secure
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
-                Response.Redirect("../index.aspx");
 
             lbtnAgregarConceptos.Visible = false;
             lbtnConfirma.Visible = true;

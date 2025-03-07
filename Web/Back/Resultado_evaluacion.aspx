@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MP_Desempenio.Master"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master"
     AutoEventWireup="true" CodeBehind="Resultado_evaluacion.aspx.cs" Inherits="web.secure.Resultado_evaluacion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -31,7 +31,7 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <div class="row g-2 clearfix row-deck">
         <div class="col-xl-12 col-lg-12 col-md-12" style="display: block">
-            <div class="card">
+            <div class="card" style="border:none;">
                 <div class="card-header border-0" style="padding-bottom: 0;">
                     <div class="row">
                         <div class="col-8">
@@ -39,13 +39,58 @@
                             </h5>
                         </div>
                         <div class="col-4">
-                            <asp:DropDownList ID="DDLEvaluaciones" 
-                                CssClass="form-control" 
+                            <asp:DropDownList ID="DDLEvaluaciones"
+                                CssClass="form-control"
                                 AutoPostBack="true"
                                 OnSelectedIndexChanged="DDLEvaluaciones_SelectedIndexChanged"
                                 runat="server">
-
                             </asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 25px;">
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>Secretaría</label>
+                                <asp:DropDownList ID="DDLSecretarias"
+                                    CssClass="form-control"
+                                    AutoPostBack="true"
+                                    OnSelectedIndexChanged="DDLSecretarias_SelectedIndexChanged"
+                                    runat="server">
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>Dirección</label>
+                                <asp:DropDownList ID="DDLDirecciones"
+                                    CssClass="form-control"
+                                    AutoPostBack="true"
+                                    OnSelectedIndexChanged="DDLDirecciones_SelectedIndexChanged"
+                                    runat="server">
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>Oficina</label>
+                                <asp:DropDownList ID="DDLOficinas"
+                                    CssClass="form-control"
+                                    AutoPostBack="true"
+                                    OnSelectedIndexChanged="DDLOficinas_SelectedIndexChanged"
+                                    runat="server">
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>Programa</label>
+                                <asp:DropDownList ID="DDLProgramas"
+                                    CssClass="form-control"
+                                    AutoPostBack="true"
+                                    OnSelectedIndexChanged="DDLProgramas_SelectedIndexChanged"
+                                    runat="server">
+                                </asp:DropDownList>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -53,7 +98,6 @@
                             <hr style="margin-top: 10px; border-top: 3px solid lightgray; opacity: 1; margin-left: 5px; margin-right: 5px;" />
                         </div>
                     </div>
-
                 </div>
                 <div class="card-body" style="padding-top: 0;">
                     <asp:GridView ID="gvResultados"
@@ -62,24 +106,24 @@
                         AutoGenerateColumns="false"
                         runat="server">
                         <Columns>
-                            <asp:BoundField HeaderText="Leg." DataField="LEGAGO" />
+                            <asp:BoundField HeaderText="Leg." DataField="LEGAJO" />
                             <asp:BoundField HeaderText="Empleado" DataField="NOMBRE" />
                             <asp:BoundField HeaderText="Contratación" DataField="CLASIFICACION" />
                             <asp:BoundField HeaderText="Secretaría" DataField="SECRETARIA" />
                             <asp:BoundField HeaderText="Dirección" DataField="DIRECCION" />
+                            <asp:BoundField HeaderText="Oficina" DataField="OFICINA" />
                             <asp:BoundField HeaderText="Programa" DataField="PROGRAMA" />
                             <asp:BoundField HeaderText="Evaluador" DataField="EVALUADOR" />
                             <asp:BoundField HeaderText="Resultado" DataField="RESULTADO" />
                             <asp:TemplateField HeaderText="LINK">
                                 <ItemTemplate>
                                     <div id="divLink" runat="server">
-                                        <a href="Personas_fichas.aspx?idFicha=<%#Eval("ID_FICHA")%>&legajo=<%#Eval("LEGAGO")%>">
+                                        <a href="Personas_fichas.aspx?idFicha=<%#Eval("ID_FICHA")%>&legajo=<%#Eval("LEGAJO")%>">
                                             <span style="font-size: 30px;"
                                                 class="fa fa-search-plus"></span>
                                         </a>
                                     </div>
                                     <div id="divLinkEval" runat="server">
-                                        
                                     </div>
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -89,7 +133,6 @@
             </div>
         </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>

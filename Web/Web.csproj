@@ -180,46 +180,6 @@
     <Content Include="App_Themes\AdminLTE\dist\pages\widgets\info-box.html" />
     <Content Include="App_Themes\AdminLTE\dist\pages\widgets\small-box.html" />
     <Content Include="App_Themes\AdminLTE\index.html" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\AdminLTEFullLogo.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\AdminLTELogo.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\avatar.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\avatar2.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\avatar3.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\avatar4.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\avatar5.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\boxed-bg.jpg" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\boxed-bg.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\credit\american-express.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\credit\cirrus.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\credit\mastercard.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\credit\paypal.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\credit\paypal2.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\credit\visa.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\default-150x150.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\icons.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\photo1.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\photo2.png" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\photo3.jpg" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\photo4.jpg" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\prod-1.jpg" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\prod-2.jpg" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\prod-3.jpg" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\prod-4.jpg" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\prod-5.jpg" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\user1-128x128.jpg" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\user2-160x160.jpg" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\user3-128x128.jpg" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\user4-128x128.jpg" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\user5-128x128.jpg" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\user6-128x128.jpg" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\user7-128x128.jpg" />
-    <Content Include="App_Themes\AdminLTE\src\assets\img\user8-128x128.jpg" />
-    <Content Include="App_Themes\AdminLTE\src\config\assets.config.mjs" />
-    <Content Include="App_Themes\AdminLTE\src\config\astro.config.mjs" />
-    <Content Include="App_Themes\AdminLTE\src\config\postcss.config.mjs" />
-    <Content Include="App_Themes\AdminLTE\src\config\rollup.config.js" />
-    <Content Include="App_Themes\AdminLTE\src\html\.prettierrc.js" />
-    <Content Include="App_Themes\AdminLTE\src\utils\index.js" />
     <Content Include="App_Themes\Bootstrap\Autocomplete.css" />
     <Content Include="App_Themes\Bootstrap\css\apprise.min.css" />
     <Content Include="App_Themes\Bootstrap\css\bootstrap-theme.css" />
@@ -6898,6 +6858,10 @@
     <Content Include="css\all.min.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\docs.css" />
+    <Content Include="Grafica.aspx" />
+    <Content Include="GraficoEvaluaciones\General_x_Competencia.aspx" />
+    <Content Include="GraficoEvaluaciones\utiles.js" />
+    <Content Include="GraficoEvaluaciones\WebForm1.aspx" />
     <Content Include="imagenes\conceptos.jpg" />
     <Content Include="imagenes\escudo.jpeg" />
     <Content Include="imagenes\escudo.jpg" />
@@ -7709,91 +7673,6 @@
     <Content Include="App_Themes\AdminLTE\package-lock.json" />
     <Content Include="App_Themes\AdminLTE\package.json" />
     <Content Include="App_Themes\AdminLTE\README.md" />
-    <Content Include="App_Themes\AdminLTE\src\html\.eslintrc.json" />
-    <Content Include="App_Themes\AdminLTE\src\html\.tsconfig.json" />
-    <Content Include="App_Themes\AdminLTE\src\html\components\dashboard\_footer.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\components\dashboard\_sidenav.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\components\dashboard\_topbar.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\components\docs\browser-support.mdx" />
-    <Content Include="App_Themes\AdminLTE\src\html\components\docs\color-mode.mdx" />
-    <Content Include="App_Themes\AdminLTE\src\html\components\docs\components\main-header.mdx" />
-    <Content Include="App_Themes\AdminLTE\src\html\components\docs\components\main-sidebar.mdx" />
-    <Content Include="App_Themes\AdminLTE\src\html\components\docs\faq.mdx" />
-    <Content Include="App_Themes\AdminLTE\src\html\components\docs\how-to-contribute.mdx" />
-    <Content Include="App_Themes\AdminLTE\src\html\components\docs\introduction.mdx" />
-    <Content Include="App_Themes\AdminLTE\src\html\components\docs\license.mdx" />
-    <Content Include="App_Themes\AdminLTE\src\html\components\javascript\treeview.mdx" />
-    <Content Include="App_Themes\AdminLTE\src\html\components\_head.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\components\_scripts.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\docs\browser-support.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\docs\color-mode.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\docs\components\main-header.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\docs\components\main-sidebar.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\docs\faq.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\docs\how-to-contribute.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\docs\introduction.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\docs\javascript\treeview.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\docs\layout.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\docs\license.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\examples\lockscreen.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\examples\login-v2.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\examples\login.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\examples\register-v2.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\examples\register.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\forms\general.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\generate\theme.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\index.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\index2.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\index3.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\layout\collapsed-sidebar.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\layout\fixed-sidebar.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\layout\layout-custom-area.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\layout\layout-rtl.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\layout\logo-switch.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\layout\sidebar-mini.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\layout\unfixed-sidebar.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\tables\simple.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\UI\general.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\UI\icons.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\UI\timeline.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\widgets\cards.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\widgets\info-box.astro" />
-    <Content Include="App_Themes\AdminLTE\src\html\pages\widgets\small-box.astro" />
-    <Content Include="App_Themes\AdminLTE\src\scss\adminlte.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\mixins\_animations.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\mixins\_scrollbar.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\pages\_lockscreen.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\pages\_login_and_register.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\parts\_components.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\parts\_core.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\parts\_extra-components.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\parts\_miscellaneous.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\parts\_pages.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_app-content.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_app-footer.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_app-header.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_app-main.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_app-sidebar.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_app-wrapper.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_bootstrap-variables.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_callouts.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_cards.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_compact-mode.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_direct-chat.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_docs.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_dropdown.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_info-box.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_miscellaneous.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_mixins.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_progress-bars.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_root.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_small-box.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_table.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_timeline.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_toasts.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_variables-dark.scss" />
-    <Content Include="App_Themes\AdminLTE\src\scss\_variables.scss" />
-    <Content Include="App_Themes\AdminLTE\tsconfig.json" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\sueldosweb.pubxml" />
@@ -7807,6 +7686,7 @@
     <Content Include="secure\Concepto_Liq_x_Emp_Mov.aspx" />
     <Content Include="secure\Empleado_categoria_detalle.aspx" />
     <Content Include="secure\familiares.aspx" />
+    <Content Include="secure\Horarios_marcaciones.aspx" />
     <Content Include="secure\liquidaciones.aspx" />
     <Content Include="secure\MovimEmpleados.aspx" />
     <Content Include="secure\novedades2.aspx" />
@@ -8137,6 +8017,27 @@
     <Compile Include="CIDI\Respuesta.cs" />
     <Compile Include="CIDI\Usuario.cs" />
     <Compile Include="CIDI\Utils.cs" />
+    <Compile Include="Grafica.aspx.cs">
+      <DependentUpon>Grafica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Grafica.aspx.designer.cs">
+      <DependentUpon>Grafica.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GraficoEvaluaciones\General_x_Competencia.aspx.cs">
+      <DependentUpon>General_x_Competencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GraficoEvaluaciones\General_x_Competencia.aspx.designer.cs">
+      <DependentUpon>General_x_Competencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GraficoEvaluaciones\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GraficoEvaluaciones\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="impresiones\caratulaexpa4.aspx.cs">
       <DependentUpon>caratulaexpa4.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -8288,6 +8189,7 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Resultado_General_por_Competencia.cs" />
     <Compile Include="MP\Bootstrap.Master.cs">
       <DependentUpon>Bootstrap.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -8613,6 +8515,13 @@
     <Compile Include="secure\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="secure\Horarios_marcaciones.aspx.cs">
+      <DependentUpon>Horarios_marcaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secure\Horarios_marcaciones.aspx.designer.cs">
+      <DependentUpon>Horarios_marcaciones.aspx</DependentUpon>
+    </Compile>
     <Compile Include="secure\informeconceptos.aspx.cs">
       <DependentUpon>informeconceptos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -8821,15 +8730,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="App_Themes\AdminLTE\src\html\env.d.ts" />
-    <TypeScriptCompile Include="App_Themes\AdminLTE\src\ts\adminlte.ts" />
-    <TypeScriptCompile Include="App_Themes\AdminLTE\src\ts\card-widget.ts" />
-    <TypeScriptCompile Include="App_Themes\AdminLTE\src\ts\direct-chat.ts" />
-    <TypeScriptCompile Include="App_Themes\AdminLTE\src\ts\fullscreen.ts" />
-    <TypeScriptCompile Include="App_Themes\AdminLTE\src\ts\layout.ts" />
-    <TypeScriptCompile Include="App_Themes\AdminLTE\src\ts\push-menu.ts" />
-    <TypeScriptCompile Include="App_Themes\AdminLTE\src\ts\treeview.ts" />
-    <TypeScriptCompile Include="App_Themes\AdminLTE\src\ts\util\index.ts" />
     <TypeScriptCompile Include="App_Themes\bower_components\moment\moment.d.ts" />
   </ItemGroup>
   <PropertyGroup>

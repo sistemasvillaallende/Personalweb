@@ -14,6 +14,8 @@ namespace web.MP
         {
             if (Request.Cookies["UserSistema"] != null)
             {
+                int ficha = DAL.Fichas.Fichas_Relevamientos.getUltimaFicha();
+
                /*lblNombreUsuario.InnerHtml =
                     Request.Cookies["UserSistema"]["nombreUsuario"];
                 btnEvaluar.Visible = false;

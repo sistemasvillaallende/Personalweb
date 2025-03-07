@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MP_Desempenio.Master" AutoEventWireup="true" CodeBehind="Resultados_evaluacion_secretarias.aspx.cs" Inherits="web.secure.Resultados_evaluacion_secretarias" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master" AutoEventWireup="true" CodeBehind="Resultados_evaluacion_secretarias.aspx.cs" Inherits="web.secure.Resultados_evaluacion_secretarias" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" type="text/css"
@@ -60,7 +60,7 @@
                         AutoGenerateColumns="false"
                         runat="server">
                         <Columns>
-                            <asp:BoundField HeaderText="Leg." DataField="LEGAGO" />
+                            <asp:BoundField HeaderText="Leg." DataField="LEGAJO" />
                             <asp:BoundField HeaderText="Empleado" DataField="NOMBRE" />
                             <asp:BoundField HeaderText="Contratación" DataField="CLASIFICACION" />
                             <asp:BoundField HeaderText="Secretaría" DataField="SECRETARIA" />
@@ -71,7 +71,7 @@
                             <asp:TemplateField HeaderText="LINK">
                                 <ItemTemplate>
                                     <div id="divLink" runat="server">
-                                        <a href="Personas_fichas.aspx?idFicha=<%#Eval("ID_FICHA")%>&legajo=<%#Eval("LEGAGO")%>">
+                                        <a href="Personas_fichas.aspx?idFicha=<%#Eval("ID_FICHA")%>&legajo=<%#Eval("LEGAJO")%>">
                                             <span class="fa fa-search-plus"></span>
                                         </a>
                                     </div>

@@ -20,9 +20,6 @@ namespace web.secure
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
-                Response.Redirect("../index.aspx");
-
             operacion = Convert.ToString(Request.QueryString["op"]);
             legajo = Convert.ToInt16(Request.QueryString["legajo"]);
             nombre = Convert.ToString(Request.QueryString["nombre"]);

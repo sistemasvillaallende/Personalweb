@@ -1,12 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 namespace Web.Utils
 {
     public class Utils
     {
+        public static string CapitalizarPalabras(string input)
+        {
+            // Utilizamos CultureInfo para manejar diferentes culturas
+            CultureInfo cultureInfo = CultureInfo.CurrentCulture;
+
+            // Dividimos la cadena en palabras
+            string[] palabras = input.Trim().Split(' ');
+
+            // Creamos un StringBuilder para construir la cadena capitalizada
+            StringBuilder resultado = new StringBuilder();
+
+            // Capitalizamos la primera letra de cada palabra y reconstruimos la cadena
+            foreach (string palabra in palabras)
+            {
+                if (resultado.Length > 0)
+                {
+                    resultado.Append(' '); // Agregamos un espacio entre palabras
+                }
+                if (palabra.Length > 0)
+                {
+                    // Capitalizamos la primera letra y añadimos el resto de la palabra en minúsculas
+                    resultado.Append(char.ToUpper(palabra[0], cultureInfo));
+                    resultado.Append(palabra.Substring(1).ToLower(cultureInfo));
+                }
+            }
+
+            return resultado.ToString();
+        }
         public static string ArmoCBarra(string cuit, int codComprobante, int ptoVta, Int64 cae, DateTime fecVenc)
         {
             Char pad;

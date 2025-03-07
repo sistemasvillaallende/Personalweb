@@ -19,8 +19,6 @@ namespace web.secure
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
-                Response.Redirect("../login.aspx");
             legajo = Convert.ToInt32(Request.Cookies["Empleado"]["Legajo"]);
             operacion = Convert.ToString(Request.QueryString["op"]);
             nombre = Convert.ToString(Request.QueryString["nombre"]);

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Autoridades/MPDirecciones.Master" 
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master" 
     AutoEventWireup="true" CodeBehind="LicenciasDireccion.aspx.cs" 
     Inherits="web.Autoridades.LicenciasDireccion" %>
 

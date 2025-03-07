@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Autoridades/MPSec.Master" AutoEventWireup="true" CodeBehind="Evaluadores.aspx.cs" Inherits="web.Autoridades.Evaluadores" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master" AutoEventWireup="true" CodeBehind="Evaluadores.aspx.cs" Inherits="web.Autoridades.Evaluadores" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">

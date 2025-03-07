@@ -14,7 +14,7 @@ namespace DAL.Fichas
 {
     public class Resultado_evaluacion : DALBase
     {
-        public int LEGAGO { get; set; }
+        public int LEGAJO { get; set; }
 
         public string NOMBRE { get; set; }
 
@@ -38,7 +38,7 @@ namespace DAL.Fichas
 
         public Resultado_evaluacion()
         {
-            this.LEGAGO = 0;
+            this.LEGAJO = 0;
             this.NOMBRE = string.Empty;
             this.CONTRATACION = string.Empty;
             this.CLASIFICACION = string.Empty;
@@ -56,7 +56,7 @@ namespace DAL.Fichas
             List<Resultado_evaluacion> resultadoEvaluacionList = new List<Resultado_evaluacion>();
             if (dr.HasRows)
             {
-                int ordinal1 = dr.GetOrdinal("LEGAGO");
+                int ordinal1 = dr.GetOrdinal("LEGAJO");
                 int ordinal2 = dr.GetOrdinal("NOMBRE");
                 int ordinal3 = dr.GetOrdinal("CONTRATACION");
                 int ordinal4 = dr.GetOrdinal("CLASIFICACION");
@@ -71,7 +71,7 @@ namespace DAL.Fichas
                 {
                     Resultado_evaluacion resultadoEvaluacion = new Resultado_evaluacion();
                     if (!dr.IsDBNull(ordinal1))
-                        resultadoEvaluacion.LEGAGO = dr.GetInt32(ordinal1);
+                        resultadoEvaluacion.LEGAJO = dr.GetInt32(ordinal1);
                     if (!dr.IsDBNull(ordinal2))
                         resultadoEvaluacion.NOMBRE = dr.GetString(ordinal2);
                     if (!dr.IsDBNull(ordinal3))
@@ -109,7 +109,7 @@ namespace DAL.Fichas
                     command.CommandType = CommandType.Text;
                     command.CommandText =
                     @"SELECT 
-                        e.legajo AS LEGAGO, 
+                        e.legajo AS LEGAJO, 
                         rtrim(ltrim(e.nombre)) as NOMBRE,
                         tl.des_tipo_liq AS CONTRATACION, 
                         J.des_clasif_per AS CLASIFICACION,
@@ -170,7 +170,55 @@ namespace DAL.Fichas
                 {
                     SqlCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "\r\n                    SELECT\r\n\t                    e.legajo AS LEGAGO, rtrim(ltrim(e.nombre)) as NOMBRE, \r\n\t                    tl.des_tipo_liq AS CONTRATACION,\r\n\t                    J.des_clasif_per AS CLASIFICACION,\r\n\t                    rtrim(ltrim(s.descripcion)) as SECRETARIA, \r\n\t                    rtrim(ltrim(d1.descripcion)) as DIRECCION,\r\n\t                    ltrim(rtrim(o.nombre_oficina)) as OFICINA,\r\n\t                    ltrim(rtrim(p.Programa)) as PROGRAMA,\r\n\t                    --ISNULL(z.NOMBRE, 'Sin Evaluar') AS ESTADO, \r\n\t                    Y.NOMBRE_COMPLETO AS EVALUADOR,\r\n\t                    AVG(I.PUNTUACION) AS RESULTADO,\r\n\t                    X.ID\r\n\t                    FROM EMPLEADOS e\r\n\t                    LEFT join TIPOS_LIQUIDACION tl on tl.cod_tipo_liq = e.cod_tipo_liq\r\n\t                    LEFT join BANCOS b on b.cod_banco = e.cod_banco\r\n\t                    LEFT join CATEGORIAS c on e.cod_categoria = c.cod_categoria\r\n\t                    LEFT join secretaria s on s.id_secretaria = e.id_secretaria\r\n\t                    LEFT join direccion d1 on d1.id_direccion = e.id_direccion\r\n\t                    LEFT join oficinas o on\r\n\t                    o.codigo_oficina = e.id_oficina\r\n\t                    LEFT join PROGRAMAS_PUBLICOS p on\r\n\t                    p.Id_programa = e.id_programa\r\n\t                    FULL JOIN FICHAS_RELEVAMIENTOS X ON X.CUIT = e.legajo\r\n\t                    FULL JOIN FICHAS_ESTADOS_EVALUACION z ON X.ID_ESTADO = Z.ID\r\n\t                    INNER JOIN USUARIOS_V2 Y ON X.USUARIO_RELEVA=Y.NOMBRE\r\n\t                    INNER JOIN CLASIFICACIONES_PERSONAL J ON E.cod_clasif_per=J.cod_clasif_per\r\n\t\t\t\t\t\tINNER JOIN FICHAS_RELEVAMIENTOS_PERSONAS H ON H.ID_RELEVAMIENTO = X.ID\r\n\t\t\t\t\t\tINNER JOIN FICHAS_RESPUESTAS I ON H.ID_RESPUESTA=I.ID AND I.PUNTUACION <> 0\r\n                        WHERE e.fecha_baja is null AND e.legajo <> 615 AND e.activo=1 AND e.id_secretaria=@id_secretaria\r\n\t\t\t\t\tGROUP BY \t                    \r\n\t\t\t\t\t\te.legajo, \r\n\t\t\t\t\t\trtrim(ltrim(e.nombre)), \r\n\t                    tl.des_tipo_liq,\r\n\t                    J.des_clasif_per,\r\n\t                    rtrim(ltrim(s.descripcion)), \r\n\t                    rtrim(ltrim(d1.descripcion)),\r\n\t                    ltrim(rtrim(o.nombre_oficina)),\r\n\t                    ltrim(rtrim(p.Programa)),\r\n\t                    --ISNULL(z.NOMBRE, 'Sin Evaluar') AS ESTADO, \r\n\t                    Y.NOMBRE_COMPLETO,\r\n\t\t\t\t\t\tX.ID \r\n                    ORDER BY rtrim(ltrim(e.nombre)) DESC";
+                    command.CommandText = @"
+                        SELECT
+                            e.legajo AS LEGAJO, 
+                            rtrim(ltrim(e.nombre)) as NOMBRE, 
+                            tl.des_tipo_liq AS CONTRATACION,
+                            J.des_clasif_per AS CLASIFICACION,
+                            rtrim(ltrim(s.descripcion)) as SECRETARIA,
+                            rtrim(ltrim(d1.descripcion)) as DIRECCION,
+                            ltrim(rtrim(o.nombre_oficina)) as OFICINA,
+                            ltrim(rtrim(p.Programa)) as PROGRAMA,
+                            --ISNULL(z.NOMBRE, 'Sin Evaluar') AS ESTADO, 
+                            Y.NOMBRE_COMPLETO AS EVALUADOR,
+                            AVG(I.PUNTUACION) AS RESULTADO,
+                            X.ID
+                        FROM EMPLEADOS 
+                            LEFT join TIPOS_LIQUIDACION tl on
+                            tl.cod_tipo_liq = e.cod_tipo_liq
+                            LEFT join BANCOS b on b.cod_banco = e.cod_banco
+                            LEFT join CATEGORIAS c on e.cod_categoria = c.cod_categoria     
+                            LEFT join secretaria s on s.id_secretaria = e.id_secretaria 
+                            LEFT join direccion d1 on d1.id_direccion = e.id_direccion
+                            LEFT join oficinas o on
+                            o.codigo_oficina = e.id_oficina
+                            LEFT join PROGRAMAS_PUBLICOS p on
+                            p.Id_programa = e.id_programa
+                            FULL JOIN FICHAS_RELEVAMIENTOS X ON X.CUIT = e.legajo
+                            FULL JOIN FICHAS_ESTADOS_EVALUACION z ON X.ID_ESTADO = Z.ID
+                            INNER JOIN USUARIOS_V2 Y ON X.USUARIO_RELEVA=Y.NOMBRE
+                            INNER JOIN CLASIFICACIONES_PERSONAL J ON 
+                            E.cod_clasif_per=J.cod_clasif_per
+                            INNER JOIN FICHAS_RELEVAMIENTOS_PERSONAS H ON
+                            H.ID_RELEVAMIENTO = X.ID
+                            INNER JOIN FICHAS_RESPUESTAS I ON 
+                            H.ID_RESPUESTA=I.ID AND I.PUNTUACION <> 0
+                            WHERE e.fecha_baja is null AND e.legajo <> 615 AND 
+                            e.activo=1 AND e.id_secretaria=@id_secretaria
+                            GROUP BY 
+                            e.legajo,
+                            rtrim(ltrim(e.nombre)), 
+                            tl.des_tipo_liq,
+                            J.des_clasif_per,
+                            rtrim(ltrim(s.descripcion)), 
+                            rtrim(ltrim(d1.descripcion)),
+                            ltrim(rtrim(o.nombre_oficina)),
+                            ltrim(rtrim(p.Programa)),
+                            --ISNULL(z.NOMBRE, 'Sin Evaluar') AS ESTADO, 
+                            Y.NOMBRE_COMPLETO,
+                            X.ID              
+                            ORDER BY rtrim(ltrim(e.nombre)) DESC";
                     command.Parameters.AddWithValue("@id_secretaria", (object)id_secretaria);
                     command.Connection.Open();
                     return Resultado_evaluacion.mapeo(command.ExecuteReader());
@@ -191,7 +239,7 @@ namespace DAL.Fichas
                 {
                     SqlCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "\r\n                    SELECT\r\n\t                    e.legajo AS LEGAGO, rtrim(ltrim(e.nombre)) as NOMBRE, \r\n\t                    tl.des_tipo_liq AS CONTRATACION,\r\n\t                    J.des_clasif_per AS CLASIFICACION,\r\n\t                    rtrim(ltrim(s.descripcion)) as SECRETARIA, \r\n\t                    rtrim(ltrim(d1.descripcion)) as DIRECCION,\r\n\t                    ltrim(rtrim(o.nombre_oficina)) as OFICINA,\r\n\t                    ltrim(rtrim(p.Programa)) as PROGRAMA,\r\n\t                    --ISNULL(z.NOMBRE, 'Sin Evaluar') AS ESTADO, \r\n\t                    Y.NOMBRE_COMPLETO AS EVALUADOR,\r\n\t                    AVG(I.PUNTUACION) AS RESULTADO,\r\n\t                    X.ID\r\n\t                    FROM EMPLEADOS e\r\n\t                    LEFT join TIPOS_LIQUIDACION tl on tl.cod_tipo_liq = e.cod_tipo_liq\r\n\t                    LEFT join BANCOS b on b.cod_banco = e.cod_banco\r\n\t                    LEFT join CATEGORIAS c on e.cod_categoria = c.cod_categoria\r\n\t                    LEFT join secretaria s on s.id_secretaria = e.id_secretaria\r\n\t                    LEFT join direccion d1 on d1.id_direccion = e.id_direccion\r\n\t                    LEFT join oficinas o on\r\n\t                    o.codigo_oficina = e.id_oficina\r\n\t                    LEFT join PROGRAMAS_PUBLICOS p on\r\n\t                    p.Id_programa = e.id_programa\r\n\t                    FULL JOIN FICHAS_RELEVAMIENTOS X ON X.CUIT = e.legajo\r\n\t                    FULL JOIN FICHAS_ESTADOS_EVALUACION z ON X.ID_ESTADO = Z.ID\r\n\t                    INNER JOIN USUARIOS_V2 Y ON X.USUARIO_RELEVA=Y.NOMBRE\r\n\t                    INNER JOIN CLASIFICACIONES_PERSONAL J ON E.cod_clasif_per=J.cod_clasif_per\r\n\t\t\t\t\t\tINNER JOIN FICHAS_RELEVAMIENTOS_PERSONAS H ON H.ID_RELEVAMIENTO = X.ID\r\n\t\t\t\t\t\tINNER JOIN FICHAS_RESPUESTAS I ON H.ID_RESPUESTA=I.ID AND I.PUNTUACION <> 0\r\n                        WHERE e.fecha_baja is null AND e.legajo <> 615 AND e.activo=1 AND e.id_direccion=@id_direccion\r\n\t\t\t\t\tGROUP BY \t                    \r\n\t\t\t\t\t\te.legajo, \r\n\t\t\t\t\t\trtrim(ltrim(e.nombre)), \r\n\t                    tl.des_tipo_liq,\r\n\t                    J.des_clasif_per,\r\n\t                    rtrim(ltrim(s.descripcion)), \r\n\t                    rtrim(ltrim(d1.descripcion)),\r\n\t                    ltrim(rtrim(o.nombre_oficina)),\r\n\t                    ltrim(rtrim(p.Programa)),\r\n\t                    --ISNULL(z.NOMBRE, 'Sin Evaluar') AS ESTADO, \r\n\t                    Y.NOMBRE_COMPLETO,\r\n\t\t\t\t\t\tX.ID \r\n                    ORDER BY rtrim(ltrim(e.nombre)) DESC";
+                    command.CommandText = "\r\n                    SELECT\r\n\t                    e.legajo AS LEGAJO, rtrim(ltrim(e.nombre)) as NOMBRE, \r\n\t                    tl.des_tipo_liq AS CONTRATACION,\r\n\t                    J.des_clasif_per AS CLASIFICACION,\r\n\t                    rtrim(ltrim(s.descripcion)) as SECRETARIA, \r\n\t                    rtrim(ltrim(d1.descripcion)) as DIRECCION,\r\n\t                    ltrim(rtrim(o.nombre_oficina)) as OFICINA,\r\n\t                    ltrim(rtrim(p.Programa)) as PROGRAMA,\r\n\t                    --ISNULL(z.NOMBRE, 'Sin Evaluar') AS ESTADO, \r\n\t                    Y.NOMBRE_COMPLETO AS EVALUADOR,\r\n\t                    AVG(I.PUNTUACION) AS RESULTADO,\r\n\t                    X.ID\r\n\t                    FROM EMPLEADOS e\r\n\t                    LEFT join TIPOS_LIQUIDACION tl on tl.cod_tipo_liq = e.cod_tipo_liq\r\n\t                    LEFT join BANCOS b on b.cod_banco = e.cod_banco\r\n\t                    LEFT join CATEGORIAS c on e.cod_categoria = c.cod_categoria\r\n\t                    LEFT join secretaria s on s.id_secretaria = e.id_secretaria\r\n\t                    LEFT join direccion d1 on d1.id_direccion = e.id_direccion\r\n\t                    LEFT join oficinas o on\r\n\t                    o.codigo_oficina = e.id_oficina\r\n\t                    LEFT join PROGRAMAS_PUBLICOS p on\r\n\t                    p.Id_programa = e.id_programa\r\n\t                    FULL JOIN FICHAS_RELEVAMIENTOS X ON X.CUIT = e.legajo\r\n\t                    FULL JOIN FICHAS_ESTADOS_EVALUACION z ON X.ID_ESTADO = Z.ID\r\n\t                    INNER JOIN USUARIOS_V2 Y ON X.USUARIO_RELEVA=Y.NOMBRE\r\n\t                    INNER JOIN CLASIFICACIONES_PERSONAL J ON E.cod_clasif_per=J.cod_clasif_per\r\n\t\t\t\t\t\tINNER JOIN FICHAS_RELEVAMIENTOS_PERSONAS H ON H.ID_RELEVAMIENTO = X.ID\r\n\t\t\t\t\t\tINNER JOIN FICHAS_RESPUESTAS I ON H.ID_RESPUESTA=I.ID AND I.PUNTUACION <> 0\r\n                        WHERE e.fecha_baja is null AND e.legajo <> 615 AND e.activo=1 AND e.id_direccion=@id_direccion\r\n\t\t\t\t\tGROUP BY \t                    \r\n\t\t\t\t\t\te.legajo, \r\n\t\t\t\t\t\trtrim(ltrim(e.nombre)), \r\n\t                    tl.des_tipo_liq,\r\n\t                    J.des_clasif_per,\r\n\t                    rtrim(ltrim(s.descripcion)), \r\n\t                    rtrim(ltrim(d1.descripcion)),\r\n\t                    ltrim(rtrim(o.nombre_oficina)),\r\n\t                    ltrim(rtrim(p.Programa)),\r\n\t                    --ISNULL(z.NOMBRE, 'Sin Evaluar') AS ESTADO, \r\n\t                    Y.NOMBRE_COMPLETO,\r\n\t\t\t\t\t\tX.ID \r\n                    ORDER BY rtrim(ltrim(e.nombre)) DESC";
                     command.Parameters.AddWithValue("@id_direccion", (object)id_direccion);
                     command.Connection.Open();
                     return Resultado_evaluacion.mapeo(command.ExecuteReader());
