@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
+
 using BLL;
 using Web.Utils;
 
@@ -276,6 +278,75 @@ namespace web.secure
         {
             gvConceptoMov.PageIndex = e.NewPageIndex;
             CargarGrillaConceptos(legajo);
+        }
+
+
+        private void ExportToExcel(string nameReport, GridView wControl)
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            System.IO.StringWriter sw = new System.IO.StringWriter(sb);
+            System.Web.UI.HtmlTextWriter htw = new System.Web.UI.HtmlTextWriter(sw);
+
+            Page page = new Page();
+            HtmlForm form = new HtmlForm();
+
+            wControl.EnableViewState = false;
+
+            // Deshabilitar la validación de eventos, sólo asp.net 2
+            page.EnableEventValidation = false;
+
+            // Realiza las inicializaciones de la instancia de la clase Page que requieran los diseñadores RAD.
+            page.DesignerInitialize();
+
+            page.Controls.Add(form);
+            form.Controls.Add(wControl);
+
+            page.RenderControl(htw);
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.ContentType = "application/vnd.ms-excel";
+            Response.AddHeader("Content-Disposition", "attachment;filename="+ nameReport +".xls");
+            Response.Charset = "UTF-8";
+
+            Response.Write(sb.ToString());
+            Response.End();
+
+        }
+
+        protected void LinkExportar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridView gv = new GridView();
+                List<Entities.Cambios_empleado> lst = new List<Entities.Cambios_empleado>();
+                lst = BLL.Concepto_Liq_x_EmpB.GetCambiosEmpleadoXLegajo(legajo);
+                gv.DataSource = lst;
+                gv.DataBind();
+                ExportToExcel("Mov_cambio_empleado", gv);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        protected void LinkExportar_Click_Hist(object sender, EventArgs e)
+        {
+            try
+            {
+                GridView gv = new GridView();
+                List<Entities.Historial_conceptos> lst = new List<Entities.Historial_conceptos>();
+                lst = BLL.Concepto_Liq_x_EmpB.GetHistorial_ConceptosXLegajo(legajo);
+                gv.DataSource = lst;
+                gv.DataBind();
+                ExportToExcel("Mov_cambio_concepto", gv);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
         }
     }
 }
