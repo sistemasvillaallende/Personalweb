@@ -24,9 +24,8 @@ namespace web.GraficoEvaluaciones
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static string ObtenerDatosSecretaria(string idFicha, string valor)
         {
-            int idFicha = DAL.Fichas.Fichas_Relevamientos.getUltimaFicha();
-            List<decimal> datos = DAL.Fichas.Fichas_Resultados.read(
-                int.Parse(idFicha), valor);
+            int idF = DAL.Fichas.Fichas_Relevamientos.getUltimaFicha();
+            List<decimal> datos = DAL.Fichas.Fichas_Resultados.read(idF, valor);
             return JsonConvert.SerializeObject(datos);
         }
         [WebMethod]

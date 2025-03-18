@@ -152,7 +152,7 @@
                     <script>
                         var options = {
                             chart: {
-                                width: 260,
+                                width: 360,
                                 type: 'donut',
                             },
                             colors: ['#2eacb3', '#FED049', '#2D6187', '#89BEB3', '#FF9A76', '#D7263D', '#1B998B', '#2E294E', '#F46036', '#E2C044'],
@@ -169,7 +169,7 @@
                                         minAngleToShowLabel: 10
                                     },
                                     donut: {
-                                        size: '60%',
+                                        size: '70%',
                                         background: 'transparent',
                                         labels: {
                                             show: true,
@@ -214,7 +214,7 @@
                                 }
                             },
                             chart: {
-                                height: 260,
+                                height: 360,
                                 type: 'donut',
                             },
                             labels: ['Monotributo', 'Personal Contratado', 'Personal Permanente', 'Personal Planta Politica', 'Personal Transitorio'],

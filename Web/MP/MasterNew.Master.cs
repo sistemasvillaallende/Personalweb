@@ -12,36 +12,38 @@ namespace web.MP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Cookies["UserSistema"] != null)
-            {
-                int ficha = DAL.Fichas.Fichas_Relevamientos.getUltimaFicha();
 
-               /*lblNombreUsuario.InnerHtml =
-                    Request.Cookies["UserSistema"]["nombreUsuario"];
-                btnEvaluar.Visible = false;
-                if (Request.Cookies["UserSistema"]["id_secretaria"] != null)
-                {
-                    if (Request.Cookies["UserSistema"]["id_secretaria"] != "0"
-                        && Request.Cookies["UserSistema"]["id_secretaria"] != "")
-                    {
-                        string valor = Request.Cookies["UserSistema"]["id_secretaria"];
-                        btnEvaluar.Visible = true;
-                        btnEvaluar.HRef =
-                            "~/Autoridades/Secretarias/DashboardSecretaria.aspx";
-                    }
-                }
-                if (Request.Cookies["UserSistema"]["id_direccion"] != null)
-                {
-                    if (Request.Cookies["UserSistema"]["id_direccion"] != "0"
-                        && Request.Cookies["UserSistema"]["id_direccion"] != "")
-                    {
-                        string dir = Request.Cookies["UserSistema"]["id_direccion"];
-                        btnEvaluar.Visible = true;
-                        btnEvaluar.HRef =
-                            "~/Autoridades/Direcciones/Dashboard.aspx";
-                    }
-                }*/
-            }
+            int ficha = DAL.Fichas.Fichas_Relevamientos.getUltimaFicha();
+            if (Request.Cookies["VABack.CIDI"] == null)
+                Response.Redirect("http://10.0.0.24/siimva/login.aspx");
+
+
+            /*lblNombreUsuario.InnerHtml =
+                 Request.Cookies["UserSistema"]["nombreUsuario"];
+             btnEvaluar.Visible = false;
+             if (Request.Cookies["UserSistema"]["id_secretaria"] != null)
+             {
+                 if (Request.Cookies["UserSistema"]["id_secretaria"] != "0"
+                     && Request.Cookies["UserSistema"]["id_secretaria"] != "")
+                 {
+                     string valor = Request.Cookies["UserSistema"]["id_secretaria"];
+                     btnEvaluar.Visible = true;
+                     btnEvaluar.HRef =
+                         "~/Autoridades/Secretarias/DashboardSecretaria.aspx";
+                 }
+             }
+             if (Request.Cookies["UserSistema"]["id_direccion"] != null)
+             {
+                 if (Request.Cookies["UserSistema"]["id_direccion"] != "0"
+                     && Request.Cookies["UserSistema"]["id_direccion"] != "")
+                 {
+                     string dir = Request.Cookies["UserSistema"]["id_direccion"];
+                     btnEvaluar.Visible = true;
+                     btnEvaluar.HRef =
+                         "~/Autoridades/Direcciones/Dashboard.aspx";
+                 }
+             }*/
+
         }
 
         protected void btnCerraSession_ServerClick(object sender, EventArgs e)

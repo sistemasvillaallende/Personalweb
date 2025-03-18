@@ -115,7 +115,7 @@ namespace Web.secure
                         //grdList.DataSource = BLL.ConsultaExpedienteB.GetByAsunto(asunto, id_oficina_origen, verTodo);
                         break;
                     default:
-                        grdList.DataSource = BLL.ConsultaEmpleadoB.GetEmpleados();
+                        grdList.DataSource = BLL.ConsultaEmpleadoB.GetEmpleados2();
                         break;
 
                 }

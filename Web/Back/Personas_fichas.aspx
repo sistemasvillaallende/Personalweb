@@ -4,6 +4,28 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
+        .btn-outline-success {
+            border: solid darkcyan !important;
+            background-color: white !important;
+            color: darkcyan !important;
+            float: right !important;
+            padding-left: 25px !important;
+            padding-right: 25px !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
+        }
+
+        .btn-outline-success:hover {
+            border: solid darkcyan !important;
+            background-color: darkcyan !important;
+            color: white !important;
+            float: right !important;
+            padding-left: 25px !important;
+            padding-right: 25px !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
+        }
+
         label {
             padding-left: 5px;
             font-weight: 500;
@@ -108,7 +130,8 @@
                                 runat="server"></h3>
                         </div>
                         <div class="col-md-4">
-                            <div class="btn-group pull-right" style="display: block;">
+                            <a href="Resultado_evaluacion.aspx" class="btn btn-outline-success">Salir</a>
+                            <div class="btn-group pull-right" style="display: none;">
                                 <button type="button" class="btn btn-info" id="btnNuevo" runat="server"
                                     onserverclick="btnNuevo_ServerClick">
                                     Nuevo</button>
@@ -247,7 +270,7 @@
         </div>
         <div class="row" style="margin-top: 30px;">
             <div class="col-md-col-12" style="text-align: right">
-                <asp:LinkButton ID="btnCancelar" CssClass="btn btn-default" runat="server">Cancelar</asp:LinkButton>
+                <asp:LinkButton ID="btnCancelar" PostBackUrl="~/Back/Resultado_evaluacion.aspx" CssClass="btn btn-default" runat="server">Cancelar</asp:LinkButton>
                 <asp:LinkButton ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server">Aceptar</asp:LinkButton>
             </div>
         </div>
