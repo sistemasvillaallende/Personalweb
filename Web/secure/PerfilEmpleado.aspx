@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master" AutoEventWireup="true" CodeBehind="PerfilEmpleado.aspx.cs" Inherits="web.secure.PerfilEmpleado" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master" 
+    AutoEventWireup="true" CodeBehind="PerfilEmpleado.aspx.cs" 
+    Inherits="web.secure.PerfilEmpleado" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
