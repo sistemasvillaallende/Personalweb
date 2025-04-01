@@ -13,6 +13,15 @@ namespace web.secure {
     public partial class concepto_emp {
         
         /// <summary>
+        /// Control form1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
         /// Control PanelInfomacion.
         /// </summary>
         /// <remarks>
@@ -175,6 +184,24 @@ namespace web.secure {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCantidad;
         
         /// <summary>
+        /// Control lbtnHistConceptos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtnHistConceptos;
+        
+        /// <summary>
+        /// Control lbtnHistCambios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtnHistCambios;
+        
+        /// <summary>
         /// Control lbtnConfirma.
         /// </summary>
         /// <remarks>
@@ -182,8 +209,7 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnConfirma;
-        protected global::System.Web.UI.WebControls.LinkButton lbtnHistCambios;
-        protected global::System.Web.UI.WebControls.LinkButton lbtnHistConceptos;
+        
         /// <summary>
         /// Control lbtnExporCtaCte.
         /// </summary>
@@ -320,15 +346,6 @@ namespace web.secure {
         protected global::System.Web.UI.UpdatePanel UpdatePanelConcepto;
         
         /// <summary>
-        /// Control btnCloseModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnCloseModal;
-        
-        /// <summary>
         /// Control lblTituloFormModal.
         /// </summary>
         /// <remarks>
@@ -336,6 +353,15 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTituloFormModal;
+        
+        /// <summary>
+        /// Control btnCloseModal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnCloseModal;
         
         /// <summary>
         /// Control divMSJDetalleLegajos.

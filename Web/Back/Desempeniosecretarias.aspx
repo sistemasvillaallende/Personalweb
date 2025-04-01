@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MP_Desempenio.Master"   AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master"   AutoEventWireup="true"
     CodeBehind="Desempeniosecretarias.aspx.cs" Inherits="web.secure.Desempeniosecretarias" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -84,7 +84,7 @@
         </div>
     </div>
     <div class="row" id="divSecretarias" runat="server">
-        <div class="col-md-12" style="text-align: center;">
+        <div class="col-md-12" style="text-align: left;">
             <div class="card text-center">
                 <asp:GridView
                     AutoGenerateColumns="false"
@@ -95,7 +95,7 @@
                     OnRowCommand="gvSecretarias_RowCommand"
                     runat="server">
                     <Columns>
-                        <asp:BoundField HeaderText="Secretaría" DataField="SECRETARIA" />
+                        <asp:BoundField HeaderText="Secretaría" DataField="SECRETARIA" ItemStyle-HorizontalAlign="Left"/>
                         <asp:BoundField HeaderText="Secretario" DataField="SECRETARIO" />
                         <asp:BoundField HeaderText="Diracciones a cargo" DataField="DIRECCIONES" />
                         <asp:BoundField HeaderText="Cant. Personal" DataField="PERSONAL" />

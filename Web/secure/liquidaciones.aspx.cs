@@ -12,8 +12,6 @@ namespace web.secure
         int intPage = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
-                Response.Redirect("../login.aspx");
             if (!Page.IsPostBack)
             {
                 CargarCombos();
@@ -361,8 +359,6 @@ namespace web.secure
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#DADADA'");
-                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='#FFFFFF'");
 
                 Entities.Liquidacion oLiq = (Entities.Liquidacion)e.Row.DataItem;
                 Label lblAnio = (Label)e.Row.FindControl("lblAnio");

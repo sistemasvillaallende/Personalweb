@@ -23,9 +23,13 @@ namespace web.secure
                
                 List<DAL.Fichas.Fichas_Relevamientos> lstR =
                     BLL.Fichas.Fichas_Relevamientos.read(idFicha, legajo);
-                
+
                 if (lstR.Count == 0)
+                {
                     fillGrilla();
+                    btnAceptar.Visible = true;
+                    btnCancelar.Visible = true;
+                }
                 else
                 {
                     foreach (var item in lstR)
@@ -38,6 +42,8 @@ namespace web.secure
                         a.ID = item.ID.ToString();
                         li.Controls.Add(a);
                         ddlAnteriores.Controls.Add(li);
+                        btnAceptar.Visible = false;
+                        btnCancelar.Visible = false;
                     }
 
                 }
@@ -101,7 +107,7 @@ namespace web.secure
 
 
                         lblNombreEvaluador.InnerHtml =
-                            Request.Cookies["UserSistema"]["nombreUsuario"].ToString();
+                            Request.Cookies["VABack.CIDI"]["nombre_usuario"].ToString();
                         lblFecha.InnerHtml =
                             DateTime.Now.ToShortDateString();
                     }
@@ -278,7 +284,7 @@ namespace web.secure
                     DAL.Fichas.Fichas_Relevamientos oEdu = new DAL.Fichas.Fichas_Relevamientos();
                     oEdu.CUIT = Request.QueryString["legajo"].ToString();
                     oEdu.FECHA = DateTime.Now;
-                    oEdu.USUARIO_RELEVA = Request.Cookies["UserSistema"]["usuario"];
+                    oEdu.USUARIO_RELEVA = Request.Cookies["VABack.CIDI"]["nombre_usuario"];
                     oEdu.ID_FICHA = int.Parse(hIdFicha.Value);
                     oEdu.OFICINA = objEmpleado.oficina;
                     oEdu.DIRECCION = objEmpleado.direccion;

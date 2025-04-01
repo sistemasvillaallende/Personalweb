@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Autoridades/MPSec.Master"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master"
     AutoEventWireup="true" CodeBehind="DesempenioSec.aspx.cs"
     Inherits="web.Autoridades.DesempenioSec" %>
 

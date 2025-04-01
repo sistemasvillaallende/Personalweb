@@ -29,13 +29,13 @@ namespace web.MP
         {
             if (!IsPostBack)
             {
-                if (Request.Cookies["VABack.CIDI"] == null)
+               /* if (Request.Cookies["VABack.CIDI"] == null)
                 {
                    // DAL.UsuarioLoginCIDI obj = CIDI.Utils.ObtenerUsuarioLogueado(
                    //     Request.Cookies["VABack.CIDI"]["SesionHash"]);
                    // if (obj == null)
                         Response.Redirect("../login.aspx");
-                }
+                }*/
 
             }
             

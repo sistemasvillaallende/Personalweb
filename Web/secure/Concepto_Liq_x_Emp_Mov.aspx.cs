@@ -14,9 +14,6 @@ namespace web.secure
         string nombre;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (Session["usuario"] == null)
-                Response.Redirect("../login.aspx");
             legajo = Convert.ToInt32(Request.QueryString["legajo"]);
             nombre = Convert.ToString(Request.QueryString["NOMBRE"]);
             if (!Page.IsPostBack)

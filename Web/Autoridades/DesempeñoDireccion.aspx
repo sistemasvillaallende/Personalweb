@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#"
-    MasterPageFile="~/Autoridades/MPDirecciones.Master"
+    MasterPageFile="~/MP/MasterNew.Master"
     AutoEventWireup="true" CodeBehind="DesempeñoDireccion.aspx.cs"
     Inherits="web.Autoridades.DesempeñoDireccion" %>
 

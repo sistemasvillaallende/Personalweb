@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Autoridades/Direcciones/MPDirecciones.Master" AutoEventWireup="true" CodeBehind="Notificaciones.aspx.cs" Inherits="web.Autoridades.Direcciones.Notificaciones" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MP.Master" AutoEventWireup="true" CodeBehind="Notificaciones.aspx.cs" Inherits="web.Autoridades.Direcciones.Notificaciones" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

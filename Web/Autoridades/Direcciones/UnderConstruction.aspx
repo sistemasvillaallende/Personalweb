@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Autoridades/Direcciones/MPDirecciones.Master" AutoEventWireup="true" CodeBehind="UnderConstruction.aspx.cs" Inherits="web.Autoridades.Direcciones.UnderConstruction" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MP.Master"  AutoEventWireup="true" CodeBehind="UnderConstruction.aspx.cs" Inherits="web.Autoridades.Direcciones.UnderConstruction" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

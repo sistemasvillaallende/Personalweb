@@ -58,170 +58,167 @@
     <asp:UpdatePanel ID="uPanelCliente" UpdateMode="Conditional" runat="server">
         <ContentTemplate>
             <div class="row" style="margin-top: 10px; padding-top: 10px">
-                <div class="col-md-12 col-md-offset-0">
-                    <div class="col-md-12">
-                        <div class="row" style="margin-top: 20px; padding-top: 20px">
-                            <asp:UpdatePanel ID="PanelInfomacion" runat="server" UpdateMode="Conditional">
-                                <ContentTemplate>
-                                    <div class="alert alert-success alert-dismissable" runat="server" id="divConfirma"
-                                        visible="false" role="alert">
-                                        <button type="button" class="close" data-dismiss="alert"
-                                            onclick="__doPostBack('<%=PanelInfomacion.ClientID%>', 'Confirma');">
-                                            <span aria-hidden="true">×</span></button>
-                                        </button>
+                <div class="col-md-12">
+                    <asp:UpdatePanel ID="PanelInfomacion" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <div class="alert alert-success alert-dismissable" runat="server" id="divConfirma"
+                                visible="false" role="alert">
+                                <button type="button" class="close" data-dismiss="alert"
+                                    onclick="__doPostBack('<%=PanelInfomacion.ClientID%>', 'Confirma');">
+                                    <span aria-hidden="true">×</span></button>
                                 <h4>Aviso Importante!</h4>
-                                        <p id="msjConfirmar" runat="server">
-                                        </p>
-                                    </div>
+                                <p id="msjConfirmar" runat="server">
+                                </p>
+                            </div>
 
-                                    <div class="alert alert-warning alert-dismissible" runat="server" id="divError"
-                                        visible="false" role="alert">
-                                        <button type="button" class="close" data-dismiss="alert"
-                                            onclick="__doPostBack('<%=PanelInfomacion.ClientID%>', 'Alerta');">
-                                            <span aria-hidden="true">×</span></button>
-                                        </button>
+                            <div class="alert alert-warning alert-dismissible" runat="server" id="divError"
+                                visible="false" role="alert">
+                                <button type="button" class="close" data-dismiss="alert"
+                                    onclick="__doPostBack('<%=PanelInfomacion.ClientID%>', 'Alerta');">
+                                    <span aria-hidden="true">×</span></button>
+                                </button>
                                 <h4>Error!</h4>
-                                        <p id="txtError" runat="server">
-                                        </p>
-                                    </div>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </div>
-                        <div class="outer_div">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="box" style="margin-top: 10px;">
-                                        <div class="box-header with-border">
-                                            <div class="col-md-12">
-                                                <h3 class="box-title">Liquidaciones</h3>
-                                            </div>
-                                            <br />
-                                        </div>
-                                        <!-- /.box-header -->
-                                        <div class="box-body" style="margin-top: 20px;">
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-xs-6">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" placeholder="Buscar por nombre"
-                                                                id="q" onkeyup="load(1);">
-                                                            <span class="input-group-btn">
-                                                                <button class="btn btn-default" type="button" onclick="load(1);"><i class="fa fa-search"></i></button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xs-6">
-                                                        <div class="btn-group pull-right" id="divActualiza" runat="server">
-                                                            <asp:LinkButton ID="lbtnPublicar_liq" CssClass="btn btn-default" runat="server" OnClick="lbtnPublicar_liq_Click">
+                                <p id="txtError" runat="server">
+                                </p>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="box-title">Liquidaciones</h3>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar por nombre"
+                            id="q" onkeyup="load(1);">
+                        <span class="input-group-btn">
+                            <button style="border: solid 3px darkcyan; height: 38px; width: 100px; color: darkcyan;"
+                                class="btn btn-default" type="button" onclick="load(1);">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="btn-group pull-right" id="divActualiza" runat="server">
+                        <asp:LinkButton ID="lbtnPublicar_liq" CssClass="btn btn-default" runat="server" OnClick="lbtnPublicar_liq_Click">
                                                             <i class="fa fa-check"></i>&nbsp;Publicar Liquidación
-                                                            </asp:LinkButton>
-                                                            <asp:LinkButton ID="lbtnNuevo" CssClass="btn btn-default" runat="server" OnClick="lbtnNuevo_Click">
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="lbtnNuevo" CssClass="btn btn-default" runat="server" OnClick="lbtnNuevo_Click">
                                                             <i class="fa fa-plus"></i> Nueva Liq.
-                                                            </asp:LinkButton>
-                                                            <asp:LinkButton ID="lbtnSalir" CssClass="btn btn-default" runat="server" OnClick="lbtnSalir_Click">
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="lbtnSalir" CssClass="btn btn-default" runat="server" OnClick="lbtnSalir_Click">
                                                             <i class="fa fa-sign-out"></i> Salir
-                                                            </asp:LinkButton>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" style="text-align: center;" id="divAcepta" visible="false" runat="server">
-                                                    <asp:Button ID="btnCancelarPublicar" CssClass="btn btn-warning"
-                                                        runat="server" Text="Cancelar" OnClick="btnCancelarPublicar_Click" />
-                                                    <asp:Button ID="btnAceptarPublicar" runat="server" CssClass="btn btn-primary"
-                                                        Text="Aceptar" OnClick="btnAceptarPublicar_Click" />
+                        </asp:LinkButton>
+                    </div>
+                </div>
 
-                                                </div>
-                                            </div>
-                                        </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group" style="text-align: center;" id="divAcepta" visible="false" runat="server">
+                        <asp:Button ID="btnCancelarPublicar" CssClass="btn btn-warning"
+                            runat="server" Text="Cancelar" OnClick="btnCancelarPublicar_Click" />
+                        <asp:Button ID="btnAceptarPublicar" runat="server" CssClass="btn btn-primary"
+                            Text="Aceptar" OnClick="btnAceptarPublicar_Click" />
 
-                                        <div class="auto-style1" style="margin-top: 20px;">
-                                            <asp:GridView ID="gvLiquidaciones"
-                                                CssClass="table"
-                                                runat="server"
-                                                OnRowDataBound="gvLiquidaciones_RowDataBound"
-                                                OnRowCommand="gvLiquidaciones_RowCommand"
-                                                CellPadding="4"
-                                                AutoGenerateColumns="False"
-                                                ForeColor="#333333"
-                                                GridLines="None" DataKeyNames="anio,cod_tipo_liq,nro_liquidacion" AllowPaging="True"
-                                                OnPageIndexChanging="gvLiquidaciones_PageIndexChanging" PageSize="8">
-                                                <AlternatingRowStyle BackColor="White" ForeColor="#284775"></AlternatingRowStyle>
-                                                <Columns>
-                                                    <asp:TemplateField HeaderText="Año" ItemStyle-Width="10%">
-                                                        <ItemTemplate>
-                                                            <p>
-                                                                <asp:Label ID="lblAnio" runat="server" Text=""></asp:Label>
-                                                            </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-md-12">
+                    <asp:GridView ID="gvLiquidaciones"
+                        CssClass="table"
+                        runat="server"
+                        OnRowDataBound="gvLiquidaciones_RowDataBound"
+                        OnRowCommand="gvLiquidaciones_RowCommand"
+                        CellPadding="4"
+                        AutoGenerateColumns="False"
+                        ForeColor="#333333"
+                        GridLines="None" DataKeyNames="anio,cod_tipo_liq,nro_liquidacion" AllowPaging="True"
+                        OnPageIndexChanging="gvLiquidaciones_PageIndexChanging" PageSize="8">
+                        <AlternatingRowStyle BackColor="White" ForeColor="#284775"></AlternatingRowStyle>
+                        <Columns>
+                            <asp:TemplateField HeaderText="Año" ItemStyle-Width="10%">
+                                <ItemTemplate>
+                                    <p>
+                                        <asp:Label ID="lblAnio" runat="server" Text=""></asp:Label>
+                                    </p>
 
-                                                        </ItemTemplate>
-                                                        <ItemStyle Width="10%" />
-                                                    </asp:TemplateField>
+                                </ItemTemplate>
+                                <ItemStyle Width="10%" />
+                            </asp:TemplateField>
 
-                                                    <asp:TemplateField HeaderText="Tipo Liq" ItemStyle-Width="10%">
-                                                        <ItemTemplate>
-                                                            <p>
-                                                                <asp:Label ID="lblTipo_liq" runat="server" Text=""></asp:Label>
-                                                            </p>
+                            <asp:TemplateField HeaderText="Tipo Liq" ItemStyle-Width="10%">
+                                <ItemTemplate>
+                                    <p>
+                                        <asp:Label ID="lblTipo_liq" runat="server" Text=""></asp:Label>
+                                    </p>
 
-                                                        </ItemTemplate>
-                                                        <ItemStyle Width="10%" />
-                                                    </asp:TemplateField>
+                                </ItemTemplate>
+                                <ItemStyle Width="10%" />
+                            </asp:TemplateField>
 
-                                                    <asp:TemplateField HeaderText="Nro Liq" ItemStyle-Width="5%">
-                                                        <ItemTemplate>
-                                                            <p>
-                                                                <asp:Label ID="lblNro_liquidacion" runat="server" Text=""></asp:Label>
-                                                            </p>
+                            <asp:TemplateField HeaderText="Nro Liq" ItemStyle-Width="5%">
+                                <ItemTemplate>
+                                    <p>
+                                        <asp:Label ID="lblNro_liquidacion" runat="server" Text=""></asp:Label>
+                                    </p>
 
-                                                        </ItemTemplate>
-                                                        <ItemStyle Width="5%" />
-                                                    </asp:TemplateField>
+                                </ItemTemplate>
+                                <ItemStyle Width="5%" />
+                            </asp:TemplateField>
 
-                                                    <asp:TemplateField HeaderText="Descripcion" ItemStyle-Width="10%">
-                                                        <ItemTemplate>
-                                                            <p>
-                                                                <asp:Label ID="lblDes_liquidacion" runat="server" Text=""></asp:Label>
-                                                            </p>
-                                                        </ItemTemplate>
-                                                        <ItemStyle Width="10%" />
-                                                    </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Descripcion" ItemStyle-Width="10%">
+                                <ItemTemplate>
+                                    <p>
+                                        <asp:Label ID="lblDes_liquidacion" runat="server" Text=""></asp:Label>
+                                    </p>
+                                </ItemTemplate>
+                                <ItemStyle Width="10%" />
+                            </asp:TemplateField>
 
-                                                    <asp:TemplateField HeaderText="Aguinaldo" ItemStyle-Width="7%">
-                                                        <ItemTemplate>
-                                                            <p>
-                                                                <asp:CheckBox ID="chkAguinaldo" runat="server" />
-                                                            </p>
-                                                        </ItemTemplate>
-                                                        <ItemStyle Width="7%" />
-                                                    </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Aguinaldo" ItemStyle-Width="7%">
+                                <ItemTemplate>
+                                    <p>
+                                        <asp:CheckBox ID="chkAguinaldo" runat="server" />
+                                    </p>
+                                </ItemTemplate>
+                                <ItemStyle Width="7%" />
+                            </asp:TemplateField>
 
-                                                    <asp:TemplateField HeaderText="Periodo" ItemStyle-Width="10%">
-                                                        <ItemTemplate>
-                                                            <p>
-                                                                <asp:Label ID="lblPeriodo" runat="server" Text=""></asp:Label>
-                                                            </p>
-                                                        </ItemTemplate>
-                                                        <ItemStyle Width="10%" />
-                                                    </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Periodo" ItemStyle-Width="10%">
+                                <ItemTemplate>
+                                    <p>
+                                        <asp:Label ID="lblPeriodo" runat="server" Text=""></asp:Label>
+                                    </p>
+                                </ItemTemplate>
+                                <ItemStyle Width="10%" />
+                            </asp:TemplateField>
 
-                                                    <asp:TemplateField HeaderText="Semestre" ItemStyle-Width="15%">
-                                                        <ItemTemplate>
-                                                            <p>
-                                                                <asp:Label ID="lblSemestre" runat="server" Text=""></asp:Label>
-                                                            </p>
-                                                        </ItemTemplate>
-                                                        <ItemStyle Width="15%" />
-                                                    </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Semestre" ItemStyle-Width="15%">
+                                <ItemTemplate>
+                                    <p>
+                                        <asp:Label ID="lblSemestre" runat="server" Text=""></asp:Label>
+                                    </p>
+                                </ItemTemplate>
+                                <ItemStyle Width="15%" />
+                            </asp:TemplateField>
 
-                                                    <asp:TemplateField HeaderText="Fecha Pago" ItemStyle-Width="10%">
-                                                        <ItemTemplate>
-                                                            <p>
-                                                                <asp:Label ID="lblFecha_pago" runat="server" Text=""></asp:Label>
-                                                            </p>
-                                                        </ItemTemplate>
-                                                        <ItemStyle Width="10%" />
-                                                    </asp:TemplateField>
-                                                    <%--<asp:TemplateField HeaderText="Publicar Liq">
+                            <asp:TemplateField HeaderText="Fecha Pago" ItemStyle-Width="10%">
+                                <ItemTemplate>
+                                    <p>
+                                        <asp:Label ID="lblFecha_pago" runat="server" Text=""></asp:Label>
+                                    </p>
+                                </ItemTemplate>
+                                <ItemStyle Width="10%" />
+                            </asp:TemplateField>
+                            <%--<asp:TemplateField HeaderText="Publicar Liq">
                                                         <ItemTemplate>
                                                             <asp:CheckBox ID="chkPublicar"
                                                                 CssClass="form-control"
@@ -229,12 +226,12 @@
                                                                 runat="server"></asp:CheckBox>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>--%>
-                                                    <asp:TemplateField HeaderText="Publicada">
-                                                        <ItemTemplate>
-                                                            <p><i class="fa fa-check-square"></i>&nbsp;<%# (Convert.ToInt16(Eval("publica"))) == 1 ? "Si" : "No" %></p>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <%--<asp:TemplateField HeaderText="Cierre Liq">
+                            <asp:TemplateField HeaderText="Publicada">
+                                <ItemTemplate>
+                                    <p><i class="fa fa-check-square"></i>&nbsp;<%# (Convert.ToInt16(Eval("publica"))) == 1 ? "Si" : "No" %></p>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <%--<asp:TemplateField HeaderText="Cierre Liq">
                                                         <ItemTemplate>
                                                             <asp:CheckBox ID="chkCerrada"
                                                                 CssClass="form-control"
@@ -242,57 +239,57 @@
                                                                 runat="server"></asp:CheckBox>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>--%>
-                                                    <asp:TemplateField HeaderText="Cerrada">
-                                                        <ItemTemplate>
-                                                            <p><i class="fa fa-check-square"></i>&nbsp;<%# (Convert.ToInt16(Eval("cerrada"))) == 1 ? "Si" : "No" %></p>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:TemplateField>
-                                                        <ItemTemplate>
-                                                            <div class="btn-group pull-right">
-                                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                                                    arial-expanded="false">
-                                                                    Acciones <span class="fa fa-caret-down"></span>
-                                                                </button>
-                                                                <ul class="dropdown-menu">
-                                                                    <li>
-                                                                        <asp:LinkButton
-                                                                            ID="lbtnEditar"
-                                                                            CommandName="editar"
-                                                                            CommandArgument="<%# Container.DataItemIndex %>"
-                                                                            runat="server">
+                            <asp:TemplateField HeaderText="Cerrada">
+                                <ItemTemplate>
+                                    <p><i class="fa fa-check-square"></i>&nbsp;<%# (Convert.ToInt16(Eval("cerrada"))) == 1 ? "Si" : "No" %></p>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <div class="btn-group pull-right">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                            arial-expanded="false">
+                                            Acciones <span class="fa fa-caret-down"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <asp:LinkButton
+                                                    ID="lbtnEditar"
+                                                    CommandName="editar"
+                                                    CommandArgument="<%# Container.DataItemIndex %>"
+                                                    runat="server">
                                                                     <i class="fa fa-edit"></i>&nbsp Editar
-                                                                        </asp:LinkButton>
-                                                                    </li>
+                                                </asp:LinkButton>
+                                            </li>
 
-                                                                    <li>
-                                                                        <asp:LinkButton
-                                                                            ID="lbtnLiquidar"
-                                                                            CommandName="liquidar"
-                                                                            CommandArgument="<%# Container.DataItemIndex %>"
-                                                                            runat="server">
+                                            <li>
+                                                <asp:LinkButton
+                                                    ID="lbtnLiquidar"
+                                                    CommandName="liquidar"
+                                                    CommandArgument="<%# Container.DataItemIndex %>"
+                                                    runat="server">
                                                                     <i class="fa fa-edit"></i>&nbsp Liquidar Sueldo
-                                                                        </asp:LinkButton>
-                                                                    </li>
-                                                                    <li>
-                                                                        <asp:LinkButton
-                                                                            ID="lbtnTraspado"
-                                                                            CommandName="traspaso"
-                                                                            CommandArgument="<%# Container.DataItemIndex %>"
-                                                                            runat="server">
+                                                </asp:LinkButton>
+                                            </li>
+                                            <li>
+                                                <asp:LinkButton
+                                                    ID="lbtnTraspado"
+                                                    CommandName="traspaso"
+                                                    CommandArgument="<%# Container.DataItemIndex %>"
+                                                    runat="server">
                                                                     <i class="fa fa-download"></i>&nbsp Traspaso Conceptos
-                                                                        </asp:LinkButton>
-                                                                    </li>
-                                                                    <li>
-                                                                        <asp:LinkButton
-                                                                            ID="lbtnPuntualidad"
-                                                                            CommandName="asistencia"
-                                                                            CommandArgument="<%# Container.DataItemIndex %>"
-                                                                            runat="server">
+                                                </asp:LinkButton>
+                                            </li>
+                                            <li>
+                                                <asp:LinkButton
+                                                    ID="lbtnPuntualidad"
+                                                    CommandName="asistencia"
+                                                    CommandArgument="<%# Container.DataItemIndex %>"
+                                                    runat="server">
                                                                     <i class="fa fa-check-square-o"></i>&nbsp Dias Trabajados / Puntualidad / Asistencia
-                                                                        </asp:LinkButton>
-                                                                    </li>
-                                                                    <%--<li>
+                                                </asp:LinkButton>
+                                            </li>
+                                            <%--<li>
                                                                         <asp:LinkButton
                                                                             ID="lbtnSalario"
                                                                             CommandName="salariofam"
@@ -302,17 +299,17 @@
                                                                     <i class="fa fa-check-square-o"></i>&nbsp Actualizar Salario Familiar
                                                                         </asp:LinkButton>
                                                                     </li>--%>
-                                                                    <li>
-                                                                        <asp:LinkButton
-                                                                            ID="lbtnBorrar"
-                                                                            CommandName="eliminar"
-                                                                            CommandArgument="<%# Container.DataItemIndex %>"
-                                                                            OnClientClick='return confirm("Esta por Eliminar la Caratula de Liquidacion");'
-                                                                            runat="server">
+                                            <li>
+                                                <asp:LinkButton
+                                                    ID="lbtnBorrar"
+                                                    CommandName="eliminar"
+                                                    CommandArgument="<%# Container.DataItemIndex %>"
+                                                    OnClientClick='return confirm("Esta por Eliminar la Caratula de Liquidacion");'
+                                                    runat="server">
                                                                     <i class="fa fa-trash-o"></i>&nbsp Borrar Caratula Liquidación
-                                                                        </asp:LinkButton>
-                                                                    </li>
-                                                                    </li>
+                                                </asp:LinkButton>
+                                            </li>
+                                            </li>
                                                                     <li>
                                                                         <asp:LinkButton
                                                                             ID="lnkPublicar"
@@ -322,17 +319,17 @@
                                                                     <i class="fa fa-tablet"></i>&nbsp Publicar Liquidación
                                                                         </asp:LinkButton>
                                                                     </li>
-                                                                    <li>
-                                                                        <a href="#" title="cerrarliquidacion" onclick="abrirModalCerrarLiquidacion('<%#Eval("anio")%>','<%#Eval("cod_tipo_liq")%>','<%#Eval("nro_liquidacion")%>')">
-                                                                            <span class="fa fa-check"></span>&nbsp Cerrar Liquidación
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <%--abrirModalCerraliquidacion(anio, cod_tipo_liq, nro_liquidacion) {--%>
-                                                    <%-- <asp:TemplateField>
+                                            <li>
+                                                <a href="#" title="cerrarliquidacion" onclick="abrirModalCerrarLiquidacion('<%#Eval("anio")%>','<%#Eval("cod_tipo_liq")%>','<%#Eval("nro_liquidacion")%>')">
+                                                    <span class="fa fa-check"></span>&nbsp Cerrar Liquidación
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <%--abrirModalCerraliquidacion(anio, cod_tipo_liq, nro_liquidacion) {--%>
+                            <%-- <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <div class="btn-group pull-right">
                                                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Acciones <span class="fa fa-caret-down"></span></button>
@@ -341,32 +338,11 @@
                                                             </div>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>--%>
-                                                </Columns>
-                                                <EditRowStyle BackColor="#999999"></EditRowStyle>
-                                                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White"></FooterStyle>
-                                                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White"></HeaderStyle>
-                                                <%--<PagerStyle HorizontalAlign="Center" BackColor="#284775" ForeColor="White"></PagerStyle>--%>
-                                                <PagerStyle CssClass="gridview"></PagerStyle>
-                                                <RowStyle BackColor="#F7F6F3" ForeColor="#333333"></RowStyle>
-                                                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
-                                                <SortedAscendingCellStyle BackColor="#E9E7E2"></SortedAscendingCellStyle>
-                                                <SortedAscendingHeaderStyle BackColor="#506C8C"></SortedAscendingHeaderStyle>
-                                                <SortedDescendingCellStyle BackColor="#FFFDF8"></SortedDescendingCellStyle>
-                                                <SortedDescendingHeaderStyle BackColor="#6F8DAE"></SortedDescendingHeaderStyle>
-                                            </asp:GridView>
-                                        </div>
-                                        <!-- /.box-body -->
-                                        <div class="box-footer clearfix">
-                                        </div>
-                                    </div>
-                                    <!-- /.box -->
-                                </div>
-                                <!-- /.col -->
-                            </div>
-                        </div>
-                    </div>
+                        </Columns>
+                    </asp:GridView>
                 </div>
             </div>
+
             <asp:HiddenField ID="hID" runat="server" />
             <asp:Button ID="Button1" runat="server" Text="Button" Style="visibility: hidden;" />
             <ajaxToolkit:ModalPopupExtender runat="server"
@@ -885,6 +861,8 @@
             <asp:HiddenField ID="HFAnio1" runat="server" />
             <asp:HiddenField ID="HFCod_tipo_liq1" runat="server" />
             <asp:HiddenField ID="HFNro_liquidacion1" runat="server" />
+            </div>
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
     <!-- /.content -->

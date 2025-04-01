@@ -16,10 +16,6 @@ namespace web.secure
         int codCategoria;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
-            if (Session["usuario"] == null)
-                Response.Redirect("../login.aspx");
             codCategoria = Convert.ToInt32(Request.QueryString["cod_categoria"]);
             if (!Page.IsPostBack)
             {

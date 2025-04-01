@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MP_Desempenio.Master"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master"
     AutoEventWireup="True" ValidateRequest="false"
     CodeBehind="Fichas.aspx.cs" Inherits="web.secure.Fichas" %>
 

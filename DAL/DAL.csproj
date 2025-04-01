@@ -82,11 +82,15 @@
     <Compile Include="Fichas\Fichas_Relevamientos.cs" />
     <Compile Include="Fichas\Fichas_Relevamientos_Personas.cs" />
     <Compile Include="Fichas\Fichas_Respuestas.cs" />
+    <Compile Include="Fichas\Fichas_Resultados.cs" />
     <Compile Include="Fichas\fontawesome.cs" />
     <Compile Include="Fichas\ResultadosEvaluacion.cs" />
     <Compile Include="Fichas\Resultados_x_filtro.cs" />
     <Compile Include="Fichas\Resultado_evaluacion.cs" />
     <Compile Include="Fichas\Secretarias.cs" />
+    <Compile Include="general_respuestas.cs" />
+    <Compile Include="General_x_competencia.cs" />
+    <Compile Include="HORARIOS.cs" />
     <Compile Include="LiquidacionD - Copia.cs" />
     <Compile Include="LiquidacionD.cs" />
     <Compile Include="LiquidacionesD.cs" />
@@ -99,16 +103,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReporteD.cs" />
     <Compile Include="F931D.cs" />
+    <Compile Include="REPORTE_FICHA.cs" />
     <Compile Include="Secretarias_grilla.cs" />
     <Compile Include="SecurityDAL.cs" />
     <Compile Include="SeguridadD.cs" />
     <Compile Include="SijcorDCopia.cs" />
     <Compile Include="SijcorD.cs" />
+    <Compile Include="Temp_empleados.cs" />
     <Compile Include="Tipos_Conceptos_LiqD.cs" />
     <Compile Include="UsuarioLoginCIDI.cs" />
     <Compile Include="UsuariosDAL.cs" />
     <Compile Include="ValidarDirector.cs" />
     <Compile Include="Valores_x_concepto_liqD.cs" />
+    <Compile Include="VISTA_FICHADAS.cs" />
     <Compile Include="XMLHelper.cs" />
   </ItemGroup>
   <ItemGroup>
