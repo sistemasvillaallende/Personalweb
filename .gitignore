@@ -15,3 +15,15 @@ DAL\obj\Debug
 Entities\obj\Debug
 UpgradeLog.htm
 BLL/bin/Debug/
+BLL/bin/Debug/BLL.dll
+BLL/bin/Debug/BLL.pdb
+BLL/bin/Debug/DAL.dll
+BLL/bin/Debug/DAL.pdb
+BLL/bin/Debug/Entities.dll
+BLL/bin/Debug/Entities.pdb
+DAL/bin/Debug/DAL.dll
+DAL/bin/Debug/DAL.pdb
+DAL/bin/Debug/Entities.dll
+DAL/bin/Debug/Entities.pdb
+Entities/bin/Debug/Entities.dll
+Entities/bin/Debug/Entities.pdb

@@ -282,14 +282,11 @@
                                                         </button>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item"
-                                                                href="empleado.aspx?legajo=<%#Eval("
-                                                                legajo")%>&op=modifica">Editar</a>
+                                                                href="empleado.aspx?legajo=<%#Eval("legajo")%>&op=modifica">Editar</a>
                                                             <a class="dropdown-item"
-                                                                href="PerfilEmpleado.aspx?legajo=<%#Eval("
-                                                                legajo")%>">Ver</a>
+                                                                href="PerfilEmpleado.aspx?legajo=<%#Eval("legajo")%>">Ver</a>
                                                             <a class="dropdown-item"
-                                                                href="recibossueldo.aspx?legajo=<%#Eval("
-                                                                legajo")%>">Recibos</a>
+                                                                href="recibossueldo.aspx?legajo=<%#Eval("legajo")%>">Recibos</a>
 
                                                         </div>
                                                     </div>

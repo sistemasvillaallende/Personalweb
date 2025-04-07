@@ -4,59 +4,6 @@
 <%@ Register TagPrefix="ajaxToolkit" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <style type="text/css">
-        .auto-style1 {
-            position: relative;
-            min-height: 1px;
-            float: left;
-            width: 100%;
-            left: 0px;
-            top: 0px;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-    </style>
-    <style type="text/css">
-        .gridview {
-            background-color: #fff;
-            height: 60px;
-            padding: 2px;
-            margin: 4% auto;
-        }
-
-            .gridview a {
-                margin: 5px;
-                border-radius: 50%;
-                background-color: #444;
-                padding: 5px 10px 5px 10px;
-                color: #fff !important;
-                text-decoration: none;
-                -o-box-shadow: 1px 1px 1px #111;
-                -moz-box-shadow: 1px 1px 1px #111;
-                -webkit-box-shadow: 1px 1px 1px #111;
-                box-shadow: 1px 1px 1px #111;
-            }
-
-                .gridview a:hover {
-                    background-color: #1e8d12;
-                    color: #fff;
-                }
-
-            .gridview span {
-                background-color: #ae2676;
-                color: #fff;
-                /*-o-box-shadow: 1px 1px 1px #111;*/
-                -moz-box-shadow: 1px 1px 1px #111;
-                -webkit-box-shadow: 1px 1px 1px #111;
-                box-shadow: 1px 1px 1px #111;
-                border-radius: 50%;
-                padding: 5px 10px 5px 10px;
-            }
-    </style>
-
-
-
-    <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" />-->
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="uPanelCliente" UpdateMode="Conditional" runat="server">
@@ -125,13 +72,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="btn-group pull-right">
-                                        <asp:LinkButton ID="lbtnNuevo_concepto" CssClass="btn btn-default" runat="server" OnClick="lbtnNuevo_concepto_Click">
+                                        <asp:LinkButton ID="lbtnNuevo_concepto" CssClass="btn-control aceptar" runat="server" OnClick="lbtnNuevo_concepto_Click">
                                             <i class="fa fa-plus"></i> Nuevo Concepto.
                                         </asp:LinkButton>
-                                        <asp:LinkButton ID="lbtnListado_concepto" CssClass="btn btn-default" runat="server" OnClick="lbtnListado_concepto_Click">
+                                        <asp:LinkButton ID="lbtnListado_concepto" CssClass="btn-control volver" runat="server" OnClick="lbtnListado_concepto_Click">
                                             <i class="fa fa-list"></i> Listado Ctas x Conceptos.
                                         </asp:LinkButton>
-                                        <asp:LinkButton ID="lbtnSalir" CssClass="btn btn-default" runat="server" OnClick="lbtnSalir_Click">
+                                        <asp:LinkButton ID="lbtnSalir" CssClass="btn-control cancelar" runat="server" OnClick="lbtnSalir_Click">
                                             <i class="fa fa-sign-out"></i> Salir
                                         </asp:LinkButton>
 

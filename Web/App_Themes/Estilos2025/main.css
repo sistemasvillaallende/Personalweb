@@ -65,6 +65,7 @@
     margin: 3px;
     text-decoration: none;
     display: inline-block;
+    text-decoration: none !important;
 }
 
     .btn-control:hover {
