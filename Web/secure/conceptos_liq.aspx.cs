@@ -92,35 +92,55 @@ namespace web.secure
                 e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='#FFFFFF'");
 
                 Entities.Conceptos_Liq oConcepto = (Entities.Conceptos_Liq)e.Row.DataItem;
-                Label lblCod_concepto_liq = (Label)e.Row.FindControl("lblCod_concepto_liq");
+                if (oConcepto != null)
+                {
+                    Label lblCod_concepto_liq = (Label)e.Row.FindControl("lblCod_concepto_liq");
 
-                lblCod_concepto_liq.Text = oConcepto.cod_concepto_liq.ToString();
+                    lblCod_concepto_liq.Text = oConcepto.cod_concepto_liq.ToString();
 
-                Label lblFecha_alta = (Label)e.Row.FindControl("lblFecha_alta");
-                lblFecha_alta.Text = Convert.ToDateTime(oConcepto.Fecha_alta_registro).ToShortDateString();
+                    Label lblFecha_alta = (Label)e.Row.FindControl("lblFecha_alta");
+                    lblFecha_alta.Text = Convert.ToDateTime(oConcepto.Fecha_alta_registro).ToShortDateString();
 
-                Label lblDescripcion = (Label)e.Row.FindControl("lblDescripcion");
-                lblDescripcion.Text = oConcepto.des_concepto_liq;
+                    Label lblDescripcion = (Label)e.Row.FindControl("lblDescripcion");
+                    lblDescripcion.Text = oConcepto.des_concepto_liq;
 
 
-                Label lblTipo_concepto = (Label)e.Row.FindControl("lblTipo_concepto");
-                lblTipo_concepto.Text = oConcepto.des_tipo_concepto;
+                    Label lblTipo_concepto = (Label)e.Row.FindControl("lblTipo_concepto");
+                    if (lblTipo_concepto != null)
+                    {
+                        lblTipo_concepto.Text = oConcepto.des_tipo_concepto ?? "N/A";
+                    }
 
-                CheckBox chkSuma = (CheckBox)e.Row.FindControl("chkSuma");
-                chkSuma.Checked = oConcepto.suma;
+                    CheckBox chkSuma = (CheckBox)e.Row.FindControl("chkSuma");
+                    if (chkSuma != null)
+                    {
+                        chkSuma.Checked = oConcepto.suma;
+                    }
 
-                CheckBox chkAporte = (CheckBox)e.Row.FindControl("chkAporte");
-                chkAporte.Checked = oConcepto.aporte;
+                    CheckBox chkAporte = (CheckBox)e.Row.FindControl("chkAporte");
+                    if (chkAporte != null)
+                    {
+                        chkAporte.Checked = oConcepto.aporte;
+                    }
 
-                CheckBox chkSujeto_a_desc = (CheckBox)e.Row.FindControl("chkSujeto_a_desc");
-                chkSujeto_a_desc.Checked = oConcepto.sujeto_a_desc;
+                    CheckBox chkSujeto_a_desc = (CheckBox)e.Row.FindControl("chkSujeto_a_desc");
+                    if (chkSujeto_a_desc != null)
+                    {
+                        chkSujeto_a_desc.Checked = oConcepto.sujeto_a_desc;
+                    }
 
-                CheckBox chkSac = (CheckBox)e.Row.FindControl("chkSac");
-                chkSac.Checked = oConcepto.sac;
+                    CheckBox chkSac = (CheckBox)e.Row.FindControl("chkSac");
+                    if (chkSac != null)
+                    {
+                        chkSac.Checked = oConcepto.sac;
+                    }
 
-                CheckBox chkRemunerativo = (CheckBox)e.Row.FindControl("chkRemunerativo");
-                chkRemunerativo.Checked = oConcepto.remunerativo;
-
+                    CheckBox chkRemunerativo = (CheckBox)e.Row.FindControl("chkRemunerativo");
+                    if (chkRemunerativo != null)
+                    {
+                        chkRemunerativo.Checked = oConcepto.remunerativo;
+                    }
+                }
             }
             //PanelInfomacion.Update();
         }

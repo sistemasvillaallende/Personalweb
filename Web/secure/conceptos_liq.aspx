@@ -43,8 +43,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="alert alert-danger alert-dismissible fade in" role="alert" id="divError"
-                                    runat="server" visible="false">
+                                <div class="alert alert-danger alert-dismissible fade in" role="alert" id="divError" runat="server" visible="false">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">×</span></button>
                                     <h4>Error!</h4>
@@ -73,10 +72,10 @@
                                 <div class="col-md-6">
                                     <div class="btn-group pull-right">
                                         <asp:LinkButton ID="lbtnNuevo_concepto" CssClass="btn-control aceptar" runat="server" OnClick="lbtnNuevo_concepto_Click">
-                                            <i class="fa fa-plus"></i> Nuevo Concepto.
+                                            <i class="fa fa-plus"></i> Nuevo Concepto
                                         </asp:LinkButton>
                                         <asp:LinkButton ID="lbtnListado_concepto" CssClass="btn-control volver" runat="server" OnClick="lbtnListado_concepto_Click">
-                                            <i class="fa fa-list"></i> Listado Ctas x Conceptos.
+                                            <i class="fa fa-list"></i> Listado Ctas x Conceptos
                                         </asp:LinkButton>
                                         <asp:LinkButton ID="lbtnSalir" CssClass="btn-control cancelar" runat="server" OnClick="lbtnSalir_Click">
                                             <i class="fa fa-sign-out"></i> Salir
@@ -90,10 +89,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <%--<div class="box">--%>
-                                <div class="auto-style1" style="margin-top: 20px; overflow: scroll;">
+                                <div class="table-responsive" style="margin-top: 20px;">
                                     <%--<div class="box-body">--%>
                                     <asp:GridView ID="gvConceptos"
-                                        CssClass="table"
+                                        CssClass="table table-striped table-bordered"
                                         runat="server"
                                         OnRowDataBound="gvConceptos_RowDataBound"
                                         OnRowCommand="gvConceptos_RowCommand"
@@ -152,7 +151,7 @@
                                             <asp:TemplateField HeaderText="Suma" ItemStyle-Width="10%">
                                                 <ItemTemplate>
                                                     <p>
-                                                        <asp:CheckBox ID="chkSuma" runat="server" />
+                                                        <i class="fa fa-check-circle text-success"></i>
                                                     </p>
                                                 </ItemTemplate>
                                                 <ItemStyle Width="10%" />
@@ -161,7 +160,7 @@
                                             <asp:TemplateField HeaderText="Sujeto a Desc" ItemStyle-Width="10%">
                                                 <ItemTemplate>
                                                     <p>
-                                                        <asp:CheckBox ID="chkSujeto_a_desc" runat="server" />
+                                                        <i class="fa fa-check-circle text-success"></i>
                                                     </p>
                                                 </ItemTemplate>
                                                 <ItemStyle Width="10%" />
@@ -170,7 +169,7 @@
                                             <asp:TemplateField HeaderText="Sac" ItemStyle-Width="10%">
                                                 <ItemTemplate>
                                                     <p>
-                                                        <asp:CheckBox ID="chkSac" runat="server" />
+                                                        <i class="fa fa-check-circle text-success"></i>
                                                     </p>
                                                 </ItemTemplate>
                                                 <ItemStyle Width="10%" />
@@ -180,16 +179,16 @@
                                             <asp:TemplateField HeaderText="Aporte" ItemStyle-Width="10%">
                                                 <ItemTemplate>
                                                     <p>
-                                                        <asp:CheckBox ID="chkAporte" runat="server" />
+                                                        <i class="fa fa-check-circle text-success"></i>
                                                     </p>
                                                 </ItemTemplate>
                                                 <ItemStyle Width="10%" />
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Remunerativo" ItemStyle-Width="15">
+                                            <asp:TemplateField HeaderText="Remunerativo" ItemStyle-Width="15%">
                                                 <ItemTemplate>
                                                     <p>
-                                                        <asp:CheckBox ID="chkRemunerativo" runat="server" />
+                                                        <i class="fa fa-check-circle text-success"></i>
                                                     </p>
                                                 </ItemTemplate>
                                                 <ItemStyle Width="15%" />
@@ -615,7 +614,7 @@
                 //    buttons: [
                 //        'copy', 'csv', 'excel', 'pdf', 'print'
                 //    ]
-                //}
+                //} 
             );
 
             $('#modalAdd').on('shown.bs.modal', function () {
