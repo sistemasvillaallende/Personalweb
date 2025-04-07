@@ -57,7 +57,7 @@ namespace DAL
                             FROM EMPLEADOS A
                             INNER JOIN CLASIFICACIONES_PERSONAL C ON 
                             C.cod_clasif_per=A.cod_clasif_per
-                            WHERE activo=1
+                            WHERE activo=1 AND FECHA_BAJA IS NULL
                             GROUP BY C.des_clasif_per";
 
                     cmd.Connection.Open();

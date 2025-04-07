@@ -4,6 +4,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../App_Themes/NewTheme/dist/apexcharts.css?v=1" rel="stylesheet" />
     <style>
+        .apexcharts-legend {
+            max-height:150px !important;
+        }
         .table tr td {
             border-color: var(--border-color);
             background-color: transparent;
@@ -49,63 +52,68 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <div class="row g-2 clearfix row-deck">
+    <div class="row g-2 clearfix row-deck" style="padding:25px;">
         <div class="col-xl-3 col-lg-3 col-md-3" style="display: block">
             <div class="card top_counter">
                 <div class="list-group list-group-custom list-group-flush">
-                    <h5 style="padding-left: 5px; font-size: 20px; color: var(--primary-color); font-weight: 600;">Incidencias del día
+                    <h5 style="padding-left: 20px; font-size: 18px; color: var(--primary-color); font-weight: 600; padding-top: 15px; padding-bottom: 0px; margin-bottom: 2px;">Incidencias del día
                     </h5>
                     <hr style="margin-bottom: 0; margin-top: 5px; border-top: 3px solid lightgray; opacity: 1; margin-left: 20px; margin-right: 20px;" />
                     <div class="list-group-item d-flex align-items-center py-3"
-                        style="padding-top: 5px !important; padding-bottom: 5px !important;">
+                        style="padding: 5px !important;">
                         <div class="icon text-center me-3"><i class="fa fa-plane"></i></div>
                         <div class="content">
                             <button type="button" style="background-color: transparent; border: none; display: block; text-align: left"
                                 data-toggle="modal" data-target="#ModalLic">
-                                <div>Personal de Licencia</div>
-                                <h5 id="lblLicencia" runat="server" class="mb-0"></h5>
+                                <div style="font-size: 16px;">Personal de Licencia</div>
+                                <h5 style="font-size: 16px;" id="lblLicencia" runat="server" class="mb-0"></h5>
                             </button>
 
                         </div>
                     </div>
-                    <div class="list-group-item d-flex align-items-center py-3">
+                    <div class="list-group-item d-flex align-items-center py-3"
+                        style="padding: 5px !important;">
                         <div class="icon text-center me-3"><i class="fa fa-coffee"></i></div>
                         <div class="content">
                             <button type="button" style="background-color: transparent; border: none; display: block; text-align: left"
                                 data-toggle="modal" data-target="#ModalRazones">
-                                <div>Razones Particulares</div>
-                                <h5 id="lblRazones" runat="server" class="mb-0"></h5>
+                                <div style="font-size: 16px;">Razones Particulares</div>
+                                <h5 style="font-size: 16px;" id="lblRazones" runat="server" class="mb-0"></h5>
                             </button>
                         </div>
                     </div>
-                    <div class="list-group-item d-flex align-items-center py-3">
+                    <div class="list-group-item d-flex align-items-center py-3"
+                        style="padding: 5px !important;">
                         <div class="icon text-center me-3"><i class="fa fa-ambulance"></i></div>
                         <div class="content">
                             <button type="button" style="background-color: transparent; border: none; display: block; text-align: left"
                                 data-toggle="modal" data-target="#ModalCon">
-                                <div>Ausentes con aviso</div>
-                                <h5 id="lblAusentesAviso" runat="server" class="mb-0"></h5>
+                                <div style="font-size: 16px;">Ausentes con aviso</div>
+                                <h5 style="font-size: 16px;" id="lblAusentesAviso" runat="server" class="mb-0"></h5>
                             </button>
 
                         </div>
                     </div>
-                    <div class="list-group-item d-flex align-items-center py-3">
+                    <div class="list-group-item d-flex align-items-center py-3"
+                        style="padding: 5px !important;">
                         <div class="icon text-center me-3"><i class="fa fa-question-circle"></i></div>
                         <div class="content">
                             <button type="button" style="background-color: transparent; border: none; display: block; text-align: left"
                                 data-toggle="modal" data-target="#ModalSin">
-                                <div>Ausentes sin procesar</div>
-                                <h5 id="lblAusentesSinAviso" runat="server" class="mb-0"></h5>
+                                <div style="font-size: 16px;">Ausentes sin procesar</div>
+                                <h5 style="font-size: 16px;" id="lblAusentesSinAviso" runat="server" class="mb-0"></h5>
                             </button>
                         </div>
                     </div>
-                    <div class="list-group-item d-flex align-items-center py-3">
+                    <div class="list-group-item d-flex align-items-center py-3"
+                        style="padding: 5px !important;">
                         <div class="icon text-center me-3"><i class="fa fa-birthday-cake"></i></div>
                         <div class="content">
                             <button type="button" style="background-color: transparent; border: none; display: block; text-align: left"
                                 data-toggle="modal" data-target="#ModalCumple">
-                                <div>Cumpleaños</div>
-                                <h5 id="lblCumpleaños" runat="server" class="mb-0"></h5>
+                                <div style="font-size: 16px;">Cumpleaños</div>
+                                <hr style="border: solid 2px lightgrey"/>
+                                <h5 style="font-size: 16px;" id="lblCumpleaños" runat="server" class="mb-0"></h5>
                             </button>
 
                         </div>
@@ -143,6 +151,11 @@
                     </script>
                     <script>
                         var options = {
+                            chart: {
+                                width: 360,
+                                type: 'donut',
+                            },
+                            colors: ['#2eacb3', '#FED049', '#2D6187', '#89BEB3', '#FF9A76', '#D7263D', '#1B998B', '#2E294E', '#F46036', '#E2C044'],
                             plotOptions: {
                                 pie: {
                                     startAngle: 0,
@@ -156,14 +169,14 @@
                                         minAngleToShowLabel: 10
                                     },
                                     donut: {
-                                        size: '75%',
+                                        size: '70%',
                                         background: 'transparent',
                                         labels: {
                                             show: true,
                                             name: {
-                                                show: true,
+                                                show: false,
                                                 fontSize: '22px',
-                                                fontFamily: 'Helvetica, Arial, sans-serif',
+                                                fontFamily: 'NORMAL, Arial, sans-serif',
                                                 fontWeight: 600,
                                                 color: undefined,
                                                 offsetY: -10,
@@ -173,8 +186,8 @@
                                             },
                                             value: {
                                                 show: true,
-                                                fontSize: '16px',
-                                                fontFamily: 'Helvetica, Arial, sans-serif',
+                                                fontSize: '12px',
+                                                fontFamily: 'NORMAL, Arial, sans-serif',
                                                 fontWeight: 400,
                                                 color: undefined,
                                                 offsetY: 16,
@@ -186,7 +199,7 @@
                                                 show: true,
                                                 showAlways: false,
                                                 label: 'Total',
-                                                fontSize: '22px',
+                                                fontSize: '18px',
                                                 fontFamily: 'Helvetica, Arial, sans-serif',
                                                 fontWeight: 600,
                                                 color: '#373d3f',
@@ -201,7 +214,7 @@
                                 }
                             },
                             chart: {
-                                height: 380,
+                                height: 360,
                                 type: 'donut',
                             },
                             labels: ['Monotributo', 'Personal Contratado', 'Personal Permanente', 'Personal Planta Politica', 'Personal Transitorio'],
@@ -229,6 +242,17 @@
                                     enabled: false,
                                 }
                             },
+                            fill: {
+                                type: 'gradient',
+                            },
+                            legend: {
+                                show: true,
+                                fontSize: '15px',
+                                fontWeight: 400,
+                                horizontalAlign: 'left',
+                                offsetY: 0,
+                                position: 'bottom'
+                            },
                             title: {
                                 text: '',
                             },
@@ -244,20 +268,12 @@
                                     shadeTo: 'light',
                                     shadeIntensity: 0.65
                                 },
-                            },
-                            legend: {
-                                show: true,
-                                fontSize: '15px',
-                                fontWeight: 400,
-                                horizontalAlign: 'left',
-                                offsetY: 0,
-                                position: 'bottom'
-                            },
+                            },      
                             responsive: [{
                                 breakpoint: 480,
                                 options: {
                                     chart: {
-                                        width: 360
+                                        width: 260
                                     },
                                     legend: {
                                         position: 'bottom'
@@ -818,7 +834,7 @@
                     'copy', 'csv', 'excel', 'pdf', 'print'
                 ]
             });
-            
+
             $('#<%=gvCon.ClientID %>').dataTable({
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"

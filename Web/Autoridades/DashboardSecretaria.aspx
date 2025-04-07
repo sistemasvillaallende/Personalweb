@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" 
     CodeBehind="~/Autoridades/DashboardSecretaria.aspx.cs" Inherits="web.Autoridades.DashboardSecretaria" 
-    MasterPageFile="~/Autoridades/MPSec.Master" %>
+    MasterPageFile="~/MP/MasterNew.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../App_Themes/NewTheme/dist/apexcharts.css?v=1" rel="stylesheet" />

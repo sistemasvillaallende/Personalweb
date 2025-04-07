@@ -45,8 +45,7 @@ namespace web.secure
             try
             {
                 string usuario = Convert.ToString(Request.Cookies["UserSistema"]["usuario"].ToString());
-                if (usuario.Length == 0)
-                    Response.Redirect("../index.html");
+
                 objSeguridad = new BLL.SeguridadB();
                 ok = objSeguridad.ValidaPermiso(usuario, "VER_RECIBO_EMPLEADO");
                 if (ok == false)

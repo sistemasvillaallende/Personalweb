@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MP_Desempenio.Master" AutoEventWireup="true" 
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master" AutoEventWireup="true" 
     CodeBehind="Licencias.aspx.cs" Inherits="web.secure.Licencias" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">

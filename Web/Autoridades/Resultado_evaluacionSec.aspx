@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Autoridades/MPSec.Master" 
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master" 
     AutoEventWireup="True" CodeBehind="Resultado_evaluacionSec.aspx.cs" 
     Inherits="web.Autoridades.Resultado_evaluacionSec" %>
 
@@ -45,7 +45,7 @@
                         AutoGenerateColumns="false"
                         runat="server">
                         <Columns>
-                            <asp:BoundField HeaderText="Leg." DataField="LEGAGO" />
+                            <asp:BoundField HeaderText="Leg." DataField="LEGAJO" />
                             <asp:BoundField HeaderText="Empleado" DataField="NOMBRE" />
                             <asp:BoundField HeaderText="Contratación" DataField="CLASIFICACION" />
                             <asp:BoundField HeaderText="Secretaría" DataField="SECRETARIA" />
@@ -56,7 +56,7 @@
                             <asp:TemplateField HeaderText="LINK">
                                 <ItemTemplate>
                                     <div id="divLink" runat="server">
-                                        <a href="Personas_fichas.aspx?idFicha=<%#Eval("ID_FICHA")%>&legajo=<%#Eval("LEGAGO")%>">
+                                        <a href="Personas_fichas.aspx?idFicha=<%#Eval("ID_FICHA")%>&legajo=<%#Eval("LEGAJO")%>">
                                             <span class="fa fa-search-plus"></span>
                                         </a>
                                     </div>

@@ -3,7 +3,7 @@
 
     <%@ Register TagPrefix="ajaxToolkit" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
         <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-            <link href="../App_Themes/dist/css/AdminLTE.min.css" rel="stylesheet" />
+            <link href="../App_Themes/dist/css/AdminLTE.min.css?v=1" rel="stylesheet" />
         </asp:Content>
         <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 

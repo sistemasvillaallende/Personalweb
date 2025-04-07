@@ -32,9 +32,6 @@ namespace Web.secure
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (Session["usuario"] == null)
-                Response.Redirect("../login.aspx");
             if (!Page.IsPostBack)
             {
                 FillCombo();
@@ -118,7 +115,7 @@ namespace Web.secure
                         //grdList.DataSource = BLL.ConsultaExpedienteB.GetByAsunto(asunto, id_oficina_origen, verTodo);
                         break;
                     default:
-                        grdList.DataSource = BLL.ConsultaEmpleadoB.GetEmpleados();
+                        grdList.DataSource = BLL.ConsultaEmpleadoB.GetEmpleados2();
                         break;
 
                 }

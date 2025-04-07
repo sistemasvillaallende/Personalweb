@@ -237,7 +237,7 @@
                                                 <p style="color: var(--bs-gray); font-size: 14px; margin-bottom: 5px;">
                                                     Fecha de ingreso
                                                 </p>
-                                                <p style="color: var (--bs-gray); font-size: 14px; margin-bottom: 5px;">
+                                                <p style="color: var(--bs-gray); font-size: 14px; margin-bottom: 5px;">
                                                     <%#Eval("fecha_ingreso")%>
                                                 </p>
                                             </ItemTemplate>
@@ -282,13 +282,15 @@
                                                         </button>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item"
-                                                                href='<%# "empleado.aspx?legajo=" + Eval("legajo") + "&op=modifica" %>'>Editar</a>
-                                                            <a class="dropdown-item" href="#">Ver</a>
+                                                                href="empleado.aspx?legajo=<%#Eval("
+                                                                legajo")%>&op=modifica">Editar</a>
                                                             <a class="dropdown-item"
-                                                                href='<%# "recibossueldo.aspx?legajo=" + Eval("legajo") %>'>Recibos</a>
-                                                            <asp:HyperLink ID="btnVer" runat="server"
-                                                                class="dropdown-item" Text="Ver"
-                                                                NavigateUrl='<%# "verempleado.aspx?legajo=" + Eval("legajo") %>' />
+                                                                href="PerfilEmpleado.aspx?legajo=<%#Eval("
+                                                                legajo")%>">Ver</a>
+                                                            <a class="dropdown-item"
+                                                                href="recibossueldo.aspx?legajo=<%#Eval("
+                                                                legajo")%>">Recibos</a>
+
                                                         </div>
                                                     </div>
                                                 </div>
