@@ -23,16 +23,17 @@
     font-size: 16px !important;
 }
 
-    .btn-outline-aceptar:hover {
-        border: solid gray !important;
-        background-color: gray !important;
-        color: white !important;
-        float: right !important;
-        padding-left: 25px !important;
-        padding-right: 25px !important;
-        font-weight: 600 !important;
-        font-size: 16px !important;
-    }
+.btn-outline-aceptar:hover {
+    border: solid gray !important;
+    background-color: gray !important;
+    color: white !important;
+    float: right !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+}
+
 .btn-outline-success {
     border: solid darkcyan !important;
     background-color: white !important;
@@ -44,16 +45,17 @@
     font-size: 16px !important;
 }
 
-    .btn-outline-success:hover {
-        border: solid darkcyan !important;
-        background-color: darkcyan !important;
-        color: white !important;
-        float: right !important;
-        padding-left: 25px !important;
-        padding-right: 25px !important;
-        font-weight: 600 !important;
-        font-size: 16px !important;
-    }
+.btn-outline-success:hover {
+    border: solid darkcyan !important;
+    background-color: darkcyan !important;
+    color: white !important;
+    float: right !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+}
+
 .btn-control {
     border-radius: 5px;
     color: var(--color-celeste);
@@ -68,91 +70,91 @@
     text-decoration: none !important;
 }
 
-    .btn-control:hover {
-        background-color: var(--color-celeste);
-        color: white;
-    }
+.btn-control:hover {
+    background-color: var(--color-celeste);
+    color: white;
+}
 
-    /* Variantes */
-    .btn-control.cancelar {
-        color: var(--color-rojo);
-        border: 2px solid var(--color-rojo);
-    }
+/* Variantes */
+.btn-control.cancelar {
+    color: var(--color-rojo);
+    border: 2px solid var(--color-rojo);
+}
 
-        .btn-control.cancelar:hover {
-            background-color: var(--color-rojo);
-            color: white;
-        }
+.btn-control.cancelar:hover {
+    background-color: var(--color-rojo);
+    color: white;
+}
 
-    .btn-control-aceptar {
-        color: darkcyan;
-        border: 2px solid darkcyan;
-    }
+.btn-control-aceptar {
+    color: darkcyan;
+    border: 2px solid darkcyan;
+}
 
-        .btn-control-aceptar:hover {
-            background-color: darkcyan;
-            color: white;
-        }
+.btn-control-aceptar:hover {
+    background-color: darkcyan;
+    color: white;
+}
 
-    .btn-control.volver {
-        color: var(--color-marron);
-        border: 2px solid var(--color-marron);
-    }
+.btn-control.volver {
+    color: var(--color-marron);
+    border: 2px solid var(--color-marron);
+}
 
-        .btn-control.volver:hover {
-            background-color: var(--color-marron);
-            color: white;
-        }
+.btn-control.volver:hover {
+    background-color: var(--color-marron);
+    color: white;
+}
 
-    .btn-control.primario {
-        color: var(--color-morado);
-        border: 2px solid var(--color-morado);
-    }
+.btn-control.primario {
+    color: var(--color-morado);
+    border: 2px solid var(--color-morado);
+}
 
-        .btn-control.primario:hover {
-            background-color: var(--color-morado);
-            color: white;
-        }
+.btn-control.primario:hover {
+    background-color: var(--color-morado);
+    color: white;
+}
 
-    .btn-control.excel {
-        color: var(--color-verde-oscuro);
-        border: 2px solid var(--color-verde-oscuro);
-    }
+.btn-control.excel {
+    color: var(--color-verde-oscuro);
+    border: 2px solid var(--color-verde-oscuro);
+}
 
-        .btn-control.excel:hover {
-            background-color: var(--color-verde-oscuro);
-            color: white;
-        }
+.btn-control.excel:hover {
+    background-color: var(--color-verde-oscuro);
+    color: white;
+}
 
-    .btn-control.busqueda {
-        color: var(--color-azul);
-        border: 2px solid var(--color-azul);
-    }
+.btn-control.busqueda {
+    color: var(--color-azul);
+    border: 2px solid var(--color-azul);
+}
 
-        .btn-control.busqueda:hover {
-            background-color: var(--color-azul);
-            color: white;
-        }
+.btn-control.busqueda:hover {
+    background-color: var(--color-azul);
+    color: white;
+}
 
-    .btn-control.secondary {
-        color: var(--color-celeste);
-        border: 2px solid var(--color-celeste);
-    }
+.btn-control.secondary {
+    color: var(--color-celeste);
+    border: 2px solid var(--color-celeste);
+}
 
-        .btn-control.secondary:hover {
-            background-color: var(--color-celeste);
-            color: white;
-        }
+.btn-control.secondary:hover {
+    background-color: var(--color-celeste);
+    color: white;
+}
 
-    .btn-control.peligro {
-        color: var(--color-rojo);
-        border: 2px solid var(--color-rojo);
-    }
+.btn-control.peligro {
+    color: var(--color-rojo);
+    border: 2px solid var(--color-rojo);
+}
 
-        .btn-control.peligro:hover {
-            background-color: var(--color-rojo);
-            color: white;
-        }
+.btn-control.peligro:hover {
+    background-color: var(--color-rojo);
+    color: white;
+}
 
 /*FORMULARIOS*/
 
@@ -246,34 +248,34 @@ textarea.input-control {
     background-color: #fff;
 }
 
-    .gridview-category th,
-    .gridview-category td,
-    .gridview-category tr,
-    .gridview-category table,
-    .gridview-category tbody,
-    .gridview-category thead {
-        border: none;
-    }
+.gridview-category th,
+.gridview-category td,
+.gridview-category tr,
+.gridview-category table,
+.gridview-category tbody,
+.gridview-category thead {
+    border: none;
+}
 
-    .gridview-category a {
-        background-color: #b6b6b6;
-        color: #fff !important;
-        text-decoration: none;
-        border-radius: 3px;
-        padding: 5px 10px 5px 10px;
-    }
+.gridview-category a {
+    background-color: #b6b6b6;
+    color: #fff !important;
+    text-decoration: none;
+    border-radius: 3px;
+    padding: 5px 10px 5px 10px;
+}
 
-        .gridview-category a:hover {
-            background-color: #5A6268;
-            color: #fff;
-        }
+.gridview-category a:hover {
+    background-color: #5A6268;
+    color: #fff;
+}
 
-    .gridview-category span {
-        background-color: #5A6268;
-        color: #fff;
-        border-radius: 3px;
-        padding: 5px 10px 5px 10px;
-    }
+.gridview-category span {
+    background-color: #5A6268;
+    color: #fff;
+    border-radius: 3px;
+    padding: 5px 10px 5px 10px;
+}
 
 /* FORMULARIO DE BÚSQUEDA */
 .formulario-busqueda {
@@ -339,13 +341,13 @@ textarea.input-control {
     padding-top: 10px;
 }
 
-    .timeline__event__icon i {
-        position: absolute;
-        top: 50%;
-        left: -65px;
-        font-size: 2.5rem;
-        transform: translateY(-50%);
-    }
+.timeline__event__icon i {
+    position: absolute;
+    top: 50%;
+    left: -65px;
+    font-size: 2.5rem;
+    transform: translateY(-50%);
+}
 
 .timeline__event__description {
     flex-basis: 60%;
@@ -427,10 +429,10 @@ textarea.input-control {
     min-width: 200px;
 }
 
-    .home-button:hover {
-        background-color: white;
-        color: var(--color-standart);
-    }
+.home-button:hover {
+    background-color: white;
+    color: var(--color-standart);
+}
 
 .icon-style {
     font-size: 30px;
@@ -441,77 +443,88 @@ textarea.input-control {
     width: 100%;
 }
 
-  @media (min-width: 1200px) {
-      #left-sidebar {
-          display: block;
-      }
-  }
+@media (min-width: 1200px) {
+    #left-sidebar {
+        display: block;
+    }
+}
 
-  @media (max-width: 1200px) {
-      #left-sidebar {
-          display: none;
-      }
-  }
+@media (max-width: 1200px) {
+    #left-sidebar {
+        display: none;
+    }
+}
 
 .a-menu {
-      font-weight: 400;
-      display: block;
-      padding-left: 15px;
-      padding-top: 13px;
-      padding-bottom: 13px;
-      border-radius: 0px;
-      -webkit-transition: all 0.3s ease-out;
-      transition: all 0.3s ease-out;
-      color: var(--bs-gray-600);
-      font-size: 15px;
-      position: relative;
-      outline-width: 0;
-      text-decoration: none !important;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  }
+    font-weight: 400;
+    display: block;
+    padding-left: 15px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    border-radius: 0px;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    color: var(--bs-gray-600);
+    font-size: 15px;
+    position: relative;
+    outline-width: 0;
+    text-decoration: none !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
 
-  .a-menu:hover {
-      text-decoration: none;
-      outline: none;
-      box-shadow: none;
-      background-color: var(--primary-color);
-      padding-top: 13px;
-      padding-bottom: 13px;
-      color: white !important;
-      border-radius: 5px;
-  }
+.a-menu:hover {
+    text-decoration: none;
+    outline: none;
+    box-shadow: none;
+    background-color: var(--primary-color);
+    padding-top: 13px;
+    padding-bottom: 13px;
+    color: white !important;
+    border-radius: 5px;
+}
 
-  .a-menu i {
-      color: var(--primary-color) !important;
-      margin-right: 10px;
-  }
+.a-menu i {
+    color: var(--primary-color) !important;
+    margin-right: 10px;
+}
 
-  .a-menu:hover i {
-      color: white !important;
-      margin-right: 10px;
-  }
+.a-menu:hover i {
+    color: white !important;
+    margin-right: 10px;
+}
 
-  .mnuactive {
-      font-weight: 400;
-      display: block;
-      padding-left: 15px;
-      padding-top: 13px;
-      padding-bottom: 13px;
-      border-radius: 0px;
-      -webkit-transition: all 0.3s ease-out;
-      transition: all 0.3s ease-out;
-      font-size: 15px;
-      position: relative;
-      outline-width: 0;
-      text-decoration: none !important;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      outline: none;
-      box-shadow: none;
-      background-color: var(--primary-color);
-      color: white !important;
-  }
+.mnuactive {
+    font-weight: 400;
+    display: block;
+    padding-left: 15px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    border-radius: 0px;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    font-size: 15px;
+    position: relative;
+    outline-width: 0;
+    text-decoration: none !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    outline: none;
+    box-shadow: none;
+    background-color: var(--primary-color);
+    color: white !important;
+}
 
-  .mnuactive i {
-      color: white !important;
-      margin-right: 10px;
-  }
+.mnuactive i {
+    color: white !important;
+    margin-right: 10px;
+}
+
+li a {
+    text-decoration: none;
+}
+
+li a:hover {
+    text-decoration: none;
+}
+li a:focus {
+    text-decoration: none;
+}

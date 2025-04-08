@@ -201,16 +201,15 @@
 
                                                             <asp:TemplateField>
                                                                 <ItemTemplate>
-                                                                    <div class="btn-group pull-right">
+                                                                    <div class="dropdown-center">
                                                                         <button type="button"
-                                                                            class="btn btn-default dropdown-toggle"
+                                                                            class="btn btn-secondary dropdown-toggle"
                                                                             data-toggle="dropdown"
                                                                             aria-expanded="false">
                                                                             Acciones
                                                                         </button>
                                                                         <ul class="dropdown-menu">
-
-                                                                            <li>
+                                                                            <li class="dropdown-item">
                                                                                 <asp:LinkButton ID="lbtnEditar"
                                                                                     CommandName="editar"
                                                                                     CommandArgument="<%# Container.DataItemIndex %>"
@@ -220,7 +219,7 @@
                                                                                 </asp:LinkButton>
                                                                             </li>
 
-                                                                            <li>
+                                                                            <li class="dropdown-item">
                                                                                 <asp:LinkButton ID="lbtnValores"
                                                                                     CommandName="valores"
                                                                                     CommandArgument="<%# Container.DataItemIndex %>"
@@ -230,7 +229,7 @@
                                                                                 </asp:LinkButton>
                                                                             </li>
 
-                                                                            <li>
+                                                                            <li class="dropdown-item">
                                                                                 <asp:LinkButton ID="lbtnCuentas"
                                                                                     CommandName="cuentas"
                                                                                     CommandArgument="<%# Container.DataItemIndex %>"
