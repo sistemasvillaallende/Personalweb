@@ -197,7 +197,9 @@
                                             <asp:TemplateField>
                                                 <ItemTemplate>
                                                     <div class="btn-group pull-right">
-                                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Acciones <span class="fa fa-caret-down"></span></button>
+                                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                            Acciones
+                                                        </button>
                                                         <ul class="dropdown-menu">
 
                                                             <li>
