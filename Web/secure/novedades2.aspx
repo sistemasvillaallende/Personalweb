@@ -225,7 +225,7 @@
                         </div>
                         <div class="modal-footer">
                             <button data-dismiss="modal" class="btn btn-default">Cancelar</button>
-                            <asp:Button ID="btnConceptos_x_legajos" CssClass="btn btn-primary"
+                            <asp:Button ID="btnConceptos_x_legajos" CssClass="btn-control aceptar"
                                 OnClientClick="this.disabled=true;this.value = 'Procesando...'"
                                 UseSubmitBehavior="false" OnClick="btnConceptos_x_legajos_Click" runat="server"
                                 Text="Aceptar" />
