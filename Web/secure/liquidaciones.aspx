@@ -133,7 +133,7 @@
             <div class="row" style="margin-top: 20px;">
                 <div class="col-md-12">
                     <asp:GridView ID="gvLiquidaciones"
-                        CssClass="table"
+                        CssClass="table table-hover"
                         runat="server"
                         OnRowDataBound="gvLiquidaciones_RowDataBound"
                         OnRowCommand="gvLiquidaciones_RowCommand"
@@ -247,12 +247,12 @@
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <div class="btn-group pull-right">
-                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
                                             arial-expanded="false">
-                                            Acciones <span class="fa fa-caret-down"></span>
+                                            Acciones
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li>
+                                            <li class="dropdown-item">
                                                 <asp:LinkButton
                                                     ID="lbtnEditar"
                                                     CommandName="editar"
@@ -262,7 +262,7 @@
                                                 </asp:LinkButton>
                                             </li>
 
-                                            <li>
+                                            <li class="dropdown-item">
                                                 <asp:LinkButton
                                                     ID="lbtnLiquidar"
                                                     CommandName="liquidar"
@@ -271,7 +271,7 @@
                                                                     <i class="fa fa-edit"></i>&nbsp Liquidar Sueldo
                                                 </asp:LinkButton>
                                             </li>
-                                            <li>
+                                            <li class="dropdown-item">
                                                 <asp:LinkButton
                                                     ID="lbtnTraspado"
                                                     CommandName="traspaso"
@@ -280,7 +280,7 @@
                                                                     <i class="fa fa-download"></i>&nbsp Traspaso Conceptos
                                                 </asp:LinkButton>
                                             </li>
-                                            <li>
+                                            <li class="dropdown-item">
                                                 <asp:LinkButton
                                                     ID="lbtnPuntualidad"
                                                     CommandName="asistencia"
@@ -289,7 +289,7 @@
                                                                     <i class="fa fa-check-square-o"></i>&nbsp Dias Trabajados / Puntualidad / Asistencia
                                                 </asp:LinkButton>
                                             </li>
-                                            <%--<li>
+                                            <%--<li class="dropdown-item">
                                                                         <asp:LinkButton
                                                                             ID="lbtnSalario"
                                                                             CommandName="salariofam"
@@ -299,7 +299,7 @@
                                                                     <i class="fa fa-check-square-o"></i>&nbsp Actualizar Salario Familiar
                                                                         </asp:LinkButton>
                                                                     </li>--%>
-                                            <li>
+                                            <li class="dropdown-item">
                                                 <asp:LinkButton
                                                     ID="lbtnBorrar"
                                                     CommandName="eliminar"
@@ -310,7 +310,7 @@
                                                 </asp:LinkButton>
                                             </li>
                                             </li>
-                                                                    <li>
+                                                                <li class="dropdown-item">
                                                                         <asp:LinkButton
                                                                             ID="lnkPublicar"
                                                                             CommandName="publicar"
@@ -319,7 +319,7 @@
                                                                     <i class="fa fa-tablet"></i>&nbsp Publicar Liquidación
                                                                         </asp:LinkButton>
                                                                     </li>
-                                            <li>
+                                            <li class="dropdown-item">
                                                 <a href="#" title="cerrarliquidacion" onclick="abrirModalCerrarLiquidacion('<%#Eval("anio")%>','<%#Eval("cod_tipo_liq")%>','<%#Eval("nro_liquidacion")%>')">
                                                     <span class="fa fa-check"></span>&nbsp Cerrar Liquidación
                                                 </a>
