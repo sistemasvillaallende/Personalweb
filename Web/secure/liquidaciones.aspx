@@ -92,27 +92,24 @@
             </div>
             <!-- /.box-header -->
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-md-7">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Buscar por nombre"
                             id="q" onkeyup="load(1);">
-                        <span class="input-group-btn">
-                            <button style="border: solid 3px darkcyan; height: 38px; width: 100px; color: darkcyan;"
-                                class="btn btn-default" type="button" onclick="load(1);">
-                                <i class="fa fa-search"></i>
+                            <button class="btn-control aceptar" type="button" onclick="load(1);">
+                                <span class="fa fa-search"></span>Buscar
                             </button>
-                        </span>
                     </div>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-md-5">
                     <div class="btn-group pull-right" id="divActualiza" runat="server">
-                        <asp:LinkButton ID="lbtnPublicar_liq" CssClass="btn btn-default" runat="server" OnClick="lbtnPublicar_liq_Click">
+                        <asp:LinkButton ID="lbtnPublicar_liq" CssClass="btn-control aceptar" runat="server" OnClick="lbtnPublicar_liq_Click">
                                                             <i class="fa fa-check"></i>&nbsp;Publicar Liquidación
                         </asp:LinkButton>
-                        <asp:LinkButton ID="lbtnNuevo" CssClass="btn btn-default" runat="server" OnClick="lbtnNuevo_Click">
+                        <asp:LinkButton ID="lbtnNuevo" CssClass="btn-control volver" runat="server" OnClick="lbtnNuevo_Click">
                                                             <i class="fa fa-plus"></i> Nueva Liq.
                         </asp:LinkButton>
-                        <asp:LinkButton ID="lbtnSalir" CssClass="btn btn-default" runat="server" OnClick="lbtnSalir_Click">
+                        <asp:LinkButton ID="lbtnSalir" CssClass="btn-control cancelar" runat="server" OnClick="lbtnSalir_Click">
                                                             <i class="fa fa-sign-out"></i> Salir
                         </asp:LinkButton>
                     </div>
@@ -246,12 +243,12 @@
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <div class="btn-group pull-right">
+                                    <div class="btn-group pull-left">
                                         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
                                             arial-expanded="false">
                                             Acciones
                                         </button>
-                                        <ul class="dropdown-menu">
+                                        <ul class="dropdown-menu" role="menu">
                                             <li class="dropdown-item">
                                                 <asp:LinkButton
                                                     ID="lbtnEditar"
