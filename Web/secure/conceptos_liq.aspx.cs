@@ -95,15 +95,28 @@ namespace web.secure
                 if (oConcepto != null)
                 {
                     Label lblCod_concepto_liq = (Label)e.Row.FindControl("lblCod_concepto_liq");
-
-                    lblCod_concepto_liq.Text = oConcepto.cod_concepto_liq.ToString();
+                    if (lblCod_concepto_liq != null)
+                    {
+                        lblCod_concepto_liq.Text = oConcepto.cod_concepto_liq.ToString();
+                    }
 
                     Label lblFecha_alta = (Label)e.Row.FindControl("lblFecha_alta");
-                    lblFecha_alta.Text = Convert.ToDateTime(oConcepto.Fecha_alta_registro).ToShortDateString();
+                    if (lblFecha_alta != null)
+                    {
+                        lblFecha_alta.Text = Convert.ToDateTime(oConcepto.Fecha_alta_registro).ToShortDateString();
+                    }
 
                     Label lblDescripcion = (Label)e.Row.FindControl("lblDescripcion");
-                    lblDescripcion.Text = oConcepto.des_concepto_liq;
-
+                    if (lblDescripcion != null && !string.IsNullOrEmpty(oConcepto.des_concepto_liq))
+                    {
+                        // Format the description: first letter uppercase, rest lowercase
+                        string formattedDesc = oConcepto.des_concepto_liq.Trim();
+                        if (formattedDesc.Length > 0)
+                        {
+                            formattedDesc = char.ToUpper(formattedDesc[0]) + (formattedDesc.Length > 1 ? formattedDesc.Substring(1).ToLower() : string.Empty);
+                        }
+                        lblDescripcion.Text = formattedDesc;
+                    }
 
                     Label lblTipo_concepto = (Label)e.Row.FindControl("lblTipo_concepto");
                     if (lblTipo_concepto != null)
