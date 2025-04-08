@@ -72,7 +72,7 @@
                                                     <div class="dropdown">
                                                         <div class="btn-group dropleft">
                                                             <button type="button" class="btn btn-secondary" data-toggle="dropdown" aria-expanded="false">
-                                                                ...
+                                                                <i class="fa fa-bars"></i>
                                                             </button>
                                                             <div class="dropdown-menu"
                                                                 style="width: 250px; position: absolute; top: 0px; left: 0px; transform: translate3d(-252px, 0px, 0px); padding: 15px;">
