@@ -244,9 +244,10 @@
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <div class="btn-group pull-left">
-                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                        <button type="button" class="btn btn-secondary dropdown-toggle" 
+                                        data-toggle="dropdown"
                                             arial-expanded="false">
-                                            Acciones
+                                            <i class="fa fa-bars"></i>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li class="dropdown-item">

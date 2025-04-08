@@ -223,7 +223,9 @@
                                                                                         <button type="button"
                                                                                             class="btn btn-secondary dropdown-toggle"
                                                                                             data-toggle="dropdown"
-                                                                                            aria-expanded="false">Acciones</button>
+                                                                                            aria-expanded="false">
+                                                                                            <i class="fa fa-bars"></i>
+                                                                                        </button>
                                                                                         <ul class="dropdown-menu">
 
                                                                                             <li>

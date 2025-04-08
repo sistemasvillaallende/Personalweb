@@ -278,7 +278,7 @@
                                                     <div class="btn-group dropleft">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-toggle="dropdown" aria-expanded="false">
-                                                            ...
+                                                            <i class="fa fa-bars"></i>
                                                         </button>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item"
