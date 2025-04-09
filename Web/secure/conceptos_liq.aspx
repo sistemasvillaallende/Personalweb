@@ -72,11 +72,11 @@
                                         <div class="btn-group pull-right">
                                             <asp:LinkButton ID="lbtnNuevo_concepto" CssClass="btn-control aceptar"
                                                 runat="server" OnClick="lbtnNuevo_concepto_Click">
-                                                <i class="fa fa-plus"></i> Nuevo Concepto
+                                                <i class="fa fa-plus"></i> Nuevo
                                             </asp:LinkButton>
-                                            <asp:LinkButton ID="lbtnListado_concepto" CssClass="btn-control volver"
+                                            <asp:LinkButton ID="lbtnListado_concepto" CssClass="btn-control excel"
                                                 runat="server" OnClick="lbtnListado_concepto_Click">
-                                                <i class="fa fa-list"></i> Listado Ctas x Conceptos
+                                                <i class="fa fa-list"></i> Ctas x Conceptos
                                             </asp:LinkButton>
                                             <asp:LinkButton ID="lbtnSalir" CssClass="btn-control cancelar"
                                                 runat="server" OnClick="lbtnSalir_Click">
@@ -153,7 +153,9 @@
                                                             <asp:TemplateField HeaderText="Suma" ItemStyle-Width="10%">
                                                                 <ItemTemplate>
                                                                     <p>
-                                                                        <i class="fa fa-check-circle text-success"></i>
+                                                                        <%# Convert.ToBoolean(Eval("suma")) 
+                                                                            ? "<i class='fa fa-check-circle text-success'></i>" 
+                                                                            : "" %>
                                                                     </p>
                                                                 </ItemTemplate>
                                                                 <ItemStyle Width="10%" />
@@ -163,7 +165,9 @@
                                                                 ItemStyle-Width="10%">
                                                                 <ItemTemplate>
                                                                     <p>
-                                                                        <i class="fa fa-check-circle text-success"></i>
+                                                                        <%# Convert.ToBoolean(Eval("sujeto_a_desc")) 
+                                                                            ? "<i class='fa fa-check-circle text-success'></i>" 
+                                                                            : "" %>
                                                                     </p>
                                                                 </ItemTemplate>
                                                                 <ItemStyle Width="10%" />
@@ -172,18 +176,21 @@
                                                             <asp:TemplateField HeaderText="Sac" ItemStyle-Width="10%">
                                                                 <ItemTemplate>
                                                                     <p>
-                                                                        <i class="fa fa-check-circle text-success"></i>
+                                                                        <%# Convert.ToBoolean(Eval("sac")) 
+                                                                            ? "<i class='fa fa-check-circle text-success'></i>" 
+                                                                            : "" %>
                                                                     </p>
                                                                 </ItemTemplate>
                                                                 <ItemStyle Width="10%" />
                                                             </asp:TemplateField>
 
-
                                                             <asp:TemplateField HeaderText="Aporte"
                                                                 ItemStyle-Width="10%">
                                                                 <ItemTemplate>
                                                                     <p>
-                                                                        <i class="fa fa-check-circle text-success"></i>
+                                                                        <%# Convert.ToBoolean(Eval("aporte")) 
+                                                                            ? "<i class='fa fa-check-circle text-success'></i>" 
+                                                                            : "" %>
                                                                     </p>
                                                                 </ItemTemplate>
                                                                 <ItemStyle Width="10%" />
@@ -193,7 +200,9 @@
                                                                 ItemStyle-Width="15%">
                                                                 <ItemTemplate>
                                                                     <p>
-                                                                        <i class="fa fa-check-circle text-success"></i>
+                                                                        <%# Convert.ToBoolean(Eval("remunerativo")) 
+                                                                            ? "<i class='fa fa-check-circle text-success'></i>" 
+                                                                            : "" %>
                                                                     </p>
                                                                 </ItemTemplate>
                                                                 <ItemStyle Width="15%" />
