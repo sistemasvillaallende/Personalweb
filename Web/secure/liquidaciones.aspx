@@ -52,6 +52,10 @@
                 border-radius: 50%;
                 padding: 5px 10px 5px 10px;
             }
+
+        .dropdown-menu {
+            left: -290%!important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -245,8 +249,7 @@
                                 <ItemTemplate>
                                     <div class="btn-group pull-left">
                                         <button type="button" class="btn btn-secondary dropdown-toggle" 
-                                        data-toggle="dropdown"
-                                            arial-expanded="false">
+                                        data-toggle="dropdown" aria-expanded="false">
                                             <i class="fa fa-bars"></i>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
@@ -328,15 +331,15 @@
                             </asp:TemplateField>
                             <%--abrirModalCerraliquidacion(anio, cod_tipo_liq, nro_liquidacion) {--%>
                             <%-- <asp:TemplateField>
-                                                        <ItemTemplate>
-                                                            <div class="btn-group pull-right">
-                                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Acciones <span class="fa fa-caret-down"></span></button>
-                                                                <ul class="dropdown-menu">
-                                                                </ul>
-                                                            </div>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>--%>
-                        </Columns>
+                                <ItemTemplate>
+                                    <div class="btn-group pull-right">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Acciones <span class="fa fa-caret-down"></span></button>
+                                        <ul class="dropdown-menu">
+                                        </ul>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:TemplateField>--%>
+        </Columns>
                     </asp:GridView>
                 </div>
             </div>
