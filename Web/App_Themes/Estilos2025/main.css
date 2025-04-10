@@ -1,14 +1,14 @@
 :root {
-    --color-amarillo: #FFCD00;
-    --color-magenta: #EC1E79;
-    --color-rojo: #FF0000;
-    --color-azul: #0000FF;
-    --color-celeste: #00A1FF;
-    --color-marron: #D37530;
-    --color-morado: #8500A9;
-    --color-verde-oscuro: #00C474;
-    --color-verde: #B2E702;
-    --color-standart: #2EACB3;
+    --color-amarillo: #FFE866;
+    --color-magenta: #F27BAE;
+    --color-rojo: #E28C8C;
+    --color-azul: #7F8CFF;
+    --color-celeste: #66C9FF;
+    --color-marron: #E1A36B;
+    --color-morado: #B066C9;
+    --color-verde-oscuro: #66D8B0;
+    --color-verde: #D4F25C;
+    --color-standart: #6CCFD4;    
 }
 
 /*BOTONES*/
