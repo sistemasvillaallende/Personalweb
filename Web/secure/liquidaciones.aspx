@@ -6,7 +6,10 @@
 
     <style type="text/css">
         .dropdown-menu {
-            left: -290%!important;
+            left: -290%!important
+        }
+        .dropdown-menu>li>a {
+            color: #777;
         }
     </style>
 </asp:Content>
@@ -244,16 +247,16 @@
                                                                     <i class="fa fa-check-square-o"></i>&nbsp Dias Trabajados / Puntualidad / Asistencia
                                                 </asp:LinkButton>
                                             </li>
-                                            <%--<li class="dropdown-item">
-                                                                        <asp:LinkButton
-                                                                            ID="lbtnSalario"
-                                                                            CommandName="salariofam"
-                                                                            CommandArgument="<%# Container.DataItemIndex %>"
-                                                                            OnClientClick='return confirm("Esta por Actualizar el Salario Familiar, desdea continuar?");'
-                                                                            runat="server">
-                                                                    <i class="fa fa-check-square-o"></i>&nbsp Actualizar Salario Familiar
-                                                                        </asp:LinkButton>
-                                                                    </li>--%>
+                                        <%--<li class="dropdown-item">
+                                                <asp:LinkButton
+                                                    ID="lbtnSalario"
+                                                    CommandName="salariofam"
+                                                    CommandArgument="<%# Container.DataItemIndex %>"
+                                                    OnClientClick='return confirm("Esta por Actualizar el Salario Familiar, desdea continuar?");'
+                                                    runat="server">
+                                            <i class="fa fa-check-square-o"></i>&nbsp Actualizar Salario Familiar
+                                                </asp:LinkButton>
+                                            </li>--%>
                                             <li class="dropdown-item">
                                                 <asp:LinkButton
                                                     ID="lbtnBorrar"
@@ -265,21 +268,21 @@
                                                 </asp:LinkButton>
                                             </li>
                                             </li>
-                                                                <li class="dropdown-item">
-                                                                        <asp:LinkButton
-                                                                            ID="lnkPublicar"
-                                                                            CommandName="publicar"
-                                                                            CommandArgument="<%# Container.DataItemIndex %>"
-                                                                            runat="server">
-                                                                    <i class="fa fa-tablet"></i>&nbsp Publicar Liquidación
-                                                                        </asp:LinkButton>
-                                                                    </li>
                                             <li class="dropdown-item">
-                                                <a href="#" title="cerrarliquidacion" onclick="abrirModalCerrarLiquidacion('<%#Eval("anio")%>','<%#Eval("cod_tipo_liq")%>','<%#Eval("nro_liquidacion")%>')">
-                                                    <span class="fa fa-check"></span>&nbsp Cerrar Liquidación
-                                                </a>
-                                            </li>
-                                        </ul>
+                                                    <asp:LinkButton
+                                                        ID="lnkPublicar"
+                                                        CommandName="publicar"
+                                                        CommandArgument="<%# Container.DataItemIndex %>"
+                                                        runat="server">
+                                                <i class="fa fa-tablet"></i>&nbsp Publicar Liquidación
+                                                    </asp:LinkButton>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#" title="cerrarliquidacion" onclick="abrirModalCerrarLiquidacion('<%#Eval("anio")%>','<%#Eval("cod_tipo_liq")%>','<%#Eval("nro_liquidacion")%>')">
+                                                        <span class="fa fa-check"></span>&nbsp Cerrar Liquidación
+                                                    </a>
+                                                </li>
+                                            </ul>
                                     </div>
                                 </ItemTemplate>
                             </asp:TemplateField>

@@ -4,6 +4,12 @@
     <%@ Register TagPrefix="ajaxToolkit" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
         <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
+        <style type="text/css">
+            .dropdown-menu>li>a {
+                color: #777;
+            }
+        </style>
+
         </asp:Content>
         <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
             <asp:UpdatePanel ID="uPanelCliente" UpdateMode="Conditional" runat="server">
