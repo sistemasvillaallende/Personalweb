@@ -50,8 +50,8 @@
             <%-- <link rel="stylesheet" type="text/css"
                 href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" />--%>
 
-            <div class="row" style="margin-top: 100px;">
-                <div class="col-md-10 col-md-offset-1">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-1">
                     <div class="row" style="margin-top: 1px; padding-top: 1px">
                         <asp:UpdatePanel ID="PanelInfomacion" runat="server" UpdateMode="Conditional">
                             <ContentTemplate>
@@ -83,16 +83,16 @@
                         </asp:UpdatePanel>
                     </div>
                 </div>
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-12 col-md-offset-1">
                     <div class="panel panel-primary">
-                        <div class="box-header with-border">
+                        <div class="box-header">
                             <h3 class="box-title">&nbsp;&nbsp;Carga de Novedades de Empleados</h3>
                             <p>&nbsp;</p>
                         </div>
                         <%-- <asp:UpdatePanel ID="UpdatePanelDatos" runat="server" UpdateMode="Conditional">
                             <ContentTemplate>--%>
                                 <div class="row">
-                                    <div class="col-md-10 col-md-offset-1">
+                                    <div class="col-md-12 col-md-offset-1">
                                         <div class="box-body">
                                             <div class="form-group">
                                                 <div class="box-body" style="padding-left: 20px; padding-right: 20px;">
@@ -162,27 +162,22 @@
                                                     </div>
 
                                                     <div class="row">
-                                                        <div class="form-group col-md-6">
-                                                            <label>Cod Concepto:</label>
-                                                            <div class="input-group">
-                                                                <asp:TextBox ID="txtCod_concepto"
-                                                                    CssClass="input-control" runat="server"
-                                                                    OnTextChanged="txtCod_concepto_TextChanged"
-                                                                    AutoPostBack="true"></asp:TextBox>
-                                                                <%--<span class="input-group-btn">
-                                                                    <br />
-                                                                    </span>--%>
-                                                                    <span class="input-group-btn">
-                                                                        <button class="btn-control secondary"
-                                                                            type="button" id="btnBuscar" runat="server"
-                                                                            onserverclick="btnBuscar_ServerClick">
-                                                                            <span
-                                                                                class="fa fa-search"></span>Buscar</button>
-                                                                    </span>
-                                                            </div>
-                                                        </div>
+                                                <div class="form-group col-md-8">
+                                                    <label>Cod Concepto:</label>
+                                                    <div class="input-group">
+                                                        <asp:TextBox ID="txtCod_concepto"
+                                                            CssClass="form-control" runat="server"
+                                                            OnTextChanged="txtCod_concepto_TextChanged"
+                                                            AutoPostBack="true"></asp:TextBox>                                                                   
+                                                                <button class="btn-control aceptar"
+                                                                    type="button" id="btnBuscar" runat="server"
+                                                                    onserverclick="btnBuscar_ServerClick">
+                                                                    <span class="fa fa-search"></span> Buscar
+                                                                </button>                                                            
+                                                    </div>
+                                                </div>
 
-                                                        <div class="form-group col-md-6">
+                                                        <div class="form-group col-md-4">
                                                             <label>Concepto</label>
                                                             <asp:TextBox ID="txtConcepto" CssClass="input-control"
                                                                 runat="server" placeholder="Seleccione Concepto">
@@ -235,7 +230,7 @@
                                     </div>
                                     <div class="row">
                                         <!-- ////////////////////////////// GRILLA DETALLE /////////////////////////////////////// -->
-                                        <%--<div class="col-md-10 col-md-offset-1">--%>
+                                        <%--<div class="col-md-12 col-md-offset-1">--%>
                                             <asp:UpdatePanel ID="PanelDetalle" runat="server" UpdateMode="Conditional">
                                                 <Triggers>
                                                     <asp:PostBackTrigger ControlID="lbtnExporCtaCte" />

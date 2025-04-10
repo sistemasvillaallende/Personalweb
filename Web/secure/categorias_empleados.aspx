@@ -5,7 +5,15 @@
 
         <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
             <link href="../App_Themes/dist/css/AdminLTE.min.css" rel="stylesheet" />
+
+            <style type="text/css">
+                .dropdown-menu {
+                    left: -90%!important;
+                }
+            </style>
+
         </asp:Content>
+        
 
         <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -143,24 +151,17 @@
                                             <ItemStyle Width="38%" />
                                         </asp:TemplateField>
 
-                                        <%--<asp:TemplateField HeaderText="Sueldo Basico" ItemStyle-Width="20%">
+                                        <asp:TemplateField HeaderText="Sueldo Basico" ItemStyle-Width="20%">
                                             <ItemTemplate>
-                                                <p>
-                                                    <asp:Label ID="lblSueldo_basico" runat="server" Text="">
-                                                    </asp:Label>
-                                                </p>
+                                                <asp:TextBox 
+                                                    ID="txtSueldo_basico" 
+                                                    CssClass="form-control"
+                                                    Text='<%# "$ " + Eval("sueldo_basico", "{0:N2}") %>' 
+                                                    Enabled="false" 
+                                                    runat="server" />
                                             </ItemTemplate>
                                             <ItemStyle Width="20%" />
-                                            </asp:TemplateField>--%>
-
-                                            <asp:TemplateField>
-                                                <ItemTemplate>
-                                                    <asp:TextBox ID="txtSueldo_basico" CssClass="form-control"
-                                                        Text='<%#Eval("sueldo_basico")%>' Enabled="false"
-                                                        runat="server">
-                                                    </asp:TextBox>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
+                                        </asp:TemplateField>
 
                                             <asp:TemplateField>
                                                 <ItemTemplate>

@@ -359,31 +359,30 @@ namespace web.secure
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-
                 Entities.Liquidacion oLiq = (Entities.Liquidacion)e.Row.DataItem;
                 Label lblAnio = (Label)e.Row.FindControl("lblAnio");
                 Label lblTipo_liq = (Label)e.Row.FindControl("lblTipo_liq");
                 Label lblNro_liquidacion = (Label)e.Row.FindControl("lblNro_liquidacion");
                 Label lblDes_liquidacion = (Label)e.Row.FindControl("lblDes_liquidacion");
-                CheckBox chkAguinaldo = (CheckBox)e.Row.FindControl("chkAguinaldo");
+                Literal litAguinaldo = (Literal)e.Row.FindControl("litAguinaldo");
                 Label lblPeriodo = (Label)e.Row.FindControl("lblPeriodo");
                 Label lblSemestre = (Label)e.Row.FindControl("lblSemestre");
                 Label lblFecha_pago = (Label)e.Row.FindControl("lblFecha_pago");
-                //CheckBox chkPublicar = (CheckBox)e.Row.FindControl("chkPublicar");
-                //CheckBox chkCerrada = (CheckBox)e.Row.FindControl("chkCerrada");
-                //
+
                 lblAnio.Text = oLiq.anio.ToString();
                 lblTipo_liq.Text = oLiq.des_tipo_liq.ToString();
                 lblNro_liquidacion.Text = oLiq.nro_liquidacion.ToString();
                 lblDes_liquidacion.Text = oLiq.des_liquidacion.ToString();
-                chkAguinaldo.Checked = Convert.ToBoolean(oLiq.aguinaldo);
+                if (litAguinaldo != null)
+                {
+                    litAguinaldo.Text = Convert.ToBoolean(oLiq.aguinaldo)
+                        ? "<i class=\"fa fa-check-circle text-success\"></i>"
+                        : "";
+                }
                 lblPeriodo.Text = oLiq.periodo.ToString();
                 lblSemestre.Text = oLiq.semestre.ToString();
                 lblFecha_pago.Text = oLiq.fecha_pago.ToString();
-                //chkPublicar.Checked = Convert.ToBoolean(oLiq.publica);
-                //chkCerrada.Checked = Convert.ToBoolean(oLiq.cerrada);
             }
-
         }
 
         protected void gvLiquidaciones_PageIndexChanging(object sender, GridViewPageEventArgs e)

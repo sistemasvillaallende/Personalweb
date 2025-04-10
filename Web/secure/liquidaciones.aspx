@@ -138,9 +138,11 @@
 
                             <asp:TemplateField HeaderText="Aguinaldo" ItemStyle-Width="7%">
                                 <ItemTemplate>
-                                    <p>
-                                        <asp:CheckBox ID="chkAguinaldo" runat="server" />
-                                    </p>
+                                    <asp:Literal 
+                                        ID="litAguinaldo" 
+                                        runat="server" 
+                                        Mode="PassThrough"
+                                        Text='<%# (Convert.ToBoolean(Eval("aguinaldo")) ? "<i class=\"fa fa-check-circle text-success\"></i>" : "") %>' />
                                 </ItemTemplate>
                                 <ItemStyle Width="7%" />
                             </asp:TemplateField>
