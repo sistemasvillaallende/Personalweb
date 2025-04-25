@@ -7,13 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace web.secure
-{
-
-
-    public partial class categorias_empleados_monotributo
-    {
-
+namespace web.secure {
+    
+    
+    public partial class categorias_empleados_monotributo {
+        
         /// <summary>
         /// Control uPanelCliente.
         /// </summary>
@@ -22,7 +20,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uPanelCliente;
-
+        
         /// <summary>
         /// Control PanelInfomacion.
         /// </summary>
@@ -31,7 +29,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel PanelInfomacion;
-
+        
         /// <summary>
         /// Control divConfirma.
         /// </summary>
@@ -40,16 +38,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divConfirma;
-
-        /// <summary>
-        /// Control txtMonto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMonto;
-
+        
         /// <summary>
         /// Control msjConfirmar.
         /// </summary>
@@ -58,7 +47,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl msjConfirmar;
-
+        
         /// <summary>
         /// Control divError.
         /// </summary>
@@ -67,7 +56,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
-
+        
         /// <summary>
         /// Control txtError.
         /// </summary>
@@ -76,7 +65,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtError;
-
+        
         /// <summary>
         /// Control txtInput.
         /// </summary>
@@ -85,7 +74,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtInput;
-
+        
         /// <summary>
         /// Control btnBuscar.
         /// </summary>
@@ -94,7 +83,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnBuscar;
-
+        
         /// <summary>
         /// Control divActualiza.
         /// </summary>
@@ -103,7 +92,16 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divActualiza;
-
+        
+        /// <summary>
+        /// Control lbtnHistorial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtnHistorial;
+        
         /// <summary>
         /// Control lbtnActualizar_valores.
         /// </summary>
@@ -112,7 +110,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnActualizar_valores;
-
+        
         /// <summary>
         /// Control lbtnNuevo.
         /// </summary>
@@ -121,7 +119,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnNuevo;
-
+        
         /// <summary>
         /// Control LinkExportar.
         /// </summary>
@@ -130,7 +128,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkExportar;
-
+        
         /// <summary>
         /// Control lbtnSalir.
         /// </summary>
@@ -139,7 +137,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnSalir;
-
+        
         /// <summary>
         /// Control divAcepta.
         /// </summary>
@@ -148,7 +146,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAcepta;
-
+        
         /// <summary>
         /// Control btnCancelarValores.
         /// </summary>
@@ -157,7 +155,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelarValores;
-
+        
         /// <summary>
         /// Control btnAceptarValores.
         /// </summary>
@@ -166,16 +164,16 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptarValores;
-
+        
         /// <summary>
-        /// Control gvCategorias.
+        /// Control gvCategoriasMono.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvCategoriasMono;
-
+        
         /// <summary>
         /// Control hID.
         /// </summary>
@@ -184,7 +182,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hID;
-
+        
         /// <summary>
         /// Control Button1.
         /// </summary>
@@ -193,7 +191,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-
+        
         /// <summary>
         /// Control modalPopupExtender.
         /// </summary>
@@ -202,7 +200,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender modalPopupExtender;
-
+        
         /// <summary>
         /// Control modalDatosCategorias.
         /// </summary>
@@ -211,16 +209,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl modalDatosCategorias;
-
-        /// <summary>
-        /// Control btnCloseModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnCloseModal;
-
+        
         /// <summary>
         /// Control lblTituloFormModal.
         /// </summary>
@@ -229,7 +218,16 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTituloFormModal;
-
+        
+        /// <summary>
+        /// Control btnCloseModal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnCloseModal;
+        
         /// <summary>
         /// Control txtCodigo.
         /// </summary>
@@ -238,7 +236,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCodigo;
-
+        
         /// <summary>
         /// Control rv1.
         /// </summary>
@@ -247,7 +245,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rv1;
-
+        
         /// <summary>
         /// Control txtCategoria.
         /// </summary>
@@ -256,7 +254,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCategoria;
-
+        
         /// <summary>
         /// Control RequiredFieldValidator5.
         /// </summary>
@@ -265,16 +263,16 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
-
+        
         /// <summary>
-        /// Control TextBox1.
+        /// Control txtMonto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
-
+        protected global::System.Web.UI.WebControls.TextBox txtMonto;
+        
         /// <summary>
         /// Control rv4.
         /// </summary>
@@ -283,7 +281,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rv4;
-
+        
         /// <summary>
         /// Control ValidationSummary1.
         /// </summary>
@@ -292,7 +290,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
-
+        
         /// <summary>
         /// Control btnCancelar.
         /// </summary>
@@ -301,7 +299,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
-
+        
         /// <summary>
         /// Control btnAceptar.
         /// </summary>
@@ -310,7 +308,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptar;
-
+        
         /// <summary>
         /// Control Button2.
         /// </summary>
@@ -319,7 +317,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
-
+        
         /// <summary>
         /// Control popupActualizarMontos.
         /// </summary>
@@ -328,7 +326,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender popupActualizarMontos;
-
+        
         /// <summary>
         /// Control modalActualizarMontos.
         /// </summary>
@@ -337,7 +335,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl modalActualizarMontos;
-
+        
         /// <summary>
         /// Control UpdatePanel3.
         /// </summary>
@@ -346,7 +344,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel3;
-
+        
         /// <summary>
         /// Control Text1.
         /// </summary>
@@ -355,7 +353,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
-
+        
         /// <summary>
         /// Control cmdBuscar2.
         /// </summary>
@@ -364,16 +362,16 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton cmdBuscar2;
-
+        
         /// <summary>
-        /// Control gvCategorias2.
+        /// Control gvCategoriasMono2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCategorias2;
-
+        protected global::System.Web.UI.WebControls.GridView gvCategoriasMono2;
+        
         /// <summary>
         /// Control HiddenField2.
         /// </summary>
@@ -382,7 +380,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HiddenField2;
-
+        
         /// <summary>
         /// Control lbtnCancelarBuscador.
         /// </summary>
@@ -391,7 +389,7 @@ namespace web.secure
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnCancelarBuscador;
-
+        
         /// <summary>
         /// Control lbtnSalirBuscador.
         /// </summary>

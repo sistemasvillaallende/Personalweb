@@ -14,8 +14,6 @@ namespace web.secure
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
-                Response.Redirect("../login.aspx");
             if (!Page.IsPostBack)
             {
                 Session.Add("opcion", 0);
@@ -63,7 +61,8 @@ namespace web.secure
                 e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#DADADA'");
                 e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='#FFFFFF'");
 
-                Entities.CategoriasCantidad oCat = (Entities.CategoriasCantidad)e.Row.DataItem;
+                //Entities.CategoriasCantidad oCat = (Entities.CategoriasCantidad)e.Row.DataItem;
+                Entities.Categorias oCat = (Entities.Categorias)e.Row.DataItem;
                 Label lblCodigo = (Label)e.Row.FindControl("lblCodigo");
                 Label lblFecha_alta = (Label)e.Row.FindControl("lblFecha_alta");
                 Label lblDes_categoria = (Label)e.Row.FindControl("lblDes_categoria");
@@ -72,9 +71,8 @@ namespace web.secure
                 lblCodigo.Text = oCat.cod_categoria.ToString();
                 lblFecha_alta.Text = oCat.fecha_alta_registro.ToString();
                 lblDes_categoria.Text = oCat.des_categoria.ToString();
-                lblCantidad.Text = oCat.cantidad_empleados.ToString(); 
+                lblCantidad.Text = oCat.cantidad_empleados.ToString();
                 //lblSueldo_basico.Text = oCat.sueldo_basico.ToString();
-
             }
         }
 

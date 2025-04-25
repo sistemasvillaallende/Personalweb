@@ -202,15 +202,6 @@ namespace web.secure {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl modalDatosCategorias;
         
         /// <summary>
-        /// Control btnCloseModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnCloseModal;
-        
-        /// <summary>
         /// Control lblTituloFormModal.
         /// </summary>
         /// <remarks>
@@ -218,6 +209,15 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTituloFormModal;
+        
+        /// <summary>
+        /// Control btnCloseModal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnCloseModal;
         
         /// <summary>
         /// Control txtCodigo.

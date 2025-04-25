@@ -16,24 +16,14 @@ namespace web.secure
         int codCategoria;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
-            if (Session["usuario"] == null)
-                Response.Redirect("../login.aspx");
             codCategoria = Convert.ToInt32(Request.QueryString["cod_categoria"]);
             if (!Page.IsPostBack)
             {
                 Session.Add("opcion", 0);
                 CargarGrilla(codCategoria);
-            }
-
-            string var = Request.Params["__EVENTARGUMENT"];
-            if (var == "Confirma")
-                divConfirma.Visible = false;
-            if (var == "Alerta")
-            {
-                divError.Visible = false;
-            }
+                txtCodigo.InnerHtml = codCategoria.ToString();
+            }    
+          
         }
 
         private void CargarGrilla(int codCategoria)
@@ -74,5 +64,9 @@ namespace web.secure
             CargarGrilla(codCategoria);
         }
 
+        protected void lbtnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("categorias_empleados.aspx");
+        }
     }
 }

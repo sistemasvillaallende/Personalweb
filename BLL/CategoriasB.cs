@@ -73,7 +73,8 @@ namespace BLL
             }
         }
 
-        public static List<Entities.CategoriasCantidad> GetCategoriasCantidad(){
+        public static List<Entities.Categorias> GetCategoriasCantidad()
+        {
             try
             {
                 return DAL.CategoriasD.GetCategoriasCantidad();

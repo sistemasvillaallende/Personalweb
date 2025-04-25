@@ -1,20 +1,42 @@
-﻿
-namespace web.secure
-{
+﻿//------------------------------------------------------------------------------
+// <generado automáticamente>
+//     Este código fue generado por una herramienta.
+//
+//     Los cambios en este archivo podrían causar un comportamiento incorrecto y se perderán si
+//     se vuelve a generar el código. 
+// </generado automáticamente>
+//------------------------------------------------------------------------------
 
-
-    public partial class Empleado_categoria_detalle
-    {
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        protected global::System.Web.UI.UpdatePanel PanelInfomacion;
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divConfirma;
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl msjConfirmar;
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtError;
+namespace web.secure {
+    
+    
+    public partial class Empleado_categoria_detalle {
+        
+        /// <summary>
+        /// Control txtCodigo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtCodigo;
+        
+        /// <summary>
+        /// Control gvCategoriasEmple.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvCategoriasEmple;
-        protected global::System.Web.UI.WebControls.Label lblTituloFormModal;
-        protected global::System.Web.UI.WebControls.Label lblLegajo;
-        protected global::System.Web.UI.WebControls.Label lblNombre;
-        protected global::System.Web.UI.WebControls.Label lblNroDocumento;
+        
+        /// <summary>
+        /// Control lbtnVolver.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtnVolver;
     }
 }

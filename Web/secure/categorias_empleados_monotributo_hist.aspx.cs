@@ -13,9 +13,6 @@ namespace web.secure
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (Session["usuario"] == null)
-                Response.Redirect("../login.aspx");
             if (!Page.IsPostBack)
             {
                 Session.Add("opcion", 0);
@@ -35,17 +32,6 @@ namespace web.secure
         {
             gvCategoriasMono.DataSource = BLL.Categoria_profesional_monotributo_histB.GetHistorialDetalle();
             gvCategoriasMono.DataBind();
-        }
-
-        protected void lbtnNuevo_Click(object sender, EventArgs e)
-        {
-            Session["opcion"] = 1;
-            txtCodigo.Text = "0";
-            lblTituloFormModal.Text = "Nuevo Categoria";
-            txtCategoria.Text = "";
-            txtMonto.Text = "";
-            txtMonto.Focus();
-            modalPopupExtender.Show();
         }
 
         protected void lbtnSalir_Click(object sender, EventArgs e)
@@ -306,6 +292,11 @@ namespace web.secure
             }
 
 
+        }
+
+        protected void lbtnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("categorias_empleados_monotributo.aspx");
         }
     }
 }
