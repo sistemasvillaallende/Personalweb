@@ -1225,7 +1225,7 @@ namespace DAL
                                 INNER JOIN USUARIOS_V2 D ON A.usuario = D.NOMBRE
                                 WHERE A.legajo = @legajo
 
-                                ORDER BY CONVERT(DATE, fecha_movimiento) ASC;";
+                                ORDER BY CONVERT(DATE, fecha_movimiento) DESC;";
 
                 // DateTimeFormatInfo culturaFecArgentina = new System.Globalization.CultureInfo("es-AR", false).DateTimeFormat;
                 List<Historial_conceptos> lst = new List<Historial_conceptos>();
@@ -1329,7 +1329,7 @@ namespace DAL
                                      INNER JOIN TIPOS_LIQUIDACION B ON A.cod_tipo_liq=B.cod_tipo_liq
                                      WHERE legajo=@legajo AND cod_categoria IS NOT NULL
                                      GROUP BY B.des_tipo_liq
-                                     ORDER BY MIN(CONVERT(DATE, fecha_movimiento))";
+                                     ORDER BY MIN(CONVERT(DATE, fecha_movimiento)) DESC";
 
                 // DateTimeFormatInfo culturaFecArgentina = new System.Globalization.CultureInfo("es-AR", false).DateTimeFormat;
                 List<Cambios_empleado> lst = new List<Cambios_empleado>();

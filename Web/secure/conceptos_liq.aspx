@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master" AutoEventWireup="true" CodeBehind="conceptos_liq.aspx.cs" 
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MP/MasterNew.Master" AutoEventWireup="true" CodeBehind="conceptos_liq.aspx.cs"
     Inherits="web.secure.conceptos_liq" %>
 
 <%@ Register TagPrefix="ajaxToolkit" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
@@ -113,25 +113,32 @@
                         <div class="row">
                             <%--<div class="box-body" style="margin-top: 10px;">--%>
                             <div class="form-group">
-                                <div class="col-md-6">
+                                <div class="col-xs-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="txtInput" runat="server" placeholder="Buscar por Concepto" />
+                                        <input type="text" class="input-control"
+                                            id="txtInput"
+                                            runat="server"
+                                            placeholder="Buscar por Concepto" />
                                         <span class="input-group-btn">
-                                            <button class="btn btn-info" type="button" id="btnBuscar" runat="server"
+                                            <button class="btn-control busqueda w-100"
+                                                type="button"
+                                                id="btnBuscar"
+                                                runat="server"
                                                 onserverclick="btnBuscar_ServerClick">
-                                                <span class="fa fa-search"></span>Buscar</button>
+                                                <i class="fa fa-search"></i>
+                                            </button>
                                         </span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-xs-6">
                                     <div class="btn-group pull-right">
-                                        <asp:LinkButton ID="lbtnNuevo_concepto" CssClass="btn btn-default" runat="server" OnClick="lbtnNuevo_concepto_Click">
+                                        <asp:LinkButton ID="lbtnNuevo_concepto" CssClass="btn-control primario" runat="server" OnClick="lbtnNuevo_concepto_Click">
                                             <i class="fa fa-plus"></i> Nuevo Concepto.
                                         </asp:LinkButton>
-                                        <asp:LinkButton ID="lbtnListado_concepto" CssClass="btn btn-default" runat="server" OnClick="lbtnListado_concepto_Click">
+                                        <asp:LinkButton ID="lbtnListado_concepto" CssClass="btn-control secondary" runat="server" OnClick="lbtnListado_concepto_Click">
                                             <i class="fa fa-list"></i> Listado Ctas x Conceptos.
                                         </asp:LinkButton>
-                                        <asp:LinkButton ID="lbtnSalir" CssClass="btn btn-default" runat="server" OnClick="lbtnSalir_Click">
+                                        <asp:LinkButton ID="lbtnSalir" CssClass="btn-control volver" runat="server" OnClick="lbtnSalir_Click">
                                             <i class="fa fa-sign-out"></i> Salir
                                         </asp:LinkButton>
 
@@ -205,7 +212,7 @@
                                             <asp:TemplateField HeaderText="Suma" ItemStyle-Width="10%">
                                                 <ItemTemplate>
                                                     <p>
-                                                        <asp:CheckBox ID="chkSuma" runat="server" />
+                                                        <i class='<%# (Convert.ToInt16(Eval("suma"))) == 1 ? "fa fa-check-square" : "fa fa-square-o" %>'></i>
                                                     </p>
                                                 </ItemTemplate>
                                                 <ItemStyle Width="10%" />
@@ -214,26 +221,23 @@
                                             <asp:TemplateField HeaderText="Sujeto a Desc" ItemStyle-Width="10%">
                                                 <ItemTemplate>
                                                     <p>
-                                                        <asp:CheckBox ID="chkSujeto_a_desc" runat="server" />
+                                                        <i class='<%# (Convert.ToInt16(Eval("sujeto_a_desc"))) == 1 ? "fa fa-check-square" : "fa fa-square-o" %>'></i>
                                                     </p>
                                                 </ItemTemplate>
                                                 <ItemStyle Width="10%" />
                                             </asp:TemplateField>
-
                                             <asp:TemplateField HeaderText="Sac" ItemStyle-Width="10%">
                                                 <ItemTemplate>
                                                     <p>
-                                                        <asp:CheckBox ID="chkSac" runat="server" />
+                                                        <i class='<%# (Convert.ToInt16(Eval("sac"))) == 1 ? "fa fa-check-square" : "fa fa-square-o" %>'></i>
                                                     </p>
                                                 </ItemTemplate>
                                                 <ItemStyle Width="10%" />
                                             </asp:TemplateField>
-
-
                                             <asp:TemplateField HeaderText="Aporte" ItemStyle-Width="10%">
                                                 <ItemTemplate>
                                                     <p>
-                                                        <asp:CheckBox ID="chkAporte" runat="server" />
+                                                        <i class='<%# (Convert.ToInt16(Eval("aporte"))) == 1 ? "fa fa-check-square" : "fa fa-square-o" %>'></i>
                                                     </p>
                                                 </ItemTemplate>
                                                 <ItemStyle Width="10%" />
@@ -242,7 +246,7 @@
                                             <asp:TemplateField HeaderText="Remunerativo" ItemStyle-Width="15">
                                                 <ItemTemplate>
                                                     <p>
-                                                        <asp:CheckBox ID="chkRemunerativo" runat="server" />
+                                                        <i class='<%# (Convert.ToInt16(Eval("remunerativo"))) == 1 ? "fa fa-check-square" : "fa fa-square-o" %>'></i>
                                                     </p>
                                                 </ItemTemplate>
                                                 <ItemStyle Width="15%" />

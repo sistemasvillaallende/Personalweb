@@ -14,8 +14,6 @@ namespace web.secure
         int intPage = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
-                Response.Redirect("../login.aspx");
             if (!Page.IsPostBack)
             {
                 CargarCombos();
@@ -108,20 +106,20 @@ namespace web.secure
                 Label lblTipo_concepto = (Label)e.Row.FindControl("lblTipo_concepto");
                 lblTipo_concepto.Text = oConcepto.des_tipo_concepto;
 
-                CheckBox chkSuma = (CheckBox)e.Row.FindControl("chkSuma");
-                chkSuma.Checked = oConcepto.suma;
+                //CheckBox chkSuma = (CheckBox)e.Row.FindControl("chkSuma");
+                //chkSuma.Checked = oConcepto.suma;
 
-                CheckBox chkAporte = (CheckBox)e.Row.FindControl("chkAporte");
-                chkAporte.Checked = oConcepto.aporte;
+                //CheckBox chkAporte = (CheckBox)e.Row.FindControl("chkAporte");
+                //chkAporte.Checked = oConcepto.aporte;
 
-                CheckBox chkSujeto_a_desc = (CheckBox)e.Row.FindControl("chkSujeto_a_desc");
-                chkSujeto_a_desc.Checked = oConcepto.sujeto_a_desc;
+                //CheckBox chkSujeto_a_desc = (CheckBox)e.Row.FindControl("chkSujeto_a_desc");
+                //chkSujeto_a_desc.Checked = oConcepto.sujeto_a_desc;
 
-                CheckBox chkSac = (CheckBox)e.Row.FindControl("chkSac");
-                chkSac.Checked = oConcepto.sac;
+                //CheckBox chkSac = (CheckBox)e.Row.FindControl("chkSac");
+                //chkSac.Checked = oConcepto.sac;
 
-                CheckBox chkRemunerativo = (CheckBox)e.Row.FindControl("chkRemunerativo");
-                chkRemunerativo.Checked = oConcepto.remunerativo;
+                //CheckBox chkRemunerativo = (CheckBox)e.Row.FindControl("chkRemunerativo");
+                //chkRemunerativo.Checked = oConcepto.remunerativo;
 
             }
             //PanelInfomacion.Update();

@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 
 using BLL;
+using Web.Utils;
 
 namespace web.secure
 {
@@ -20,7 +21,7 @@ namespace web.secure
         protected Label lblClasificacionPersonal;
         protected Label lblSeccion;
         protected Label lblPasoContrato;
-        protected Label lblNombre;
+        //protected Label lblNombre;
         protected Label lblLegajo;
         protected Label lblCargo;
         protected PlaceHolder phMovimientosInternos;
@@ -30,18 +31,38 @@ namespace web.secure
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
-                Response.Redirect("../login.aspx");
             legajo = Convert.ToInt32(Request.QueryString["legajo"]);
-            nombre = Convert.ToString(Request.QueryString["NOMBRE"]);
+            //nombre = Convert.ToString(Request.QueryString["NOMBRE"]);
             if (!Page.IsPostBack)
             {
                 Session.Add("opcion", 0);
-                lblNombre.Text = nombre;
-                lblLegajo.Text = legajo.ToString();
+                //lblNombre.Text = Utils.CapitalizarPalabras(nombre);
+                //lblLegajo.Text = legajo.ToString();
                 CargarGrillaCambios(legajo);
                 CargarGrillaConceptos(legajo);
-                ActualizarInformacionCabecera(legajo);
+                //ActualizarInformacionCabecera(legajo);
+                DAL.Temp_empleados objEmpleado = DAL.Temp_empleados.getByPk(legajo);
+
+                this.txtNombre.InnerHtml = Utils.CapitalizarPalabras(objEmpleado.NOMBRE);
+                txtNombre.Attributes.Add("title", objEmpleado.NOMBRE);
+                txtLegajo.InnerHtml = objEmpleado.LEGAJO.ToString();
+                this.lblFecha_nacimiento.InnerHtml = objEmpleado.FECHA_NACIMIENTO.ToShortDateString();
+                this.lblSexo.InnerHtml = Utils.CapitalizarPalabras(objEmpleado.SEXO);
+                this.lblEstadoCivil.InnerHtml = Utils.CapitalizarPalabras(objEmpleado.ESTADO_CIVIL);
+                this.lblCuit.InnerHtml = objEmpleado.CUIT;
+                lblOS.InnerHtml = objEmpleado.NRO_AFILIADO_OS;
+                string direccion = string.Format("{0} {1} B° {2}, {3} {4}",
+                    Utils.CapitalizarPalabras(objEmpleado.CALLE.Trim()), objEmpleado.NRO,
+                    Utils.CapitalizarPalabras(objEmpleado.BARRIO.Trim()),
+                    Utils.CapitalizarPalabras(objEmpleado.CIUDAD.Trim()),
+                    Utils.CapitalizarPalabras(objEmpleado.PROVINCIA.Trim()));
+                lblDomicilio.InnerHtml = direccion;
+                lblDomicilio.Attributes.Add("title", direccion);
+                lblCodPostal.InnerHtml = objEmpleado.CP;
+                lblTelefono.InnerHtml = objEmpleado.TELEFONOS;
+                lblMail.InnerHtml = objEmpleado.EMAIL;
+
+
             }
         }
 
@@ -50,6 +71,30 @@ namespace web.secure
             var cambios = BLL.Concepto_Liq_x_EmpB.GetCambiosEmpleadoXLegajo(legajo);
             foreach (var cambio in cambios)
             {
+                string[] v = cambio.descripcion_cambio.Split(Convert.ToChar(":"));
+                switch (v[0])
+                {
+                    case "Cambio Clasificacion Personal":
+                        v[1] = "Pasa a " + Utils.CapitalizarPalabras(v[1]);
+                        break;
+                    case "Cambio de Cargo":
+                        v[1] = "Cambia a " + Utils.CapitalizarPalabras(v[1]);
+                        break;
+                    case "Cambio de Categoria":
+                        v[1] = "Pasa a categoria " + v[1];
+                        break;
+                    case "Cambio de Seccion":
+                        v[1] = "Cambia a " + Utils.CapitalizarPalabras(v[1]);
+                        break;
+                    case "Cambio de Tarea":
+                        v[1] = v[1];
+                        break;
+                    case "Cambio Tipo Liquidacion":
+                        v[1] = Utils.CapitalizarPalabras(v[1]);
+                        break;
+                    default:
+                        break;
+                }
                 var divEvent = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
                 divEvent.Attributes["class"] = "timeline__event animated fadeInUp delay-2s timeline__event--type2";
 
@@ -67,12 +112,12 @@ namespace web.secure
                 divContent.Attributes["class"] = "timeline__event__content";
                 var divTitle = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
                 divTitle.Attributes["class"] = "timeline__event__title";
-                divTitle.InnerText = "Cambio de Tarea";
+                divTitle.InnerText = v[0];// "Cambio de Tarea";
                 var divDescription = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
                 divDescription.Attributes["class"] = "timeline__event__description";
                 var pDescription = new System.Web.UI.HtmlControls.HtmlGenericControl("p");
                 pDescription.Attributes["style"] = "margin-bottom: 0;";
-                pDescription.InnerText = cambio.descripcion_cambio;
+                pDescription.InnerText = v[1];
                 divDescription.Controls.Add(pDescription);
 
                 divContent.Controls.Add(divTitle);
@@ -107,16 +152,17 @@ namespace web.secure
                 divContent.Attributes["class"] = "timeline__event__content";
                 var divTitle = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
                 divTitle.Attributes["class"] = "timeline__event__title";
-                divTitle.InnerText = concepto.Tipo_movimiento;
+                divTitle.InnerText = Utils.CapitalizarPalabras(
+                    concepto.Tipo_movimiento);
                 var divDescription = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
                 divDescription.Attributes["class"] = "timeline__event__description";
                 var pDescription = new System.Web.UI.HtmlControls.HtmlGenericControl("p");
                 pDescription.Attributes["style"] = "margin-bottom: 0;";
-                pDescription.InnerHtml = $"<strong>Concepto:</strong> {concepto.Concepto}<br>" +
-                                         $"<strong>Cod. Concepto:</strong> {concepto.Cod_concepto_liq}<br>" +
-                                         $"<strong>Valor Concepto:</strong> {concepto.Valor_concepto_liq}<br>" +
-                                         $"<strong>Observacion:</strong> {concepto.Observacion}<br>" +
-                                         $"<strong>Usuario Carga:</strong> {concepto.Usuario_Carga}";
+                pDescription.InnerHtml = $"<strong style=\"font-weight: 500;\">Concepto:</strong> {Utils.CapitalizarPalabras(concepto.Concepto)}<br>" +
+                                         $"<strong style=\"font-weight: 500;\">Cod. Concepto:</strong> {concepto.Cod_concepto_liq}<br>" +
+                                         $"<strong style=\"font-weight: 500;\">Valor Concepto:</strong> {concepto.Valor_concepto_liq}<br>" +
+                                         $"<strong style=\"font-weight: 500;\">Observacion:</strong> {Utils.CapitalizarPalabras(concepto.Observacion)}<br>" +
+                                         $"<strong style=\"font-weight: 500;\">Usuario Carga:</strong> {Utils.CapitalizarPalabras(concepto.Usuario_Carga)}";
                 divDescription.Controls.Add(pDescription);
 
                 divContent.Controls.Add(divTitle);
@@ -145,7 +191,8 @@ namespace web.secure
                 .FirstOrDefault();
             if (ultimoCambioTarea != null)
             {
-                lblTarea.Text = ultimoCambioTarea.descripcion_cambio.Replace("Cambio de Tarea:", "").Trim();
+                lblTarea.Text = Utils.CapitalizarPalabras(
+                    ultimoCambioTarea.descripcion_cambio.Replace("Cambio de Tarea:", "").Trim());
             }
 
             var ultimoCambioLiquidacion = cambios
@@ -154,7 +201,8 @@ namespace web.secure
                 .FirstOrDefault();
             if (ultimoCambioLiquidacion != null)
             {
-                lblLiquidacion.Text = ultimoCambioLiquidacion.descripcion_cambio.Replace("Cambio Tipo Liquidacion:", "").Trim();
+                lblLiquidacion.Text = Utils.CapitalizarPalabras(
+                    ultimoCambioLiquidacion.descripcion_cambio.Replace("Cambio Tipo Liquidacion:", "")).Trim();
             }
 
             var ultimoCambioCategoria = cambios
@@ -172,7 +220,9 @@ namespace web.secure
                 .FirstOrDefault();
             if (ultimoCambioClasificacion != null)
             {
-                lblClasificacionPersonal.Text = ultimoCambioClasificacion.descripcion_cambio.Replace("Cambio Clasificacion Personal:", "").Trim();
+                lblClasificacionPersonal.Text = Utils.CapitalizarPalabras(
+                    ultimoCambioClasificacion.descripcion_cambio.Replace(
+                        "Cambio Clasificacion Personal:", "").Trim());
             }
 
             var ultimoCambioSeccion = cambios
@@ -181,7 +231,9 @@ namespace web.secure
                 .FirstOrDefault();
             if (ultimoCambioSeccion != null)
             {
-                lblSeccion.Text = ultimoCambioSeccion.descripcion_cambio.Replace("Cambio de Seccion:", "").Trim();
+                lblSeccion.Text = Utils.CapitalizarPalabras(
+                    ultimoCambioSeccion.descripcion_cambio.Replace(
+                        "Cambio de Seccion:", "").Trim());
             }
 
             var ultimoCambioCargo = cambios
@@ -190,7 +242,8 @@ namespace web.secure
                 .FirstOrDefault();
             if (ultimoCambioCargo != null)
             {
-                lblCargo.Text = ultimoCambioCargo.descripcion_cambio.Replace("Cambio de Cargo:", "").Trim();
+                lblCargo.Text = Utils.CapitalizarPalabras(
+                    ultimoCambioCargo.descripcion_cambio.Replace("Cambio de Cargo:", "").Trim());
             }
         }
 

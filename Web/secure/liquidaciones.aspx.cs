@@ -12,8 +12,6 @@ namespace web.secure
         int intPage = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
-                Response.Redirect("../login.aspx");
             if (!Page.IsPostBack)
             {
                 CargarCombos();
@@ -361,15 +359,13 @@ namespace web.secure
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#DADADA'");
-                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='#FFFFFF'");
 
                 Entities.Liquidacion oLiq = (Entities.Liquidacion)e.Row.DataItem;
                 Label lblAnio = (Label)e.Row.FindControl("lblAnio");
                 Label lblTipo_liq = (Label)e.Row.FindControl("lblTipo_liq");
                 Label lblNro_liquidacion = (Label)e.Row.FindControl("lblNro_liquidacion");
                 Label lblDes_liquidacion = (Label)e.Row.FindControl("lblDes_liquidacion");
-                CheckBox chkAguinaldo = (CheckBox)e.Row.FindControl("chkAguinaldo");
+                //CheckBox chkAguinaldo = (CheckBox)e.Row.FindControl("chkAguinaldo");
                 Label lblPeriodo = (Label)e.Row.FindControl("lblPeriodo");
                 Label lblSemestre = (Label)e.Row.FindControl("lblSemestre");
                 Label lblFecha_pago = (Label)e.Row.FindControl("lblFecha_pago");
@@ -380,7 +376,7 @@ namespace web.secure
                 lblTipo_liq.Text = oLiq.des_tipo_liq.ToString();
                 lblNro_liquidacion.Text = oLiq.nro_liquidacion.ToString();
                 lblDes_liquidacion.Text = oLiq.des_liquidacion.ToString();
-                chkAguinaldo.Checked = Convert.ToBoolean(oLiq.aguinaldo);
+                //chkAguinaldo.Checked = Convert.ToBoolean(oLiq.aguinaldo);
                 lblPeriodo.Text = oLiq.periodo.ToString();
                 lblSemestre.Text = oLiq.semestre.ToString();
                 lblFecha_pago.Text = oLiq.fecha_pago.ToString();

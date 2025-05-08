@@ -784,7 +784,7 @@ namespace DAL
 
 
         }
-        public static List<Entities.LstEmpleados> GetEmpleados() 
+        public static List<Entities.LstEmpleados> GetEmpleados()
         {
             StringBuilder strSQL = new StringBuilder();
             StringBuilder strCondicion = new StringBuilder();
@@ -832,7 +832,7 @@ namespace DAL
                         cmd.CommandType = CommandType.Text;
                         cmd.CommandText = strSQL.ToString();
                         cmd.Connection.Open();
-                        return getLstEmpleado(cmd);
+                        return getLstEmpleado(cmd, true);
                     }
                     catch (Exception ex)
                     {
@@ -841,6 +841,70 @@ namespace DAL
                 }
 
             }
+        }
+        public static List<Entities.LstEmpleados> GetEmpleados2()
+        {
+
+            string sql =
+            @"SELECT
+                e.legajo, 
+                rtrim(ltrim(e.nombre)) as nombre, 
+                convert(varchar(10), e.fecha_ingreso, 103) as fecha_ingreso,
+                convert(varchar(10), e.fecha_nacimiento, 103) as fecha_nacimiento,
+                e.cod_categoria, 
+                c.des_categoria, 
+                e.tarea, 
+                tl.des_tipo_liq,
+                b.nom_banco, 
+                e.nro_caja_ahorro, 
+                e.nro_cbu,
+                e.nro_documento, 
+                e.nro_cta_sb, 
+                e.nro_cta_gastos,
+                rtrim(ltrim(s.descripcion)) as Secretaria, 
+                rtrim(ltrim(d1.descripcion)) as Direccion,
+                ltrim(rtrim(o.nombre_oficina)) as Oficina,
+                e.celular, 
+                e.telefonos, 
+                e.email, 
+                passTemp
+
+            FROM EMPLEADOS e
+                LEFT join TIPOS_LIQUIDACION tl on
+                tl.cod_tipo_liq = e.cod_tipo_liq
+                LEFT join BANCOS b on
+                b.cod_banco = e.cod_banco
+                LEFT join CATEGORIAS c on
+                e.cod_categoria = c.cod_categoria
+                LEFT join secretaria s on
+                s.id_secretaria = e.id_secretaria
+                LEFT join direccion d1 on
+                d1.id_direccion = e.id_direccion
+                LEFT join oficinas o on
+                o.codigo_oficina = e.id_oficina
+                WHERE e.fecha_baja is null
+                AND e.legajo IS NOT NULL
+                ORDER BY e.legajo";
+
+
+
+            using (SqlConnection conn = DALBase.GetConnection("Siimva"))
+            {
+                try
+                {
+                    SqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = sql;
+                    cmd.Connection.Open();
+                    return getLstEmpleado(cmd, false);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+
         }
 
         public static List<Entities.LstEmpleados> GetByLegajo(string legajo)
@@ -902,7 +966,7 @@ namespace DAL
                         cmd.CommandText = strSQL.ToString();
                         cmd.Parameters.AddWithValue("@legajo", legajo);
                         cmd.Connection.Open();
-                        return getLstEmpleado(cmd);
+                        return getLstEmpleado(cmd, true);
                     }
                     catch (Exception ex)
                     {
@@ -973,7 +1037,7 @@ namespace DAL
                         cmd.CommandText = strSQL.ToString();
                         cmd.Parameters.AddWithValue("@nombre", nombre);
                         cmd.Connection.Open();
-                        return getLstEmpleado(cmd);
+                        return getLstEmpleado(cmd, true);
                     }
                     catch (Exception ex)
                     {
@@ -984,7 +1048,7 @@ namespace DAL
             }
         }
 
-         public static List<Entities.LstEmpleados> GetEmpleadosByCategoria(int cod_categoria) 
+        public static List<Entities.LstEmpleados> GetEmpleadosByCategoria(int cod_categoria)
         {
             StringBuilder strSQL = new StringBuilder();
             {
@@ -1029,9 +1093,9 @@ namespace DAL
                         SqlCommand cmd = conn.CreateCommand();
                         cmd.CommandType = CommandType.Text;
                         cmd.CommandText = strSQL.ToString();
-                        cmd.Parameters.AddWithValue("cod_categoria",cod_categoria);
+                        cmd.Parameters.AddWithValue("cod_categoria", cod_categoria);
                         cmd.Connection.Open();
-                        return getLstEmpleado(cmd);
+                        return getLstEmpleado(cmd, true);
                     }
                     catch (Exception ex)
                     {
@@ -1044,7 +1108,8 @@ namespace DAL
 
 
 
-        private static List<Entities.LstEmpleados> getLstEmpleado(SqlCommand cmd)
+        private static List<Entities.LstEmpleados> getLstEmpleado(SqlCommand cmd,
+            bool estEvaluacion)
         {
 
             List<Entities.LstEmpleados> lst = new List<Entities.LstEmpleados>();
@@ -1080,7 +1145,12 @@ namespace DAL
                     int telefonos = dr.GetOrdinal("telefonos");
                     int email = dr.GetOrdinal("email");
                     int passTemp = dr.GetOrdinal("passTemp");
-                    int estadoEvaluacion = dr.GetOrdinal("NOMBRE_ESTADO");
+                    int estadoEvaluacion = 0;
+                    if (estEvaluacion)
+                    {
+                        estadoEvaluacion = dr.GetOrdinal("NOMBRE_ESTADO");
+                    }
+
                     while (dr.Read())
                     {
                         oEmp = new Entities.LstEmpleados();
@@ -1107,6 +1177,7 @@ namespace DAL
                         if (!dr.IsDBNull(telefonos)) oEmp.telefonos = dr.GetString(telefonos);
                         if (!dr.IsDBNull(email)) oEmp.email = dr.GetString(email);
                         if (!dr.IsDBNull(passTemp)) oEmp.passTemp = dr.GetString(passTemp);
+                        if(estEvaluacion)
                         if (!dr.IsDBNull(estadoEvaluacion)) oEmp.estadoEvaluacion = dr.GetString(estadoEvaluacion);
 
                         lst.Add(oEmp);
@@ -2104,7 +2175,7 @@ namespace DAL
         }
 
 
- public static DataSet ListCategoriaProfesional()
+        public static DataSet ListCategoriaProfesional()
         {
             string strSQL = "";
             DataSet ds;

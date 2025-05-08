@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -24,7 +26,8 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
-    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -34,7 +37,7 @@
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -53,30 +56,128 @@
       <HintPath>..\packages\ClosedXML.0.69.0\lib\net40-client\ClosedXML.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine">
-      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    <Reference Include="CRVsPackageLib, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="CrystalDecisions.ReportSource">
-      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.ReportSource.dll</HintPath>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.13.0.5.891\lib\net40\CrystalDecisions.CrystalReports.Design.dll</HintPath>
     </Reference>
-    <Reference Include="CrystalDecisions.Shared">
-      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.Shared.dll</HintPath>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.TemplateEngine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.13.0.5.891\lib\net40\CrystalDecisions.CrystalReports.TemplateEngine.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="CrystalDecisions.Web">
-      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.Web.dll</HintPath>
+    <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.13.0.5.891\lib\net40\CrystalDecisions.Data.AdoDotNetInterop.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.Enterprise.Viewing.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.13.0.5.891\lib\net40\CrystalDecisions.Enterprise.Viewing.ReportSource.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommLayer, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonControls, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonObjectModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CubeDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataSetConversion, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportAppServer.ObjectFactory, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.13.0.5.891\lib\net40\CrystalDecisions.ReportAppServer.ObjectFactory.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Prompting, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.13.0.5.891\lib\net40\CrystalDecisions.ReportAppServer.Prompting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ReportDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.XmlSerialize, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.VSDesigner, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.13.0.5.891\lib\net40\CrystalDecisions.VSDesigner.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\DocumentFormat.OpenXml.1.0\lib\DocumentFormat.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <HintPath>..\packages\CrystalReports.13.0.5.891\lib\net40\FlashControlV71.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=112.1.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.112.1.0\lib\net48\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SAPBusinessObjects.WPF.Viewer, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.13.0.5.891\lib\net40\SAPBusinessObjects.WPF.Viewer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SAPBusinessObjects.WPF.ViewerShared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.13.0.5.891\lib\net40\SAPBusinessObjects.WPF.ViewerShared.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <HintPath>..\packages\CrystalReports.13.0.5.891\lib\net40\ShockwaveFlashObjects.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IO.Pipelines, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.9.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.2\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.6.0\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.1\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.9.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.9.0.0\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.2\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
@@ -97,6 +198,83 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="App_Themes\AdminLTE\.gitattributes" />
+    <Content Include="App_Themes\AdminLTE\.gitignore" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\AdminLTEFullLogo.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\AdminLTELogo.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\avatar.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\avatar2.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\avatar3.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\avatar4.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\avatar5.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\boxed-bg.jpg" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\boxed-bg.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\credit\american-express.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\credit\cirrus.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\credit\mastercard.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\credit\paypal.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\credit\paypal2.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\credit\visa.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\default-150x150.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\icons.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\photo1.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\photo2.png" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\photo3.jpg" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\photo4.jpg" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\prod-1.jpg" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\prod-2.jpg" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\prod-3.jpg" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\prod-4.jpg" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\prod-5.jpg" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\user1-128x128.jpg" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\user2-160x160.jpg" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\user3-128x128.jpg" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\user4-128x128.jpg" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\user5-128x128.jpg" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\user6-128x128.jpg" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\user7-128x128.jpg" />
+    <Content Include="App_Themes\AdminLTE\dist\assets\img\user8-128x128.jpg" />
+    <Content Include="App_Themes\AdminLTE\dist\css\adminlte.css" />
+    <Content Include="App_Themes\AdminLTE\dist\css\adminlte.min.css" />
+    <Content Include="App_Themes\AdminLTE\dist\css\adminlte.rtl.css" />
+    <Content Include="App_Themes\AdminLTE\dist\css\adminlte.rtl.min.css" />
+    <Content Include="App_Themes\AdminLTE\dist\js\adminlte.js" />
+    <Content Include="App_Themes\AdminLTE\dist\js\adminlte.min.js" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\docs\browser-support.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\docs\color-mode.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\docs\components\main-header.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\docs\components\main-sidebar.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\docs\faq.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\docs\how-to-contribute.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\docs\introduction.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\docs\javascript\treeview.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\docs\layout.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\docs\license.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\examples\lockscreen.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\examples\login-v2.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\examples\login.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\examples\register-v2.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\examples\register.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\forms\general.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\generate\theme.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\index.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\index2.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\index3.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\layout\collapsed-sidebar.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\layout\fixed-sidebar.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\layout\layout-custom-area.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\layout\layout-rtl.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\layout\logo-switch.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\layout\sidebar-mini.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\layout\unfixed-sidebar.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\tables\simple.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\UI\general.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\UI\icons.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\UI\timeline.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\widgets\cards.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\widgets\info-box.html" />
+    <Content Include="App_Themes\AdminLTE\dist\pages\widgets\small-box.html" />
+    <Content Include="App_Themes\AdminLTE\index.html" />
     <Content Include="App_Themes\Bootstrap\Autocomplete.css" />
     <Content Include="App_Themes\Bootstrap\css\apprise.min.css" />
     <Content Include="App_Themes\Bootstrap\css\bootstrap-theme.css" />
@@ -6632,6 +6810,10 @@
     <Content Include="App_Themes\dist\js\demo.js" />
     <Content Include="App_Themes\dist\js\pages\dashboard.js" />
     <Content Include="App_Themes\dist\js\pages\dashboard2.js" />
+    <Content Include="App_Themes\Estilos2025\avatar.svg" />
+    <Content Include="App_Themes\Estilos2025\editar.svg" />
+    <Content Include="App_Themes\Estilos2025\eliminar.svg" />
+    <Content Include="App_Themes\Estilos2025\main.css" />
     <Content Include="App_Themes\GestionPablo\css\colores.css" />
     <Content Include="App_Themes\GestionPablo\css\style.css" />
     <Content Include="App_Themes\GestionPablo\css\style2.css" />
@@ -6771,6 +6953,9 @@
     <Content Include="css\all.min.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\docs.css" />
+    <Content Include="GraficoEvaluaciones\General_x_Competencia.aspx" />
+    <Content Include="GraficoEvaluaciones\utiles.js" />
+    <Content Include="GraficoEvaluaciones\WebForm1.aspx" />
     <Content Include="imagenes\conceptos.jpg" />
     <Content Include="imagenes\escudo.jpeg" />
     <Content Include="imagenes\escudo.jpg" />
@@ -7547,6 +7732,41 @@
     <Content Include="App_Themes\Definitivo\datatables\extensions\TableTools\images\psd\file_types.psd" />
     <Content Include="App_Themes\Definitivo\datatables\extensions\TableTools\images\psd\printer.psd" />
     <Content Include="App_Themes\Definitivo\datatables\extensions\TableTools\Readme.md" />
+    <Content Include="App_Themes\AdminLTE\.browserslistrc" />
+    <Content Include="App_Themes\AdminLTE\.bundlewatch.config.json" />
+    <Content Include="App_Themes\AdminLTE\.editorconfig" />
+    <Content Include="App_Themes\AdminLTE\.eslintignore" />
+    <Content Include="App_Themes\AdminLTE\.eslintrc.json" />
+    <Content Include="App_Themes\AdminLTE\.github\codeql\codeql-config.yml" />
+    <Content Include="App_Themes\AdminLTE\.github\CONTRIBUTING.md" />
+    <Content Include="App_Themes\AdminLTE\.github\dependabot.yml" />
+    <Content Include="App_Themes\AdminLTE\.github\FUNDING.yml" />
+    <Content Include="App_Themes\AdminLTE\.github\ISSUE_TEMPLATE\bug-report-for-adminlte-v3.1-x.md" />
+    <Content Include="App_Themes\AdminLTE\.github\ISSUE_TEMPLATE\feature-request-for-adminlte-v4-x.md" />
+    <Content Include="App_Themes\AdminLTE\.github\workflows\bundlewatch.yml" />
+    <Content Include="App_Themes\AdminLTE\.github\workflows\codeql.yml" />
+    <Content Include="App_Themes\AdminLTE\.github\workflows\docs.yml" />
+    <Content Include="App_Themes\AdminLTE\.github\workflows\lint.yml" />
+    <Content Include="App_Themes\AdminLTE\.github\workflows\node-sass.yml" />
+    <Content Include="App_Themes\AdminLTE\.github\workflows\release.yml" />
+    <Content Include="App_Themes\AdminLTE\.gitpod.yml" />
+    <Content Include="App_Themes\AdminLTE\.lgtm.yml" />
+    <Content Include="App_Themes\AdminLTE\.npmignore" />
+    <Content Include="App_Themes\AdminLTE\.prettierrc" />
+    <Content Include="App_Themes\AdminLTE\.stylelintignore" />
+    <Content Include="App_Themes\AdminLTE\.stylelintrc.json" />
+    <Content Include="App_Themes\AdminLTE\CODE_OF_CONDUCT.md" />
+    <Content Include="App_Themes\AdminLTE\composer.json" />
+    <Content Include="App_Themes\AdminLTE\dist\css\adminlte.css.map" />
+    <Content Include="App_Themes\AdminLTE\dist\css\adminlte.min.css.map" />
+    <Content Include="App_Themes\AdminLTE\dist\css\adminlte.rtl.css.map" />
+    <Content Include="App_Themes\AdminLTE\dist\css\adminlte.rtl.min.css.map" />
+    <Content Include="App_Themes\AdminLTE\dist\js\adminlte.js.map" />
+    <Content Include="App_Themes\AdminLTE\dist\js\adminlte.min.js.map" />
+    <Content Include="App_Themes\AdminLTE\LICENSE" />
+    <Content Include="App_Themes\AdminLTE\package-lock.json" />
+    <Content Include="App_Themes\AdminLTE\package.json" />
+    <Content Include="App_Themes\AdminLTE\README.md" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\sueldosweb.pubxml" />
@@ -7560,9 +7780,11 @@
     <Content Include="secure\Concepto_Liq_x_Emp_Mov.aspx" />
     <Content Include="secure\Empleado_categoria_detalle.aspx" />
     <Content Include="secure\familiares.aspx" />
+    <Content Include="secure\Horarios_marcaciones.aspx" />
     <Content Include="secure\liquidaciones.aspx" />
     <Content Include="secure\MovimEmpleados.aspx" />
     <Content Include="secure\novedades2.aspx" />
+    <Content Include="secure\PerfilEmpleado.aspx" />
     <Content Include="secure\secure.rar" />
     <Content Include="secure\secure2.rar" />
     <None Include="Web.Debug.config">
@@ -7575,12 +7797,6 @@
   <ItemGroup>
     <Content Include="imagenes\accept.gif" />
     <Content Include="imagenes\loading.gif" />
-    <Content Include="impresiones\caratulaexpa4.aspx" />
-    <Content Include="impresiones\caratulaexpediente.aspx" />
-    <Content Include="impresiones\constanciaexp.aspx" />
-    <Content Include="impresiones\consultaexpedientes.aspx" />
-    <Content Include="impresiones\consulta_alertas.aspx" />
-    <Content Include="impresiones\modal.aspx" />
     <Content Include="js\common.js" />
     <Content Include="js\efecto_menu.js" />
     <Content Include="js\fechas.js" />
@@ -7889,44 +8105,19 @@
     <Compile Include="CIDI\Respuesta.cs" />
     <Compile Include="CIDI\Usuario.cs" />
     <Compile Include="CIDI\Utils.cs" />
-    <Compile Include="impresiones\caratulaexpa4.aspx.cs">
-      <DependentUpon>caratulaexpa4.aspx</DependentUpon>
+    <Compile Include="GraficoEvaluaciones\General_x_Competencia.aspx.cs">
+      <DependentUpon>General_x_Competencia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="impresiones\caratulaexpa4.aspx.designer.cs">
-      <DependentUpon>caratulaexpa4.aspx</DependentUpon>
+    <Compile Include="GraficoEvaluaciones\General_x_Competencia.aspx.designer.cs">
+      <DependentUpon>General_x_Competencia.aspx</DependentUpon>
     </Compile>
-    <Compile Include="impresiones\caratulaexpediente.aspx.cs">
-      <DependentUpon>caratulaexpediente.aspx</DependentUpon>
+    <Compile Include="GraficoEvaluaciones\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="impresiones\caratulaexpediente.aspx.designer.cs">
-      <DependentUpon>caratulaexpediente.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="impresiones\constanciaexp.aspx.cs">
-      <DependentUpon>constanciaexp.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="impresiones\constanciaexp.aspx.designer.cs">
-      <DependentUpon>constanciaexp.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="impresiones\consultaexpedientes.aspx.cs">
-      <DependentUpon>consultaexpedientes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="impresiones\consultaexpedientes.aspx.designer.cs">
-      <DependentUpon>consultaexpedientes.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="impresiones\consulta_alertas.aspx.cs">
-      <DependentUpon>consulta_alertas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="impresiones\consulta_alertas.aspx.designer.cs">
-      <DependentUpon>consulta_alertas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="impresiones\modal.aspx.cs">
-      <DependentUpon>modal.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="GraficoEvaluaciones\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="impresiones\reporte_acred_generico.aspx.cs">
       <DependentUpon>reporte_acred_generico.aspx</DependentUpon>
@@ -8040,6 +8231,7 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Resultado_General_por_Competencia.cs" />
     <Compile Include="MP\Bootstrap.Master.cs">
       <DependentUpon>Bootstrap.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -8365,6 +8557,13 @@
     <Compile Include="secure\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="secure\Horarios_marcaciones.aspx.cs">
+      <DependentUpon>Horarios_marcaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secure\Horarios_marcaciones.aspx.designer.cs">
+      <DependentUpon>Horarios_marcaciones.aspx</DependentUpon>
+    </Compile>
     <Compile Include="secure\informeconceptos.aspx.cs">
       <DependentUpon>informeconceptos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -8427,6 +8626,13 @@
     </Compile>
     <Compile Include="secure\novedades.aspx.designer.cs">
       <DependentUpon>novedades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="secure\PerfilEmpleado.aspx.cs">
+      <DependentUpon>PerfilEmpleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secure\PerfilEmpleado.aspx.designer.cs">
+      <DependentUpon>PerfilEmpleado.aspx</DependentUpon>
     </Compile>
     <Compile Include="secure\RecibosSueldo.aspx.cs">
       <DependentUpon>RecibosSueldo.aspx</DependentUpon>
@@ -8594,6 +8800,15 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets'))" />
+  </Target>
+  <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

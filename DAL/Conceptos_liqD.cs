@@ -997,6 +997,7 @@ namespace DAL
                 //499-Adicional no remunerativo
                 //se calculo con procentaje del sueldo bruto
                 if (cod_concepto_liq == 491 ||
+                    cod_concepto_liq == 485 ||
                     cod_concepto_liq == 499)
                 {
                     strSQL.Clear();

@@ -342,7 +342,7 @@ namespace DAL
                         INNER JOIN OFICINAS D ON A.id_oficina = D.codigo_oficina
                         INNER JOIN PROGRAMAS_PUBLICOS E ON A.id_programa=E.Id_programa
                         WHERE  MONTH(fecha_nacimiento)=@MES AND DAY(FECHA_NACIMIENTO)=@DIA
-                        AND A.activo=1";
+                        AND A.activo=1 AND A.FECHA_BAJA IS NULL";
                     cmd.Parameters.AddWithValue("@MES", mes);
                     cmd.Parameters.AddWithValue("@DIA", dia);
                     cmd.Connection.Open();
@@ -376,7 +376,7 @@ namespace DAL
                         INNER JOIN OFICINAS D ON A.id_oficina = D.codigo_oficina
                         INNER JOIN PROGRAMAS_PUBLICOS E ON A.id_programa=E.Id_programa
                         WHERE  MONTH(fecha_nacimiento)=@MES AND DAY(FECHA_NACIMIENTO)=@DIA
-                        AND A.activo=1 AND A.Id_secretaria=@Id_secretaria";
+                        AND A.activo=1 AND A.Id_secretaria=@Id_secretaria AND A.FECHA_BAJA IS NULL";
                     cmd.Parameters.AddWithValue("@MES", mes);
                     cmd.Parameters.AddWithValue("@DIA", dia);
                     cmd.Parameters.AddWithValue("@Id_secretaria", idSecretaria);
@@ -411,7 +411,7 @@ namespace DAL
                         INNER JOIN OFICINAS D ON A.id_oficina = D.codigo_oficina
                         INNER JOIN PROGRAMAS_PUBLICOS E ON A.id_programa=E.Id_programa
                         WHERE  MONTH(fecha_nacimiento)=@MES AND DAY(FECHA_NACIMIENTO)=@DIA
-                        AND A.activo=1 AND A.Id_direccion=@Id_direccion";
+                        AND A.activo=1 AND A.Id_direccion=@Id_direccion AND FECHA_BAJA IS NULL";
                     cmd.Parameters.AddWithValue("@MES", mes);
                     cmd.Parameters.AddWithValue("@DIA", dia);
                     cmd.Parameters.AddWithValue("@Id_direccion", idDireccion);

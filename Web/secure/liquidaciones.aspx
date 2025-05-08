@@ -57,10 +57,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="uPanelCliente" UpdateMode="Conditional" runat="server">
         <ContentTemplate>
-            <div class="row" style="margin-top: 10px; padding-top: 10px">
+            <div class="row" style="margin-top: 0; padding-top: 0">
                 <div class="col-md-12 col-md-offset-0">
                     <div class="col-md-12">
-                        <div class="row" style="margin-top: 20px; padding-top: 20px">
+                        <div class="row" style="margin-top: 5px; padding-top: 5px">
                             <asp:UpdatePanel ID="PanelInfomacion" runat="server" UpdateMode="Conditional">
                                 <ContentTemplate>
                                     <div class="alert alert-success alert-dismissable" runat="server" id="divConfirma"
@@ -90,7 +90,7 @@
                         <div class="outer_div">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="box" style="margin-top: 10px;">
+                                    <div class="box" style="margin-top: 5px;">
                                         <div class="box-header with-border">
                                             <div class="col-md-12">
                                                 <h3 class="box-title">Liquidaciones</h3>
@@ -98,27 +98,41 @@
                                             <br />
                                         </div>
                                         <!-- /.box-header -->
-                                        <div class="box-body" style="margin-top: 20px;">
+                                        <div class="box-body" style="margin-top: 0;">
                                             <div class="row">
                                                 <div class="form-group">
                                                     <div class="col-xs-6">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" placeholder="Buscar por nombre"
-                                                                id="q" onkeyup="load(1);">
+                                                        <div class="formulario-busqueda d-flex justify-content-between">
+                                                            <input type="text" class="input-control"
+                                                                placeholder="Buscar por Descripcion"
+                                                                id="txtInput" onkeyup="load(1);">
                                                             <span class="input-group-btn">
-                                                                <button class="btn btn-default" type="button" onclick="load(1);"><i class="fa fa-search"></i></button>
+                                                                <button class="btn-control busqueda w-100"
+                                                                    type="button"
+                                                                    onclick="load(1);">
+                                                                    <i class="fa fa-search"></i>
+                                                                </button>
                                                             </span>
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-6">
                                                         <div class="btn-group pull-right" id="divActualiza" runat="server">
-                                                            <asp:LinkButton ID="lbtnPublicar_liq" CssClass="btn btn-default" runat="server" OnClick="lbtnPublicar_liq_Click">
+                                                            <asp:LinkButton ID="lbtnPublicar_liq"
+                                                                CssClass="btn-control secondary"
+                                                                runat="server"
+                                                                OnClick="lbtnPublicar_liq_Click">
                                                             <i class="fa fa-check"></i>&nbsp;Publicar Liquidación
                                                             </asp:LinkButton>
-                                                            <asp:LinkButton ID="lbtnNuevo" CssClass="btn btn-default" runat="server" OnClick="lbtnNuevo_Click">
+                                                            <asp:LinkButton ID="lbtnNuevo"
+                                                                CssClass="btn-control primario"
+                                                                runat="server"
+                                                                OnClick="lbtnNuevo_Click">
                                                             <i class="fa fa-plus"></i> Nueva Liq.
                                                             </asp:LinkButton>
-                                                            <asp:LinkButton ID="lbtnSalir" CssClass="btn btn-default" runat="server" OnClick="lbtnSalir_Click">
+                                                            <asp:LinkButton ID="lbtnSalir"
+                                                                CssClass="btn-control volver"
+                                                                runat="server"
+                                                                OnClick="lbtnSalir_Click">
                                                             <i class="fa fa-sign-out"></i> Salir
                                                             </asp:LinkButton>
                                                         </div>
@@ -189,7 +203,7 @@
                                                     <asp:TemplateField HeaderText="Aguinaldo" ItemStyle-Width="7%">
                                                         <ItemTemplate>
                                                             <p>
-                                                                <asp:CheckBox ID="chkAguinaldo" runat="server" />
+                                                                <i class='<%# (Convert.ToInt16(Eval("aguinaldo"))) == 1 ? "fa fa-check-square" : "fa fa-square-o" %>'></i>
                                                             </p>
                                                         </ItemTemplate>
                                                         <ItemStyle Width="7%" />
@@ -221,40 +235,31 @@
                                                         </ItemTemplate>
                                                         <ItemStyle Width="10%" />
                                                     </asp:TemplateField>
-                                                    <%--<asp:TemplateField HeaderText="Publicar Liq">
-                                                        <ItemTemplate>
-                                                            <asp:CheckBox ID="chkPublicar"
-                                                                CssClass="form-control"
-                                                                Enabled="true"
-                                                                runat="server"></asp:CheckBox>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>--%>
+
                                                     <asp:TemplateField HeaderText="Publicada">
                                                         <ItemTemplate>
-                                                            <p><i class="fa fa-check-square"></i>&nbsp;<%# (Convert.ToInt16(Eval("publica"))) == 1 ? "Si" : "No" %></p>
+                                                            <p>
+                                                                <i class='<%# (Convert.ToInt16(Eval("publica"))) == 1 ? "fa fa-check-square" : "fa fa-square-o" %>'></i>
+                                                            </p>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <%--<asp:TemplateField HeaderText="Cierre Liq">
-                                                        <ItemTemplate>
-                                                            <asp:CheckBox ID="chkCerrada"
-                                                                CssClass="form-control"
-                                                                Enabled="true"
-                                                                runat="server"></asp:CheckBox>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>--%>
+
                                                     <asp:TemplateField HeaderText="Cerrada">
                                                         <ItemTemplate>
-                                                            <p><i class="fa fa-check-square"></i>&nbsp;<%# (Convert.ToInt16(Eval("cerrada"))) == 1 ? "Si" : "No" %></p>
+                                                            <p>
+                                                                <i class='<%# (Convert.ToInt16(Eval("cerrada"))) == 1 ? "fa fa-check-square" : "fa fa-square-o" %>'></i>
+                                                            </p>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
-                                                            <div class="btn-group pull-right">
-                                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                                                    arial-expanded="false">
+                                                            <div class="btn-group dropleft">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-toggle="dropdown"
+                                                                    aria-expanded="false">
                                                                     Acciones <span class="fa fa-caret-down"></span>
                                                                 </button>
-                                                                <ul class="dropdown-menu">
+                                                                <ul class="dropdown-menu" style="min-width: 300px;">
                                                                     <li>
                                                                         <asp:LinkButton
                                                                             ID="lbtnEditar"
@@ -312,7 +317,7 @@
                                                                     <i class="fa fa-trash-o"></i>&nbsp Borrar Caratula Liquidación
                                                                         </asp:LinkButton>
                                                                     </li>
-                                                                    </li>
+
                                                                     <li>
                                                                         <asp:LinkButton
                                                                             ID="lnkPublicar"

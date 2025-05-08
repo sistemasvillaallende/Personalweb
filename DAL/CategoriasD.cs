@@ -298,7 +298,7 @@ namespace DAL
         }
 
 
-        public static List<Entities.CategoriasCantidad> GetCategoriasCantidad()
+        public static List<Entities.Categorias> GetCategoriasCantidad()
         {
             using (SqlConnection conn = DALBase.GetConnection("Siimva"))
             {
@@ -307,11 +307,12 @@ namespace DAL
                     SqlCommand cmd = conn.CreateCommand();
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText =
-                    @"  SELECT c.cod_categoria, 
-                                           c.fecha_alta_registro, 
-                                           c.des_categoria, 
-                                           c.sueldo_basico,
-                                           COUNT(e.legajo) AS cantidad_empleados
+                                @"  SELECT 
+                                        c.cod_categoria, 
+                                        c.fecha_alta_registro, 
+                                        c.des_categoria, 
+                                        c.sueldo_basico,
+                                        COUNT(e.legajo) AS cantidad_empleados
                                     FROM CATEGORIAS c
                                     LEFT JOIN EMPLEADOS e ON c.cod_categoria = e.cod_categoria 
                                         AND e.fecha_baja IS NULL 
@@ -321,14 +322,12 @@ namespace DAL
 
                     cmd.Connection.Open();
 
-                    List<Entities.CategoriasCantidad> lst = new List<Entities.CategoriasCantidad>();
-                    Entities.CategoriasCantidad oCat;
+                    List<Entities.Categorias> lst = new List<Entities.Categorias>();
+                    Entities.Categorias oCat;
 
                     try
                     {
                         SqlDataReader dr = cmd.ExecuteReader();
-
-
                         if (dr.HasRows)
                         {
                             int codigo = dr.GetOrdinal("cod_categoria");
@@ -339,7 +338,7 @@ namespace DAL
 
                             while (dr.Read())
                             {
-                                oCat = new Entities.CategoriasCantidad();
+                                oCat = new Entities.Categorias();
 
                                 if (!dr.IsDBNull(codigo)) oCat.cod_categoria = dr.GetInt32(codigo);
                                 if (!dr.IsDBNull(fecha)) oCat.fecha_alta_registro = Convert.ToString(dr.GetDateTime(fecha));

@@ -17,8 +17,6 @@ namespace web.secure
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (this.Session["usuario"] == null)
-                this.Response.Redirect("../login.aspx");
             this.operacion = this.Request.QueryString["op"] == null ? "" : Convert.ToString(this.Request.QueryString["op"]);
             this.legajo = (int)Convert.ToInt16(this.Request.QueryString["legajo"]);
             if (!this.Page.IsPostBack)
