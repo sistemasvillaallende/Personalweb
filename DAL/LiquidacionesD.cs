@@ -118,22 +118,47 @@ namespace DAL
 
             SqlCommand cmd;
             SqlDataReader dr;
-            StringBuilder strSQL = new StringBuilder();
+            string strSQL = "";
 
-            strSQL.AppendLine("select a.anio, b.des_tipo_liq, a.cod_tipo_liq, a.nro_liquidacion, a.periodo, a.des_liquidacion,");
-            strSQL.AppendLine("convert(varchar(10), a.fecha_alta_registro, 103) as fecha_alta , a.aguinaldo,");
-            strSQL.AppendLine("convert(varchar(10), a.fecha_liquidacion, 103) as fecha_liquidacion,");
-            strSQL.AppendLine("convert(varchar(10), a.fecha_pago, 103) as fecha_pago, a.per_ult_dep, a.fecha_ult_dep,");
-            strSQL.AppendLine("c.cod_semestre, c.descripcion as semestre, a.usuario,a.operacion, a.cod_banco_ult_dep,");
-            strSQL.AppendLine("convert(varchar(10), a.fecha_modificacion, 103) as fecha_modificacion, a.publica, a.cerrada, a.fecha_cierre_liq, a.usuario_cierre,");
-            strSQL.AppendLine("a.prueba");
-            strSQL.AppendLine("from LIQUIDACIONES a");
-            strSQL.AppendLine("join TIPOS_LIQUIDACION b on");
-            strSQL.AppendLine("a.cod_tipo_liq = b.cod_tipo_liq");
-            strSQL.AppendLine("left join semestres c on");
-            strSQL.AppendLine("a.cod_semestre = c.cod_semestre");
-            strSQL.AppendLine("order by a.anio desc, a.cod_tipo_liq, a.nro_liquidacion desc");
+            //strSQL.AppendLine("select a.anio, b.des_tipo_liq, a.cod_tipo_liq, a.nro_liquidacion, a.periodo, a.des_liquidacion,");
+            //strSQL.AppendLine("convert(varchar(10), a.fecha_alta_registro, 103) as fecha_alta , a.aguinaldo,");
+            //strSQL.AppendLine("convert(varchar(10), a.fecha_liquidacion, 103) as fecha_liquidacion,");
+            //strSQL.AppendLine("convert(varchar(10), a.fecha_pago, 103) as fecha_pago, a.per_ult_dep, a.fecha_ult_dep,");
+            //strSQL.AppendLine("c.cod_semestre, c.descripcion as semestre, a.usuario,a.operacion, a.cod_banco_ult_dep,");
+            //strSQL.AppendLine("convert(varchar(10), a.fecha_modificacion, 103) as fecha_modificacion, a.publica, a.cerrada, a.fecha_cierre_liq, a.usuario_cierre,");
+            //strSQL.AppendLine("a.prueba");
+            //strSQL.AppendLine("from LIQUIDACIONES a");
+            //strSQL.AppendLine("join TIPOS_LIQUIDACION b on");
+            //strSQL.AppendLine("a.cod_tipo_liq = b.cod_tipo_liq");
+            //strSQL.AppendLine("left join semestres c on");
+            //strSQL.AppendLine("a.cod_semestre = c.cod_semestre");
+            //strSQL.AppendLine("order by a.anio desc, a.cod_tipo_liq, a.nro_liquidacion desc");
 
+            strSQL = @"
+                SELECT 
+                    a.anio, 
+                    b.des_tipo_liq, 
+                    a.cod_tipo_liq, 
+                    a.nro_liquidacion, 
+                    a.periodo, 
+                    a.des_liquidacion,
+                    convert(varchar(10), a.fecha_alta_registro, 103) as fecha_alta , a.aguinaldo,
+                    convert(varchar(10), a.fecha_liquidacion, 103) as fecha_liquidacion,
+                    convert(varchar(10), a.fecha_pago, 103) as fecha_pago, 
+                    a.per_ult_dep, a.fecha_ult_dep,
+                    c.cod_semestre, c.descripcion as semestre, 
+                    a.usuario, a.operacion, 
+                    a.cod_banco_ult_dep,
+                    convert(varchar(10), a.fecha_modificacion, 103) as fecha_modificacion, 
+                    a.publica, a.cerrada, 
+                    a.fecha_cierre_liq, a.usuario_cierre,
+                    a.prueba
+                FROM LIQUIDACIONES a
+                JOIN TIPOS_LIQUIDACION b on
+                  a.cod_tipo_liq = b.cod_tipo_liq
+                LEFT JOIN semestres c on
+                  a.cod_semestre = c.cod_semestre
+                ORDER BY a.anio desc, a.cod_tipo_liq, a.nro_liquidacion desc";
             cmd = new SqlCommand();
 
             try
@@ -142,10 +167,7 @@ namespace DAL
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = strSQL.ToString();
                 //cmd.Connection.Open();
-
                 dr = cmd.ExecuteReader();
-
-
                 if (dr.HasRows)
                 {
                     int anio = dr.GetOrdinal("anio");
@@ -195,7 +217,8 @@ namespace DAL
                             oLiq.fecha_modificacion = dr.GetString(fecha_modificacion);
                         if (!dr.IsDBNull(cod_banco_ult_dep))
                             oLiq.cod_banco_ult_dep = dr.GetInt32(cod_banco_ult_dep);
-                        oLiq.publica = dr.GetBoolean(publica);
+                        if (!dr.IsDBNull(publica))
+                            oLiq.publica = dr.GetBoolean(publica);
                         if (!dr.IsDBNull(cerrada)) oLiq.cerrada = dr.GetBoolean(cerrada);
                         if (!dr.IsDBNull(fecha_cierre_liq)) oLiq.fecha_cierre_liq = Convert.ToString(dr.GetDateTime(fecha_cierre_liq));
                         if (!dr.IsDBNull(usuario_cierre)) oLiq.usuario_cierre = dr.GetString(usuario_cierre);

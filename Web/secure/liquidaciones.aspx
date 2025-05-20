@@ -117,12 +117,6 @@
                                                     </div>
                                                     <div class="col-xs-6">
                                                         <div class="btn-group pull-right" id="divActualiza" runat="server">
-                                                            <asp:LinkButton ID="lbtnPublicar_liq"
-                                                                CssClass="btn-control secondary"
-                                                                runat="server"
-                                                                OnClick="lbtnPublicar_liq_Click">
-                                                            <i class="fa fa-check"></i>&nbsp;Publicar Liquidación
-                                                            </asp:LinkButton>
                                                             <asp:LinkButton ID="lbtnNuevo"
                                                                 CssClass="btn-control primario"
                                                                 runat="server"
