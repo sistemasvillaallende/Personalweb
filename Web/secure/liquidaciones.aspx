@@ -21,36 +21,32 @@
             background-color: #fff;
             height: 60px;
             padding: 2px;
-            margin: 4% auto;
+            margin: 15px;
         }
 
             .gridview a {
-                margin: 5px;
-                border-radius: 50%;
-                background-color: #444;
-                padding: 5px 10px 5px 10px;
-                color: #fff !important;
-                text-decoration: none;
-                /*-o-box-shadow: 1px 1px 1px #111;*/
-                -moz-box-shadow: 1px 1px 1px #111;
-                -webkit-box-shadow: 1px 1px 1px #111;
-                box-shadow: 1px 1px 1px #111;
+                background-color: #cbcbcb;
+                padding-top: 5px;
+                padding-left: 10px;
+                padding-bottom: 5px;
+                padding-right: 10px;
+                border-radius: 12%;
             }
 
                 .gridview a:hover {
-                    background-color: #1e8d12;
+                    background-color: #a3a3a3;
                     color: #fff;
+                    text-decoration: none;
                 }
 
             .gridview span {
-                background-color: #ae2676;
+                background-color: #24a2ae;
+                border-radius: 12%;
+                padding-top: 5px;
+                padding-left: 10px;
+                padding-bottom: 5px;
+                padding-right: 10px;
                 color: #fff;
-                /*-o-box-shadow: 1px 1px 1px #111;*/
-                -moz-box-shadow: 1px 1px 1px #111;
-                -webkit-box-shadow: 1px 1px 1px #111;
-                box-shadow: 1px 1px 1px #111;
-                border-radius: 50%;
-                padding: 5px 10px 5px 10px;
             }
             .desplegable li{
                 padding: 10px;
