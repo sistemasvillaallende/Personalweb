@@ -52,6 +52,22 @@
                 border-radius: 50%;
                 padding: 5px 10px 5px 10px;
             }
+            .desplegable li{
+                padding: 10px;
+                width: 100%;                                
+            }
+            .desplegable a {
+                text-decoration: none;
+                color: #333;
+                transition: color 0.3s;
+            }
+            .desplegable li:hover {
+                background-color: rgba(212, 212, 212, 0.424);
+            }
+            .desplegable a:hover {
+                color: white;
+                width: 100%;  
+            }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -248,12 +264,14 @@
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <div class="btn-group dropleft">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-toggle="dropdown"
-                                                                    aria-expanded="false">
-                                                                    Acciones <span class="fa fa-caret-down"></span>
+                                                                <button type="button" 
+                                                                class="btn btn-secondary" 
+                                                                data-toggle="dropdown" 
+                                                                aria-expanded="false">
+                                                                    <i class="fa fa-bars"></i>
                                                                 </button>
-                                                                <ul class="dropdown-menu" style="min-width: 300px;">
+
+                                                                <ul class="dropdown-menu desplegable" style="min-width: 300px;">
                                                                     <li>
                                                                         <asp:LinkButton
                                                                             ID="lbtnEditar"
