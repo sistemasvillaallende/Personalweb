@@ -384,6 +384,13 @@
 <script>
   (async () => {
     try {
+
+    // Cargar el CSS del header
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'http://10.0.0.24/header_back/header.css';
+      document.head.appendChild(link);
+
       // Cargar el HTML del header
       const response = await fetch('http://10.0.0.24/header_back/index.html');
       const htmlText = await response.text();
@@ -399,6 +406,7 @@
     }
   })();
 </script>
+
 <!-- FINAL HEADER  -->
 </body>
 </html>
