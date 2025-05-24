@@ -62,12 +62,12 @@ namespace web.MP
             RestResponse response = client.Execute(request);
             usuario =
                 JsonConvert.DeserializeObject<UsuarioLoginCIDI>(response.Content);
-            liApellido.InnerHtml = usuario.apellido;
-            liNombre.InnerHtml = usuario.nombre;
-            mnuPcApellido.InnerHtml = usuario.apellido;
-            mnuPcCuit.InnerHtml = usuario.cuit;
-            mnuPcNivelCidi.InnerHtml = "2";
-            mnuPcNombre.InnerHtml = usuario.nombre;
+            //liApellido.InnerHtml = usuario.apellido;
+            //liNombre.InnerHtml = usuario.nombre;
+            //mnuPcApellido.InnerHtml = usuario.apellido;
+            //mnuPcCuit.InnerHtml = usuario.cuit;
+            //mnuPcNivelCidi.InnerHtml = "2";
+            //mnuPcNombre.InnerHtml = usuario.nombre;
 
 
 
