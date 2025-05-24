@@ -149,7 +149,7 @@ namespace DAL
                     cmd.Parameters["@cod_categoria"].Value = item.cod_categoria;
                     cmd.Parameters["@sueldo_basico"].Value = item.sueldo_basico;
                     cmd.Parameters["@cod_clasif_per"].Value = item.cod_clasif_per;
-                    cmd.Parameters["@tarea"].Value = item.tarea.Substring(0, 50);
+                    cmd.Parameters["@tarea"].Value = Truncar(item.tarea, 80);                    
                     cmd.Parameters["@cod_cargo"].Value = item.cod_cargo;
                     cmd.Parameters["@nro_cta_sb"].Value = item.nro_cta_sb;
                     cmd.ExecuteNonQuery();
@@ -160,8 +160,14 @@ namespace DAL
 
                 throw ex;
             }
+        }
+        private static string Truncar(string texto, int maxLength)
+        {
+            if (string.IsNullOrWhiteSpace(texto))
+                return "";
 
-
+            texto = texto.Trim();
+            return texto.Length > maxLength ? texto.Substring(0, maxLength) : texto;
         }
 
 
