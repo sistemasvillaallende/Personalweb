@@ -562,19 +562,22 @@
                 TargetControlID="Button2"
                 ID="lbtnmodalTraspasoExtender">
             </ajaxToolkit:ModalPopupExtender>
-            <div class="modal-dialog" id="modalDatosTraspaso" runat="server" style="background-color: white; padding: 20px;">
+            <div class="modal-dialog shadow-lg" id="modalDatosTraspaso" runat="server" style="background-color: white; max-width: 700;">
                 <div class="modal-content">
                     <div class="modal-header">
+                        
+                        <h4 class="modal-title">
+                            <asp:Label ID="lblTraspaso" runat="server" Text="Label"></asp:Label>
+                        </h4>
                         <button type="button"
                             runat="server"
                             id="btnCloseTraspaso"
                             onserverclick="btnCloseTraspaso_ServerClick"
                             class="close" data-dismiss="modal"
                             aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
-                        <h4 class="modal-title">
-                            <asp:Label ID="lblTraspaso" runat="server" Text="Label"></asp:Label>
-                        </h4>
+                            <span aria-hidden="true">×</span>
+                        </button>
+
                     </div>
                     <div class="modal-body" id="activity_traspaso" style="min-height: 320px;">
                         <div class="row">
@@ -592,7 +595,7 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label>Liquidacion Actual</label>
+                                 <label>Liquidacion Actual</label>
                                 <asp:TextBox ID="txtLiquidacion" CssClass="form-control" runat="server"></asp:TextBox>
                             </div>
                         </div>
