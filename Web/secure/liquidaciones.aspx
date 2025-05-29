@@ -679,19 +679,22 @@
                 TargetControlID="Button7"
                 ID="lbtnmodalAsistenciaExtender">
             </ajaxToolkit:ModalPopupExtender>
-            <div class="modal-dialog" id="modalAsistenciaPuntualidad" runat="server" style="background-color: white; padding: 20px;">
+            <div class="modal-dialog shadow-lg" id="modalAsistenciaPuntualidad" runat="server" style="background-color: white;">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button"
+                       
+                        <h4 class="modal-title">
+                            <asp:Label ID="lblTitulo_asistencia" runat="server" Text="Label"></asp:Label>
+                        </h4>
+                         <button type="button"
                             runat="server"
                             id="btnCloseAsistenciaPuntualidad"
                             onserverclick="btnCloseAsistenciaPuntualidad_ServerClick"
                             class="close" data-dismiss="modal"
                             aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
-                        <h4 class="modal-title">
-                            <asp:Label ID="lblTitulo_asistencia" runat="server" Text="Label"></asp:Label>
-                        </h4>
+                            <span aria-hidden="true">×</span>
+                        </button>
+
                     </div>
                     <div class="modal-body" id="activity_asistencia" style="min-height: 320px;">
                         <div class="row">
@@ -715,7 +718,7 @@
                                         placeholder="Ingrese Año de Liq" runat="server"></asp:TextBox>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label>Tipo Liquidacion</label>
+                                    <label>Tipo Liquid.</label>
                                     <asp:DropDownList ID="ddlTipo_liq_2" runat="server" CssClass="form-control" AppendDataBoundItems="true"
                                         AutoPostBack="true" OnSelectedIndexChanged="ddlTipo_liq_2_SelectedIndexChanged">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar</asp:ListItem>
@@ -738,40 +741,35 @@
                                     <asp:TextBox ID="txtPeriodo_2" CssClass="form-control" runat="server"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label>Asistencia</label>
-                                    <div class="input-group">
-                                        <asp:CheckBox ID="chkAsistencia" CssClass="form-control" runat="server" />
+                            <div class="row pl-3">
+                                <div class="form-group col-md-5">
+                                    <div class="d-flex align-items-center">
+                                    <asp:CheckBox ID="chkAsistencia" CssClass="form-check-input me-2" runat="server" />
+                                    <label class="form-check-label mb-0 flex-grow-1">Asistencia</label>
                                     </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label>Puntualidad</label>
-                                    <div class="input-group">
-                                        <asp:CheckBox ID="chkPuntualidad" CssClass="form-control" runat="server" />
+                                <div class="form-group col-md-5">
+                                    <div class="d-flex align-items-center">
+                                    <asp:CheckBox ID="chkPuntualidad" CssClass="form-check-input me-2" runat="server" />
+                                    <label class="form-check-label mb-0 flex-grow-1">Puntualidad</label>
                                     </div>
                                 </div>
-                                <%--<div class="form-group col-md-4">
-                                    &nbsp;
-                                </div>--%>
                             </div>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label>Dias Trabajados(30)</label>
-                                    <div class="input-group">
-                                        <asp:CheckBox ID="chkDias" CssClass="form-control" runat="server" />
+
+                                <div class="row pl-3 mt-2">
+                                    <div class="form-group col-md-5 ml-1">
+                                        <div class="d-flex align-items-center">
+                                        <asp:CheckBox ID="chkDias" CssClass="form-check-input me-2" runat="server" />
+                                        <label class="form-check-label mb-0 flex-grow-1">Días Trabajados (30)</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-5 ml-1">
+                                        <div class="d-flex align-items-center">
+                                        <asp:CheckBox ID="chkDiasAguinaldo" CssClass="form-check-input me-2" runat="server" />
+                                        <label class="form-check-label mb-0 flex-grow-1">Días Aguinaldo (180)</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label>Dias Aguinaldo(180)</label>
-                                    <div class="input-group">
-                                        <asp:CheckBox ID="chkDiasAguinaldo" CssClass="form-control" runat="server" />
-                                    </div>
-                                </div>
-                                <%--<div class="form-group col-md-4">
-                                    &nbsp;
-                                </div>--%>
-                            </div>
                         </div>
                     </div>
 
@@ -796,19 +794,22 @@
                 TargetControlID="Button3"
                 ID="lbtnmodalPublicarExtender">
             </ajaxToolkit:ModalPopupExtender>
-            <div class="modal-dialog" id="divModalPublicar" runat="server" style="background-color: white; padding: 20px;">
+            <div class="modal-dialog shadow-lg" id="divModalPublicar" runat="server" style="background-color: white;">
                 <div class="modal-content">
                     <div class="modal-header">
+                        
+                        <h4 class="modal-title">
+                            <asp:Label ID="lblTitulo_publicar" runat="server" Text="Label"></asp:Label>
+                        </h4>
                         <button type="button"
                             runat="server"
                             id="btnClosePublicar"
                             onserverclick="btnClosePublicar_ServerClick"
                             class="close" data-dismiss="modal"
                             aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
-                        <h4 class="modal-title">
-                            <asp:Label ID="lblTitulo_publicar" runat="server" Text="Label"></asp:Label>
-                        </h4>
+                            <span aria-hidden="true">×</span>
+                        </button>
+
                     </div>
                     <div class="modal-body" id="activity_publicar_liq" style="min-height: 320px;">
                         <div class="row">
@@ -875,11 +876,11 @@
                                     </asp:RequiredFieldValidator>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row pl-4">
                                 <div class="form-group col-md-6">
-                                    <label>Publicar Liquidación</label>
-                                    <div class="input-group">
-                                        <asp:CheckBox ID="chkPublicar_liquidacion" CssClass="form-control" runat="server" />
+                                    <div class="d-flex align-items-center">
+                                        <asp:CheckBox ID="chkPublicar_liquidacion" runat="server" CssClass="form-check-input me-2" />
+                                        <label class="form-check-label flex-grow-1 mb-0">Publicar Liquidación</label>
                                     </div>
                                 </div>
                             </div>
@@ -908,46 +909,58 @@
             <asp:HiddenField ID="HFNro_liquidacion1" runat="server" />
         </ContentTemplate>
     </asp:UpdatePanel>
+
     <!-- /.content -->
     <div class="modal fade in" id="modalCerrarliquidacion">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">Cerrar Liquidación</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Fecha Cierre Liq</label>
-                        <asp:TextBox ID="txtFecha_cierre"
-                            CssClass="form-control" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator11"
-                            ForeColor="Red"
-                            ControlToValidate="txtFecha_cierre"
-                            ValidationGroup="NCF"
-                            runat="server" ErrorMessage="Ingrese la Fecha">
-                        </asp:RequiredFieldValidator>
-                    </div>
-                    <div class="form-group">
-                        <label>Cerrar Liq.</label>
-                        <asp:CheckBox ID="chkCerrada" CssClass="form-control" runat="server" />
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                    <asp:Button ID="btnCierrarLiq"
-                        OnClick="btnCierrarLiq_Click"
-                        CssClass="btn btn-primary"
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <h4 class="modal-title">Cerrar Liquidación</h4>
+                <button 
+                    type="button" 
+                    class="close" 
+                    data-dismiss="modal" 
+                    aria-label="Close"
+                    onserverclick="btnClosePublicar_ServerClick">
+                    <span aria-hidden="true">×</span>
+                </button>
+                
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Fecha Cierre Liq</label>
+                    <asp:TextBox ID="txtFecha_cierre"
+                        CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11"
+                        ForeColor="Red"
+                        ControlToValidate="txtFecha_cierre"
                         ValidationGroup="NCF"
-                        runat="server" Text="Aceptar" />
+                        runat="server" ErrorMessage="Ingrese la Fecha">
+                    </asp:RequiredFieldValidator>
+                </div>
 
+                <div class="row pl-4">
+                    <div class="form-group col-md-6">
+                    <div class="d-flex align-items-center">
+                        <asp:CheckBox ID="chkCerrada" CssClass="form-check-input me-2" runat="server" />
+                        <label class="form-check-label mb-0 flex-grow-1 ml-2">Cerrar Liq.</label>
+                    </div>
+                </div>
                 </div>
             </div>
-            <!-- /.modal-content -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                <asp:Button ID="btnCierrarLiq"
+                    OnClick="btnCierrarLiq_Click"
+                    CssClass="btn btn-primary"
+                    ValidationGroup="NCF"
+                    runat="server" Text="Aceptar" />
+            </div>
         </div>
     </div>
+</div>
+
     <!-- /.modal-dialog -->
     <script>              
         function abrirModalCerrarLiquidacion(anio, cod_tipo_liq, nro_liquidacion) {
