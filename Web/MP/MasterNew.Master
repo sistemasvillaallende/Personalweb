@@ -131,7 +131,7 @@
                     style="text-align: left; position: fixed; width: 100%; z-index: 5000; background-color: white;">
                      
                      <!-- COLOCAR DONDE DEBE APARECER EL HEADER -->
-                     <div id="remote-header"></div>
+                                     <div id="remote-header"></div>
                      <!-- FINAL DONDE DEBE APARECER EL HEADER -->
                     
                 </header>
@@ -202,7 +202,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="../GraficoEvaluaciones/WebForm1.aspx"
+                                                    <a href="../GraficoEvaluaciones/WebForm1.aspx?idFicha=7"
                                                        runat="server" id="aEval" class="a-menu">
                                                         <i class="fa fa-tachometer"></i>
                                                         <span>Informe General</span>
