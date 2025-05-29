@@ -390,7 +390,7 @@
                 TargetControlID="Button1"
                 ID="lbtnNuevo_ModalPopupExtender">
             </ajaxToolkit:ModalPopupExtender>
-            <div class="modal-dialog" id="modalDatosLiquidacion" runat="server" style="max-width: 700px;">
+            <div class="modal-dialog shadow-lg" id="modalDatosLiquidacion" runat="server" style="max-width: 700px;">
                 <div class="modal-content">
                     <div class="modal-header">
 
