@@ -72,10 +72,9 @@ namespace DAL
         public int id_revista { get; set; }
         public DateTime fecha_revista { get; set; }
         public bool activo { get; set; }
-        public int licenciagenerada { get; set; }
-        public int licenciadisponible { get; set; }
-        public int licenciausadas { get; set; }
-        public int razonesparticulares { get; set; }
+        
+        public int? id_profesional_monotributo { get; set; }
+        public int? id_tarea { get; set; }
 
         public string SECRETARIA { get; set; }
         public string DIRECCION { get; set; }
@@ -147,10 +146,8 @@ namespace DAL
             id_revista = 0;
             fecha_revista = DateTime.Now;
             activo = false;
-            licenciagenerada = 0;
-            licenciadisponible = 0;
-            licenciausadas = 0;
-            razonesparticulares = 0;
+            id_profesional_monotributo = 0;
+            id_tarea = 0;
         }
 
         private static List<Empleados> mapeo(SqlDataReader dr)
@@ -222,10 +219,9 @@ namespace DAL
                 int id_revista = dr.GetOrdinal("id_revista");
                 int fecha_revista = dr.GetOrdinal("fecha_revista");
                 int activo = dr.GetOrdinal("activo");
-                int licenciagenerada = dr.GetOrdinal("licenciagenerada");
-                int licenciadisponible = dr.GetOrdinal("licenciadisponible");
-                int licenciausadas = dr.GetOrdinal("licenciausadas");
-                int razonesparticulares = dr.GetOrdinal("razonesparticulares");
+                int id_profesional_monotributo = dr.GetOrdinal("id_profesional_monotributo");
+                int id_tarea = dr.GetOrdinal("id_tarea");
+
                 while (dr.Read())
                 {
                     obj = new Empleados();
@@ -292,10 +288,10 @@ namespace DAL
                     if (!dr.IsDBNull(id_revista)) { obj.id_revista = dr.GetInt32(id_revista); }
                     if (!dr.IsDBNull(fecha_revista)) { obj.fecha_revista = dr.GetDateTime(fecha_revista); }
                     if (!dr.IsDBNull(activo)) { obj.activo = dr.GetBoolean(activo); }
-                    if (!dr.IsDBNull(licenciagenerada)) { obj.licenciagenerada = dr.GetInt32(licenciagenerada); }
-                    if (!dr.IsDBNull(licenciadisponible)) { obj.licenciadisponible = dr.GetInt32(licenciadisponible); }
-                    if (!dr.IsDBNull(licenciausadas)) { obj.licenciausadas = dr.GetInt32(licenciausadas); }
-                    if (!dr.IsDBNull(razonesparticulares)) { obj.razonesparticulares = dr.GetInt32(razonesparticulares); }
+                    if (!dr.IsDBNull(id_profesional_monotributo)) { obj.id_profesional_monotributo = dr.GetInt32(id_profesional_monotributo); }
+                    if (!dr.IsDBNull(id_tarea)) { obj.id_tarea = dr.GetInt32(id_tarea); }
+
+
                     lst.Add(obj);
                 }
             }
@@ -311,7 +307,7 @@ namespace DAL
                 {
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "SELECT *FROM Empleados";
+                    cmd.CommandText = "SELECT * FROM Empleados";
                     cmd.Connection.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
                     lst = mapeo(dr);

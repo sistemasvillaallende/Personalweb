@@ -110,11 +110,11 @@
                 <div class="row" style="margin-top: 10px;">
                     <div class="col-md-12 col-md-offset-0">
                         <div class="box-body">
-                            <div class="row">
+                            <%--<div class="row">
                                 <div class="col-md-4">
                                 </div>
                                 <div class="col-md-8" style="text-align: right;">
-                                    <asp:LinkButton ID="lbtnNuevo" CssClass="btn btn-outline-primary" runat="server" OnClick="cmdNuevo_Click">
+                                    <asp:LinkButton ID="lbtnNuevo" CssClass="btn-control secondary" runat="server" OnClick="cmdNuevo_Click">
                                                         <i class="fa fa-user"></i>&nbsp; Nuevo
                                     </asp:LinkButton>
                                     <asp:LinkButton ID="lbtnRecibos" CssClass="btn btn-outline-primary" runat="server" OnClick="cmdRecibos_Click">
@@ -123,13 +123,22 @@
                                     <asp:LinkButton ID="lbtnReportes" CssClass="btn btn-outline-primary" runat="server" OnClick="btnReportes_Click">
                                                         <i class="fa fa-print"></i>&nbsp; Reportes
                                     </asp:LinkButton>
-                                    <asp:LinkButton ID="lbtnSalir" CssClass="btn btn-outline-primary" runat="server" OnClick="cmdSalir_Click">
+                                    <asp:LinkButton ID="lbtnSalir" CssClass="btn-control volver" runat="server" OnClick="cmdSalir_Click">
                                                         <i class="fa fa-sign-out"></i>&nbsp; Salir
                                     </asp:LinkButton>
-
+                                </div>
+                            </div>--%>
+                            <div class="row" style="margin-top: 10px;">
+                                <div class="col-md-9">
+                                    <h3 class="box-title" style="font-size: 24px; color: var(--secondary);"></h3>
+                                </div>
+                                <div class="col-md-3" style="text-align: right;">
+                                    <asp:LinkButton ID="lbtnNuevo" CssClass="btn-control secondary" runat="server" OnClick="cmdNuevo_Click">
+                                                        <span class="fa fa-plus"></span>&nbsp; Agregar Empleado
+                                    </asp:LinkButton>
                                 </div>
                             </div>
-                            <div class="row" style="display: none;">
+                            <%--<div class="row" style="display: none;">
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label style="font-size: 16px; color: gray; margin-bottom: 5px;">
@@ -157,7 +166,7 @@
                                 </div>
                                 <div class="col-md-6">
                                 </div>
-                            </div>
+                            </div>--%>
                         </div>
                     </div>
                     <!-- ////////////////////////////// GRILLA DETALLE /////////////////////////////////////// -->
@@ -297,7 +306,6 @@
                                 &nbsp;
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

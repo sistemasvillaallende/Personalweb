@@ -17,22 +17,32 @@ namespace web.secure
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.operacion = this.Request.QueryString["op"] == null ? "" : Convert.ToString(this.Request.QueryString["op"]);
-            this.legajo = (int)Convert.ToInt16(this.Request.QueryString["legajo"]);
-            if (!this.Page.IsPostBack)
+            operacion = this.Request.QueryString["op"] == null ? "" : Convert.ToString(this.Request.QueryString["op"]);
+            legajo = (int)Convert.ToInt16(this.Request.QueryString["legajo"]);
+
+            if (!Page.IsPostBack)
             {
+                hiddenLegajo.Value = legajo.ToString();
+                hiddenNombre.Value = Request.QueryString["nombre"];
+                hiddenOperacion.Value = operacion;
+                ArmoIframe(legajo.ToString(),
+                    hiddenNombre.Value,
+                    hiddenOperacion.Value);
+
                 this.CargarCombos();
                 this.AsignarDatos(EmpleadoB.GetByPkTodos(this.legajo));
-
                 string selectedCase = ddClasificacion_personal.SelectedValue;
-
                 if (selectedCase == "6")
                 {
-                    ddCategoriaProfesional.Visible = true;
+                    //ddCategoriaProfesional.Visible = true;
+                    ddCategoriaProfesional.Attributes.Add("style", "display:show;");
+                    lblCategora_profesional.Attributes.Add("style", "display:show;");
                 }
                 else
                 {
-                    ddCategoriaProfesional.Visible = false;
+                    //ddCategoriaProfesional.Visible = false;
+                    ddCategoriaProfesional.Attributes.Add("style", "display:none;");
+                    lblCategora_profesional.Attributes.Add("style", "display:none;");
                 }
             }
             string str = this.Request.Params["__EVENTARGUMENT"];
@@ -46,6 +56,14 @@ namespace web.secure
                 this.txtNombre.Focus();
         }
 
+        private void ArmoIframe(string legajo, string nombre, string op)
+        {
+            //legajo = "26";
+            //nombre = "CASOR, CARLOS DANIEL";
+            //op = "nuevo";
+            string url = $"concepto_emp.aspx?legajo={legajo}&nombre={Server.UrlEncode(nombre)}&op={op}";
+            iframecptos.Text = $"<iframe id='iframeConceptos' style='width:100%; height:1200px;' src='{url}'></iframe>";
+        }
         protected void CargarCombos()
         {
             this.ddRevista.DataTextField = "descripcion";
@@ -124,6 +142,10 @@ namespace web.secure
             this.ddCategoriaProfesional.DataValueField = "id_profesional_monotributo";
             this.ddCategoriaProfesional.DataSource = (object)ConsultaEmpleadoB.ListCategoriaProfesional();
             this.ddCategoriaProfesional.DataBind();
+            ddTarea.DataTextField = "tarea";
+            ddTarea.DataValueField = "id_tarea";
+            ddTarea.DataSource = ConsultaEmpleadoB.ListTareas();
+            ddTarea.DataBind();
         }
 
         protected void ddSecretaria_SelectedIndexChanged(object sender, EventArgs e)
@@ -185,7 +207,9 @@ namespace web.secure
                 this.txtEmail.Text = objEmpleado.email;
                 this.ddEstadoCivil.SelectedValue = Convert.ToString(objEmpleado.cod_estado_civil);
                 this.ddSexo.SelectedValue = Convert.ToString(objEmpleado.sexo);
-                this.txtTarea.Text = objEmpleado.tarea;
+                //this.txtTarea.Text = objEmpleado.tarea;
+                ddTarea.SelectedValue = Convert.ToString(objEmpleado.id_tarea);
+                //
                 this.ddSeccion.SelectedValue = Convert.ToString(objEmpleado.cod_seccion);
                 this.ddCategoria.SelectedValue = Convert.ToString(objEmpleado.cod_categoria);
                 this.ddCargo.SelectedValue = Convert.ToString(objEmpleado.cod_cargo);
@@ -254,7 +278,10 @@ namespace web.secure
             oEmp.cod_tipo_documento = Convert.ToInt32(this.ddTipoDNI.SelectedValue);
             oEmp.nro_documento = this.txtNro_documento.Text;
             oEmp.cuil = this.txtCuil.Text;
-            oEmp.tarea = this.txtTarea.Text;
+
+            oEmp.tarea = Convert.ToString(ddTarea.SelectedItem);
+            oEmp.id_tarea = Convert.ToInt32(ddTarea.SelectedValue);
+
             oEmp.cod_cargo = Convert.ToInt32(this.ddCargo.SelectedValue);
             oEmp.cod_seccion = Convert.ToInt32(this.ddSeccion.SelectedValue);
             oEmp.cod_categoria = Convert.ToInt32(this.ddCategoria.SelectedValue);
@@ -299,7 +326,10 @@ namespace web.secure
             oEmp.cod_tipo_documento = Convert.ToInt32(this.ddTipoDNI.SelectedValue);
             oEmp.nro_documento = this.txtNro_documento.Text;
             oEmp.cuil = this.txtCuil.Text;
-            oEmp.tarea = this.txtTarea.Text;
+
+            oEmp.tarea = Convert.ToString(ddTarea.SelectedItem);
+            oEmp.id_tarea = Convert.ToInt32(ddTarea.SelectedValue);
+
             oEmp.cod_cargo = Convert.ToInt32(this.ddCargo.SelectedValue);
             oEmp.cod_seccion = Convert.ToInt32(this.ddSeccion.SelectedValue);
             oEmp.cod_categoria = Convert.ToInt32(this.ddCategoria.SelectedValue);
@@ -481,17 +511,20 @@ namespace web.secure
 
         protected void cmdConceptos_ServerClick(object sender, EventArgs e)
         {
-            this.Response.Redirect(string.Format("../secure/concepto_emp.aspx?legajo={0}&nombre={1}&op={2}", (object)this.txtLegajo.Text, (object)this.txtNombre.Text, (object)this.operacion));
+            this.Response.Redirect(string.Format("../secure/concepto_emp.aspx?legajo={0}&nombre={1}&op={2}",
+                (object)this.txtLegajo.Text, (object)this.txtNombre.Text, (object)this.operacion));
         }
 
         protected void cmdCertificaciones_ServerClick(object sender, EventArgs e)
         {
-            this.Response.Redirect(string.Format("../secure/certificaciones.aspx?legajo={0}&nombre={1}&op={2}", (object)this.txtLegajo.Text, (object)this.txtNombre.Text, (object)this.operacion));
+            this.Response.Redirect(string.Format("../secure/certificaciones.aspx?legajo={0}&nombre={1}&op={2}",
+                (object)this.txtLegajo.Text, (object)this.txtNombre.Text, (object)this.operacion));
         }
 
         protected void cmdConsLegajo_ServerClick(object sender, EventArgs e)
         {
-            this.Response.Redirect(string.Format("../secure/historial_emp.aspx?legajo={0}&nombre={1}&op={2}", (object)this.txtLegajo.Text, (object)this.txtNombre.Text, (object)this.operacion));
+            this.Response.Redirect(string.Format("../secure/historial_emp.aspx?legajo={0}&nombre={1}&op={2}",
+                (object)this.txtLegajo.Text, (object)this.txtNombre.Text, (object)this.operacion));
         }
 
         protected void cmdMovimEmpleados_ServerClick(object sender, EventArgs e)
@@ -529,24 +562,30 @@ namespace web.secure
             this.Response.Redirect("../secure/familiares.aspx");
         }
 
+        //protected void ddClasificacion_personal_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    string selectedCase = ddClasificacion_personal.SelectedValue;
 
-        protected void ddClasificacion_personal_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedCase = ddClasificacion_personal.SelectedValue;
-
-            if (selectedCase == "6") // Monotributo
-            {
-                ddCategoriaProfesional.Visible = true;
-                lblCategoriaProfesional.Visible = true;
-            }
-            else
-            {
-                ddCategoriaProfesional.Visible = false;
-                lblCategoriaProfesional.Visible = false;
-            }
-        }
-
-
+        //    if (selectedCase == "6") // Monotributo
+        //    {
+        //        ddCategoriaProfesional.Attributes.Add("style", "display:show;");
+        //        lblCategora_profesional.Attributes.Add("style", "display:show;");
+        //    }
+        //    else
+        //    {
+        //        ddCategoriaProfesional.Attributes.Add("style", "display:none;");
+        //        lblCategora_profesional.Attributes.Add("style", "display:none;");
+        //    }
+        //    //{
+        //    //    ddCategoriaProfesional.Visible = true;
+        //    //    lblCategoriaProfesional.Visible = true;
+        //    //}
+        //    //else
+        //    //{
+        //    //    ddCategoriaProfesional.Visible = false;
+        //    //    lblCategoriaProfesional.Visible = false;
+        //    //}
+        //}
 
     }
 }

@@ -138,12 +138,9 @@ namespace DAL
                         int id_programa = dr.GetOrdinal("id_programa");
                         int id_revista = dr.GetOrdinal("id_revista");
                         int fecha_revista = dr.GetOrdinal("fecha_revista");
-                        int activo = dr.GetOrdinal("activo");
-                        int licenciagenerada = dr.GetOrdinal("licenciagenerada");
-                        int licenciadisponible = dr.GetOrdinal("licenciadisponible");
-                        int licenciausadas = dr.GetOrdinal("licenciausadas");
-                        int razonesparticulares = dr.GetOrdinal("razonesparticulares");
+                        int activo = dr.GetOrdinal("activo");                       
                         int id_profesional_monotributo = dr.GetOrdinal("id_profesional_monotributo");
+                        int id_tarea = dr.GetOrdinal("id_tarea");
 
                         // falta aca
                         while (dr.Read())
@@ -210,10 +207,8 @@ namespace DAL
                             if (!dr.IsDBNull(id_revista)) { obj.id_revista = dr.GetInt32(id_revista); }
                             if (!dr.IsDBNull(fecha_revista)) { obj.fecha_revista = dr.GetDateTime(fecha_revista).ToString(); }
                             if (!dr.IsDBNull(activo)) { obj.activo = dr.GetBoolean(activo); }
-                            if (!dr.IsDBNull(licenciagenerada)) { obj.licenciagenerada = dr.GetInt32(licenciagenerada); }
-                            if (!dr.IsDBNull(licenciadisponible)) { obj.licenciadisponible = dr.GetInt32(licenciadisponible); }
-                            if (!dr.IsDBNull(licenciausadas)) { obj.licenciausadas = dr.GetInt32(licenciausadas); }
-                            if (!dr.IsDBNull(razonesparticulares)) { obj.razonesparticulares = dr.GetInt32(razonesparticulares); }
+                            if (!dr.IsDBNull(id_profesional_monotributo)) { obj.id_profesional_monotributo = dr.GetInt32(id_profesional_monotributo); }
+                            if (!dr.IsDBNull(id_tarea)) { obj.id_tarea = dr.GetInt32(id_tarea); }
                             lst.Add(obj);
                         }
                         dr.Close();

@@ -53,10 +53,7 @@
                 padding: 5px 10px 5px 10px;
             }
     </style>
-
-
-
-    <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" />-->
+<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" />-->
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="uPanelCliente" UpdateMode="Conditional" runat="server">

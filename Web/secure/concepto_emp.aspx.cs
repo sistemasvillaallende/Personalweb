@@ -20,9 +20,9 @@ namespace web.secure
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            operacion = Convert.ToString(Request.QueryString["op"]);
             legajo = Convert.ToInt16(Request.QueryString["legajo"]);
             nombre = Convert.ToString(Request.QueryString["nombre"]);
+            operacion = Convert.ToString(Request.QueryString["op"]);
 
             if (!Page.IsPostBack)
             {

@@ -86,11 +86,11 @@
                                                                             <i class="fa fa-download"></i>&nbsp;Exportar
                                                                             Excel
                                                     </asp:LinkButton>
-                                                    <asp:LinkButton ID="lbtnSalir"
+                                                    <%--<asp:LinkButton ID="lbtnSalir"
                                                         CssClass="btn-control volver" runat="server"
                                                         OnClick="lbtnSalir_Click">
                                                                             <i class="fa fa-sign-out"></i>&nbsp;Salir
-                                                    </asp:LinkButton>
+                                                    </asp:LinkButton>--%>
                                                 </div>
                                             </div>
                                         </div>

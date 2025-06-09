@@ -15,7 +15,7 @@
 
     <form id="form1" runat="server">
         <asp:ScriptManager runat="server"></asp:ScriptManager>
-        <div class="row">
+        <div class="row" style="margin-top: 100px; padding-top: 100px">
             <div class="col-md-12">
                 <asp:UpdatePanel ID="PanelInfomacion" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
@@ -217,10 +217,10 @@
                         OnClick="lbtnExporCtaCte_Click">
                                         <i class="fa fa-plus"></i> Excel
                     </asp:LinkButton>
-                    <asp:LinkButton ID="lbtnSalir" CssClass="btn-control volver" runat="server"
+                    <%--<asp:LinkButton ID="lbtnSalir" CssClass="btn-control volver" runat="server"
                         OnClick="lbtnSalir_Click">
                                         <i class="fa fa-sign-out"></i> Volver
-                    </asp:LinkButton>
+                    </asp:LinkButton>--%>
                 </div>
             </div>
         </div>

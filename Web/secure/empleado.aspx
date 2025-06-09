@@ -26,7 +26,7 @@
             }
 
         .dropdown-arrow {
-            appearance: none;
+            /*appearance: none;*/
             -webkit-appearance: none;
             -moz-appearance: none;
             background: url('data:image/svg+xml;utf8,<svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z" fill="gray"/></svg>') no-repeat right center;
@@ -38,13 +38,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <%--<div class="row">
-                <div class="col-md-4" style="padding-top: 20px;">
-                    <div>
-                        <h4 runat="server">Gestión Empleados</h4>
-                    </div>
-                </div>
-                </div>--%>
+
+    <asp:HiddenField ID="hiddenLegajo" runat="server" />
+    <asp:HiddenField ID="hiddenNombre" runat="server" />
+    <asp:HiddenField ID="hiddenOperacion" runat="server" />
+
     <div class="row">
         <div class="col-md-12" style="text-align: right; margin-bottom: 20px;">
             <div class="btn-group" style="padding-bottom: 20px;">
@@ -52,10 +50,10 @@
                     onserverclick="cmdMovimEmpleados_ServerClick">
                     <span class="glyphicon glyphicon-transfer"></span>&nbsp;Movimientos
                 </button>
-                <button type="button" class="btn btn-outline-dark" id="cmdConceptos" runat="server"
+                <%--<button type="button" class="btn btn-outline-dark" id="cmdConceptos" runat="server"
                     onserverclick="cmdConceptos_ServerClick">
                     <span class="glyphicon glyphicon-unchecked"></span>&nbsp;Conceptos
-                </button>
+                </button>--%>
                 <button type="button" class="btn btn-outline-dark" id="cmdConsLegajo" runat="server"
                     onserverclick="cmdConsLegajo_ServerClick">
                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;Cons Legajo
@@ -304,12 +302,24 @@
                                     <label>
                                         Tarea
                                     </label>
-                                    <asp:TextBox ID="txtTarea" CssClass="form-control"
+                                    <%--<asp:TextBox ID="txtTarea" CssClass="form-control"
                                         runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5"
                                         runat="server" ControlToValidate="txtTarea"
                                         ErrorMessage="Debe Ingresar la Tarea" ForeColor="#FF3300"
                                         InitialValue="0" ValidationGroup="ValidationDatos_empleado"
+                                        Display="Dynamic">*</asp:RequiredFieldValidator>--%>
+                                    <asp:DropDownList ID="ddTarea"
+                                        CssClass="form-control dropdown-arrow" runat="server"
+                                        AppendDataBoundItems="True">
+                                        <asp:ListItem Selected="True" Value="0">Seleccionar
+                                        </asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5"
+                                        runat="server" ControlToValidate="ddTarea"
+                                        ErrorMessage="Debe Seleccionar la Tarea" ForeColor="#FF3300"
+                                        InitialValue="0" ValidateRequestMode="Enabled"
+                                        ValidationGroup="ValidationDatos_empleado"
                                         Display="Dynamic">*</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-md-3">
@@ -334,7 +344,6 @@
                                 <div class="col-md-3">
                                     <label>
                                         Seccion
-
                                     </label>
                                     <asp:DropDownList ID="ddSeccion"
                                         CssClass="form-control dropdown-arrow" runat="server"
@@ -368,8 +377,6 @@
                                         ValidationGroup="ValidationDatos_empleado"
                                         Display="Dynamic">*</asp:RequiredFieldValidator>
                                 </div>
-
-
                             </div>
                             <div class="row" style="margin-bottom: 25px;">
                                 <div class="col-md-4">
@@ -409,10 +416,11 @@
                                     <label>
                                         Clasificacion Personal
                                     </label>
+                                    <%--AutoPostBack="true"--%>
+                                    <%--OnSelectedIndexChanged="ddClasificacion_personal_SelectedIndexChanged"--%>
                                     <asp:DropDownList ID="ddClasificacion_personal"
                                         CssClass="form-control dropdown-arrow" runat="server"
-                                        AppendDataBoundItems="True" AutoPostBack="true"
-                                        OnSelectedIndexChanged="ddClasificacion_personal_SelectedIndexChanged">
+                                        AppendDataBoundItems="True">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar
                                         </asp:ListItem>
                                     </asp:DropDownList>
@@ -440,23 +448,43 @@
                                         ValidationGroup="ValidationDatos_empleado"
                                         Display="Dynamic">*</asp:RequiredFieldValidator>
                                 </div>
+                                <div class="col-md-4">
+                                    <%-- <asp:Label ID="lblCategoriaProfesional" runat="server"
+                                        Visible="false">
+                                        Categoria Profesional
+                                    </asp:Label>--%>
+                                    <label runat="server" id="lblCategora_profesional" style="display: none;">
+                                        Categoria Profesional Monot.
+                                    </label>
+                                    <asp:DropDownList ID="ddCategoriaProfesional"
+                                        CssClass="form-control dropdown-arrow" runat="server"
+                                        AppendDataBoundItems="True" Style="display: none;"
+                                        AutoPostBack="true">
+                                        <asp:ListItem Selected="True" Value="0">Seleccionar
+                                        </asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorCategoria"
+                                        runat="server" ControlToValidate="ddCategoriaProfesional"
+                                        ErrorMessage="Debe seleccionar una categoría"
+                                        ForeColor="#FF3300" InitialValue="0"
+                                        ValidationGroup="ValidationDatos_empleado"
+                                        Display="Dynamic">*</asp:RequiredFieldValidator>
+                                </div>
 
                             </div>
-                            <div class="row" style="margin-bottom: 25px;">
-                            </div>
+                            <%-- <div class="row" style="margin-bottom: 25px;">
+                            </div>--%>
                             <div class="row" style="margin-bottom: 25px;">
                                 <div class="col-md-6">
                                     <label>
                                         Regimen
                                     </label>
-
                                     <asp:DropDownList ID="ddRegimen"
                                         CssClass="form-control dropdown-arrow" runat="server"
                                         AppendDataBoundItems="True">
                                         <asp:ListItem Selected="True" Value="0">Seleccionar
                                         </asp:ListItem>
                                     </asp:DropDownList>
-
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator14"
                                         runat="server" ControlToValidate="ddRegimen"
                                         ErrorMessage="Debe Seleccionar Regimen!" ForeColor="#FF3300"
@@ -495,7 +523,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label>
-                                        Fecha de Revista
+                                        Fecha Revista
                                     </label>
                                     <asp:TextBox ID="txtFecha_revista" CssClass="form-control"
                                         runat="server" placeholder="Fecha de Revista"></asp:TextBox>
@@ -505,51 +533,45 @@
                                         ValidationGroup="ValidationDatos_empleado"
                                         Display="Dynamic">*</asp:RequiredFieldValidator>
                                 </div>
-                                <div class="col-md-4 ">
-                                    <asp:Label ID="lblCategoriaProfesional" runat="server"
-                                        Visible="false">
-                                                            Categoría Profesional Monotributo
-                                    </asp:Label>
-                                    <asp:DropDownList ID="ddCategoriaProfesional"
-                                        CssClass="form-control dropdown-arrow" runat="server"
-                                        AppendDataBoundItems="True" Visible="false"
-                                        AutoPostBack="true">
-                                        <asp:ListItem Selected="True" Value="0">Seleccionar
-                                        </asp:ListItem>
-                                    </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorCategoria"
-                                        runat="server" ControlToValidate="ddCategoriaProfesional"
-                                        ErrorMessage="Debe seleccionar una categoría"
-                                        ForeColor="#FF3300" InitialValue="0"
-                                        ValidationGroup="ValidationDatos_empleado"
-                                        Display="Dynamic">*</asp:RequiredFieldValidator>
-                                </div>
-
-                                <div class="col-md-4 pt-4">
-                                    <label>
-                                        <asp:CheckBox ID="ChkActivo" runat="server" />
-                                        <span class="ml-3">Activo?</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="row" style="margin-bottom: 25px;">
                                 <div class="col-md-4">
                                     <label>
                                         Fecha Baja
                                     </label>
-                                    <asp:TextBox ID="txtFecha_baja" CssClass="form-control"
-                                        runat="server" placeholder="Fecha de Baja"></asp:TextBox>
+                                    <asp:TextBox ID="txtFecha_baja" CssClass="form-control" runat="server"
+                                        placeholder="Fecha de Baja"></asp:TextBox>
                                 </div>
-                                <div class="col-md-8 mt-4">
-                                    <div class="form-group col-md-6">
-                                        <label>
-                                            <asp:CheckBox ID="chkImprime" runat="server" />
-                                            <span class="ml-3">Imprime Recibo?</spa>
-                                        </label>
+                            </div>
+                            <div class="row" style="margin-bottom: 25px;">
+                                <%--<div class="col-md-4 d-flex align-items-center">
+                                    <asp:CheckBox ID="ChkActivo" runat="server" CssClass="form-check-input me-2" />
+                                    <label class="form-check-label" for="ChkActivo">¿Activo?</label>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="txtFecha_baja" class="form-label me-2 mb-0">Fecha Baja</label>
+                                    <asp:TextBox ID="txtFecha_baja" CssClass="form-control" runat="server" placeholder="Fecha de Baja"></asp:TextBox>
+                                </div>
+
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <asp:CheckBox ID="chkImprime" runat="server" CssClass="form-check-input me-2" />
+                                    <label class="form-check-label" for="chkImprime">¿Imprime Recibo?</label>
+                                </div>--%>
+                                <div class="col-md-4">
+                                    <label>Activo?</label>
+                                    <div class="input-group">
+                                        <asp:CheckBox ID="ChkActivo" CssClass="form-check" runat="server" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    &nbsp;
+                                    <div class="form-group col-md-6">
+                                        <label>Imp.Recibo?</label>
+                                        <div class="input-group">
+                                            <asp:CheckBox ID="chkImprime" CssClass="form-check" runat="server" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    &nbsp;&nbsp; 
                                 </div>
                             </div>
                             <div class="row" style="margin-bottom: 25px;">
@@ -578,9 +600,6 @@
                                     </button>
                                 </div>
                             </div>
-                            <br />
-
-
                             <br />
                         </div>
                     </div>
@@ -895,13 +914,14 @@
                     </div>
                     <div class="tab-pane fade" id="tab_conceptos" role="tabpanel"
                         aria-labelledby="tab_conceptos-tab">
-                        <asp:UpdatePanel ID="UpdatePanel4" runat="server">
-                            <ContentTemplate>
-                                <div class="panel-body">
-                                    <iframe style="width:100%; height:1200px;" src="concepto_emp.aspx?legajo=26&nombre=CASOR,%20CARLOS%20DANIEL&op=modifica"></iframe>
-                                </div>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
+                        <%--<asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                            <ContentTemplate>--%>
+                        <div class="panel-body">
+                            <%--<iframe id="iframecptos" runat="server" style="width: 100%; height: 1200px;"></iframe>--%>
+                            <asp:Literal ID="iframecptos" runat="server" />
+                        </div>
+                        <%--</ContentTemplate>
+                        </asp:UpdatePanel>--%>
                     </div>
                     <div class="tab-pane fade" id="tab_Datos_Particulares" role="tabpanel"
                         aria-labelledby="tab_Datos_Particulares-tab">
@@ -1130,12 +1150,32 @@
                                 </div>
                             </ContentTemplate>
                         </asp:UpdatePanel>
-                    </div>                   
+                    </div>
 
                 </div>
             </div>
             <%--< /div>--%>
         </div>
     </div>
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#<%= ddClasificacion_personal.ClientID %>').change(function () {
+                var selectedValue = $(this).val();
+
+                if (selectedValue === "6") {
+                    $('#<%= ddCategoriaProfesional.ClientID %>').show();
+                    $('#<%= lblCategora_profesional.ClientID %>').show();
+                    $('#<%= chkImprime.ClientID %>').prop('checked', false);
+                } else {
+                    $('#<%= ddCategoriaProfesional.ClientID %>').hide();
+                    $('#<%= lblCategora_profesional.ClientID %>').hide();
+                    $('#<%= chkImprime.ClientID %>').prop('checked', true);
+                }
+            });
+        });
+    </script>
+
 
 </asp:Content>

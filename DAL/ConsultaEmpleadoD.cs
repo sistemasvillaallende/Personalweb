@@ -1177,8 +1177,8 @@ namespace DAL
                         if (!dr.IsDBNull(telefonos)) oEmp.telefonos = dr.GetString(telefonos);
                         if (!dr.IsDBNull(email)) oEmp.email = dr.GetString(email);
                         if (!dr.IsDBNull(passTemp)) oEmp.passTemp = dr.GetString(passTemp);
-                        if(estEvaluacion)
-                        if (!dr.IsDBNull(estadoEvaluacion)) oEmp.estadoEvaluacion = dr.GetString(estadoEvaluacion);
+                        if (estEvaluacion)
+                            if (!dr.IsDBNull(estadoEvaluacion)) oEmp.estadoEvaluacion = dr.GetString(estadoEvaluacion);
 
                         lst.Add(oEmp);
                     }
@@ -2194,8 +2194,6 @@ namespace DAL
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = strSQL.ToString();
                     cmd.Connection.Open();
-
-
                     adapter = new SqlDataAdapter(cmd);
                     adapter.SelectCommand = cmd;
                     adapter.Fill(ds);
@@ -2207,11 +2205,36 @@ namespace DAL
                     throw ex;
                 }
             }
-
         }
 
 
+        public static DataSet ListTareas()
+        {
+            string strSQL = "";
+            DataSet ds;
+            SqlDataAdapter adapter;
 
+            strSQL = "SELECT id_tarea, tarea FROM TAREA_EMPLEADOS";
+            using (SqlConnection conn = DALBase.GetConnection("Siimva"))
+            {
+                try
+                {
+                    ds = new DataSet();
+                    SqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = strSQL.ToString();
+                    cmd.Connection.Open();
+                    adapter = new SqlDataAdapter(cmd);
+                    adapter.SelectCommand = cmd;
+                    adapter.Fill(ds);
+                    return ds;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
 
 
 
