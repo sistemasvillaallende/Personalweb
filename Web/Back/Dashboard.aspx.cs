@@ -116,8 +116,7 @@ namespace web.secure
             {
                 if (!IsPostBack)
                 {
-                    HtmlAnchor mnuDashboard =
-(HtmlAnchor)Master.FindControl("mnuDashboard");
+                    HtmlAnchor mnuDashboard = (HtmlAnchor)Master.FindControl("mnuDashboard");
                     if (mnuDashboard != null)
                     {
                         mnuDashboard.Attributes.Remove("class");
@@ -137,8 +136,7 @@ namespace web.secure
                         gvCumple.HeaderRow.TableSection = TableRowSection.TableHeader;
                     }
 
-                    List <DAL.Ausencias> lstAusencias =
-                        DAL.Ausencias.read(DateTime.Now.Month,
+                    List <DAL.Ausencias> lstAusencias = DAL.Ausencias.read(DateTime.Now.Month,
                         DateTime.Now.Day, DateTime.Now.Year);
 
                     int licencias =
@@ -160,7 +158,7 @@ namespace web.secure
                             Li => Li.CON_DESCRIP.Contains("Razones")).Count();
 
                     List<DAL.Ausencias> lstRazones = lstAusencias.FindAll(
-        Li => Li.CON_DESCRIP.Contains("Razones"));
+                            Li => Li.CON_DESCRIP.Contains("Razones"));
 
                     gvRazones.DataSource = lstRazones;
                     gvRazones.DataBind();

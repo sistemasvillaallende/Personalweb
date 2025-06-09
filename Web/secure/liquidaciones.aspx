@@ -136,12 +136,12 @@
                                                                 OnClick="lbtnNuevo_Click">
                                                             <i class="fa fa-plus"></i> Nueva Liq.
                                                             </asp:LinkButton>
-                                                            <asp:LinkButton ID="lbtnSalir"
+                                                            <%--<asp:LinkButton ID="lbtnSalir"
                                                                 CssClass="btn-control volver"
                                                                 runat="server"
                                                                 OnClick="lbtnSalir_Click">
                                                             <i class="fa fa-sign-out"></i> Salir
-                                                            </asp:LinkButton>
+                                                            </asp:LinkButton>--%>
                                                         </div>
                                                     </div>
                                                 </div>

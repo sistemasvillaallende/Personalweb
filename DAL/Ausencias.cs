@@ -87,7 +87,7 @@ namespace DAL
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText =
-                        @"SELECT *FROM R_LAUSENC A
+                        @"SELECT * FROM R_LAUSENC A
                         INNER JOIN SIIMVA.dbo.EMPLEADOS B ON A.LEG_LEGAJO=B.legajo
                         WHERE YEAR(RES_FECHA)=@ejercicio AND 
                         MONTH(RES_FECHA)=@MES AND DAY(RES_FECHA)=@DIA

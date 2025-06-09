@@ -34,15 +34,15 @@ namespace web.reportes
                 case "CuentaporConceptos":
                     CuentaporConceptos();
                     break;
-                case "CuentaSueldoyGtos":
-                    CuentaSueldoyGtos();
+                case "CuentaSueldoyGastos":
+                    CuentaSueldoyGastos();
                     break;
                 default:
                     break;
             }
         }
 
-        private void CuentaSueldoyGtos()
+        private void CuentaSueldoyGastos()
         {
             List<Cuentas_Sueldo_Gto> lst = new List<Cuentas_Sueldo_Gto>();
             lst = web.reportes.Cuentas_Sueldo_Gto.read();

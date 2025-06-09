@@ -7031,6 +7031,7 @@
     <Content Include="impresiones\reporte_planilla_sueldos.aspx" />
     <Content Include="impresiones\reporte_resumen_cptos.aspx" />
     <Content Include="index.aspx" />
+    <Content Include="js\jquery-3.6.0.min.js" />
     <Content Include="js\jquery.dataTables.js" />
     <Content Include="js\MaxLength.min.js" />
     <Content Include="login.aspx" />

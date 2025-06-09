@@ -42,14 +42,13 @@ namespace web.MP
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            int ficha = DAL.Fichas.Fichas_Relevamientos.getUltimaFicha();
+            //int ficha = DAL.Fichas.Fichas_Relevamientos.getUltimaFicha();
+
             if (Request.Cookies["VABack.CIDI"] == null)
                 Response.Redirect("http://10.0.0.24/siimva/login.aspx");
 
             UsuarioLoginCIDI usuario = null;
-            string baseApi =
-                System.Configuration.ConfigurationManager.AppSettings["BaseApi"];
-
+            string baseApi = System.Configuration.ConfigurationManager.AppSettings["BaseApi"];
             var options = new RestClientOptions(baseApi)
             {
                 MaxTimeout = -1,
@@ -60,8 +59,8 @@ namespace web.MP
                 Request.Cookies["VABack.CIDI"]["SesionHash"], Method.Get));
 
             RestResponse response = client.Execute(request);
-            usuario =
-                JsonConvert.DeserializeObject<UsuarioLoginCIDI>(response.Content);
+            usuario = JsonConvert.DeserializeObject<UsuarioLoginCIDI>(response.Content);
+
             //liApellido.InnerHtml = usuario.apellido;
             //liNombre.InnerHtml = usuario.nombre;
             //mnuPcApellido.InnerHtml = usuario.apellido;

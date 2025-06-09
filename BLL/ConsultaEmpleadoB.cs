@@ -57,7 +57,8 @@ namespace BLL
             return DAL.ConsultaEmpleadoD.GetByNombre(nombre);
         }
 
-        public static List<Entities.LstEmpleados> GetEmpleadosByCategoria(int cod_categoria) {
+        public static List<Entities.LstEmpleados> GetEmpleadosByCategoria(int cod_categoria)
+        {
 
             return DAL.ConsultaEmpleadoD.GetEmpleadosByCategoria(cod_categoria);
         }
@@ -205,151 +206,16 @@ namespace BLL
             return DAL.ConsultaEmpleadoD.ListRevista(id);
         }
 
-         public static DataSet ListCategoriaProfesional()
+        public static DataSet ListCategoriaProfesional()
         {
             return DAL.ConsultaEmpleadoD.ListCategoriaProfesional();
         }
 
-        //public DataSet ListAsuntos()
-        //{
-        //  dsDatos = objExp.ListAsuntos();
-        //  o.TotalRows = objExp.TotalRows;
-        //  return dsDatos;
-        //}
+        public static DataSet ListTareas()
+        {
+            return DAL.ConsultaEmpleadoD.ListTareas();
+        }
 
-        //public DataSet ListAsuntos(int cod_tipo_tramite)
-        //{
-        //  dsDatos = objExp.ListAsuntos(cod_tipo_tramite);
-        //  o.TotalRows = objExp.TotalRows;
-        //  return dsDatos;
-        //}
-
-        //public DataSet ListAsuntos(int cod_tipo_tramite, string filtro, int Page, int RowsPerPage,
-        //  string OrderBy, string Order)
-        //{
-        //  dsDatos = objExp.ListAsuntos(cod_tipo_tramite, filtro, Page, RowsPerPage, OrderBy, Order);
-        //  o.TotalRows = objExp.TotalRows;
-        //  return dsDatos;
-        //}
-
-        //public string GetDescripcionAsunto(int cod_asunto)
-        //{
-        //  string descripcion = "";
-        //  descripcion = objExp.GetDescripcionAsunto(cod_asunto);
-        //  o.TotalRows = objExp.TotalRows;
-        //  return descripcion;
-        //}
-
-
-        //public string ListMovimientos_Expediente(int anio, long nro, int Page, int RowsPerPage)
-        //{
-        //  string strXML = "";
-        //  strXML = objExp.ListMovimientos_Expediente(anio, nro, Page, RowsPerPage);
-        //  o.TotalRows = objExp.TotalRows;
-        //  return strXML;
-        //}
-
-
-        //public string ListMovimientos_ExpedienteByUsuario(int Page, int RowsPerPage,
-        //  int id_oficina_usuario, string strFechas, string strFindBy,
-        //  string strInput, string OrderBy, string Order, bool verTodo)
-        //{
-        //  string strXML = "";
-        //  strXML = objExp.ListMovimientos_ExpedienteByUsuario(Page, RowsPerPage,
-        //    id_oficina_usuario, strFechas, strFindBy, strInput, OrderBy, Order, verTodo);
-        //  o.TotalRows = objExp.TotalRows;
-        //  return strXML;
-        //}
-
-
-        //public string ListAgregados_Expediente(int anio, long nro, int Page, int RowsPerPage)
-        //{
-        //  string strXML = "";
-        //  strXML = objExp.ListAgregados_Expediente(anio, nro, Page, RowsPerPage);
-        //  o.TotalRows = objExp.TotalRows;
-        //  return strXML;
-        //}
-
-
-
-        //public string OficinasList(int Page, int RowsPerPage)
-        //{
-        //  string strXML = "";
-        //  strXML = objExp.OficinasList(Page, RowsPerPage);
-        //  o.TotalRows = objExp.TotalRows;
-        //  return strXML;
-        //}
-
-        //public static object GetByfecha_ingreso(string fecha_ingreso, int id_oficina_origen, bool verTodo)
-        //{
-        //  throw new NotImplementedException();
-        //}
-
-        //public DataSet ListRelacion_Estados_Expediente(int cod_estado_expediente)
-        //{
-        //  dsDatos = objExp.ListRelacion_Estados_Expediente(cod_estado_expediente);
-        //  o.TotalRows = objExp.TotalRows;
-        //  return dsDatos;
-        //}
-
-
-        //public DataSet ListEstados()
-        //{
-        //  dsDatos = objExp.ListEstados();
-        //  o.TotalRows = objExp.TotalRows;
-        //  return dsDatos;
-        //}
-
-        //public DataSet ListAgegados()
-        //{
-        //  dsDatos = objExp.ListAgegados();
-        //  o.TotalRows = objExp.TotalRows;
-        //  return dsDatos;
-        //}
-
-        //public DataSet ListTiposDni()
-        //{
-        //  dsDatos = objExp.ListTiposDni();
-        //  o.TotalRows = objExp.TotalRows;
-        //  return dsDatos;
-        //}
-
-
-        //public string ConsultaExpedienteByParametros(string Nombre,
-        //  string Anio, string Nro_expediente, string id_oficina_actual,
-        //  string id_estado, string id_tipo_tramite, string id_asunto, string strFechas,
-        //  long Page, long RowsPerPage, out bool hasregistro)
-        //{
-        //  string strXML = "";
-        //  strXML = objExp.ConsultaExpedienteByParametros(Nombre, Anio, Nro_expediente,
-        //    id_oficina_actual, id_estado, id_tipo_tramite, id_asunto, strFechas,
-        //    Page, RowsPerPage, out hasregistro);
-        //  o.TotalRows = objExp.TotalRows;
-        //  return strXML;
-        //}
-
-
-
-        //public string ListMovimientos_ExpedienteByParametros(string Nombre, string Anio, string Nro_expediente,
-        //  int Page, int RowsPerPage, out bool hasregistro)
-        //{
-        //  string strXML = "";
-        //  strXML = objExp.ListMovimientos_ExpedienteByParametros(Nombre, Anio, Nro_expediente,
-        //    Page, RowsPerPage, out hasregistro);
-        //  o.TotalRows = objExp.TotalRows;
-        //  return strXML;
-        //}
-
-
-        //public string ConsultaExpedienteByParametros(string Nombre,
-        //string Anio, string Nro_expediente, int RowsPerPage)
-        //{
-        //  string strXML = "";
-        //  strXML = objConsulta.ConsultaExpedienteByParametros(Nombre, Anio, Nro_expediente,
-        //    Page, RowsPerPage, out hasregistro);
-        //  o.TotalRows = objConsulta.TotalRows;
-        //  return strXML;
-        //}
 
 
 
