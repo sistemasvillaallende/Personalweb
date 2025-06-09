@@ -64,6 +64,7 @@
                 color: white;
                 width: 100%;  
             }
+            
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -389,21 +390,25 @@
                 TargetControlID="Button1"
                 ID="lbtnNuevo_ModalPopupExtender">
             </ajaxToolkit:ModalPopupExtender>
-            <div class="modal-dialog" id="modalDatosLiquidacion" runat="server" style="background-color: white; padding: 20px;">
+            <div class="modal-dialog shadow-lg" id="modalDatosLiquidacion" runat="server" style="max-width: 700px;">
                 <div class="modal-content">
                     <div class="modal-header">
+
+                        <h4 class="modal-title">
+                            <asp:Label ID="lblTituloFormModal" runat="server" Text="Label"></asp:Label>
+                        </h4>
+
                         <button type="button"
                             runat="server"
                             id="btnCloseModal"
                             onserverclick="btnCloseModal_ServerClick"
                             class="close" data-dismiss="modal"
                             aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
-                        <h4 class="modal-title">
-                            <asp:Label ID="lblTituloFormModal" runat="server" Text="Label"></asp:Label>
-                        </h4>
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        
                     </div>
-                    <div class="modal-body" id="activity" style="min-height: 320px; scrollbar">
+                    <div class="modal-body" id="5ivity" style="min-height: 320px; scrollbar">
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label>Año</label>
@@ -454,8 +459,8 @@
                                 </asp:RequiredFieldValidator>
                             </div>
                             <div class="form-group col-md-4">
-                                <label class="control-label" for="inputSuccess">Act.Salario Fam?</label>
-                                <asp:CheckBox ID="chkSalarioFam" runat="server" CssClass="form-control"></asp:CheckBox>
+                                <asp:CheckBox ID="chkSalarioFam" runat="server" Style="margin-right: 10px;"></asp:CheckBox>
+                                <label class="control-label mt-5" for="inputSuccess">Act.Salario Fam?</label>
                             </div>
                         </div>
                         <div class="row">
@@ -469,17 +474,17 @@
                                     ErrorMessage="Ingrese Semestre" ControlToValidate="ddLSemestre">
                                 </asp:RequiredFieldValidator>
                             </div>
-                            <div class="form-group col-md-4">
-                                <label>Aguinaldo</label>
-                                <asp:CheckBox ID="chkAguinaldo" CssClass="form-control" runat="server" />
+                            <div class="form-group col-md-4 mt-5">
+                                <asp:CheckBox ID="chkAguinaldo" runat="server" />
+                                <label class="ml-2">Aguinaldo</label>
                             </div>
-                            <div class="form-group col-md-4">
-                                <label>Liq de Prueba?</label>
-                                <asp:CheckBox ID="chkPrueba" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:CheckBox>
+                            <div class="form-group col-md-4 mt-5">
+                                <asp:CheckBox ID="chkPrueba" runat="server"  AppendDataBoundItems="true"></asp:CheckBox>
+                                <label class="ml-2">Liq de Prueba?</label>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label>Per.Ult.Deposito(AAAAMM)</label>
                                 <asp:TextBox ID="txtPer_ult_dep" CssClass="form-control" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="cliente"
@@ -495,9 +500,9 @@
                                     ErrorMessage="Ingrese Fecha Ult Deposito" ControlToValidate="txtFecha_ult_deposito">
                                 </asp:RequiredFieldValidator>
                             </div>
-                            <div class="form-group col-md-2">
-                                <label>Publicar</label>
-                                <asp:CheckBox ID="chkPublicar" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:CheckBox>
+                            <div class="form-group col-md-3 mt-5">
+                                <asp:CheckBox ID="chkPublicar" runat="server" AppendDataBoundItems="true"></asp:CheckBox>
+                                <label class="ml-2">Publicar</label>
                             </div>
                         </div>
                         <div class="row">

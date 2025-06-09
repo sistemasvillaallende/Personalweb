@@ -5,17 +5,82 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../App_Themes/dist/css/AdminLTE.min.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .auto-style1 {
+            position: relative;
+            min-height: 1px;
+            float: left;
+            width: 100%;
+            left: 0px;
+            top: 0px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    </style>
+
+    <style type="text/css">
+        .gridview {
+            background-color: #fff;
+            height: 60px;
+            padding: 2px;
+            margin: 15px;
+        }
+
+            .gridview a {
+                background-color: #cbcbcb;
+                padding-top: 5px;
+                padding-left: 10px;
+                padding-bottom: 5px;
+                padding-right: 10px;
+                border-radius: 12%;
+            }
+
+                .gridview a:hover {
+                    background-color: #a3a3a3;
+                    color: #fff;
+                    text-decoration: none;
+                }
+
+            .gridview span {
+                background-color: #24a2ae;
+                border-radius: 12%;
+                padding-top: 5px;
+                padding-left: 10px;
+                padding-bottom: 5px;
+                padding-right: 10px;
+                color: #fff;
+            }
+            .desplegable li{
+                padding: 10px;
+                width: 100%;                                
+            }
+            .desplegable a {
+                text-decoration: none;
+                color: #333;
+                transition: color 0.3s;
+            }
+            .desplegable li:hover {
+                background-color: rgba(212, 212, 212, 0.424);
+            }
+            .desplegable a:hover {
+                color: white;
+                width: 100%;  
+            }
+            
+    </style>
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+    <div class="p-4">
         <div class="row">
             <asp:UpdatePanel ID="uPanelCliente" UpdateMode="Conditional" runat="server">
                 <Triggers>
                     <asp:PostBackTrigger ControlID="LinkExportar" />
                 </Triggers>
                 <ContentTemplate>
-                    <div class="row" style="margin-top: 30px; padding-top: 30px">
+                    <div class="row">
                         <asp:UpdatePanel ID="PanelInfomacion" runat="server" UpdateMode="Conditional">
                             <ContentTemplate>
                                 <div class="alert alert-success alert-dismissable" runat="server"
@@ -188,12 +253,15 @@
                                                 <asp:TemplateField>
                                                     <ItemTemplate>
                                                         <div class="btn-group dropleft">
-                                                            <button type="button"
-                                                                class="btn btn-secondary dropdown-toggle"
-                                                                data-toggle="dropdown"
+
+                                                            <button type="button" 
+                                                                class="btn btn-secondary" 
+                                                                data-toggle="dropdown" 
                                                                 aria-expanded="false">
-                                                                Acciones</button>
-                                                            <ul class="dropdown-menu">
+                                                                    <i class="fa fa-bars"></i>
+                                                            </button>
+
+                                                            <ul class="dropdown-menu desplegable">
                                                                 <li>
                                                                     <asp:LinkButton
                                                                         ID="lbtnEditar"
@@ -235,7 +303,7 @@
                                                 </asp:TemplateField>
                                             </Columns>
                                             <EditRowStyle BackColor="#999999"></EditRowStyle>
-                                            <PagerStyle CssClass="gridview-category"></PagerStyle>
+                                            <PagerStyle CssClass="gridview"></PagerStyle>
                                             <SortedAscendingCellStyle BackColor="#E9E7E2"></SortedAscendingCellStyle>
                                             <SortedAscendingHeaderStyle BackColor="#506C8C"></SortedAscendingHeaderStyle>
                                             <SortedDescendingCellStyle BackColor="#FFFDF8"></SortedDescendingCellStyle>
@@ -371,7 +439,8 @@
                                     <input type="text" class="form-control" id="Text1"
                                         runat="server" />
                                     <span class="input-group-btn">
-                                        <button class="btn btn-info" type="button"
+                                        <button 
+                                            class="btn btn-facebook" type="button"
                                             id="cmdBuscar2" runat="server"
                                             onserverclick="cmdBuscar2_ServerClick"
                                             causesvalidation="false">
