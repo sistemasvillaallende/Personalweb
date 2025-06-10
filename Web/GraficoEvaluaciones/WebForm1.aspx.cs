@@ -22,35 +22,75 @@ namespace web.GraficoEvaluaciones
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static string ObtenerDatosSecretaria(string idFicha, string valor)
+        public static string ObtenerDatosSecretaria(int idFicha, string valor)
         {
-            int idF = DAL.Fichas.Fichas_Relevamientos.getUltimaFicha();
-            List<decimal> datos = DAL.Fichas.Fichas_Resultados.read(idF, valor);
+          //  int idF = DAL.Fichas.Fichas_Relevamientos.getUltimaFicha();
+            List<decimal> datos = DAL.Fichas.Fichas_Resultados.read(idFicha, valor);
             return JsonConvert.SerializeObject(datos);
         }
+
+
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static string ObtenerOpciones(string idFicha)
+        public static string ObtenerDatosFiltrados(int idFicha, string secretaria = null, string direccion = null, string oficina = null)
         {
-            if (string.IsNullOrEmpty(idFicha))
+            //int idF = DAL.Fichas.Fichas_Relevamientos.getUltimaFicha();
+            List<decimal> datos = DAL.Fichas.Fichas_Resultados.readConFiltros(idFicha, secretaria, direccion, oficina);
+            return JsonConvert.SerializeObject(datos);
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static string ObtenerSecretarias(int idFicha)
+        {
+            if (idFicha == 0)
             {
                 return "Error: El parámetro idFicha está vacío o es nulo.";
             }
-
-            List<string> datos = DAL.Fichas.Fichas_Resultados.getSecretaria(int.Parse(idFicha));
+            List<string> datos = DAL.Fichas.Fichas_Resultados.getSecretarias(idFicha);
             return JsonConvert.SerializeObject(datos);
         }
-        
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static string ObtenerDirecciones(int idFicha, string secretaria)
+        {
+            if (idFicha == 0)
+            {
+                return "Error: El parámetro idFicha está vacío o es nulo.";
+            }
+            List<string> datos = DAL.Fichas.Fichas_Resultados.getDirecciones(idFicha, secretaria);
+            return JsonConvert.SerializeObject(datos);
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static string ObtenerOficinas(int idFicha, string secretaria, string direccion)
+        {
+            if (idFicha == 0)
+            {
+                return "Error: El parámetro idFicha está vacío o es nulo.";
+            }
+            List<string> datos = DAL.Fichas.Fichas_Resultados.getOficinas(idFicha, secretaria, direccion);
+            return JsonConvert.SerializeObject(datos);
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
-            { 
-
+            {
+                List<DAL.Fichas.Ficha> lstEval = DAL.Fichas.Ficha.read();
+                DDLEvaluaciones.DataTextField = "NOMBRE";
+                DDLEvaluaciones.DataValueField = "ID";
+                DDLEvaluaciones.DataSource = lstEval;
+                DDLEvaluaciones.DataBind();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+    
     }
 }

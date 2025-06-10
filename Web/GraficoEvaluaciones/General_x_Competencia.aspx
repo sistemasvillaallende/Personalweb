@@ -36,23 +36,62 @@
     <asp:HiddenField ID="hIdFicha" runat="server" />
     <asp:HiddenField ID="hNombreSecretaria" runat="server" />
     <div class="container">
-        <div class="row">
-            <div class="col-md-6" style="align-content: center;">
-                <h3 style="font-size: 20px !important; font-weight: 500 !important;">Resultado Evaluación de desempeño 2024</h3>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <asp:DropDownList ID="DDLSecretarias"
-                        CssClass="form-control" runat="server">
+        <div class=" border-0" style="padding-bottom: 0;">
+            <div class="row">
+                <div class="col-8">
+                   <h3 style="font-size: 20px !important; font-weight: 500 !important;">Resultado Evaluación de desempeño 2024</h3>
+                </div>
+                <div class="col-4">
+                    <asp:DropDownList ID="DDLEvaluaciones"
+                        CssClass="form-control"
+                        runat="server">
                     </asp:DropDownList>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 25px;">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label>Secretaría</label>
+                        <asp:DropDownList ID="DDLSecretarias"
+                            CssClass="form-control"
+                            runat="server">
+                        </asp:DropDownList>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label>Dirección</label>
+                        <asp:DropDownList ID="DDLDirecciones"
+                            CssClass="form-control"
+                            runat="server">
+                        </asp:DropDownList>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label>Oficina</label>
+                        <asp:DropDownList ID="DDLOficinas"
+                            CssClass="form-control"
+                            runat="server">
+                        </asp:DropDownList>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label>Programa</label>
+                        <asp:DropDownList ID="DDLProgramas"
+                            CssClass="form-control"
+                            runat="server">
+                        </asp:DropDownList>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row competencia" style="margin-bottom: 20px;">
-            <div class="col-md-6">
+            <div class="col-md-10" style="margin-left: 50px">
                 <canvas id="graficoGeneral"></canvas>
             </div>
-            <div class="col-md-6" style="max-height: 400px !important;" id="resultadoSerie">
+            <div class="col-md-10" style="max-height: 500px !important;" id="resultadoSerie">
             </div>
         </div>
     </div>
@@ -64,41 +103,14 @@
 
 
     <script>
-        $(document).ready(function () {
-            // Obtener los parámetros de la URL actual
-            let params = new URLSearchParams(window.location.search);
-            let idf = params.get("idFicha"); // "Juan"
-            $.ajax({
-                type: "POST",
-                url: "General_x_Competencia.aspx/ObtenerDatos", // <-- SIN idFicha en la URL
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify({ idFicha: idf }), // <-- Se envía correctamente en el body
-                success: function (response) {
-                    let datos = JSON.parse(response.d);
-                    generarGraficos(datos);
-                    createGraficoGeneral(datos)
-                },
-                error: function (error) {
-                    console.log("Error al obtener datos", error);
-                }
-            });
-            $.ajax({
-                type: "POST",
-                url: "WebForm1.aspx/ObtenerDatos", // <-- SIN idFicha en la URL
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify({ idFicha: idf }), // <-- Se envía correctamente en el body
-                success: function (response) {
-                    let datos = JSON.parse(response.d);
-                    createInformeGeneral(datos);
-                },
-                error: function (error) {
-                    console.log("Error al obtener datos", error);
-                }
-            });
-        });
+
+        let graficoGeneral = null;
+        let graficosIndividuales = [];
+
         function generarGraficos(datos) {
+
+            limpiarGraficos();
+
             let container = document.getElementById("graficos-container");
 
             datos.forEach((item, index) => {
@@ -125,7 +137,7 @@
                 let mediana = calcularMediana2([1, 2, 3, 4], valores).toFixed(2);
                 let moda = calcularModa2([1, 2, 3, 4], valores).toFixed(2); // Devuelve {nombre: "Alcanza Plenamente", valor: 220}
                 let etiquetas = ["No Cubre", "Sólido", "Alcanza Plenamente", "Supera Expectativas"]
-                new Chart(ctx, {
+                let chartInstance = new Chart(ctx, {
                     type: "bar",
                     data: {
                         labels: ['1', '2', '3', '4'],
@@ -193,7 +205,7 @@
                     }
                 });
 
-
+                graficosIndividuales.push(chartInstance);
                 // Calcular porcentaje de logro basado en el puntaje ideal
                 let puntajeIdeal = (item.Respuestas[0] + item.Respuestas[1] + item.Respuestas[2] + item.Respuestas[3]) * 4;
                 let puntajeObtenido = (item.Respuestas[0] * 1) + (item.Respuestas[1] * 2) + (item.Respuestas[2] * 3) + (item.Respuestas[3] * 4);
@@ -478,6 +490,10 @@
 
         function createGraficoGeneral(apiResponse) {
 
+            if (graficoGeneral) {
+                graficoGeneral.destroy();
+                graficoGeneral = null;
+            }
             // Obtener etiquetas de competencias
             const etiquetas = apiResponse.map(item => item.pregunta);
 
@@ -493,7 +509,7 @@
 
             // Crear gráfico con Chart.js
             const ctx = document.getElementById('graficoGeneral').getContext('2d');
-            new Chart(ctx, {
+            graficoGeneral = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: etiquetas, // Competencias
@@ -547,5 +563,227 @@
                 }
             });
         }
+
+
+
+        function limpiarGraficosAnteriores() {
+            // Destruir gráficos individuales
+            graficosIndividuales.forEach(chart => {
+                if (chart) {
+                    chart.destroy();
+                }
+            });
+            graficosIndividuales = []; 
+
+            if (graficoGeneral) {
+                graficoGeneral.destroy();
+                graficoGeneral = null;
+            }
+        }
+
+
+        function limpiarGraficos() {
+            console.log("Limpiando gráficos...");
+            limpiarGraficosAnteriores();
+
+            let container = document.getElementById("graficos-container");
+            if (container) {
+                container.innerHTML = "";
+            }
+
+            let resultadoSerie = document.getElementById("resultadoSerie");
+            if (resultadoSerie) {
+                resultadoSerie.innerHTML = "";
+            }
+        }
+
+
+
+        $(document).ready(function () {
+             limpiarGraficos();
+
+            function obtenerIdFicha() {
+                let result = parseInt($('#<%= DDLEvaluaciones.ClientID %>').val());
+                  return result;
+              }
+
+              $("#ContentPlaceHolder1_DDLEvaluaciones").change(function () {
+                  let idf = obtenerIdFicha();
+
+                  console.log("idf cambiado a:", idf);
+
+                  if (idf) {
+                      limpiarDropdown("#ContentPlaceHolder1_DDLSecretarias", "Seleccione Secretaría");
+                      limpiarDropdown("#ContentPlaceHolder1_DDLDirecciones", "Seleccione Dirección");
+                      limpiarDropdown("#ContentPlaceHolder1_DDLOficinas", "Seleccione Oficina");
+
+                      cargarDatos();
+                      cargarSecretarias(idf);
+                  } else {
+                      // Si no hay evaluación seleccionada, limpiar gráficos
+                      limpiarGraficos();
+                  }
+              });
+
+              // Event handlers para los dropdowns
+              $("#ContentPlaceHolder1_DDLSecretarias").change(function () {
+                  let secretaria = $(this).val();
+                  let idf = obtenerIdFicha(); // Obtener ID actual
+
+                  // Limpiar dropdowns dependientes
+                  limpiarDropdown("#ContentPlaceHolder1_DDLDirecciones", "Seleccione Dirección");
+                  limpiarDropdown("#ContentPlaceHolder1_DDLOficinas", "Seleccione Oficina");
+
+                  if (secretaria) {
+                      cargarDirecciones(idf, secretaria);
+                  }
+
+                  cargarDatos(); 
+              });
+
+              $("#ContentPlaceHolder1_DDLDirecciones").change(function () {
+                  let direccion = $(this).val();
+                  let secretaria = $("#ContentPlaceHolder1_DDLSecretarias").val();
+                  let idf = obtenerIdFicha(); 
+
+                  limpiarDropdown("#ContentPlaceHolder1_DDLOficinas", "Seleccione Oficina");
+
+                  if (direccion && secretaria) {
+                      cargarOficinas(idf, secretaria, direccion);
+                  }
+
+                  cargarDatos(); 
+              });
+
+              $("#ContentPlaceHolder1_DDLOficinas").change(function () {
+                  cargarDatos(); 
+              });
+
+              function cargarSecretarias(idFicha) {
+                  $.ajax({
+                      type: "POST",
+                      url: "General_x_Competencia.aspx/ObtenerSecretarias",
+                      contentType: "application/json; charset=utf-8",
+                      dataType: "json",
+                      data: JSON.stringify({ idFicha: idFicha }),
+                      success: function (response) {
+                          let opciones = JSON.parse(response.d);
+                          console.log("opciones",opciones)
+                          let select = $("#ContentPlaceHolder1_DDLSecretarias");
+                          select.empty();
+
+                          select.append(`<option value="">Todas las secretarías</option>`);
+
+                          opciones.forEach(opcion => {
+                              select.append(`<option value="${opcion}">${opcion}</option>`);
+                          });
+                      },
+                      error: function (xhr, status, error) {
+                          console.error("Error al obtener secretarías:", error);
+                      }
+                  });
+              }
+
+              function cargarDirecciones(idFicha, secretaria) {
+                  $.ajax({
+                      type: "POST",
+                      url: "General_x_Competencia.aspx/ObtenerDirecciones",
+                      contentType: "application/json; charset=utf-8",
+                      dataType: "json",
+                      data: JSON.stringify({ idFicha: idFicha, secretaria: secretaria }),
+                      success: function (response) {
+                          let opciones = JSON.parse(response.d);
+                          let select = $("#ContentPlaceHolder1_DDLDirecciones");
+                          select.empty();
+                          select.append('<option value="">Todas las Direcciones</option>');
+                          opciones.forEach(opcion => {
+                              select.append(`<option value="${opcion}">${opcion}</option>`);
+                          });
+                          select.prop('disabled', false);
+                      },
+                      error: function (xhr, status, error) {
+                          console.error("Error al obtener direcciones:", error);
+                      }
+                  });
+              }
+
+              function cargarOficinas(idFicha, secretaria, direccion) {
+                  $.ajax({
+                      type: "POST",
+                      url: "General_x_Competencia.aspx/ObtenerOficinas",
+                      contentType: "application/json; charset=utf-8",
+                      dataType: "json",
+                      data: JSON.stringify({
+                          idFicha: idFicha,
+                          secretaria: secretaria,
+                          direccion: direccion
+                      }),
+                      success: function (response) {
+                          let opciones = JSON.parse(response.d);
+                          let select = $("#ContentPlaceHolder1_DDLOficinas");
+                          select.empty();
+                          select.append('<option value="">Todas las Oficinas</option>');
+                          opciones.forEach(opcion => {
+                              select.append(`<option value="${opcion}">${opcion}</option>`);
+                          });
+                          select.prop('disabled', false);
+                      },
+                      error: function (xhr, status, error) {
+                          console.error("Error al obtener oficinas:", error);
+                      }
+                  });
+              }
+
+              function limpiarDropdown(selector, textoDefault) {
+                  let select = $(selector);
+                  select.empty();
+                  select.append(`<option value="">${textoDefault}</option>`);
+                  if (selector !== "#ContentPlaceHolder1_DDLSecretarias") {
+                      select.prop('disabled', true);
+                  }
+              }
+
+              function cargarDatos() {
+                  let idf = obtenerIdFicha();
+                  let secretaria = $("#ContentPlaceHolder1_DDLSecretarias").val() || null;
+                  let direccion = $("#ContentPlaceHolder1_DDLDirecciones").val() || null;
+                  let oficina = $("#ContentPlaceHolder1_DDLOficinas").val() || null;
+
+                  console.log("Cargando datos con idf:", idf);
+
+                  $.ajax({
+                      type: "POST",
+                      url: "General_x_Competencia.aspx/ObtenerDatosFiltrados",
+                      contentType: "application/json; charset=utf-8",
+                      dataType: "json",
+                      data: JSON.stringify({
+                          idFicha: idf,
+                          secretaria: secretaria,
+                          direccion: direccion,
+                          oficina: oficina
+                      }),
+                      success: function (response) {
+                          let datos = JSON.parse(response.d);
+                          console.log("Datos filtrados para idf", idf, ":", datos);
+                          limpiarGraficosAnteriores();
+                          generarGraficos(datos);
+                          createGraficoGeneral(datos)                      },
+                      error: function (error) {
+                          console.log("Error al obtener datos", error);
+                      }
+                  });
+              }
+
+              // Inicializar al cargar la página
+              let idfInicial = obtenerIdFicha();
+              if (idfInicial) {
+                  cargarSecretarias(idfInicial);
+                  cargarDatos();
+              }
+          });
+
+
+
+
     </script>
 </asp:Content>
