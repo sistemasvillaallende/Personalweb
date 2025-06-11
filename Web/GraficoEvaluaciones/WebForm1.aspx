@@ -367,8 +367,8 @@
                         limpiarDropdown("#ContentPlaceHolder1_DDLSecretarias", "Seleccione Secretaría");
                         limpiarDropdown("#ContentPlaceHolder1_DDLDirecciones", "Seleccione Dirección");
                         limpiarDropdown("#ContentPlaceHolder1_DDLOficinas", "Seleccione Oficina");
+                        limpiarDropdown("#ContentPlaceHolder1_DDLProgramas", "Seleccione Programa");
 
-                        // Cargar datos iniciales
                         cargarDatos();
                         cargarSecretarias(idf);
                     } else {
@@ -380,37 +380,89 @@
                 // Event handlers para los dropdowns
                 $("#ContentPlaceHolder1_DDLSecretarias").change(function () {
                     let secretaria = $(this).val();
-                    let idf = obtenerIdFicha(); // Obtener ID actual
+                    let idf = obtenerIdFicha(); 
 
                     // Limpiar dropdowns dependientes
                     limpiarDropdown("#ContentPlaceHolder1_DDLDirecciones", "Seleccione Dirección");
                     limpiarDropdown("#ContentPlaceHolder1_DDLOficinas", "Seleccione Oficina");
+                    limpiarDropdown("#ContentPlaceHolder1_DDLProgramas", "Seleccione Programa");
 
-                    if (secretaria) {
+                    $("#ContentPlaceHolder1_DDLOficinas").prop('disabled', true);
+                    $("#ContentPlaceHolder1_DDLProgramas").prop('disabled', true);
+
+                    if (secretaria && idf) {
+                        // Si hay secretaria seleccionada, cargar direcciones y habilitarlas
                         cargarDirecciones(idf, secretaria);
+                    } else {
+                        // Si no hay secretaria, deshabilitar direcciones también
+                        $("#ContentPlaceHolder1_DDLDirecciones").prop('disabled', true);
                     }
 
-                    cargarDatos(); // Actualizar gráficos
+                    cargarDatos(); 
                 });
 
                 $("#ContentPlaceHolder1_DDLDirecciones").change(function () {
                     let direccion = $(this).val();
                     let secretaria = $("#ContentPlaceHolder1_DDLSecretarias").val();
-                    let idf = obtenerIdFicha(); // Obtener ID actual
+                    let idf = obtenerIdFicha(); 
 
-                    // Limpiar dropdown de oficinas
                     limpiarDropdown("#ContentPlaceHolder1_DDLOficinas", "Seleccione Oficina");
+                    limpiarDropdown("#ContentPlaceHolder1_DDLProgramas", "Seleccione Programa");
 
-                    if (direccion && secretaria) {
+                    if (direccion && secretaria && idf) {
+                        // Cargar datos para ambos dropdowns
                         cargarOficinas(idf, secretaria, direccion);
+                        cargarProgramas(idf, secretaria, direccion);
+
+                        // Habilitar ambos dropdowns
+                        $("#ContentPlaceHolder1_DDLOficinas").prop('disabled', false);
+                        $("#ContentPlaceHolder1_DDLProgramas").prop('disabled', false);
+                    } else {
+                        // Si no hay dirección seleccionada, deshabilitar ambos
+                        $("#ContentPlaceHolder1_DDLOficinas").prop('disabled', true);
+                        $("#ContentPlaceHolder1_DDLProgramas").prop('disabled', true);
+                    }
+
+                    cargarDatos();  
+                });
+
+                $("#ContentPlaceHolder1_DDLOficinas").change(function () {
+                    cargarDatos(); 
+                });
+
+                ///////////////////////////77
+                $("#ContentPlaceHolder1_DDLOficinas").change(function () {
+                    let oficina = $(this).val();
+
+                    if (oficina) {
+                        // Si se selecciona una oficina, limpiar y deshabilitar programas
+                        limpiarDropdown("#ContentPlaceHolder1_DDLProgramas", "Seleccione Programa");
+                        $("#ContentPlaceHolder1_DDLProgramas").prop('disabled', true);
+                    } else {
+                        // Si se deselecciona oficina, habilitar programas nuevamente
+                        $("#ContentPlaceHolder1_DDLProgramas").prop('disabled', false);
                     }
 
                     cargarDatos(); // Actualizar gráficos
                 });
 
-                $("#ContentPlaceHolder1_DDLOficinas").change(function () {
+                // Event handler para Programas - deshabilita Oficinas cuando se selecciona
+                $("#ContentPlaceHolder1_DDLProgramas").change(function () {
+                    let programa = $(this).val();
+
+                    if (programa) {
+                        // Si se selecciona un programa, limpiar y deshabilitar oficinas
+                        limpiarDropdown("#ContentPlaceHolder1_DDLOficinas", "Seleccione Oficina");
+                        $("#ContentPlaceHolder1_DDLOficinas").prop('disabled', true);
+                    } else {
+                        // Si se deselecciona programa, habilitar oficinas nuevamente
+                        $("#ContentPlaceHolder1_DDLOficinas").prop('disabled', false);
+                    }
+
                     cargarDatos(); // Actualizar gráficos
                 });
+
+                /////////////////////////////////77
 
                 function cargarSecretarias(idFicha) {
                     $.ajax({
@@ -457,6 +509,36 @@
                     });
                 }
 
+
+                function cargarProgramas(idFicha, secretaria, direccion) {
+                    $.ajax({
+                        type: "POST",
+                        url: "WebForm1.aspx/ObtenerProgramas",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        data: JSON.stringify({
+                            idFicha: idFicha,
+                            secretaria: secretaria,
+                            direccion: direccion
+                        }),
+                        success: function (response) {
+                            let opciones = JSON.parse(response.d);
+                            let select = $("#ContentPlaceHolder1_DDLProgramas");
+                            select.empty();
+                            select.append('<option value="">Todos los programas</option>');
+                            opciones.forEach(opcion => {
+                                select.append(`<option value="${opcion}">${opcion}</option>`);
+                            });
+                            select.prop('disabled', false);
+                        },
+                        error: function (xhr, status, error) {
+                            console.error("Error al obtener programas:", error);
+                        }
+                    });
+                }
+
+
+
                 function cargarOficinas(idFicha, secretaria, direccion) {
                     $.ajax({
                         type: "POST",
@@ -499,6 +581,7 @@
                     let secretaria = $("#ContentPlaceHolder1_DDLSecretarias").val() || null;
                     let direccion = $("#ContentPlaceHolder1_DDLDirecciones").val() || null;
                     let oficina = $("#ContentPlaceHolder1_DDLOficinas").val() || null;
+                    let programa = $("#ContentPlaceHolder1_DDLProgramas").val() || null;
 
                     console.log("Cargando datos con idf:", idf);
 
@@ -511,7 +594,8 @@
                             idFicha: idf,
                             secretaria: secretaria,
                             direccion: direccion,
-                            oficina: oficina
+                            oficina: oficina,
+                            programa:programa
                         }),
                         success: function (response) {
                             let datos = JSON.parse(response.d);

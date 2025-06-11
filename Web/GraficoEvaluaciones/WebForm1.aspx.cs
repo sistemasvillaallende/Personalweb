@@ -24,7 +24,6 @@ namespace web.GraficoEvaluaciones
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static string ObtenerDatosSecretaria(int idFicha, string valor)
         {
-          //  int idF = DAL.Fichas.Fichas_Relevamientos.getUltimaFicha();
             List<decimal> datos = DAL.Fichas.Fichas_Resultados.read(idFicha, valor);
             return JsonConvert.SerializeObject(datos);
         }
@@ -32,13 +31,11 @@ namespace web.GraficoEvaluaciones
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static string ObtenerDatosFiltrados(int idFicha, string secretaria = null, string direccion = null, string oficina = null)
+        public static string ObtenerDatosFiltrados(int idFicha, string secretaria = null, string direccion = null, string oficina = null, string programa = null)
         {
-            //int idF = DAL.Fichas.Fichas_Relevamientos.getUltimaFicha();
-            List<decimal> datos = DAL.Fichas.Fichas_Resultados.readConFiltros(idFicha, secretaria, direccion, oficina);
+            List<decimal> datos = DAL.Fichas.Fichas_Resultados.readConFiltros(idFicha, secretaria, direccion, oficina,programa);
             return JsonConvert.SerializeObject(datos);
         }
-
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -75,6 +72,19 @@ namespace web.GraficoEvaluaciones
             List<string> datos = DAL.Fichas.Fichas_Resultados.getOficinas(idFicha, secretaria, direccion);
             return JsonConvert.SerializeObject(datos);
         }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static string ObtenerProgramas(int idFicha, string secretaria, string direccion)
+        {
+            if (idFicha == 0)
+            {
+                return "Error: El parámetro idFicha está vacío o es nulo.";
+            }
+            List<string> datos = DAL.Fichas.Fichas_Resultados.getProgramas(idFicha, secretaria, direccion);
+            return JsonConvert.SerializeObject(datos);
+        }
+
 
         protected void Page_Load(object sender, EventArgs e)
         {

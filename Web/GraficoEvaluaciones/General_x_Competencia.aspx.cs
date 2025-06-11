@@ -86,28 +86,28 @@ namespace web.GraficoEvaluaciones
         }
 
 
-
-        /////////////////////
-        ///
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static string ObtenerProgramas(int idFicha, string secretaria, string direccion)
+        {
+            if (idFicha == 0)
+            {
+                return "Error: El parámetro idFicha está vacío o es nulo.";
+            }
+            List<string> datos = DAL.Fichas.Fichas_Resultados.getProgramas(idFicha, secretaria, direccion);
+            return JsonConvert.SerializeObject(datos);
+        }
 
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static string ObtenerDatosFiltrados(int idFicha, string secretaria = null, string direccion = null, string oficina = null)
+        public static string ObtenerDatosFiltrados(int idFicha, string secretaria = null, string direccion = null, string oficina = null, string programa= null)
         {
           
-            List<DAL.General_x_competencia> datos = DAL.General_x_competencia.readConFiltros(idFicha, secretaria, direccion, oficina);
+            List<DAL.General_x_competencia> datos = DAL.General_x_competencia.readConFiltros(idFicha, secretaria, direccion, oficina, programa);
             var json = JsonConvert.SerializeObject(datos);
             return json;
         }
-
-
-
-
-
-
-
-
 
     }
 }

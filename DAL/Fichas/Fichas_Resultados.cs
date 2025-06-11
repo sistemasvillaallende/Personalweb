@@ -87,7 +87,59 @@ namespace DAL.Fichas
             }
         }
 
-        public static List<decimal> readConFiltros(int idFicha, string secretaria = null, string direccion = null, string oficina = null)
+        //public static List<decimal> readConFiltros(int idFicha, string secretaria = null, string direccion = null, string oficina = null, string programa = null)
+        //{
+        //    try
+        //    {
+        //        List<decimal> estadosEvaluacionList = new List<decimal>();
+        //        using (SqlConnection connection = DALBase.GetConnection("SIIMVA"))
+        //        {
+        //            SqlCommand command = connection.CreateCommand();
+        //            command.CommandType = CommandType.Text;
+
+        //            // Query base
+        //            string query = @"SELECT 
+        //                    FORMAT(ROUND(A.RESULTADO * 100 / (COUNT(B.ID_PREGUNTA) * 4), 2),
+        //                    'N2') AS 'RESULTADOS'
+        //                FROM FICHAS_RELEVAMIENTOS A
+        //                    INNER JOIN FICHAS_RELEVAMIENTOS_PERSONAS B ON 
+        //                    A.ID=B.ID_RELEVAMIENTO
+        //                WHERE A.ID_FICHA=@idFicha AND RESULTADO IS NOT NULL";
+
+        //            // Agregar filtros dinámicamente
+        //            if (!string.IsNullOrEmpty(secretaria))
+        //            {
+        //                query += " AND A.SECRETARIA = @secretaria";
+        //                command.Parameters.AddWithValue("@secretaria", secretaria);
+        //            }
+
+        //            if (!string.IsNullOrEmpty(direccion))
+        //            {
+        //                query += " AND A.DIRECCION = @direccion";
+        //                command.Parameters.AddWithValue("@direccion", direccion);
+        //            }
+
+        //            if (!string.IsNullOrEmpty(oficina))
+        //            {
+        //                query += " AND A.OFICINA = @oficina";
+        //                command.Parameters.AddWithValue("@oficina", oficina);
+        //            }
+
+        //            query += " GROUP BY A.SECRETARIA, A.RESULTADO, A.CUIT, A.DIRECCION, A.OFICINA ORDER BY 1";
+
+        //            command.CommandText = query;
+        //            command.Parameters.AddWithValue("@idFicha", idFicha);
+        //            command.Connection.Open();
+        //            return mapeo(command.ExecuteReader());
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+
+        public static List<decimal> readConFiltros(int idFicha, string secretaria = null, string direccion = null, string oficina = null, string programa = null)
         {
             try
             {
@@ -97,16 +149,21 @@ namespace DAL.Fichas
                     SqlCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
 
-                    // Query base
                     string query = @"SELECT 
-                            FORMAT(ROUND(A.RESULTADO * 100 / (COUNT(B.ID_PREGUNTA) * 4), 2),
-                            'N2') AS 'RESULTADOS'
-                        FROM FICHAS_RELEVAMIENTOS A
-                            INNER JOIN FICHAS_RELEVAMIENTOS_PERSONAS B ON 
-                            A.ID=B.ID_RELEVAMIENTO
-                        WHERE A.ID_FICHA=@idFicha AND RESULTADO IS NOT NULL";
+                    FORMAT(ROUND(A.RESULTADO * 100 / (COUNT(B.ID_PREGUNTA) * 4), 2),
+                    'N2') AS 'RESULTADOS'
+                FROM FICHAS_RELEVAMIENTOS A
+                    INNER JOIN FICHAS_RELEVAMIENTOS_PERSONAS B ON A.ID=B.ID_RELEVAMIENTO";
 
-                    // Agregar filtros dinámicamente
+                    if (!string.IsNullOrEmpty(programa))
+                    {
+                        query += @"
+                    INNER JOIN EMPLEADOS E ON A.CUIT = E.LEGAJO
+                    INNER JOIN PROGRAMAS_PUBLICOS P ON P.ID_PROGRAMA = E.ID_PROGRAMA";
+                    }
+
+                    query += " WHERE A.ID_FICHA=@idFicha AND RESULTADO IS NOT NULL";
+
                     if (!string.IsNullOrEmpty(secretaria))
                     {
                         query += " AND A.SECRETARIA = @secretaria";
@@ -124,8 +181,20 @@ namespace DAL.Fichas
                         query += " AND A.OFICINA = @oficina";
                         command.Parameters.AddWithValue("@oficina", oficina);
                     }
+                    else if (!string.IsNullOrEmpty(programa))
+                    {
+                        query += " AND P.Programa = @programa";
+                        command.Parameters.AddWithValue("@programa", programa);
+                    }
 
-                    query += " GROUP BY A.SECRETARIA, A.RESULTADO, A.CUIT, A.DIRECCION, A.OFICINA ORDER BY 1";
+                    query += " GROUP BY A.SECRETARIA, A.RESULTADO, A.CUIT, A.DIRECCION, A.OFICINA";
+
+                    if (!string.IsNullOrEmpty(programa))
+                    {
+                        query += ", P.Programa";
+                    }
+
+                    query += " ORDER BY 1";
 
                     command.CommandText = query;
                     command.Parameters.AddWithValue("@idFicha", idFicha);
@@ -138,8 +207,6 @@ namespace DAL.Fichas
                 throw ex;
             }
         }
-
-
 
         public static List<string> getSecretarias(int idFicha)
         {
@@ -218,6 +285,36 @@ namespace DAL.Fichas
                 throw ex;
             }
         }
+
+
+        public static List<string> getProgramas(int idFicha, string secretaria, string direccion)
+        {
+            try
+            {
+                using (SqlConnection connection = DALBase.GetConnection("SIIMVA"))
+                {
+                    SqlCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @" SELECT DISTINCT P.Programa 
+                        FROM FICHAS_RELEVAMIENTOS A
+                            INNER JOIN EMPLEADOS E ON A.CUIT = E.LEGAJO
+   							 INNER JOIN PROGRAMAS_PUBLICOS P ON P.ID_PROGRAMA = E.ID_PROGRAMA
+                        WHERE A.ID_FICHA=@idFicha 
+                         AND A.SECRETARIA = @secretaria
+					     AND A.DIRECCION=@direccion";
+                    command.Parameters.AddWithValue("@idFicha", idFicha);
+                    command.Parameters.AddWithValue("@secretaria", secretaria);
+                    command.Parameters.AddWithValue("@direccion", direccion);
+                    command.Connection.Open();
+                    return MapearLista(command.ExecuteReader());
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         private static List<string> MapearLista(SqlDataReader dr)
         {

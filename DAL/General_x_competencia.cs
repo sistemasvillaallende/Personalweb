@@ -121,7 +121,89 @@ namespace DAL
         }
 
 
-        public static List<General_x_competencia> readConFiltros(int idFicha, string secretaria = null, string direccion = null, string oficina = null)
+        //public static List<General_x_competencia> readConFiltros(int idFicha, string secretaria = null, string direccion = null, string oficina = null, string programa = null)
+        //{
+        //    try
+        //    {
+        //        List<General_x_competencia> list = new List<General_x_competencia>();
+        //        using (SqlConnection connection = DALBase.GetConnection("SIIMVA"))
+        //        {
+        //            SqlCommand command = connection.CreateCommand();
+        //            command.CommandType = CommandType.Text;
+
+        //            string query = @"WITH Datos AS (
+        //                            SELECT 
+        //                                CASE A.ID_PREGUNTA
+        //                                    WHEN 53 THEN 'ORIENTACION A RESULTADOS'
+        //                                    WHEN 54 THEN 'ORIENTACION A LA CALIDAD'
+        //                                    WHEN 55 THEN 'ORIENTACION AL VECINO'
+        //                                    WHEN 56 THEN 'TRABAJO EN EQUIPO'
+        //                                    WHEN 57 THEN 'ORGANIZACION Y PLANIFICACION'
+        //                                    WHEN 58 THEN 'ACTITUD COMPROMETIDA'
+        //                                    WHEN 59 THEN 'FLEXIBILIDAD Y ADAPTABILIDAD'
+        //                                    WHEN 60 THEN 'LIDERAZGO'
+        //                                    WHEN 61 THEN 'ANALISIS Y RESOLUCION DE PROBLEMAS'
+        //                                    WHEN 62 THEN 'COMUNICACION'
+        //                                    WHEN 63 THEN 'COMPETENCIA TECNICA'
+        //                                END AS Pregunta,
+        //                                A.TEXTO_RESPUESTA AS Respuesta,
+        //                                COUNT(*) AS Ocurrencias
+        //                            FROM FICHAS_RELEVAMIENTOS_PERSONAS A
+        //                            INNER JOIN FICHAS_RELEVAMIENTOS B ON A.ID_RELEVAMIENTO = B.ID
+        //                            WHERE B.ID_FICHA = @idFicha ";
+
+        //            if (!string.IsNullOrEmpty(secretaria))
+        //            {
+        //                query += " AND B.SECRETARIA = @secretaria";
+        //                command.Parameters.AddWithValue("@secretaria", secretaria);
+        //            }
+
+        //            if (!string.IsNullOrEmpty(direccion))
+        //            {
+        //                query += " AND B.DIRECCION = @direccion";
+        //                command.Parameters.AddWithValue("@direccion", direccion);
+        //            }
+
+        //            if (!string.IsNullOrEmpty(oficina))
+        //            {
+        //                query += " AND B.OFICINA = @oficina";
+        //                command.Parameters.AddWithValue("@oficina", oficina);
+        //            }
+
+        //            query += @"  GROUP BY A.ID_PREGUNTA, A.TEXTO_RESPUESTA
+        //                            )
+        //                            SELECT 
+        //                                Pregunta,
+        //                                COALESCE([No Cubre Expectativas], NULL) AS [No_Cubre_Expectativas],
+        //                                COALESCE([Sólido], NULL) AS [Sólido],  
+        //                                COALESCE([Alcanza Plenamente], NULL) AS [Alcanza_Plenamente],  
+        //                                COALESCE([Supera Expectativas], NULL) AS [Supera_Expectativas]
+        //                            FROM Datos
+        //                            PIVOT (
+        //                                SUM(Ocurrencias) 
+        //                                FOR Respuesta IN (
+        //                                    [No Cubre Expectativas], 
+        //                                    [Sólido], 
+        //                                    [Alcanza Plenamente], 
+        //                                    [Supera Expectativas]
+        //                                )
+        //                            ) AS TablaPivote
+        //                            ORDER BY Pregunta;";
+
+        //            command.CommandText = query;
+        //            command.Parameters.AddWithValue("@idFicha", idFicha);
+        //            command.Connection.Open();
+        //            return mapeo(command.ExecuteReader());
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+
+
+        public static List<General_x_competencia> readConFiltros(int idFicha, string secretaria = null, string direccion = null, string oficina = null, string programa = null)
         {
             try
             {
@@ -132,26 +214,44 @@ namespace DAL
                     command.CommandType = CommandType.Text;
 
                     string query = @"WITH Datos AS (
-                                    SELECT 
-                                        CASE A.ID_PREGUNTA
-                                            WHEN 53 THEN 'ORIENTACION A RESULTADOS'
-                                            WHEN 54 THEN 'ORIENTACION A LA CALIDAD'
-                                            WHEN 55 THEN 'ORIENTACION AL VECINO'
-                                            WHEN 56 THEN 'TRABAJO EN EQUIPO'
-                                            WHEN 57 THEN 'ORGANIZACION Y PLANIFICACION'
-                                            WHEN 58 THEN 'ACTITUD COMPROMETIDA'
-                                            WHEN 59 THEN 'FLEXIBILIDAD Y ADAPTABILIDAD'
-                                            WHEN 60 THEN 'LIDERAZGO'
-                                            WHEN 61 THEN 'ANALISIS Y RESOLUCION DE PROBLEMAS'
-                                            WHEN 62 THEN 'COMUNICACION'
-                                            WHEN 63 THEN 'COMPETENCIA TECNICA'
-                                        END AS Pregunta,
-                                        A.TEXTO_RESPUESTA AS Respuesta,
-                                        COUNT(*) AS Ocurrencias
-                                    FROM FICHAS_RELEVAMIENTOS_PERSONAS A
-                                    INNER JOIN FICHAS_RELEVAMIENTOS B ON A.ID_RELEVAMIENTO = B.ID
-                                    WHERE B.ID_FICHA = @idFicha ";
+                            SELECT 
+                                CASE A.ID_PREGUNTA
+                                    WHEN 53 THEN 'ORIENTACION A RESULTADOS'
+                                    WHEN 54 THEN 'ORIENTACION A LA CALIDAD'
+                                    WHEN 55 THEN 'ORIENTACION AL VECINO'
+                                    WHEN 56 THEN 'TRABAJO EN EQUIPO'
+                                    WHEN 57 THEN 'ORGANIZACION Y PLANIFICACION'
+                                    WHEN 58 THEN 'ACTITUD COMPROMETIDA'
+                                    WHEN 59 THEN 'FLEXIBILIDAD Y ADAPTABILIDAD'
+                                    WHEN 60 THEN 'LIDERAZGO'
+                                    WHEN 61 THEN 'ANALISIS Y RESOLUCION DE PROBLEMAS'
+                                    WHEN 62 THEN 'COMUNICACION'
+                                    WHEN 63 THEN 'COMPETENCIA TECNICA'
+                                END AS Pregunta,
+                                A.TEXTO_RESPUESTA AS Respuesta,
+                                COUNT(*) AS Ocurrencias";
 
+                    // Agregar campo Programa solo si se está filtrando por programa
+                    if (!string.IsNullOrEmpty(programa))
+                    {
+                        query += ",\n                                P.PROGRAMA";
+                    }
+
+                    query += @"
+                            FROM FICHAS_RELEVAMIENTOS_PERSONAS A
+                            INNER JOIN FICHAS_RELEVAMIENTOS B ON A.ID_RELEVAMIENTO = B.ID";
+
+                    // Agregar JOINs solo si se necesita filtrar por programa
+                    if (!string.IsNullOrEmpty(programa))
+                    {
+                        query += @"
+                            INNER JOIN EMPLEADOS E ON B.CUIT = E.LEGAJO
+                            INNER JOIN PROGRAMAS_PUBLICOS P ON P.ID_PROGRAMA = E.ID_PROGRAMA";
+                    }
+
+                    query += "\n                            WHERE B.ID_FICHA = @idFicha";
+
+                    // Agregar filtros dinámicamente
                     if (!string.IsNullOrEmpty(secretaria))
                     {
                         query += " AND B.SECRETARIA = @secretaria";
@@ -164,31 +264,53 @@ namespace DAL
                         command.Parameters.AddWithValue("@direccion", direccion);
                     }
 
+                    // Lógica mutuamente excluyente: oficina O programa
                     if (!string.IsNullOrEmpty(oficina))
                     {
                         query += " AND B.OFICINA = @oficina";
                         command.Parameters.AddWithValue("@oficina", oficina);
                     }
+                    else if (!string.IsNullOrEmpty(programa))
+                    {
+                        query += " AND P.PROGRAMA = @programa";
+                        command.Parameters.AddWithValue("@programa", programa);
+                    }
 
-                    query += @"  GROUP BY A.ID_PREGUNTA, A.TEXTO_RESPUESTA
-                                    )
-                                    SELECT 
-                                        Pregunta,
-                                        COALESCE([No Cubre Expectativas], NULL) AS [No_Cubre_Expectativas],
-                                        COALESCE([Sólido], NULL) AS [Sólido],  
-                                        COALESCE([Alcanza Plenamente], NULL) AS [Alcanza_Plenamente],  
-                                        COALESCE([Supera Expectativas], NULL) AS [Supera_Expectativas]
-                                    FROM Datos
-                                    PIVOT (
-                                        SUM(Ocurrencias) 
-                                        FOR Respuesta IN (
-                                            [No Cubre Expectativas], 
-                                            [Sólido], 
-                                            [Alcanza Plenamente], 
-                                            [Supera Expectativas]
-                                        )
-                                    ) AS TablaPivote
-                                    ORDER BY Pregunta;";
+                    // GROUP BY dinámico
+                    query += "\n                            GROUP BY A.ID_PREGUNTA, A.TEXTO_RESPUESTA";
+
+                    if (!string.IsNullOrEmpty(programa))
+                    {
+                        query += ", P.PROGRAMA";
+                    }
+
+                    query += @"
+                            )
+                            SELECT 
+                                Pregunta,
+                                COALESCE([No Cubre Expectativas], NULL) AS [No_Cubre_Expectativas],
+                                COALESCE([Sólido], NULL) AS [Sólido],  
+                                COALESCE([Alcanza Plenamente], NULL) AS [Alcanza_Plenamente],  
+                                COALESCE([Supera Expectativas], NULL) AS [Supera_Expectativas]";
+
+                    // Agregar campo Programa en SELECT final solo si se está filtrando por programa
+                    if (!string.IsNullOrEmpty(programa))
+                    {
+                        query += ",\n                                Programa";
+                    }
+
+                    query += @"
+                            FROM Datos
+                            PIVOT (
+                                SUM(Ocurrencias) 
+                                FOR Respuesta IN (
+                                    [No Cubre Expectativas], 
+                                    [Sólido], 
+                                    [Alcanza Plenamente], 
+                                    [Supera Expectativas]
+                                )
+                            ) AS TablaPivote
+                            ORDER BY Pregunta;";
 
                     command.CommandText = query;
                     command.Parameters.AddWithValue("@idFicha", idFicha);
@@ -201,9 +323,6 @@ namespace DAL
                 throw ex;
             }
         }
-
-
-
 
 
 
