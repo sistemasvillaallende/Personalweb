@@ -22,15 +22,6 @@ namespace web.secure {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control PanelInfomacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel PanelInfomacion;
-        
-        /// <summary>
         /// Control divInformacion.
         /// </summary>
         /// <remarks>
@@ -157,6 +148,15 @@ namespace web.secure {
         protected global::System.Web.UI.WebControls.LinkButton lnkAgrega_conceptos;
         
         /// <summary>
+        /// Control lbtnExporCtaCte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtnExporCtaCte;
+        
+        /// <summary>
         /// Control PanelDetalle.
         /// </summary>
         /// <remarks>
@@ -209,15 +209,6 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnConfirma;
-        
-        /// <summary>
-        /// Control lbtnExporCtaCte.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnExporCtaCte;
         
         /// <summary>
         /// Control Button1.
@@ -310,15 +301,6 @@ namespace web.secure {
         protected global::System.Web.UI.WebControls.Button Button2;
         
         /// <summary>
-        /// Control modalPopupDetalle.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender modalPopupDetalle;
-        
-        /// <summary>
         /// Control divModalDetalle.
         /// </summary>
         /// <remarks>
@@ -328,15 +310,6 @@ namespace web.secure {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divModalDetalle;
         
         /// <summary>
-        /// Control UpdatePanelConcepto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanelConcepto;
-        
-        /// <summary>
         /// Control lblTituloFormModal.
         /// </summary>
         /// <remarks>
@@ -344,33 +317,6 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTituloFormModal;
-        
-        /// <summary>
-        /// Control btnCloseModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnCloseModal;
-        
-        /// <summary>
-        /// Control divMSJDetalleLegajos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMSJDetalleLegajos;
-        
-        /// <summary>
-        /// Control msjDetalleLegajo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl msjDetalleLegajo;
         
         /// <summary>
         /// Control txtCod_concepto_liq.
@@ -515,6 +461,24 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnCancelar;
+        
+        /// <summary>
+        /// Control divMSJDetalleLegajos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMSJDetalleLegajos;
+        
+        /// <summary>
+        /// Control msjDetalleLegajo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl msjDetalleLegajo;
         
         /// <summary>
         /// Control HiddenField1.

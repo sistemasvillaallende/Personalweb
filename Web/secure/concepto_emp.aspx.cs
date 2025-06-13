@@ -112,7 +112,13 @@ namespace web.secure
             Session.Add("Detalle", lstDetalle);
             gvDetalle.DataSource = lstDetalle;
             gvDetalle.DataBind();
-            PanelDetalle.Update();
+
+            if (lstDetalle.Count > 0)
+            {
+                gvDetalle.UseAccessibleHeader = true;
+                gvDetalle.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+            //PanelDetalle.Update();
         }
 
         protected void gvDetalle_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -151,8 +157,8 @@ namespace web.secure
                 txtValor.Text = oVal.valor_concepto_liq.ToString();
                 Session["opcion"] = 2;
                 Session["index"] = indicePaginado;
-                UpdatePanelConcepto.Update();
-                modalPopupDetalle.Show();
+                //UpdatePanelConcepto.Update();
+                //modalPopupDetalle.Show();
             }
 
             if (e.CommandName == "deleterow")
@@ -218,7 +224,7 @@ namespace web.secure
 
         protected void btnCancelar_ServerClick(object sender, EventArgs e)
         {
-            modalPopupDetalle.Hide();
+            divModalDetalle.Visible = false;
         }
 
 
@@ -273,7 +279,7 @@ namespace web.secure
                                 //MENSAJE DE QUE YA EXISTE
                                 divMSJDetalleLegajos.Visible = true;
                                 msjDetalleLegajo.InnerHtml = "Ya Existe el Concepto " + detalle.cod_concepto_liq.ToString() + " para este Legajo:" + detalle.legajo.ToString();
-                                UpdatePanelConcepto.Update();
+                                //UpdatePanelConcepto.Update();
                             }
                         }
                         else
@@ -306,7 +312,7 @@ namespace web.secure
                 Session["Detalle"] = lstDetalle;
                 //Session["opcion"] = 0;
                 fillDetalle(lstDetalle);
-                modalPopupDetalle.Hide();
+                //modalPopupDetalle.Hide();
                 txtObs.Text = string.Empty;
                 btnCargar_concepto_ServerClick(null, null);
             }
@@ -322,7 +328,7 @@ namespace web.secure
             lblCantidad.InnerText = "Cantidad : " + cantidad.ToString();
             gvDetalle.DataSource = lstDetalle;
             gvDetalle.DataBind();
-            PanelDetalle.Update();
+            //PanelDetalle.Update();
         }
 
         protected void txtCod_concepto_liq_TextChanged(object sender, EventArgs e)
@@ -345,7 +351,7 @@ namespace web.secure
             {
                 txtCod_concepto_liq.Text = string.Empty;
                 txtConcepto.Text = string.Empty; ;
-                UpdatePanelConcepto.Update();
+                //UpdatePanelConcepto.Update();
                 txtValor.Focus();
             }
         }
@@ -360,8 +366,8 @@ namespace web.secure
             txtFecha_vto.Text = "";
             txtObs.Text = string.Empty;
             txtCod_concepto_liq.Focus();
-            UpdatePanelConcepto.Update();
-            modalPopupDetalle.Show();
+            //UpdatePanelConcepto.Update();
+            //modalPopupDetalle.Show();
         }
 
         protected void btnCargar_concepto_ServerClick(object sender, EventArgs e)
@@ -372,14 +378,10 @@ namespace web.secure
             txtValor.Text = "";
             txtFecha_vto.Text = "";
             txtCod_concepto_liq.Focus();
-            UpdatePanelConcepto.Update();
-            modalPopupDetalle.Show();
+            //UpdatePanelConcepto.Update();
+            //modalPopupDetalle.Show();
         }
 
-        protected void btnCloseModal_ServerClick(object sender, EventArgs e)
-        {
-            modalPopupDetalle.Hide();
-        }
 
         protected void lbtnExporCtaCte_Click(object sender, EventArgs e)
         {
@@ -389,7 +391,7 @@ namespace web.secure
         protected void lbtnConfirma_Click(object sender, EventArgs e)
         {
             txtObservAuditoria.Text = string.Empty;
-            popUpAuditoria.Show();
+            //popUpAuditoria.Show();
             txtObservAuditoria.Focus();
         }
 
@@ -410,7 +412,7 @@ namespace web.secure
             {
                 divError.Visible = true;
                 msjError.InnerHtml = "Debe agregar al menos un Item/s al detalle!!!";
-                PanelError.Update();
+                //PanelError.Update();
                 return;
             }
 
@@ -428,7 +430,7 @@ namespace web.secure
                             BLL.Concepto_Liq_x_EmpB.UpdateConceptoxEmp(Convert.ToInt32(txtLegajo.Text), lstDetalle, obsAuditoria, usuario);
                             divInformacion.Visible = true;
                             msjInformacion.InnerHtml = "Los datos han sido ingresada de forma correcta!!!";
-                            PanelInfomacion.Update();
+                            //PanelInfomacion.Update();
                             //btnAgregarConceptos.Visible = true;
                             //btnConfirma.Visible = false;
                             break;
@@ -438,7 +440,7 @@ namespace web.secure
                             BLL.Concepto_Liq_x_EmpB.UpdateConceptoxEmp(Convert.ToInt32(txtLegajo.Text), lstDetalle, obsAuditoria, usuario);
                             divInformacion.Visible = true;
                             msjInformacion.InnerHtml = "Los datos han sido ingresada de forma correcta!!!";
-                            PanelInfomacion.Update();
+                            //PanelInfomacion.Update();
                             // btnAgregarConceptos.Visible = true;
                             break;
                         }
@@ -447,7 +449,7 @@ namespace web.secure
                             BLL.Concepto_Liq_x_EmpB.DeleteConceptoxEmp(Convert.ToInt32(txtLegajo.Text), lstDetalle, lstDetalleBorrar, obsAuditoria, usuario);
                             divInformacion.Visible = true;
                             msjInformacion.InnerHtml = "Los datos han sido ingresada de forma correcta!!!";
-                            PanelInfomacion.Update();
+                            //PanelInfomacion.Update();
                             //btnAgregarConceptos.Visible = true;
                             break;
                         }
@@ -455,25 +457,25 @@ namespace web.secure
                     default:
                         break;
                 }
-                popUpAuditoria.Hide();
+                //popUpAuditoria.Hide();
                 //txtOP.InnerText = oOrden.nroOrden.ToString();
             }
             catch
             {
                 divError.Visible = true;
                 msjError.InnerHtml = "Problemas con el Alta de los Novedades, Revise la Grilla, se cargo varias veces el mismo Concepto!!!";
-                PanelError.Update();
+                //PanelError.Update();
             }
         }
 
         protected void btnCloseModalAuditoria_ServerClick(object sender, EventArgs e)
         {
-            popUpAuditoria.Hide();
+            //popUpAuditoria.Hide();
         }
 
         protected void btnCancelarAuditoria_Click(object sender, EventArgs e)
         {
-            popUpAuditoria.Hide();
+            //popUpAuditoria.Hide();
         }
     }
 }

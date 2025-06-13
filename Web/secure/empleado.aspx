@@ -44,7 +44,7 @@
     <asp:HiddenField ID="hiddenOperacion" runat="server" />
 
     <div class="row">
-        <div class="col-md-12" style="text-align: right; margin-bottom: 20px;">
+        <div class="col-md-12" style="text-align: right; margin-bottom: 0px;">
             <div class="btn-group" style="padding-bottom: 20px;">
                 <button type="button" class="btn btn-outline-dark" id="cmdMovimEmpleados" runat="server"
                     onserverclick="cmdMovimEmpleados_ServerClick">
@@ -113,7 +113,7 @@
         style="background-color: white; padding-left: 2px !important; padding-top: 0px !important; padding-right: 2px !important; padding-bottom: 0 !important;">
         <div class="row">
             <%--<div class="col-md-12 col-md-offset-0">--%>
-            <div class="box">
+            <div class="col-md-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="tab_Datos_Empleado-tab" data-toggle="tab"

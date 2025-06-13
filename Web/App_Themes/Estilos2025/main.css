@@ -42,6 +42,8 @@
     padding-right: 25px !important;
     font-weight: 600 !important;
     font-size: 16px !important;
+    z-index: 5;
+    position: relative;
 }
 
     .btn-outline-success:hover {
@@ -113,15 +115,32 @@
             color: white;
         }
 
-    .btn-control.excel {
-        color: var(--color-verde-oscuro);
-        border: 2px solid var(--color-verde-oscuro);
+.btn-control-excel {
+    border: solid darkcyan !important;
+    background-color: white !important;
+    color: var(--color-verde-oscuro) !important;
+    float: right !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    z-index: 5;
+    position: relative;
+}
+
+    .btn-control-excel:hover {
+        border: solid var(--color-verde-oscuro) !important;
+        background-color: var(--color-verde-oscuro) !important;
+        color: white !important;
+        float: right !important;
+        padding-left: 25px !important;
+        padding-right: 25px !important;
+        font-weight: 600 !important;
+        font-size: 16px !important;
     }
 
-        .btn-control.excel:hover {
-            background-color: var(--color-verde-oscuro);
-            color: white;
-        }
+
+
 
     .btn-control.busqueda {
         color: var(--color-azul);

@@ -7,31 +7,48 @@
 <head runat="server">
     <title>Conceptos Legajo</title>
     <link href="../App_Themes/Definitivo/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../App_Themes/Estilos2025/main.css?v=1" rel="stylesheet" />
+    <link href="../App_Themes/Estilos2025/main.css?v=2" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
     <style>
+        .dataTables_wrapper .dataTables_filter {
+            float: left;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .dataTables_filter label {
+            border: solid 2px lightgray;
+            padding-left: 10px;
+        }
+
+        .dataTables_filter label input {
+            border: none !important;
+        }
+
+            .dataTables_filter input focus-visible {
+                border: none !important;
+            }
     </style>
 </head>
 <body class="login-page">
 
     <form id="form1" runat="server">
+
         <asp:ScriptManager runat="server"></asp:ScriptManager>
-        <div class="row" style="margin-top: 100px; padding-top: 100px">
+        <div class="row" style="margin-top: 10px; padding-top: 10px">
             <div class="col-md-12">
-                <asp:UpdatePanel ID="PanelInfomacion" runat="server" UpdateMode="Conditional">
-                    <ContentTemplate>
-                        <div class="alert alert-warning alert-success" runat="server"
-                            id="divInformacion" visible="false" role="alert">
-                            <button type="button" class="close" data-dismiss="alert"
-                                onclick="__doPostBack('<%=PanelInfomacion.ClientID%>', 'Informacion');">
-                                <span arial-hidden="true">&times;</span> <span
-                                    class="sr-only">Cerrar</span>
-                            </button>
-                            <strong>Aviso Importante! </strong>
-                            <p id="msjInformacion" runat="server">
-                            </p>
-                        </div>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+
+                <div class="alert alert-warning alert-success" runat="server"
+                    id="divInformacion" visible="false" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span arial-hidden="true">&times;</span> <span
+                            class="sr-only">Cerrar</span>
+                    </button>
+                    <strong>Aviso Importante! </strong>
+                    <p id="msjInformacion" runat="server">
+                    </p>
+                </div>
+
 
                 <asp:UpdatePanel ID="PanelError" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
@@ -107,13 +124,18 @@
 
         <div class="row">
             <div class="col-md-12" style="text-align: right;">
-                <asp:LinkButton ID="lnkAgrega_conceptos" CssClass="btn btn-outline-success" runat="server"
+                <asp:LinkButton ID="lnkAgrega_conceptos" CssClass="btn btn-outline-success"
+                    runat="server" Style="margin: 5px;"
                     OnClick="lnkAgrega_conceptos_Click">
                                         <i class="fa fa-money"></i> Agregar Concepto
                 </asp:LinkButton>
+                <asp:LinkButton ID="lbtnExporCtaCte" Style="margin: 5px;" CssClass="btn btn-control-excel" runat="server"
+                    OnClick="lbtnExporCtaCte_Click">
+                                        <i class="fa fa-plus"></i> Excel
+                </asp:LinkButton>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-top: -45px;">
             <div class="col-md-12">
                 <asp:UpdatePanel ID="PanelDetalle" runat="server" UpdateMode="Conditional">
                     <Triggers>
@@ -179,7 +201,7 @@
                         </asp:GridView>
 
                         <label id="lblCantidad" runat="server" class="form-control"
-                            style="text-align: right;">
+                            style="text-align: right; display: none;">
                             Cantidad: 0</label>
                         <%--<label id="lblTotal" runat="server" class="form-control"
                                                 style="text-align: right; background-color: #d9edf7;">
@@ -213,10 +235,7 @@
                         OnClientClick="return confirm('Desea Confirmar los Cambios...');">
                                         <i class="fa fa-play-circle"></i> Confirma
                     </asp:LinkButton>
-                    <asp:LinkButton ID="lbtnExporCtaCte" CssClass="btn-control excel" runat="server"
-                        OnClick="lbtnExporCtaCte_Click">
-                                        <i class="fa fa-plus"></i> Excel
-                    </asp:LinkButton>
+
                     <%--<asp:LinkButton ID="lbtnSalir" CssClass="btn-control volver" runat="server"
                         OnClick="lbtnSalir_Click">
                                         <i class="fa fa-sign-out"></i> Volver
@@ -286,43 +305,18 @@
         <!-- ////////////////////////////// POPUP DETALLE LEGAJOS //////////////////////////////// -->
         <asp:HiddenField ID="HiddenField3" runat="server" />
         <asp:Button ID="Button2" runat="server" Text="Button" Style="visibility: hidden;" />
-        <ajaxToolkit:ModalPopupExtender runat="server" BackgroundCssClass="modalBackground"
-            PopupControlID="divModalDetalle" BehaviorID="modalPopupDetalle" TargetControlID="Button2"
-            OkControlID="btnAceptar" ID="modalPopupDetalle">
-        </ajaxToolkit:ModalPopupExtender>
-        <div id="divModalDetalle" runat="server" class="modal-windows">
 
-            <asp:UpdatePanel ID="UpdatePanelConcepto" runat="server" UpdateMode="Conditional">
-                <ContentTemplate>
-                    <div class="modal-header col-md-12"  style="position: absolute; z-index: 10003; left: 228.5px; top: -20px !important;">
-
+        <div class="modal" tabindex="-1" id="divModalDetalle" runat="server">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
                         <h4 class="modal-title">
                             <asp:Label ID="lblTituloFormModal" runat="server" Text="Conceptos">
                             </asp:Label>
                         </h4>
-
-                        <button type="button" runat="server" id="btnCloseModal"
-                            onserverclick="btnCloseModal_ServerClick" class="close" data-dismiss="modal"
-                            aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
-
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <div class="alert alert-success alert-dismissible" runat="server"
-                                id="divMSJDetalleLegajos" visible="false" role="alert">
-                                <button type="button" class="close" data-dismiss="alert"
-                                    onclick="__doPostBack('<%=PanelInfomacion.ClientID%>', 'Alerta');">
-                                    <span aria-hidden="true">×</span></button>
-                                </button>
-                                        <h4>Aviso!</h4>
-                                <p id="msjDetalleLegajo" runat="server">
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="modal-body" id="m1">
+                    <div class="modal-body">
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label>Cod Concepto</label>
@@ -391,25 +385,44 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer col-md-12">
-                            <div class="form-group">
-                                <asp:ValidationSummary ID="Validation2" runat="server" ForeColor="Red"
-                                    ValidationGroup="cliente" />
-                            </div>
-                            <div class="form-group">
-                                <button type="button" class="btn-control aceptar" runat="server" id="btnAceptar"
-                                    validationgroup="cliente" onserverclick="btnAceptar_ServerClick">
-                                    Aceptar</button>
-                                <button type="button" class="btn-control cancelar" runat="server"
-                                    id="btnCancelar" onserverclick="btnCancelar_ServerClick">
-                                    Cancelar</button>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <asp:ValidationSummary ID="Validation2" runat="server" ForeColor="Red"
+                                        ValidationGroup="cliente" />
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn-control aceptar" runat="server" id="btnAceptar"
+                                        validationgroup="cliente" onserverclick="btnAceptar_ServerClick">
+                                        Aceptar</button>
+                                    <button type="button" class="btn-control cancelar" runat="server"
+                                        id="btnCancelar" onserverclick="btnCancelar_ServerClick">
+                                        Cancelar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <br />
-                </ContentTemplate>
-            </asp:UpdatePanel>
+                </div>
+            </div>
         </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <div class="alert alert-success alert-dismissible" runat="server"
+                    id="divMSJDetalleLegajos" visible="false" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span></button>
+                    </button>
+                                        <h4>Aviso!</h4>
+                    <p id="msjDetalleLegajo" runat="server">
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-body" id="m1">
+        </div>
+
         <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
 
 
@@ -484,7 +497,7 @@
         <script type="text/javascript">
             $(function () {
                 //Specifying the Character Count control explicitly
-                $("[id*=txtObservaciones.ClientID]").MaxLength(
+                $("[id=txtObservaciones.ClientID]").MaxLength(
                     {
                         MaxLength: 300,
                         CharacterCountControl: $('#counter')
@@ -497,17 +510,23 @@
                 //});
             });
         </script>
-
-        <%-- <script type="text/javascript">
-                document.addEventListener("DOMContentLoaded", function () {
-                var textBox = document.getElementById("<%= txtObservaciones.ClientID %>");
-                    textBox.addEventListener("input", function () {
-                    if (this.value.length > 100) {
-                    this.value = this.value.slice(0, 100);
-                    }
-                    });
-                    });
-                    </script>--%>
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#<%=gvDetalle.ClientID %>').dataTable({
+                    "language": {
+                        "url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                    },
+                    order: false,
+                    pageLength: 5,
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
+            });
+        </script>
     </form>
 </body>
 </html>
