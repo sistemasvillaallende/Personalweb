@@ -16,8 +16,8 @@
         </asp:Content>
         <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-            <div class="row" style="margin-top: 100px;">
-                <div class="col-md-10 col-md-offset-1">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-1">
                     <div class="row" style="margin-top: 1px; padding-top: 1px">
                         <asp:UpdatePanel ID="PanelInfomacion" runat="server" UpdateMode="Conditional">
                             <ContentTemplate>
@@ -46,14 +46,14 @@
                         </asp:UpdatePanel>
                     </div>
                 </div>
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-12 col-md-offset-1">
                     <!-- general form elements -->
-                    <div class="box box-primary">
+                    <div class="panel panel-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">Carga de Conceptos de Liquidación</h3>
                         </div>
                         <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
+                            <div class="col-md-12 col-md-offset-1">
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-md-6">

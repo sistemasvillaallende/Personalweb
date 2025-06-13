@@ -13,6 +13,33 @@ namespace web.secure {
     public partial class empleado {
         
         /// <summary>
+        /// Control hiddenLegajo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hiddenLegajo;
+        
+        /// <summary>
+        /// Control hiddenNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hiddenNombre;
+        
+        /// <summary>
+        /// Control hiddenOperacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hiddenOperacion;
+        
+        /// <summary>
         /// Control cmdMovimEmpleados.
         /// </summary>
         /// <remarks>
@@ -20,15 +47,6 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton cmdMovimEmpleados;
-        
-        /// <summary>
-        /// Control cmdConceptos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton cmdConceptos;
         
         /// <summary>
         /// Control cmdConsLegajo.
@@ -283,13 +301,13 @@ namespace web.secure {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator19;
         
         /// <summary>
-        /// Control txtTarea.
+        /// Control ddTarea.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTarea;
+        protected global::System.Web.UI.WebControls.DropDownList ddTarea;
         
         /// <summary>
         /// Control RequiredFieldValidator5.
@@ -427,6 +445,33 @@ namespace web.secure {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
         
         /// <summary>
+        /// Control lblCategora_profesional.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCategora_profesional;
+        
+        /// <summary>
+        /// Control ddCategoriaProfesional.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddCategoriaProfesional;
+        
+        /// <summary>
+        /// Control RequiredFieldValidatorCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorCategoria;
+        
+        /// <summary>
         /// Control ddRegimen.
         /// </summary>
         /// <remarks>
@@ -490,31 +535,13 @@ namespace web.secure {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator20;
         
         /// <summary>
-        /// Control lblCategoriaProfesional.
+        /// Control txtFecha_baja.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCategoriaProfesional;
-        
-        /// <summary>
-        /// Control ddCategoriaProfesional.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddCategoriaProfesional;
-        
-        /// <summary>
-        /// Control RequiredFieldValidatorCategoria.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorCategoria;
+        protected global::System.Web.UI.WebControls.TextBox txtFecha_baja;
         
         /// <summary>
         /// Control ChkActivo.
@@ -524,15 +551,6 @@ namespace web.secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox ChkActivo;
-        
-        /// <summary>
-        /// Control txtFecha_baja.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFecha_baja;
         
         /// <summary>
         /// Control chkImprime.
@@ -904,13 +922,13 @@ namespace web.secure {
         protected global::System.Web.UI.HtmlControls.HtmlButton cmdVolver3;
         
         /// <summary>
-        /// Control UpdatePanel4.
+        /// Control iframecptos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel4;
+        protected global::System.Web.UI.WebControls.Literal iframecptos;
         
         /// <summary>
         /// Control UpdatePanel3.

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -29,22 +30,43 @@ namespace web.secure
 
         protected void toPersonalExcel_ServerClick(object sender, EventArgs e)
         {
-            List<web.reportes.NominaEmpleados> lst = new List<reportes.NominaEmpleados>();
-            GridView GridtoExcel = new GridView();
-            lst = web.reportes.NominaEmpleados.readNominaEmpleado();
-            GridtoExcel.DataSource = lst;
-            GridtoExcel.DataBind();
-            DescargarDocumentoExcel("ReporteNominaEmpleadoActivos.xls", GridtoExcel);
+            //List<web.reportes.NominaEmpleados> lst = new List<reportes.NominaEmpleados>();
+            //GridView GridtoExcel = new GridView();
+            //lst = web.reportes.NominaEmpleados.readNominaEmpleado();
+            //GridtoExcel.DataSource = lst;
+            //GridtoExcel.DataBind();
+            //DescargarDocumentoExcel("ReporteNominaEmpleadoActivos.xls", GridtoExcel);
+            List<web.reportes.NominaEmpleados> lst = web.reportes.NominaEmpleados.readNominaEmpleado();
+            if (lst != null && lst.Count > 0)
+            {
+                GridView GridtoExcel = new GridView();
+                GridtoExcel.DataSource = lst;
+                GridtoExcel.DataBind();
+                string fecha = DateTime.Now.ToString("yyyyMMdd");
+                string nombreArchivo = $"ReporteNominaEmpleadoActivos_{fecha}.xls";
+                ExportarAExcel(nombreArchivo, GridtoExcel);
+            }
         }
 
         protected void toPersonalExcelTodos_ServerClick(object sender, EventArgs e)
         {
-            List<web.reportes.NominaEmpleados> lst = new List<reportes.NominaEmpleados>();
-            GridView GridtoExcel = new GridView();
-            lst = web.reportes.NominaEmpleados.readNominaEmpleado();
-            GridtoExcel.DataSource = lst;
-            GridtoExcel.DataBind();
-            DescargarDocumentoExcel("ReporteNominaEmpleadoTodos.xls", GridtoExcel);
+            //List<web.reportes.NominaEmpleados> lst = new List<reportes.NominaEmpleados>();
+            //GridView GridtoExcel = new GridView();
+            //lst = web.reportes.NominaEmpleados.readNominaEmpleadoTodos();
+            //GridtoExcel.DataSource = lst;
+            //GridtoExcel.DataBind();
+            //DescargarDocumentoExcel("ReporteNominaEmpleadoTodos.xls", GridtoExcel);
+
+            List<web.reportes.NominaEmpleados> lst = web.reportes.NominaEmpleados.readNominaEmpleadoTodos();
+            if (lst != null && lst.Count > 0)
+            {
+                GridView GridtoExcel = new GridView();
+                GridtoExcel.DataSource = lst;
+                GridtoExcel.DataBind();
+                string fecha = DateTime.Now.ToString("yyyyMMdd");
+                string nombreArchivo = $"ReporteNominaEmpleadoTodos_{fecha}.xls";
+                ExportarAExcel(nombreArchivo, GridtoExcel);
+            }
 
         }
 
@@ -57,12 +79,23 @@ namespace web.secure
 
         protected void toPersonalxSeccionExcel_ServerClick(object sender, EventArgs e)
         {
-            List<web.reportes.NominaEmpxSeccion> lst = new List<reportes.NominaEmpxSeccion>();
-            GridView GridtoExcel = new GridView();
-            lst = web.reportes.NominaEmpxSeccion.readNominaEmpleado();
-            GridtoExcel.DataSource = lst;
-            GridtoExcel.DataBind();
-            DescargarDocumentoExcel("ReporteNominaEmpxSeccion.xls", GridtoExcel);
+            //List<web.reportes.NominaEmpxSeccion> lst = new List<reportes.NominaEmpxSeccion>();
+            //GridView GridtoExcel = new GridView();
+            //lst = web.reportes.NominaEmpxSeccion.readNominaEmpleado();
+            //GridtoExcel.DataSource = lst;
+            //GridtoExcel.DataBind();
+            //DescargarDocumentoExcel("ReporteNominaEmpxSeccion.xls", GridtoExcel);
+
+            List<web.reportes.NominaEmpxSeccion> lst = web.reportes.NominaEmpxSeccion.readNominaEmpleado();
+            if (lst != null && lst.Count > 0)
+            {
+                GridView GridtoExcel = new GridView();
+                GridtoExcel.DataSource = lst;
+                GridtoExcel.DataBind();
+                string fecha = DateTime.Now.ToString("yyyyMMdd");
+                string nombreArchivo = $"ReporteNominaEmpxSeccion_{fecha}.xls";
+                ExportarAExcel(nombreArchivo, GridtoExcel);
+            }
         }
 
         protected void btnCloseListado_ServerClick(object sender, EventArgs e)
@@ -117,21 +150,60 @@ namespace web.secure
         protected void toCuentaSueldoyGtos_ServerClick(object sender, EventArgs e)
         {
             divReporte.InnerHtml = "<iframe src=\" " +
-               string.Format("../reportes/reportes.aspx?reporte={0}", "CuentaSueldoyGtos") + "\"  width=\"100%\" height=\"600\"></iframe>";
+               string.Format("../reportes/reportes.aspx?reporte={0}", "CuentaSueldoyGastos") + "\"  width=\"100%\" height=\"600\"></iframe>";
             popUpListado.Show();
 
         }
 
+        //protected void toNominaArt_ServerClick(object sender, EventArgs e)
+        //{
+        //    List<web.reportes.NominaArt> lst = new List<reportes.NominaArt>();
+        //    GridView GridtoExcel = new GridView();
+        //    lst = web.reportes.NominaArt.read();
+        //    GridtoExcel.DataSource = lst;
+        //    GridtoExcel.DataBind();
+        //    DescargarDocumentoExcel("ReporteNominaArt.xls", GridtoExcel);
+        //}
+
         protected void toNominaArt_ServerClick(object sender, EventArgs e)
         {
-            List<web.reportes.NominaArt> lst = new List<reportes.NominaArt>();
-            GridView GridtoExcel = new GridView();
-            lst = web.reportes.NominaArt.read();
-            GridtoExcel.DataSource = lst;
-            GridtoExcel.DataBind();
-            DescargarDocumentoExcel("ReporteNominaArt.xls", GridtoExcel);
+            List<web.reportes.NominaArt> lst = web.reportes.NominaArt.read();
+
+            if (lst != null && lst.Count > 0)
+            {
+                GridView GridtoExcel = new GridView();
+                GridtoExcel.DataSource = lst;
+                GridtoExcel.DataBind();
+                string fecha = DateTime.Now.ToString("yyyyMMdd");
+                string nombreArchivo = $"ReporteNominaArt_{fecha}.xls";
+                ExportarAExcel(nombreArchivo, GridtoExcel);
+            }
         }
 
-       
+        private void ExportarAExcel(string nombreArchivo, GridView grid)
+        {
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment;filename=" + nombreArchivo);
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.ms-excel";
+
+            using (StringWriter sw = new StringWriter())
+            {
+                HtmlTextWriter hw = new HtmlTextWriter(sw);
+
+                // Si usás estilos de bootstrap, estos podrían no verse bien en Excel, por eso limpiar.
+                grid.AllowPaging = false;
+                grid.RenderControl(hw);
+
+                Response.Output.Write(sw.ToString());
+                Response.Flush();
+                Response.End();
+            }
+        }
+
+
+
+
     }
 }

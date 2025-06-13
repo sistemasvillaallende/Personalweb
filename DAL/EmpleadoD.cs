@@ -814,6 +814,8 @@ namespace DAL
                         if (!dr.IsDBNull(activo)) objEmp.activo = dr.GetBoolean(activo);
                         if (!dr.IsDBNull(dr.GetOrdinal("id_profesional_monotributo")))
                             objEmp.id_profesional_monotributo = dr.GetInt32(dr.GetOrdinal("id_profesional_monotributo"));
+                        if (!dr.IsDBNull(dr.GetOrdinal("id_tarea")))
+                            objEmp.id_tarea = dr.GetInt32(dr.GetOrdinal("id_tarea"));
                     }
                 }
             }
@@ -1641,12 +1643,12 @@ namespace DAL
             return legajo;
         }
 
-        public static int Insert_cambios_empleados(int legajo, string usuario, int id_tipo_auditoria, string des_tipo_auditoria, string obsauditoria, SqlConnection cn, SqlTransaction trx)
+        public static int Insert_cambios_empleados(int legajo, string usuario, int id_tipo_auditoria,
+            string des_tipo_auditoria, string obsauditoria, SqlConnection cn, SqlTransaction trx)
         {
             Entities.Empleado oEmp = new Empleado();
             SqlCommand cmd = null;
             SqlCommand cmdInsert = null;
-            //SqlConnection cn = DALBase.GetConnection("SIIMVA");
             int nro_item = 0;
             try
             {
@@ -1679,7 +1681,9 @@ namespace DAL
                 strSQL.AppendLine("dpto_domicilio, monoblock_domicilio, cod_postal, telefonos, celular, email, nro_cta_sb, nro_cta_gastos,");
                 strSQL.AppendLine("nro_ipam, nro_jubilacion, antiguedad_ant, antiguedad_actual, nro_contrato, fecha_inicio_contrato,");
                 strSQL.AppendLine("fecha_fin_contrato, nro_nombramiento, fecha_nombramiento, cod_banco, tipo_cuenta, nro_sucursal, nro_caja_ahorro,");
-                strSQL.AppendLine("nro_cbu, cod_regimen_empleado, imprime_recibo, usuario, id_programa, id_revista, id_tipo_auditoria, obsauditoria)");
+                strSQL.AppendLine("nro_cbu, cod_regimen_empleado, imprime_recibo, usuario, id_programa, id_revista, ");
+                strSQL.AppendLine("fecha_revista, activo, licenciagenerada, licenciadisponible, licenciausadas, ");
+                strSQL.AppendLine("razonesparticulares, evaluadores, id_profesional_monotributo, id_tipo_auditoria, obsauditoria)");
                 strSQL.AppendLine(" values ");
                 strSQL.AppendLine("(@legajo, @nro_item, @nombre, @fecha_movimiento, @fecha_ingreso, @cod_tipo_documento, @nro_documento, @cuil,");
                 strSQL.AppendLine("@tarea, @cod_categoria, @cod_cargo,@cod_seccion, @cod_clasif_per, @cod_tipo_liq, @id_secretaria, @id_direccion, @id_oficina,");
@@ -1688,7 +1692,11 @@ namespace DAL
                 strSQL.AppendLine("@cod_postal, @telefonos, @celular, @email, @nro_cta_sb, @nro_cta_gastos, @nro_ipam, @nro_jubilacion, @antiguedad_ant,");
                 strSQL.AppendLine("@antiguedad_actual, @nro_contrato, @fecha_inicio_contrato, @fecha_fin_contrato, @nro_nombramiento, @fecha_nombramiento,");
                 strSQL.AppendLine("@cod_banco, @tipo_cuenta, @nro_sucursal, @nro_caja_ahorro, @nro_cbu, @cod_regimen_empleado, @imprime_recibo,");
-                strSQL.AppendLine("@usuario, @id_programa, @id_revista, @id_tipo_auditoria, @obsauditoria) ");
+                strSQL.AppendLine("@usuario, @id_programa, @id_revista, @fecha_revista, @activo, @licenciagenerada, @licenciadisponible, @licenciausadas,");
+                strSQL.AppendLine("@razonesparticulares, @evaluadores, @id_profesional_monotributo, @id_tipo_auditoria, @obsauditoria) ");
+
+
+
                 //
                 cmdInsert.Parameters.AddWithValue("@legajo", oEmp.legajo);
                 cmdInsert.Parameters.AddWithValue("@nro_item", nro_item);
@@ -1751,6 +1759,18 @@ namespace DAL
                 cmdInsert.Parameters.AddWithValue("@usuario", usuario);
                 cmdInsert.Parameters.AddWithValue("@id_programa", oEmp.id_programa);
                 cmdInsert.Parameters.AddWithValue("@id_revista", oEmp.id_revista);
+                //
+                cmdInsert.Parameters.AddWithValue("@fecha_revista", oEmp.fecha_revista != null ? oEmp.fecha_revista : (object)DBNull.Value);
+                cmdInsert.Parameters.AddWithValue("@activo", oEmp.activo);
+                if (oEmp.id_profesional_monotributo.HasValue)
+                    cmdInsert.Parameters.AddWithValue("@id_profesional_monotributo", oEmp.id_profesional_monotributo.Value);
+                else
+                    cmdInsert.Parameters.AddWithValue("@id_profesional_monotributo", DBNull.Value);
+                if (oEmp.id_tarea.HasValue)
+                    cmdInsert.Parameters.AddWithValue("@id_tarea", oEmp.id_tarea.Value);
+                else
+                    cmdInsert.Parameters.AddWithValue("@id_tarea", DBNull.Value);
+                //
                 cmdInsert.Parameters.AddWithValue("@id_tipo_auditoria", id_tipo_auditoria);
                 cmdInsert.Parameters.AddWithValue("@obsauditoria", obsauditoria.Trim());
                 cmdInsert.CommandType = CommandType.Text;
@@ -1764,7 +1784,7 @@ namespace DAL
                 oAudita.proceso = des_tipo_auditoria;
                 oAudita.identificacion = oEmp.legajo.ToString();
                 oAudita.autorizaciones = "";
-                oAudita.observaciones = obsauditoria;
+                oAudita.observaciones = "Datos antes del Cambio " + obsauditoria;
                 oAudita.detalle = Newtonsoft.Json.JsonConvert.SerializeObject(oEmp);
                 oAudita.usuario = usuario;
                 DAL.AuditoriaD.Insert_movimiento(oAudita, cn, trx);
@@ -2259,13 +2279,7 @@ namespace DAL
             }
             return oEmp.legajo;
         }
-        public static int Insert_cambios_empleados(
-          int legajo,
-          string usuario,
-          string operacion,
-          string observacion,
-          SqlConnection cn,
-          SqlTransaction trx)
+        public static int Insert_cambios_empleados(int legajo, string usuario, string operacion, string observacion, SqlConnection cn, SqlTransaction trx)
         {
             Empleado empleado = new Empleado();
             try
@@ -2274,7 +2288,7 @@ namespace DAL
                 int num;
                 if (legajo > 0)
                 {
-                    string str = "SELECT isnull(max(nro_item),0)  As item\r\n                                   FROM HIST_CAMBIO_EMPLEADOS (nolock)\r\n                                   WHERE legajo = @legajo";
+                    string str = "SELECT isnull(max(nro_item),0) As item\r\n FROM HIST_CAMBIO_EMPLEADOS (nolock)\r\n WHERE legajo = @legajo";
                     SqlCommand sqlCommand = new SqlCommand();
                     sqlCommand.Connection = cn;
                     sqlCommand.CommandType = CommandType.Text;
@@ -2296,7 +2310,7 @@ namespace DAL
                 stringBuilder.AppendLine("dpto_domicilio, monoblock_domicilio, cod_postal, telefonos, celular, email, nro_cta_sb, nro_cta_gastos,");
                 stringBuilder.AppendLine("nro_ipam, nro_jubilacion, antiguedad_ant, antiguedad_actual, nro_contrato, fecha_inicio_contrato,");
                 stringBuilder.AppendLine("fecha_fin_contrato, nro_nombramiento, fecha_nombramiento, cod_banco, tipo_cuenta, nro_sucursal, nro_caja_ahorro,");
-                stringBuilder.AppendLine("nro_cbu, cod_regimen_empleado, imprime_recibo, usuario, id_programa, id_revista)");
+                stringBuilder.AppendLine("nro_cbu, cod_regimen_empleado, imprime_recibo, usuario, id_programa, id_revista, fecha_revista, activo, id_profesional_monotributo, id_tarea)");
                 stringBuilder.AppendLine(" values ");
                 stringBuilder.AppendLine("(@legajo, @nro_item, @nombre, @fecha_movimiento, @fecha_ingreso, @cod_tipo_documento, @nro_documento, @cuil,");
                 stringBuilder.AppendLine("@tarea, @cod_categoria, @cod_cargo,@cod_seccion, @cod_clasif_per, @cod_tipo_liq, @id_secretaria, @id_direccion, @id_oficina,");
@@ -2304,7 +2318,10 @@ namespace DAL
                 stringBuilder.AppendLine("@ciudad_domicilio, @barrio_domicilio, @calle_domicilio, @nro_domicilio, @piso_domicilio, @dpto_domicilio, @monoblock_domicilio,");
                 stringBuilder.AppendLine("@cod_postal, @telefonos, @celular, @email, @nro_cta_sb, @nro_cta_gastos, @nro_ipam, @nro_jubilacion, @antiguedad_ant,");
                 stringBuilder.AppendLine("@antiguedad_actual, @nro_contrato, @fecha_inicio_contrato, @fecha_fin_contrato, @nro_nombramiento, @fecha_nombramiento,");
-                stringBuilder.AppendLine("@cod_banco, @tipo_cuenta, @nro_sucursal, @nro_caja_ahorro, @nro_cbu, @cod_regimen_empleado, @imprime_recibo, @usuario, @id_programa, @id_revista) ");
+                stringBuilder.AppendLine("@cod_banco, @tipo_cuenta, @nro_sucursal, @nro_caja_ahorro, @nro_cbu, @cod_regimen_empleado, @imprime_recibo, @usuario, @id_programa, @id_revista,");
+                stringBuilder.AppendLine("@fecha_revista, @activo, @id_profesional_monotributo, @id_tarea) ");
+
+
                 sqlCommand1.Parameters.Add(new SqlParameter("@legajo", (object)byPk.legajo));
                 sqlCommand1.Parameters.Add(new SqlParameter("@nro_item", (object)num));
                 sqlCommand1.Parameters.Add(new SqlParameter("@nombre", (object)byPk.nombre));
@@ -2361,6 +2378,12 @@ namespace DAL
                 sqlCommand1.Parameters.Add(new SqlParameter("@usuario", (object)usuario));
                 sqlCommand1.Parameters.Add(new SqlParameter("@id_programa", (object)byPk.id_programa));
                 sqlCommand1.Parameters.Add(new SqlParameter("@id_revista", (object)byPk.id_revista));
+                //
+                sqlCommand1.Parameters.Add(new SqlParameter("@fecha_revista", byPk.fecha_revista != null ? byPk.fecha_revista : (object)""));
+                sqlCommand1.Parameters.Add(new SqlParameter("@activo", (object)byPk.activo));
+                sqlCommand1.Parameters.Add(new SqlParameter("@id_profesional_monotributo", (byPk.id_profesional_monotributo > 0 ? byPk.id_profesional_monotributo : 0)));
+                sqlCommand1.Parameters.Add(new SqlParameter("@id_tarea", (byPk.id_tarea > 0 ? byPk.id_tarea : 0)));
+                //
                 sqlCommand1.CommandType = CommandType.Text;
                 sqlCommand1.CommandText = stringBuilder.ToString();
                 sqlCommand1.Transaction = trx;
@@ -2375,24 +2398,20 @@ namespace DAL
             }
             return legajo;
         }
-        public static int UpdateDatosEmpleado(
-  Empleado oEmp,
-  string usuario,
-  SqlConnection cn,
-  SqlTransaction trx)
+        public static int UpdateDatosEmpleado(Empleado oEmp, string usuario, SqlConnection cn, SqlTransaction trx)
         {
-            SqlCommand sqlCommand1 = (SqlCommand)null;
+            // SqlCommand sqlCommand1 = (SqlCommand)null;
             try
             {
                 StringBuilder stringBuilder1 = new StringBuilder();
                 StringBuilder stringBuilder2 = new StringBuilder();
-                string str = "SELECT max(cod_categoria)\r\n                        FROM Empleados where legajo=" + oEmp.legajo.ToString();
+                string str = "SELECT max(cod_categoria)\r\n FROM Empleados where legajo=" + oEmp.legajo.ToString();
                 SqlCommand sqlCommand2 = new SqlCommand();
                 sqlCommand2.Connection = cn;
                 sqlCommand2.CommandType = CommandType.Text;
                 sqlCommand2.CommandText = str;
                 sqlCommand2.Transaction = trx;
-                int int32 = Convert.ToInt32(sqlCommand2.ExecuteScalar());
+                int cod_categoria_ant = Convert.ToInt32(sqlCommand2.ExecuteScalar());
                 stringBuilder1.AppendLine("UPDATE EMPLEADOS SET ");
                 stringBuilder1.AppendLine("nombre=@nombre,");
                 stringBuilder1.AppendLine("fecha_alta_registro=@fecha_alta_registro,");
@@ -2429,6 +2448,9 @@ namespace DAL
                 else
                     stringBuilder1.AppendLine(",fecha_revista=null");
                 stringBuilder1.AppendLine(",activo=@activo");
+                stringBuilder1.AppendLine(",id_profesional_monotributo=@id_profesional_monotributo");
+                stringBuilder1.AppendLine(",id_tarea=@id_tarea");
+
                 stringBuilder1.AppendLine(" WHERE legajo=@legajo");
                 SqlCommand sqlCommand3 = new SqlCommand();
                 sqlCommand3.Connection = cn;
@@ -2444,6 +2466,9 @@ namespace DAL
                 sqlCommand3.Parameters.Add(new SqlParameter("@nro_documento", oEmp.nro_documento != null ? (object)oEmp.nro_documento : (object)(string)null));
                 sqlCommand3.Parameters.Add(new SqlParameter("@cuil", oEmp.cuil != null ? (object)oEmp.cuil : (object)(string)null));
                 sqlCommand3.Parameters.Add(new SqlParameter("@tarea", oEmp.tarea != null ? (object)oEmp.tarea : (object)(string)null));
+
+                sqlCommand3.Parameters.Add(new SqlParameter("@id_tarea", (object)(oEmp.id_tarea > 0 ? oEmp.id_tarea : 0)));
+
                 sqlCommand3.Parameters.Add(new SqlParameter("@cod_cargo", (object)(oEmp.cod_cargo > 0 ? oEmp.cod_cargo : 0)));
                 sqlCommand3.Parameters.Add(new SqlParameter("@cod_categoria", (object)(oEmp.cod_categoria > 0 ? oEmp.cod_categoria : 0)));
                 sqlCommand3.Parameters.Add(new SqlParameter("@nro_cta_sb", oEmp.cod_cargo > 0 ? (object)ConsultaEmpleadoD.GetNro_cta_sb(oEmp.cod_cargo) : (object)""));
@@ -2464,30 +2489,30 @@ namespace DAL
                 sqlCommand3.Parameters.Add(new SqlParameter("@id_revista", (object)oEmp.id_revista));
                 if (oEmp.fecha_revista.Length != 0)
                     sqlCommand3.Parameters.Add(new SqlParameter("@fecha_revista", (object)oEmp.fecha_revista));
+                //
                 sqlCommand3.Parameters.Add(new SqlParameter("@activo", (object)oEmp.activo));
+                sqlCommand3.Parameters.Add(new SqlParameter("@id_profesional_monotributo", (oEmp.id_profesional_monotributo > 0 ? oEmp.id_profesional_monotributo : 0)));
+                sqlCommand3.Parameters.Add(new SqlParameter("@id_tarea", (oEmp.id_tarea > 0 ? oEmp.id_tarea : 0)));
+
                 EmpleadoD.Insert_cambios_empleados(oEmp.legajo, usuario, nameof(UpdateDatosEmpleado), "", cn, trx);
                 sqlCommand3.ExecuteNonQuery();
-                if (int32 != oEmp.cod_categoria)
+                if (cod_categoria_ant != oEmp.cod_categoria)
                 {
-                    EmpleadoD.Cambios_categoria_empleado(oEmp.legajo, int32, usuario, "antes", "", cn, trx);
-                    EmpleadoD.Cambios_categoria_empleado(oEmp.legajo, oEmp.cod_categoria, usuario, "nueva", "", cn, trx);
+                    Cambios_categoria_empleado(oEmp.legajo, cod_categoria_ant, usuario, "antes", "", cn, trx);
+                    Cambios_categoria_empleado(oEmp.legajo, oEmp.cod_categoria, usuario, "nueva", "", cn, trx);
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            finally
-            {
-                sqlCommand1 = (SqlCommand)null;
-            }
+            //finally
+            //{
+            //    sqlCommand1 = (SqlCommand)null;
+            //}
             return oEmp.legajo;
         }
-        public static int UpdateTab_Datos_Particulares(
-  Empleado oEmp,
-  string usuario,
-  SqlConnection cn,
-  SqlTransaction trx)
+        public static int UpdateTab_Datos_Particulares(Empleado oEmp, string usuario, SqlConnection cn, SqlTransaction trx)
         {
             try
             {
@@ -2539,16 +2564,9 @@ namespace DAL
             {
                 throw ex;
             }
-            finally
-            {
-            }
             return oEmp.legajo;
         }
-        public static int UpdateTab_Datos_Banco(
-  Empleado oEmp,
-  string usuario,
-  SqlConnection cn,
-  SqlTransaction trx)
+        public static int UpdateTab_Datos_Banco(Empleado oEmp, String usuario, SqlConnection cn, SqlTransaction trx)
         {
             try
             {
@@ -2577,9 +2595,6 @@ namespace DAL
             catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
             }
             return oEmp.legajo;
         }

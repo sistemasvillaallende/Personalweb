@@ -383,7 +383,7 @@ namespace web.secure
 
         protected void lbtnSalir_Click(object sender, EventArgs e)
         {
-            Response.Redirect("home.aspx");
+            Response.Redirect("listempleados.aspx");
         }
 
         protected void btnBuscar_ServerClick(object sender, EventArgs e)

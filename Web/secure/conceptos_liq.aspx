@@ -21,42 +21,52 @@
             background-color: #fff;
             height: 60px;
             padding: 2px;
-            margin: 4% auto;
+            margin: 15px;
         }
 
             .gridview a {
-                margin: 5px;
-                border-radius: 50%;
-                background-color: #444;
-                padding: 5px 10px 5px 10px;
-                color: #fff !important;
-                text-decoration: none;
-                -o-box-shadow: 1px 1px 1px #111;
-                -moz-box-shadow: 1px 1px 1px #111;
-                -webkit-box-shadow: 1px 1px 1px #111;
-                box-shadow: 1px 1px 1px #111;
+                background-color: #cbcbcb;
+                padding-top: 5px;
+                padding-left: 10px;
+                padding-bottom: 5px;
+                padding-right: 10px;
+                border-radius: 12%;
             }
 
                 .gridview a:hover {
-                    background-color: #1e8d12;
+                    background-color: #a3a3a3;
                     color: #fff;
+                    text-decoration: none;
                 }
 
             .gridview span {
-                background-color: #ae2676;
+                background-color: #24a2ae;
+                border-radius: 12%;
+                padding-top: 5px;
+                padding-left: 10px;
+                padding-bottom: 5px;
+                padding-right: 10px;
                 color: #fff;
-                /*-o-box-shadow: 1px 1px 1px #111;*/
-                -moz-box-shadow: 1px 1px 1px #111;
-                -webkit-box-shadow: 1px 1px 1px #111;
-                box-shadow: 1px 1px 1px #111;
-                border-radius: 50%;
-                padding: 5px 10px 5px 10px;
             }
+            .desplegable li{
+                padding: 10px;
+                width: 100%;                                
+            }
+            .desplegable a {
+                text-decoration: none;
+                color: #333;
+                transition: color 0.3s;
+            }
+            .desplegable li:hover {
+                background-color: rgba(212, 212, 212, 0.424);
+            }
+            .desplegable a:hover {
+                color: white;
+                width: 100%;  
+            }
+            
     </style>
-
-
-
-    <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" />-->
+<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" />-->
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="uPanelCliente" UpdateMode="Conditional" runat="server">
@@ -114,7 +124,7 @@
                             <%--<div class="box-body" style="margin-top: 10px;">--%>
                             <div class="form-group">
                                 <div class="col-xs-6">
-                                    <div class="input-group">
+                                    <div class="formulario-busqueda d-flex justify-content-between">
                                         <input type="text" class="input-control"
                                             id="txtInput"
                                             runat="server"
@@ -254,9 +264,13 @@
 
                                             <asp:TemplateField>
                                                 <ItemTemplate>
-                                                    <div class="btn-group pull-right">
-                                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Acciones <span class="fa fa-caret-down"></span></button>
-                                                        <ul class="dropdown-menu">
+                                                    <div class="btn-group dropleft">
+                                                        <button type="button" 
+                                                        class="btn btn-secondary" 
+                                                        data-toggle="dropdown" aria-expanded="false">
+                                                            <i class="fa fa-bars"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu desplegable" style="min-width: 300px;">
 
                                                             <li>
                                                                 <asp:LinkButton
@@ -325,19 +339,20 @@
                 TargetControlID="Button1"
                 ID="modalConceptoExtender">
             </ajaxToolkit:ModalPopupExtender>
-            <div class="modal-dialog" id="modalConcepto" runat="server">
+            <div class="modal-dialog shadow-lg" id="modalConcepto" runat="server">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header">                        
+                        <h4 class="modal-title">
+                            <asp:Label ID="lblTituloFormModal" runat="server" Text="Label"></asp:Label>
+                        </h4>
                         <button type="button"
                             runat="server"
                             id="btnCloseModal"
                             onserverclick="btnCloseModal_ServerClick"
                             class="close" data-dismiss="modal"
                             aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
-                        <h4 class="modal-title">
-                            <asp:Label ID="lblTituloFormModal" runat="server" Text="Label"></asp:Label>
-                        </h4>
+                            <span aria-hidden="true">×</span>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <div class="nav-tabs-custom">
@@ -377,28 +392,35 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="form-group col-md-4">
-                                            <label>Concepto Suma</label>
-                                            <asp:CheckBox ID="chkSuma_" CssClass="form-control" runat="server" />
+
+                                        <div class="col-md-4 d-flex align-items-center">
+                                            <asp:CheckBox ID="chkSuma_" runat="server" class="me-2" />
+                                            <label class="form-check-label mb-0">Concepto Suma</label>
                                         </div>
-                                        <div class="form-group col-md-4">
-                                            <label>Concepto Sujeto a Desc.</label>
-                                            <asp:CheckBox ID="chkSujeto_a_desc_" CssClass="form-control" runat="server" />
+
+                                        <div class="col-md-4 d-flex align-items-center">                                            
+                                            <asp:CheckBox ID="chkSujeto_a_desc_" runat="server" />
+                                            <label class="form-check-label mb-0 ml-2">Concepto Sujeto a Desc.</label>
                                         </div>
-                                        <div class="form-group col-md-4">
-                                            <label>Concepto Aporte</label>
-                                            <asp:CheckBox ID="chkAporte_" CssClass="form-control" runat="server" />
+
+                                        <div class="col-md-4 d-flex align-items-center">                                            
+                                            <asp:CheckBox ID="chkAporte_" runat="server" />
+                                            <label class="form-check-label mb-0 ml-2">Concepto Aporte</label>
                                         </div>
+
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-4">
-                                            <label>Concepto Sac</label>
-                                            <asp:CheckBox ID="chkSac_" CssClass="form-control" runat="server" />
+                                    <div class="row mt-3">
+
+                                        <div class="col-md-4 d-flex align-items-center">                                            
+                                            <asp:CheckBox ID="chkSac_" runat="server" />
+                                            <label class="form-check-label mb-0 ml-2">Concepto Sac</label>
                                         </div>
-                                        <div class="form-group col-md-4">
-                                            <label>Concepto Remunerativo</label>
-                                            <asp:CheckBox ID="chkRemunerativo_" CssClass="form-control" runat="server" />
+
+                                        <div class="col-md-4 d-flex align-items-center">                                            
+                                            <asp:CheckBox ID="chkRemunerativo_" runat="server" />
+                                            <label class="form-check-label mb-0 ml-2">Concepto Remunerativo</label>
                                         </div>
+
                                     </div>
                                 </div>
                                 <!-- /.tab-pane -->
@@ -431,18 +453,21 @@
                 TargetControlID="Button2"
                 ID="CuentaPopupExtender">
             </ajaxToolkit:ModalPopupExtender>
-            <div class="modal-dialog" id="modalCuenta" runat="server">
+            <div class="modal-dialog shadow-lg" id="modalCuenta" runat="server">
                 <div class="modal-content">
-                    <div class="modal-header">
+
+                    <div class="modal-header">                        
+                        <h4 class="modal-title">Cuenta por Concepto</h4>
                         <button type="button"
                             runat="server"
                             id="btnCloseModalCuenta"
                             onserverclick="btnCloseModalCuenta_ServerClick"
                             class="close" data-dismiss="modal"
                             aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
-                        <h4 class="modal-title">Cuenta por Concepto</h4>
+                            <span aria-hidden="true">×</span>
+                        </button>
                     </div>
+
                     <div class="modal-body">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
@@ -562,18 +587,23 @@
                 TargetControlID="Button3"
                 ID="ValoresPopupExtender">
             </ajaxToolkit:ModalPopupExtender>
-            <div class="modal-dialog" id="modalValores" runat="server">
+            <div class="modal-dialog shadow-lg" id="modalValores" runat="server">
                 <div class="modal-content">
+
                     <div class="modal-header">
+                        
+                        <h4 class="modal-title">Valores por Concepto</h4>
                         <button type="button"
                             runat="server"
                             id="btnCloseModalValor"
                             onserverclick="btnCloseModalValor_ServerClick"
                             class="close" data-dismiss="modal"
                             aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
-                        <h4 class="modal-title">Valores por Concepto</h4>
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        
                     </div>
+
                     <div class="modal-body">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">

@@ -36,7 +36,7 @@ namespace Web.secure
             {
                 //FillCombo();
                 BindList();
-                ddFindBy.SelectedIndex = 1;
+                //ddFindBy.SelectedIndex = 1;
             }
             //Session.Remove("anio");
             //Session.Remove("nro_expediente");
@@ -55,7 +55,7 @@ namespace Web.secure
             try
             {
                 CargarGrilla();
-                txtInput.Focus();
+                //txtInput.Focus();
             }
             catch (Exception ex)
             {
@@ -64,16 +64,16 @@ namespace Web.secure
         }
 
 
-        public void FillCombo()
-        {
-            DataSet ds = new DataSet();
-            DataSet ds1 = new DataSet();
-            ds1.ReadXml(Server.MapPath(Request.ApplicationPath + "\\xml\\ListFindEmpleados.xml"));
-            ddFindBy.DataSource = ds1.Tables[0];
-            ddFindBy.DataTextField = "Name";
-            ddFindBy.DataValueField = "IDName";
-            ddFindBy.DataBind();
-        }
+        //public void FillCombo()
+        //{
+        //    DataSet ds = new DataSet();
+        //    DataSet ds1 = new DataSet();
+        //    ds1.ReadXml(Server.MapPath(Request.ApplicationPath + "\\xml\\ListFindEmpleados.xml"));
+        //    ddFindBy.DataSource = ds1.Tables[0];
+        //    ddFindBy.DataTextField = "Name";
+        //    ddFindBy.DataValueField = "IDName";
+        //    ddFindBy.DataBind();
+        //}
 
         #region "Eventos Grillas"
 
@@ -88,7 +88,8 @@ namespace Web.secure
 
             try
             {
-                BuscarPor = (Convert.ToString(ddFindBy.SelectedValue) == "0" ? "" : Convert.ToString(ddFindBy.SelectedValue));
+                /*BuscarPor = (Convert.ToString(ddFindBy.SelectedValue) == "0" ? "" : Convert.ToString(ddFindBy.SelectedValue));*/
+                BuscarPor = "";
                 //-------------------------------------------------------------------//
                 //Salvo que el usuario tenga el permiso para ver todos los Empleados
                 //como usr admin
@@ -102,16 +103,16 @@ namespace Web.secure
                 switch (BuscarPor)
                 {
                     case "e.legajo":
-                        legajo = txtInput.Value;
+                        //legajo = txtInput.Value;
                         grdList.DataSource = BLL.ConsultaEmpleadoB.GetByLegajo(legajo);
 
                         break;
                     case "e.nombre":
-                        nombre = txtInput.Value;
+                        //nombre = txtInput.Value;
                         grdList.DataSource = BLL.ConsultaEmpleadoB.GetByNombre(nombre);
                         break;
                     case "e.nro_documento":
-                        nro_documento = txtInput.Value;
+                        //nro_documento = txtInput.Value;
                         //grdList.DataSource = BLL.ConsultaExpedienteB.GetByAsunto(asunto, id_oficina_origen, verTodo);
                         break;
                     default:
@@ -153,7 +154,8 @@ namespace Web.secure
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-
+                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#e3f2fd'");
+                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='#FFFFFF'");
             }
             else
             {
@@ -164,14 +166,12 @@ namespace Web.secure
         #endregion
 
 
-        protected void btnBuscar_Click(object sender, EventArgs e)
-        {
-            if (Session["usuario"] == null)
-                Response.Redirect("../login.aspx");
-
-            BindList();
-
-        }
+        //protected void btnBuscar_Click(object sender, EventArgs e)
+        //{
+        //    if (Session["usuario"] == null)
+        //        Response.Redirect("../login.aspx");
+        //    BindList();
+        //}
 
         protected void cmdNuevo_Click(object sender, EventArgs e)
         {
@@ -183,11 +183,17 @@ namespace Web.secure
             if (ok == false)
                 Response.Redirect("accesodenegado.html");
             else
-                Response.Redirect("empleado.aspx?op=nuevo");
+            {
+                int legajo = 0;
+                string nombre = string.Empty;
 
+                //Response.Redirect(string.Format("empleado.aspx?op=nuevo"));
+                Response.Redirect(string.Format("empleado.aspx?legajo={0}&nombre={1}&op=nuevo",
+                    legajo,
+                    Server.UrlEncode(nombre)));
+            }
             objSeguridad = null;
         }
-
 
         protected void cmdModifica_Click(object sender, EventArgs e)
         {
